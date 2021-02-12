@@ -1,13 +1,11 @@
 <template>
-  <div id="TimerBlock">
-    {{ Math.floor(remainingtime / 60) }}:{{ remainingtime % 60 }}
-  </div>
+  <div id="TimerBlock">{{ pad2(Math.floor(remainingtime/60)) }}:{{ pad2(remainingtime % 60) }}</div>
 </template>
 <script>
 import { mixin as VueTimers } from "vue-timers";
 export default {
   data() {
-    return { remainingtime: 60 };
+    return { remainingtime: 1200 };
   },
   mixins: [VueTimers],
   methods: {
@@ -15,22 +13,20 @@ export default {
       this.remainingtime = this.remainingtime - 1;
       console.log(this.remainingtime);
     },
+    pad2: function(number) {
+      return (number < 10 ? "0" : "") + number;
+    },
   },
-  timers: {tickdown: {time: 1000, autostart: true, repeat: true }},
+  timers: { tickdown: { time: 1000, autostart: true, repeat: true } },
 };
 </script>
 <style scoped>
-/* @font-face {
+@font-face {
   font-family: "analog";
-  src: url("/src/assets/Fonts/Timer.eot"),
-    url("/src/assets/Fonts/Timer.eot?#iefix") format("embedded-opentype"),
-    url("/src/assets/Fonts/Timer.woff2") format("woff2"),
-    url("/src/assets/Fonts/Timer.svg") format("svg"),
-    url("/src/assets/Fonts/Timer.ttf") format("truetype"),
-    url("/src/assets/Fonts/Timer.woff") format("woff");
+  src: url("/src/assets/Fonts/Timer.ttf");
   font-weight: normal;
   font-style: normal;
-} */
+}
 #TimerBlock {
   position: fixed;
   top: 0%;
@@ -41,6 +37,6 @@ export default {
   background-color: black;
   color: yellow;
   font-size: 500%;
-  font-family: analog;
+  font-family: "analog";
 }
 </style>
