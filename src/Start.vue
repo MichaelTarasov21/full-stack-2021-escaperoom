@@ -1,5 +1,5 @@
 <template>
-  <div id="start">
+  <div id="App">
     <section class="header">
       <h1>Welcome/Start Screen</h1>
       <h2>Some Directions</h2>
