@@ -11,32 +11,42 @@
     <button id="account">Account</button>
     <button id="logout">Log Out</button>
     </div>
-    <Fail msg="Success"/>
-    <Success msg="Fail"/>
+      <div class="tab-bkg">
+      <tabs>
+        <tab title="Fail Tab"><Fail msg="Success"/></tab>
+        <tab title="Success Tab"><Success msg="Fail"/></tab>
+      </tabs>
+      </div>
   </div>
 </template>
 
 <script>
 import Fail from './components/Fail.vue'
 import Success from './components/Success.vue'
+import Tab from './Tab.vue'
+import Tabs from './Tabs.vue'
 
 export default {
   name: 'Start',
   components: {
     Fail,
     Success,
+    Tab,
+    Tabs
   }
 }
 </script>
 
 <style>
-#start {
+#App {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #b0b6b3;
   margin-top: 60px;
+  /* margin-bottom: 60px;
+  height: 100vh; */
 }
 .header {
   color: black;
@@ -47,6 +57,7 @@ button{
   border: none;
   color: black;
   padding: 15px 32px;
+  width: 25%;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -56,7 +67,12 @@ button{
 }
 .btn-personals{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
+}
+.tab-bkg {
+  width: 100%;
+  height: 20rem;
+  background-color: #f8f8f8;
 }
 </style>

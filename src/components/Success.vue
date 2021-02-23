@@ -20,16 +20,22 @@ export default {
 </script>
 
 <style scoped>
-#fail {
+#success {
   background-color: lightgreen;
+  height: 20rem;
+  width: 85%;
+  margin: 0;
+  padding-top: 30px;
 }
 .congrats-message {
   color: black;
   background: #b0b6b3;
-  align-items: center;
+  height: 8rem;
+  margin-bottom: 3rem;
 }
 h1 {
   font-size: bolder;
+  padding-top: 10px;
 }
 p {
   font-size: bold;

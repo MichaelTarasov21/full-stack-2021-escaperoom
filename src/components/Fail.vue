@@ -21,20 +21,24 @@ export default {
 <style scoped>
 #fail {
   background-color: red;
+  height: 20rem;
+  width: 85%;
+  padding-top: 30px;
 }
 ul {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 0;
+  margin: 0;
 }
 li {
   list-style-type: none;
-  padding: 0;
-  margin: 0;
   display: inline-block;
   color: black;
-  font-size: bold;
+  font-size: 5rem;
+  
 }
 button {
   background-color: #b0b6b3;
@@ -47,5 +51,11 @@ button {
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
+}
+#restart {
+  margin-right: 30px;
+}
+#account {
+  margin-left: 30px;
 }
 </style>
