@@ -17,7 +17,7 @@ export default {
       return (number < 10 ? "0" : "") + number;
     },
   },
-  timers: { tickdown: { time: 1000, autostart: true, repeat: true } },
+  timers: { tickdown: { time: 1000, autostart: true, repeat: true } },//when using disable autostart and make a button with function this.$timer.start('tickdown')
 };
 </script>
 <style scoped>
