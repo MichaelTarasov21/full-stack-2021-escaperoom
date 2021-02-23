@@ -17,6 +17,7 @@ import firebase from 'firebase'
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
+  firebase.auth();
 
 
 import Vue from 'vue'
