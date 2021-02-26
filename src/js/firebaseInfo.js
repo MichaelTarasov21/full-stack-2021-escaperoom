@@ -1,20 +1,3 @@
-<template>
-  <div class="login">
-    <h3>Escape Room</h3>
-    <button><h3>Sign In</h3></button>
-  </div>
-</template>
-
-<script>
-export default {
-  name: "navigation",
-  props: {
-    // msg: String
-  },
-};
-</script>
-
-<script lang="ts">  
 import firebase from "firebase";
 
 // Your web app's Firebase configuration
@@ -63,6 +46,3 @@ function signInWithPopup() {
     });
 };
 signInWithPopup();
-</script>
-
-

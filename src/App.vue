@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <navigation/>
+    <navigation />
     <!-- <img alt="Vue logo" src="./assets/logo.png" /> -->
     <!-- <HelloWorld msg="Welcome to Your Vue.js App" /> -->
   </div>
@@ -18,6 +18,11 @@ export default {
     // HelloWorld,
     navigation,
   },
+  //   mounted() {
+  //   let externalScript = document.createElement('script')
+  //   externalScript.setAttribute('src', '/src/js/firebaseInfo.js')
+  //   document.head.appendChild(externalScript)
+  // },
 };
 </script>
 
@@ -31,6 +36,5 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
-
 </style>
 
