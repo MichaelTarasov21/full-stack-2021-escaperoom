@@ -4,6 +4,7 @@
 <script>
 import { mixin as VueTimers } from "vue-timers";
 export default {
+  emits: ['Gameover'],
   data() {
     return { remainingtime: 1200 };
   },
@@ -11,7 +12,10 @@ export default {
   methods: {
     tickdown: function() {
       this.remainingtime = this.remainingtime - 1;
-      console.log(this.remainingtime);
+      if (this.remainingtime === 0){
+        this.$timer.stop('tickdown')//Prevents memory leak on game loss
+        this.$emit('Gameover')
+      }
     },
     pad2: function(number) {
       return (number < 10 ? "0" : "") + number;
@@ -23,7 +27,7 @@ export default {
 <style scoped>
 @font-face {
   font-family: "analog";
-  src: url("/src/assets/Fonts/Timer.ttf");
+  src: url("/src/assets/Fonts/timer.ttf");
   font-weight: normal;
   font-style: normal;
 }
