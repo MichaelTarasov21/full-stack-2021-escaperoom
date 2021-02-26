@@ -1,7 +1,7 @@
 <template>
   <div class="login">
     <h3>Escape Room</h3>
-    <button><h3>Sign In</h3></button>
+    <button><h3 @click="signInWithPopup()"  >Sign In</h3></button>
   </div>
 </template>
 
@@ -15,6 +15,7 @@ export default {
   props: {
     // msg: String
   },
+
   methods: {
     signInWithPopup: function() {
       var provider = new firebase.auth.GoogleAuthProvider();
