@@ -1,5 +1,5 @@
 <template>
-  <div id="App">
+  <div id="start">
     <section class="header">
       <h1>Welcome/Start Screen</h1>
       <h2>Some Directions</h2>
@@ -11,34 +11,20 @@
     <button id="account">Account</button>
     <button id="logout">Log Out</button>
     </div>
-      <div class="tab-bkg">
-      <tabs>
-        <tab title="Fail Tab"><Fail msg="Success"/></tab>
-        <tab title="Success Tab"><Success msg="Fail"/></tab>
-      </tabs>
-      </div>
   </div>
 </template>
 
 <script>
-import Fail from './components/Fail.vue'
-import Success from './components/Success.vue'
-import Tab from './Tab.vue'
-import Tabs from './Tabs.vue'
-
 export default {
   name: 'Start',
-  components: {
-    Fail,
-    Success,
-    Tab,
-    Tabs
+  props: {
+    msg: String
   }
 }
 </script>
 
 <style>
-#App {
+#start {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -69,10 +55,5 @@ button{
   display: flex;
   flex-direction: row;
   justify-content: center;
-}
-.tab-bkg {
-  width: 100%;
-  height: 20rem;
-  background-color: #f8f8f8;
 }
 </style>
