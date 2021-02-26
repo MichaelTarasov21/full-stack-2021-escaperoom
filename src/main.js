@@ -1,6 +1,6 @@
 import firebase from "firebase";
 import Vue from 'vue'
-import App from './Start.vue'
+import App from './App.vue'
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -17,9 +17,6 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 firebase.auth();
-
-import Vue from "vue";
-import App from "./App.vue";
 
 Vue.config.productionTip = false;
 
