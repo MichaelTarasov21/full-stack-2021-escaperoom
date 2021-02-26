@@ -25,8 +25,8 @@ import navigation from "./components/Navigation";
 import Start from './components/Start.vue'
 import Fail from './components/Fail.vue'
 import Success from './components/Success.vue'
-import Tab from './Tab.vue'
-import Tabs from './Tabs.vue'
+import Tab from './components/Tab.vue'
+import Tabs from './components/Tabs.vue'
 
 export default {
   name: "App",
