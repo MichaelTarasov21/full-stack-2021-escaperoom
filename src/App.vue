@@ -3,8 +3,6 @@
   <div id="app">
       <Timer @Gameover="Gameover"></Timer>
     <navigation />
-    <!-- <img alt="Vue logo" src="./assets/logo.png" /> -->
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App" /> -->
     <div class="tab-bkg">
       <tabs>
         <tab title="Start Tab"><Start msg="Start"/></tab>
@@ -20,7 +18,6 @@
 
 <script>
 import Timer from './components/Timer.vue'
-// import HelloWorld from "./components/HelloWorld.vue";
 import navigation from "./components/Navigation";
 import Start from './components/Start.vue'
 import Fail from './components/Fail.vue'
