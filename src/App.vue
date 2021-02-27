@@ -1,13 +1,13 @@
 <template>
 
   <div id="app">
-      <Timer @Gameover="Gameover"></Timer>
+      <Timer @Gameover="Gameover"/>
     <navigation />
     <div class="tab-bkg">
       <tabs>
-        <tab title="Start Tab"><Start msg="Start"/></tab>
-        <tab title="Fail Tab"><Fail msg="Fail"/></tab>
-        <tab title="Success Tab"><Success msg="Success"/></tab>
+        <tab title="Start Tab"><Start/></tab>
+        <tab title="Fail Tab"><Fail/></tab>
+        <tab title="Success Tab"><Success/></tab>
       </tabs>
     </div>
   </div>
