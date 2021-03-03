@@ -44,6 +44,13 @@ export default {
 </script>
 
 <style>
+@font-face {
+  font-family: "analog";
+  src: url('assets/Fonts/timer.woff2') format('woff2'),
+    url('assets/Fonts/timer.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
 .tab-bkg {
   width: 100%;
   height: 20rem;

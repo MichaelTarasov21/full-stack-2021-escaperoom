@@ -25,12 +25,6 @@ export default {
 };
 </script>
 <style scoped>
-@font-face {
-  font-family: "analog";
-  src: url("/src/assets/Fonts/timer.ttf");
-  font-weight: normal;
-  font-style: normal;
-}
 #TimerBlock {
   position: fixed;
   top: 0%;
@@ -40,7 +34,7 @@ export default {
   text-align: left;
   background-color: black;
   color: yellow;
-  font-size: 500%;
+  font-size: 590%;
   font-family: "analog";
 }
 </style>
