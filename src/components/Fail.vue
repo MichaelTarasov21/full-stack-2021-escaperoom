@@ -19,12 +19,6 @@ export default {
 </script>
 
 <style scoped>
-#fail {
-  background-color: red;
-  height: 20rem;
-  width: 85%;
-  padding-top: 30px;
-}
 ul {
   display: flex;
   flex-direction: column;
@@ -57,5 +51,16 @@ button {
 }
 #account {
   margin-left: 30px;
+}
+#fail {
+  background-color: red;
+  height: 100%;
+  width: 100%;
+  padding-top: 30px;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  right: 0%;
+  bottom: 0%;
 }
 </style>
