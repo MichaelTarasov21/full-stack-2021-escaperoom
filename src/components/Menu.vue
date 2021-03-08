@@ -11,7 +11,18 @@
         <h1>Settings</h1>
         <div class="flex-col menu-btns">
           <button class="menu-btn">Profile</button>
-          <button class="menu-btn" @click="lbModal = true" @close="lbModel = false"><Leaderboard/></button>
+          <button class="menu-btn" @click="lbModal = true"><!-- <Leaderboard/> -->
+          <div>
+          <modal v-if="lbModal" @close="lbModal = false">
+            <div class="leaderboard-content">
+              <h1>Leaderboard</h1>
+              <div class="leaderboard-info"></div>
+            <button @click="$emit('close')">CLOSE</button>
+            <!-- this button doesn't work, I'll try to fix it later -->
+            </div>
+          </modal>
+          </div>
+          </button>
           <!-- creates an alert confirming if user wants to log out -->
           <button class="menu-btn">Log Out</button>
         </div>
@@ -22,19 +33,20 @@
 </template>
 
 <script>
-import Leaderboard from './components/Leaderboard.vue'
+//import Leaderboard from './components/Leaderboard.vue'
 export default {
   name: 'Menu',
-  components: {
+  /* components: {
     Leaderboard,
-  },
+  }, */
   el: '#menu',
   data(){
     return {
-      showModal: false
+      showModal: false,
+      ldModal: false,
     }
   },
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

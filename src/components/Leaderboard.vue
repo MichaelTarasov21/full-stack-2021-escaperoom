@@ -15,7 +15,7 @@
 export default {
   //emits: ['lbClose'],
   name: 'Leaderboard',
-  //el: '#leaderboard',
+  el: '#leaderboard',
   data(){
     return {
       ldModal: false
