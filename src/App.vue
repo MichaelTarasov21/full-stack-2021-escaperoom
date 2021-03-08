@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Timer @Gameover="Gameover" />
+    
     <Fail v-if="lost" />
     <navigation />
     <div class="tab-bkg">
@@ -11,6 +11,7 @@
     </div>
     <Menu/>
     <Room1 msg="Room1"/>
+    <Timer @Gameover="Gameover" />
   </div>
 </template>
 
