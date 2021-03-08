@@ -9,6 +9,8 @@
         <tab title="Success Tab"><Success /></tab>
       </tabs>
     </div>
+    <Menu/>
+    <Room1 msg="Room1"/>
   </div>
 </template>
 
@@ -20,6 +22,8 @@ import Fail from "./components/Fail.vue";
 import Success from "./components/Success.vue";
 import Tab from "./components/Tab.vue";
 import Tabs from "./components/Tabs.vue";
+import Room1 from './components/Room1.vue'
+import Menu from './components/Menu.vue'
 
 export default {
   name: "App",
@@ -31,6 +35,8 @@ export default {
     Success,
     Tab,
     Tabs,
+    Room1,
+    Menu,
   },
   data() {
     return { lost:false };
@@ -41,6 +47,7 @@ export default {
     },
   },
 };
+    
 </script>
 
 <style>
