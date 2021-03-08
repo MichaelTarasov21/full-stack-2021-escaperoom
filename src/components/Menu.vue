@@ -11,7 +11,7 @@
         <h1>Settings</h1>
         <div class="flex-col menu-btns">
           <button class="menu-btn">Profile</button>
-          <button class="menu-btn">Leaderboard</button>
+          <button class="menu-btn" id="leaderboard" @click="lbModal = true"><Leaderboard/></button>
           <!-- creates an alert confirming if user wants to log out -->
           <button class="menu-btn">Log Out</button>
         </div>
@@ -22,16 +22,18 @@
 </template>
 
 <script>
+import Leaderboard from './components/Leaderboard.vue'
 export default {
   name: 'Menu',
+  components: {
+    Leaderboard,
+  },
   el: '#menu',
   data(){
     return {
       showModal: false
     }
-  }
-  
-  
+  },
 }
 </script>
 

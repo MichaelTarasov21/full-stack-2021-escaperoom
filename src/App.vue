@@ -25,6 +25,7 @@ import Tab from "./components/Tab.vue";
 import Tabs from "./components/Tabs.vue";
 import Room1 from './components/Room1.vue'
 import Menu from './components/Menu.vue'
+//import Leaderboard from './components/Leaderboard.vue'
 
 export default {
   name: "App",
