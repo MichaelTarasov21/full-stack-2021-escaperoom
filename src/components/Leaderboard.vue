@@ -7,7 +7,6 @@
         <button @click="$emit('close')">CLOSE</button>
       </modal>
     </div>
-</div>
 </template>
 
 <script>
