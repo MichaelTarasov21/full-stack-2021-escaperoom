@@ -5,8 +5,9 @@
         <h1>Leaderboard</h1>
         <div class="leaderboard-info"></div>
         <button @click="$emit('close')">CLOSE</button>
-      </modal>
-    </div>
+      </div>
+    </modal>
+</div>
 </template>
 
 <script>

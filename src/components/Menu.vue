@@ -11,7 +11,7 @@
         <h1>Settings</h1>
         <div class="flex-col menu-btns">
           <button class="menu-btn">Profile</button>
-          <button class="menu-btn" id="leaderboard" @click="lbModal = true"><Leaderboard/></button>
+          <button class="menu-btn" @click="lbModal = true" @close="lbModel = false"><Leaderboard/></button>
           <!-- creates an alert confirming if user wants to log out -->
           <button class="menu-btn">Log Out</button>
         </div>
