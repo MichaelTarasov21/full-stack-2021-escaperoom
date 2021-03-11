@@ -9,7 +9,6 @@
 
 <script>
 // Initialize Firebase
-
 import firebase from "firebase/app";
 import "firebase/auth";
 // import func from "../../vue-temp/vue-editor-bridge";
@@ -36,18 +35,9 @@ export default {
           var user = result.user;
           console.log(user);
           // ...
-          
-          firebase.auth().onAuthStateChanged(function (user) {
-            if (user) {
-              // User is signed in.
-              console.log("logged in");
-              const loginPage = document.querySelector(".login");
-              loginPage.style.display = "none";
-            } else {
-              // No user is signed in.
-              console.log("not loggin in");
-            }
-          });
+
+          this.checkLogIn();
+
         })
         .catch((error) => {
           console.log(error);
@@ -59,8 +49,14 @@ export default {
         if (user) {
           // User is signed in.
           console.log("logged in");
+          console.log(user);
+
           const loginPage = document.querySelector(".login");
           loginPage.style.display = "none";
+
+          const welcome = document.querySelector("#welcome");
+          welcome.innerHTML= `Welcome ${user.displayName}`
+
         } else {
           // No user is signed in.
           console.log("not loggin in");
@@ -68,6 +64,12 @@ export default {
       });
     },
   },
+
+//check if logged in on load
+  created: function () {
+    this.checkLogIn()
+  }
+
 };
 </script>
 
@@ -85,7 +87,4 @@ export default {
   padding: 3rem;
 }
 
-.hide {
-  display: none;
-}
 </style>

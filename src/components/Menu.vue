@@ -1,33 +1,40 @@
 <template>
   <div id="menu">
     <button id="open-menu" @click="showModal = true">
-    <img src="https://img.icons8.com/dusk/64/000000/gear.png"/></button>
+      <img src="https://img.icons8.com/dusk/64/000000/gear.png" />
+    </button>
     <!-- The Modal -->
     <transition name="fade" appear>
-      <div id="myModal" class="modal" v-if="showModal" @click="showModal = false">
-      <!-- Modal content -->
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <h1>Settings</h1>
-        <div class="flex-col menu-btns">
-          <button class="menu-btn">Profile</button>
-          <button class="menu-btn" @click="lbModal = true"><!-- <Leaderboard/> -->
-          <div>
-          <modal v-if="lbModal" @close="lbModal = false">
-            <div class="leaderboard-content">
-              <h1>Leaderboard</h1>
-              <div class="leaderboard-info"></div>
-            <button @click="$emit('close')">CLOSE</button>
-            <!-- this button doesn't work, I'll try to fix it later -->
-            </div>
-          </modal>
+      <div
+        id="myModal"
+        class="modal"
+        v-if="showModal"
+        @click="showModal = false"
+      >
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h1>Settings</h1>
+          <div class="flex-col menu-btns">
+            <button class="menu-btn">Profile</button>
+            <button class="menu-btn" @click="lbModal = true">
+              <!-- <Leaderboard/> -->
+              <div>
+                <modal v-if="lbModal" @close="lbModal = false">
+                  <div class="leaderboard-content">
+                    <h1>Leaderboard</h1>
+                    <div class="leaderboard-info"></div>
+                    <button @click="$emit('close')">CLOSE</button>
+                    <!-- this button doesn't work, I'll try to fix it later -->
+                  </div>
+                </modal>
+              </div>
+            </button>
+            <!-- creates an alert confirming if user wants to log out -->
+            <button class="menu-btn">Log Out</button>
           </div>
-          </button>
-          <!-- creates an alert confirming if user wants to log out -->
-          <button class="menu-btn">Log Out</button>
         </div>
       </div>
-    </div>
     </transition>
   </div>
 </template>
@@ -35,29 +42,29 @@
 <script>
 //import Leaderboard from './components/Leaderboard.vue'
 export default {
-  name: 'Menu',
+  name: "Menu",
   /* components: {
     Leaderboard,
   }, */
-  el: '#menu',
-  data(){
+  el: "#menu",
+  data() {
     return {
       showModal: false,
       ldModal: false,
-    }
+    };
   },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 /* The Modal (background) */
-.modal { 
+.modal {
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
   padding-top: 100px; /* Location of the box */
@@ -66,8 +73,8 @@ export default {
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
 /* Modal Content */
@@ -87,7 +94,7 @@ export default {
   font-size: 28px;
   font-weight: bold;
 }
-.menu-btn{
+.menu-btn {
   background-color: #b0b6b3;
   border: none;
   color: black;
@@ -108,14 +115,14 @@ export default {
   cursor: pointer;
 }
 
-.flex-col{
+.flex-col {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-#open-menu:hover{
-  transform: scale(1.2); 
+#open-menu:hover {
+  transform: scale(1.2);
 }
 </style>
