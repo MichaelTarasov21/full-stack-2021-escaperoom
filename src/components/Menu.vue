@@ -4,24 +4,20 @@
     <img src="https://img.icons8.com/dusk/64/000000/gear.png"/></button>
     <!-- The Modal -->
     <transition name="fade" appear>
-      <div id="myModal" class="modal" v-if="showModal" @click="showModal = false">
+      <div id="myModal" class="modal" v-if="showModal"> 
       <!-- Modal content -->
       <div class="modal-content">
-        <span class="close">&times;</span>
+        <span class="close" @click="showModal = false">&times;</span>
         <h1>Settings</h1>
         <div class="flex-col menu-btns">
           <button class="menu-btn">Profile</button>
-          <button class="menu-btn" @click="lbModal = true"><!-- <Leaderboard/> -->
-          <div>
-          <modal v-if="lbModal" @close="lbModal = false">
+          <button class="menu-btn" id="leaderboard" @click="lbModal = true">
+            Leaderboard
+          <!-- <modal v-if="lbModal" @click="lbModal = false">
             <div class="leaderboard-content">
-              <h1>Leaderboard</h1>
               <div class="leaderboard-info"></div>
-            <button @click="$emit('close')">CLOSE</button>
-            <!-- this button doesn't work, I'll try to fix it later -->
             </div>
-          </modal>
-          </div>
+          </modal> -->
           </button>
           <!-- creates an alert confirming if user wants to log out -->
           <button class="menu-btn">Log Out</button>
@@ -43,7 +39,7 @@ export default {
   data(){
     return {
       showModal: false,
-      ldModal: false,
+      lbModal: false,
     }
   },
 };
