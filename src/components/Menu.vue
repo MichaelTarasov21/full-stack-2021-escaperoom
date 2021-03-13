@@ -10,17 +10,15 @@
         <span class="close" @click="showModal = false">&times;</span>
         <h1>Settings</h1>
         <div class="flex-col menu-btns">
-          <button class="menu-btn">Profile</button>
-          <button class="menu-btn" id="leaderboard" @click="lbModal = true">
-            Leaderboard
-          <!-- <modal v-if="lbModal" @click="lbModal = false">
-            <div class="leaderboard-content">
-              <div class="leaderboard-info"></div>
-            </div>
-          </modal> -->
-          </button>
-          <!-- creates an alert confirming if user wants to log out -->
-          <button class="menu-btn">Log Out</button>
+          <tabs>
+            <tab class="menu-tab" title="Profile"><Profile/></tab>
+            <tab class="menu-tab" title="Leaderboard"><Leaderboard/></tab>
+            <tab class="menu-tab" title="Log Out"><LogOut/></tab>
+          </tabs>
+          <!-- <button class="menu-btn">Profile</button>
+          <button class="menu-btn">Leaderboard</button>
+          // creates an alert confirming if user wants to log out 
+          <button class="menu-btn">Log Out</button> -->
         </div>
       </div>
     </div>
@@ -29,17 +27,24 @@
 </template>
 
 <script>
-//import Leaderboard from './components/Leaderboard.vue'
+import Tab from "./components/Tab.vue";
+import Tabs from "./components/Tabs.vue";
+import Leaderboard from './components/Leaderboard.vue';
+import Profile from './components/Profile.vue';
+import LogOut from './components/LogOut.vue';
 export default {
   name: 'Menu',
-  /* components: {
+  components: {
+    Tab,
+    Tabs,
     Leaderboard,
-  }, */
+    Profile,
+    LogOut,
+  }, 
   el: '#menu',
   data(){
     return {
       showModal: false,
-      lbModal: false,
     }
   },
 };
@@ -83,7 +88,7 @@ export default {
   font-size: 28px;
   font-weight: bold;
 }
-.menu-btn{
+.menu-tab{
   background-color: #b0b6b3;
   border: none;
   color: black;

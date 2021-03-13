@@ -1,10 +1,10 @@
 <template>
-  <div class="leaderboard-info"></div>
+  <div class="profile-info"></div>
 </template>
 
 <script>
 export default {
-  name: 'Leaderboard',
+  name: 'Profile',
   props: {
     msg: String
   }
@@ -12,7 +12,7 @@ export default {
 </script>
 
 <style scoped>
-.leaderboard-info{
-  background-color: aquamarine;
+.profile.info {
+  background-color: rgba(125, 136, 133, 0.048);
 }
 </style>
