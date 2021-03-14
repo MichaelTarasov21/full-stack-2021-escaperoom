@@ -13,7 +13,7 @@
           <tabs>
             <tab class="menu-tab" title="Profile"><Profile/></tab>
             <tab class="menu-tab" title="Leaderboard"><Leaderboard/></tab>
-            <tab class="menu-tab" title="Log Out"><LogOut/></tab>
+             <tab class="menu-tab" title="Log Out"><LogOut/></tab> 
           </tabs>
           <!-- <button class="menu-btn">Profile</button>
           <button class="menu-btn">Leaderboard</button>
@@ -27,11 +27,11 @@
 </template>
 
 <script>
-import Tab from "./components/Tab.vue";
-import Tabs from "./components/Tabs.vue";
-import Leaderboard from './components/Leaderboard.vue';
-import Profile from './components/Profile.vue';
-import LogOut from './components/LogOut.vue';
+import Tab from "./Tab"
+import Tabs from "./Tabs"
+import Leaderboard from './Leaderboard'
+import Profile from './Profile'
+import LogOut from './LogOut'
 export default {
   name: 'Menu',
   components: {
