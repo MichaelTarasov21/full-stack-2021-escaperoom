@@ -1,17 +1,16 @@
 <template>
   <div id="app">
-    
     <Fail v-if="lost" />
     <navigation />
-    <start/>
+    <start />
     <!-- <div class="tab-bkg">
       <tabs>
         <tab title="Start Tab"><Start /></tab>
         <tab title="Success Tab"><Success /></tab>
       </tabs>
     </div> -->
-    <Menu/>
-    <Room1 msg="Room1"/>
+    <Menu />
+    <Room1 msg="Room1" />
     <Timer @Gameover="Gameover" />
   </div>
 </template>
@@ -24,8 +23,8 @@ import Start from "./components/Start.vue";
 // import Success from "./components/Success.vue";
 // import Tab from "./components/Tab.vue";
 // import Tabs from "./components/Tabs.vue";
-import Room1 from './components/Room1.vue'
-import Menu from './components/Menu.vue'
+import Room1 from "./components/Room1.vue";
+import Menu from "./components/Menu.vue";
 
 export default {
   name: "App",
@@ -41,7 +40,7 @@ export default {
     Menu,
   },
   data() {
-    return { lost:false };
+    return { lost: false };
   },
   methods: {
     Gameover: function() {
@@ -49,14 +48,13 @@ export default {
     },
   },
 };
-    
 </script>
 
 <style>
 @font-face {
   font-family: "analog";
-  src: url('assets/Fonts/timer.woff2') format('woff2'),
-    url('assets/Fonts/timer.woff') format('woff');
+  src: url("assets/Fonts/timer.woff2") format("woff2"),
+    url("assets/Fonts/timer.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -66,7 +64,6 @@ export default {
   background-color: #f8f8f8;
 }
 body {
-  
   margin: 0 !important;
   padding: 0 !important;
 }
