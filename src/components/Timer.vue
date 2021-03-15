@@ -29,10 +29,11 @@ export default {
     pad2: function(number) {
       return (number < 10 ? "0" : "") + number;
     },
-    storetime: function(string2store) {
+    storetime: function() {
       console.log("I am being developed");
-      const toupload = string2store.toString();
-      const storageRef = firebase.storage().ref('Leaderboard');
+      const yourtime = {Submittedtime:this.remainingtime};
+      const toupload = JSON.stringify(yourtime);
+      const storageRef = firebase.storage().ref('Leaderboard.json');
       storageRef.putString(toupload).then((snapshot) => {console.log('Uploaded a raw string!' + snapshot);});
       console.log(toupload);
     },
