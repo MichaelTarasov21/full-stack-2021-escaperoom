@@ -1,7 +1,10 @@
 <template>
+  <div> <!-- To be removed -->
   <div id="TimerBlock">
     {{ pad2(Math.floor(remainingtime / 60)) }}:{{ pad2(remainingtime % 60) }}
   </div>
+    <button @click="storetime">Store Your Time!</button> <!-- To be removed. Used for testing -->
+  </div><!-- To be removed -->
 </template>
 <script>
 import { mixin as VueTimers } from "vue-timers";
@@ -22,6 +25,9 @@ export default {
     pad2: function(number) {
       return (number < 10 ? "0" : "") + number;
     },
+    storetime: function(){
+      console.log("I am being developed")
+    }
   },
   timers: { tickdown: { time: 1000, autostart: true, repeat: true } }, //when using disable autostart and make a button with function this.$timer.start('tickdown')
 };
