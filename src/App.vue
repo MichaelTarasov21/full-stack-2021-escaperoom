@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <Fail v-if="lost" />
-    <navigation />
-    <start />
+    <Navigation />
+    <Start />
     <!-- <div class="tab-bkg">
       <tabs>
         <tab title="Start Tab"><Start /></tab>
