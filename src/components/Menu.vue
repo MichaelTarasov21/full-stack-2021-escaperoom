@@ -41,7 +41,7 @@ export default {
     Profile,
     LogOut,
   }, 
-  el: '#menu',
+//  el: '#menu', Code was providing errors in console commented it out and it didn't seem to break anything. Please review if it is necessary.
   data(){
     return {
       showModal: false,
