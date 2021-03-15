@@ -15,7 +15,7 @@
         efficitur.
       </p>
       <p>Are you up for the challenge?</p>
-      <button id="begin" @click="hide()"><div>Begin</div></button>
+      <button id="begin" @click="hide()" ><div>Begin</div></button>
     </section>
     <!-- <button id="start">Start</button> -->
     <!-- <div class="btn-personals">
@@ -29,33 +29,27 @@
 <script>
 import firebase from "firebase/app";
 export default {
+  emits: ["Gamestarted"],
   name: "Start",
-  props: {
-    msg: String,
-  },
-
   methods: {
-    checkLogIn: function () {
-      firebase.auth().onAuthStateChanged(function (user) {
+    checkLogIn: function() {
+      firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
           const welcome = document.querySelector("#welcome");
           welcome.innerHTML = `Welcome ${user.displayName}`;
         }
       });
     },
-
-    hide: function () {
+    hide: function() {
       const start = document.querySelector("#start");
-          start.style.display = "none";
-    }
-
+      start.style.display = "none";
+      this.$emit("Gamestarted");
+    },
   },
 };
 </script>
 
 <style>
-
-
 #start {
   text-align: center;
   position: absolute;

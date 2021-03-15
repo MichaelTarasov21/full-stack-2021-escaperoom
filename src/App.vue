@@ -2,7 +2,7 @@
   <div id="app">
     <Fail v-if="lost" />
     <Navigation />
-    <Start />
+    <Start @Gamestarted="StartGame" />
     <!-- <div class="tab-bkg">
       <tabs>
         <tab title="Start Tab"><Start /></tab>
@@ -11,7 +11,7 @@
     </div> -->
     <Menu />
     <Room1 msg="Room1" />
-    <Timer @Gameover="Gameover" />
+    <Timer v-if="start" @Gameover="Gameover" />
   </div>
 </template>
 
@@ -40,12 +40,17 @@ export default {
     Menu,
   },
   data() {
-    return { lost: false };
-  },
-  methods: {
-    Gameover: function() {
-      this.lost = true;
+    return { 
+      lost: false,
+      start: false };
     },
+    methods: {
+      Gameover: function() {
+        this.lost = true;
+      },
+      StartGame: function(){
+        this.start = true;
+    }
   },
 };
 </script>
