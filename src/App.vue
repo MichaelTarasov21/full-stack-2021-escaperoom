@@ -17,7 +17,7 @@
 
 <script>
 import Timer from "./components/Timer.vue";
-import navigation from "./components/Navigation";
+import Navigation from "./components/Navigation";
 import Start from "./components/Start.vue";
 // import Fail from "./components/Fail.vue";
 // import Success from "./components/Success.vue";
@@ -30,7 +30,7 @@ export default {
   name: "App",
   components: {
     Timer,
-    navigation,
+    Navigation,
     Start,
     // Fail,
     // Success,
