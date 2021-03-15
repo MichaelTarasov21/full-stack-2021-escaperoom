@@ -1,13 +1,17 @@
 <template>
-  <div> <!-- To be removed -->
-  <div id="TimerBlock">
-    {{ pad2(Math.floor(remainingtime / 60)) }}:{{ pad2(remainingtime % 60) }}
+  <div>
+    <!-- To be removed -->
+    <div id="TimerBlock">
+      {{ pad2(Math.floor(remainingtime / 60)) }}:{{ pad2(remainingtime % 60) }}
+    </div>
+    <button @click="storetime(remainingtime)">Store Your Time!</button>
+    <!-- To be removed. Used for testing -->
   </div>
-    <button @click="storetime">Store Your Time!</button> <!-- To be removed. Used for testing -->
-  </div><!-- To be removed -->
+  <!-- To be removed -->
 </template>
 <script>
 import { mixin as VueTimers } from "vue-timers";
+import firebase from "firebase/app";
 export default {
   emits: ["Gameover"],
   data() {
@@ -25,9 +29,13 @@ export default {
     pad2: function(number) {
       return (number < 10 ? "0" : "") + number;
     },
-    storetime: function(){
-      console.log("I am being developed")
-    }
+    storetime: function(string2store) {
+      console.log("I am being developed");
+      const toupload = string2store.toString();
+      const storageRef = firebase.storage().ref('Leaderboard');
+      storageRef.putString(toupload).then((snapshot) => {console.log('Uploaded a raw string!' + snapshot);});
+      console.log(toupload);
+    },
   },
   timers: { tickdown: { time: 1000, autostart: true, repeat: true } }, //when using disable autostart and make a button with function this.$timer.start('tickdown')
 };
