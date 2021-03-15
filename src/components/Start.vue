@@ -15,7 +15,7 @@
         efficitur.
       </p>
       <p>Are you up for the challenge?</p>
-      <button id="begin" @click="hide()" ><div>Begin</div></button>
+      <button id="begin" @click="hide()">Begin</button>
     </section>
     <!-- <button id="start">Start</button> -->
     <!-- <div class="btn-personals">
