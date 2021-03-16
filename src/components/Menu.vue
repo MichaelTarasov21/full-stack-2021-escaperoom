@@ -24,14 +24,12 @@
 <script>
 export default {
   name: 'Menu',
-  el: '#menu',
+  // el: '#menu',
   data(){
     return {
       showModal: false
     }
   }
-  
-  
 }
 </script>
 
