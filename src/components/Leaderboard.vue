@@ -1,38 +1,20 @@
 <template>
-<div>
-    <modal v-if="lbModal" @close="showModal = false">
-      <div class="leaderboard-content">
-        <h1>Leaderboard</h1>
-        <div class="leaderboard-info"></div>
-        <button @click="$emit('close')">CLOSE</button>
-      </div>
-    </modal>
-</div>
+  <div class="leaderboard-info">
+    <h1>Leaderboard</h1>
+  </div>
 </template>
 
 <script>
-
 export default {
-  //emits: ['lbClose'],
   name: 'Leaderboard',
-  el: '#leaderboard',
-  data(){
-    return {
-      ldModal: false
-    }
-  },
-  /* methods: {
-    function() {
-      if (this.lbModal === false){
-        this.$emit('lbClose')
-      }
-    },
-  } */
-};
+  props: {
+    msg: String
+  }
+}
 </script>
 
-<style>
-.leaderboard-content{
+<style scoped>
+.leaderboard-info{
   background-color: aquamarine;
 }
 </style>
