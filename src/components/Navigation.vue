@@ -75,15 +75,21 @@ export default {
 
 <style scoped>
 .login {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background-color: black;
+  background-image: url(../media/Landing_Img.jpg);
+  background-size: 100%;
   color: white;
   z-index: 2;
   position: absolute;
+  display: table;
 }
 
 .login-content {
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 3rem;
   padding: 3rem;
 }
 

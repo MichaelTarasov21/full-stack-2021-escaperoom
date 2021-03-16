@@ -47,34 +47,27 @@ export default {
 <style lang="css">
 
   ul.tabs__header {
-    display: block;
-    list-style: none;
-    margin: 0 0 0 20px;
     padding: 0;
   }
 
   ul.tabs__header > li {
-    padding: 15px 30px;
-    border-radius: 10px;
-    margin: 0;
+    margin: 0 1rem 0 1rem;
     display: inline-block;
-    margin-right: 5px;
     cursor: pointer;
   }
 
   ul.tabs__header > li.tab__selected {
     font-weight: bold;
     border-radius: 10px 10px 0 0;
-    border-bottom: 8px solid transparent;
+    border-bottom: 3px solid black;
   }
 
   .tab {
     display: inline-block;
     color: black;
-    padding: 20px;
-    min-width: 800px;
+    width: 100%;
+    /* padding: 20px; */
     border-radius: 10px;
-    min-height: 400px;
   }
 
   .tabs .tab{

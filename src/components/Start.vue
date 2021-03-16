@@ -34,7 +34,7 @@ export default {
   },
 
   methods: {
-    checkLogIn: function () {
+    startScreen: function () {
       firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
           const welcome = document.querySelector("#welcome");
@@ -49,6 +49,10 @@ export default {
     }
 
   },
+    created: function () {
+    this.startScreen()
+  }
+  
 };
 </script>
 

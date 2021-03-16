@@ -62,7 +62,7 @@ export default {
 }
 .tab-bkg {
   width: 100%;
-  height: 20rem;
+  /* height: 20rem; */
   background-color: #f8f8f8;
 }
 body {
@@ -79,7 +79,7 @@ body {
 }
 
 button {
-  background-color: white;
+  background-color: rgb(251, 255, 233);
   color: black;
   text-align: center;
   font-size: 1.75rem;
@@ -88,10 +88,14 @@ button {
   padding-right: 1rem;
   cursor: pointer;
   border: none;
+  outline: 1pt solid white;
 }
 
 button:hover {
-  background-color: rgb(68, 255, 162);
+  /* background-color: rgb(0, 0, 0); */
+  background-color: rgba(0, 0, 0, 0.5);
+  outline: blanchedalmond 1pt solid;
+  color: white;
   transition: 0.3s;
 }
 </style>
