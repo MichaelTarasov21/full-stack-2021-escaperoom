@@ -84,6 +84,7 @@ export default {
   z-index: 2;
   position: absolute;
   display: table;
+  font-family: 'Mystery Quest', cursive !important;
 }
 
 .login-content {
@@ -92,5 +93,9 @@ export default {
   font-size: 3rem;
   padding: 3rem;
 }
+
+/* button {
+    font-family: 'Mystery Quest', cursive !important;
+} */
 
 </style>

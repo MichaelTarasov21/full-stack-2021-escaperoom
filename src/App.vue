@@ -1,17 +1,16 @@
 <template>
   <div id="app">
-    
     <Fail v-if="lost" />
     <navigation />
-    <start/>
+    <start />
     <!-- <div class="tab-bkg">
       <tabs>
         <tab title="Start Tab"><Start /></tab>
         <tab title="Success Tab"><Success /></tab>
       </tabs>
     </div> -->
-    <Menu/>
-    <Room1 msg="Room1"/>
+    <Menu />
+    <Room1 msg="Room1" />
     <Timer @Gameover="Gameover" />
   </div>
 </template>
@@ -24,8 +23,8 @@ import Start from "./components/Start.vue";
 // import Success from "./components/Success.vue";
 // import Tab from "./components/Tab.vue";
 // import Tabs from "./components/Tabs.vue";
-import Room1 from './components/Room1.vue'
-import Menu from './components/Menu.vue'
+import Room1 from "./components/Room1.vue";
+import Menu from "./components/Menu.vue";
 
 export default {
   name: "App",
@@ -41,22 +40,23 @@ export default {
     Menu,
   },
   data() {
-    return { lost:false };
+    return { lost: false };
   },
   methods: {
-    Gameover: function() {
+    Gameover: function () {
       this.lost = true;
     },
   },
 };
-    
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Mystery+Quest&display=swap');
+
 @font-face {
   font-family: "analog";
-  src: url('assets/Fonts/timer.woff2') format('woff2'),
-    url('assets/Fonts/timer.woff') format('woff');
+  src: url("assets/Fonts/timer.woff2") format("woff2"),
+    url("assets/Fonts/timer.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -66,7 +66,6 @@ export default {
   background-color: #f8f8f8;
 }
 body {
-  
   margin: 0 !important;
   padding: 0 !important;
 }
@@ -79,23 +78,22 @@ body {
 }
 
 button {
-  background-color: rgb(251, 255, 233);
-  color: black;
   text-align: center;
   font-size: 1.75rem;
-  padding: .5rem;
+  padding: 0.5rem;
   padding-left: 1rem;
   padding-right: 1rem;
   cursor: pointer;
   border: none;
-  outline: 1pt solid white;
+  outline: 1pt solid rgb(251, 255, 233);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
 }
 
 button:hover {
   /* background-color: rgb(0, 0, 0); */
-  background-color: rgba(0, 0, 0, 0.5);
-  outline: blanchedalmond 1pt solid;
-  color: white;
+  background-color: rgb(251, 255, 233);
+  color: black;
   transition: 0.3s;
 }
 </style>
