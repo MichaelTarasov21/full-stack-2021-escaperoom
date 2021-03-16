@@ -5,15 +5,22 @@
       <li>You Moron</li>
     </ul>
     <button id="restart">Restart</button>
-    <button id="account">Account</button>
+    <!-- this maybe should be a drop down instead or something -->
+    <tab class="menu-tab" title="Profile"><Profile/></tab>
   </div>
 </template>
 
 <script>
+import Tab from "./Tab"
+import Profile from './Profile'
 export default {
   name: 'Fail',
   props: {
     msg: String
+  },
+  component: {
+    Tab,
+    Profile,
   }
 }
 </script>
