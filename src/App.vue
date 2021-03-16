@@ -14,6 +14,7 @@
     <RoomTwo v-if="roomTwoLoad" @roomTwoFin="roomTwoFin"/>
     <RoomThree v-if="roomThreeLoad" @roomThreeFin="roomThreeFin"/>
     <RoomFour v-if="roomFourLoad" @roomFourFin="roomFourFin"/>
+    <Success v-if="success" @roomFourFin="roomFourFin"/>
     <Timer @Gameover="Gameover" />
   </div>
 </template>
@@ -22,8 +23,8 @@
 import Timer from "./components/Timer.vue";
 import navigation from "./components/Navigation";
 import Start from "./components/Start.vue";
+import Success from "./components/Success.vue";
 // import Fail from "./components/Fail.vue";
-// import Success from "./components/Success.vue";
 // import Tab from "./components/Tab.vue";
 // import Tabs from "./components/Tabs.vue";
 import RoomOne from './components/RoomOne.vue';
@@ -39,7 +40,7 @@ export default {
     navigation,
     Start,
     // Fail,
-    // Success,
+    Success,
     // Tab,
     // Tabs,
     RoomOne,
@@ -49,7 +50,7 @@ export default {
     Menu,
   },
   data() {
-    return { lost:false, roomOneLoad:true, roomTwoLoad:false, roomThreeLoad:false, roomFourLoad:false};
+    return { lost:false, success: false, roomOneLoad:true, roomTwoLoad:false, roomThreeLoad:false, roomFourLoad:false};
   },
   methods: {
     Gameover: function () {
@@ -72,7 +73,10 @@ export default {
     },
     roomFourFin: function(){
       console.log("Room Four is Finished")
-      //stop the timer and load success screen
+      this.success = true;
+      this.roomFourLoad = false;
+      
+      //stop the timer 
     }
   },
 };

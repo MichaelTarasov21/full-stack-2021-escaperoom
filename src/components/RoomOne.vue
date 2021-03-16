@@ -22,6 +22,11 @@
 export default {
   name: 'RoomOne',
   emits: ['roomOneFin'],
+  mounted() {
+      let gameCanvas = document.createElement('script')
+      gameCanvas.setAttribute('src', '../js/game.js')
+      document.head.appendChild(gameCanvas)
+    },
   methods:{
     verify: function (){
         console.log("connected");
