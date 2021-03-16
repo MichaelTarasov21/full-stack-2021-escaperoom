@@ -2,7 +2,6 @@
   <div id="start">
     <section class="header">
       <h1 id="welcome"></h1>
-      <h2>Some Directions</h2>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed interdum
         faucibus porta. Cras elementum porttitor odio, at consequat justo cursus
@@ -53,7 +52,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 
 
 #start {
@@ -61,6 +60,8 @@ export default {
   position: absolute;
   width: 100vw;
   height: 100vh;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.8);
 }
 .header {
   background-color: #b0b6b3;
@@ -81,9 +82,10 @@ button {
   padding: 0.5rem;
 }
 
+/* 
 .btn-personals {
   display: flex;
   flex-direction: row;
   justify-content: center;
-}
+} */
 </style>

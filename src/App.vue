@@ -77,4 +77,21 @@ body {
   color: #2c3e50;
   overflow: hidden;
 }
+
+button {
+  background-color: white;
+  color: black;
+  text-align: center;
+  font-size: 1.75rem;
+  padding: .5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  cursor: pointer;
+  border: none;
+}
+
+button:hover {
+  background-color: rgb(68, 255, 162);
+  transition: 0.3s;
+}
 </style>

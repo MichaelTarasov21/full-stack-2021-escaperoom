@@ -3,7 +3,7 @@
     <button id="open-menu" @click="showModal = true">
     <img src="https://img.icons8.com/dusk/64/000000/gear.png"/></button>
     <!-- The Modal -->
-    <transition name="fade" appear>
+    <div>
       <div id="myModal" class="modal" v-if="showModal" @click="showModal = false">
       <!-- Modal content -->
       <div class="modal-content">
@@ -11,7 +11,9 @@
         <h1>Settings</h1>
         <div class="flex-col menu-btns">
           <button class="menu-btn">Profile</button>
-          <button class="menu-btn" @click="lbModal = true"><!-- <Leaderboard/> -->
+          <button class="menu-btn" @click="lbModal = true">
+            Leaderboard
+            <!-- <Leaderboard/> -->
           <div>
           <modal v-if="lbModal" @close="lbModal = false">
             <div class="leaderboard-content">
@@ -28,7 +30,7 @@
         </div>
       </div>
     </div>
-    </transition>
+    </div>
   </div>
 </template>
 
@@ -56,6 +58,19 @@ export default {
   padding: 0;
   box-sizing: border-box;
 }
+#open-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  border: none;
+  padding: .4rem;
+}
+
+#open-menu:hover{
+  background: grey;
+  transition: .2s;
+}
+
 /* The Modal (background) */
 .modal { 
   position: fixed; /* Stay in place */
@@ -115,7 +130,4 @@ export default {
   justify-content: center;
 }
 
-#open-menu:hover{
-  transform: scale(1.2); 
-}
 </style>
