@@ -13,7 +13,7 @@
         <div id="item2" class="inventory-item"><img class="item-img" src="https://img.icons8.com/dusk/100/000000/key.png"/></div>
         <div id="item3" class="inventory-item"><img class="item-img" src="https://img.icons8.com/dusk/100/000000/key.png"/></div>
       </div>
-      <h1>Timer</h1>
+      
     </div>
   </div>
 </template>
