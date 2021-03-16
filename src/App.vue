@@ -9,8 +9,11 @@
         <tab title="Success Tab"><Success /></tab>
       </tabs>
     </div> -->
-    <Menu />
-    <Room1 msg="Room1" />
+    <Menu/>
+    <RoomOne v-if="roomOneLoad" @roomOneFin="roomOneFin"/>
+    <RoomTwo v-if="roomTwoLoad" @roomTwoFin="roomTwoFin"/>
+    <RoomThree v-if="roomThreeLoad" @roomThreeFin="roomThreeFin"/>
+    <RoomFour v-if="roomFourLoad" @roomFourFin="roomFourFin"/>
     <Timer @Gameover="Gameover" />
   </div>
 </template>
@@ -23,8 +26,11 @@ import Start from "./components/Start.vue";
 // import Success from "./components/Success.vue";
 // import Tab from "./components/Tab.vue";
 // import Tabs from "./components/Tabs.vue";
-import Room1 from "./components/Room1.vue";
-import Menu from "./components/Menu.vue";
+import RoomOne from './components/RoomOne.vue';
+import RoomTwo from './components/RoomTwo.vue';
+import RoomThree from './components/RoomThree.vue';
+import RoomFour from './components/RoomFour.vue';
+import Menu from './components/Menu.vue';
 
 export default {
   name: "App",
@@ -36,16 +42,38 @@ export default {
     // Success,
     // Tab,
     // Tabs,
-    Room1,
+    RoomOne,
+    RoomTwo,
+    RoomThree,
+    RoomFour,
     Menu,
   },
   data() {
-    return { lost: false };
+    return { lost:false, roomOneLoad:true, roomTwoLoad:false, roomThreeLoad:false, roomFourLoad:false};
   },
   methods: {
     Gameover: function () {
       this.lost = true;
     },
+    roomOneFin: function(){
+      console.log("Room One is Finished")
+      this.roomTwoLoad = true;
+      this.roomOneLoad = false;
+    },
+    roomTwoFin: function(){
+      console.log("Room Two is Finished")
+      this.roomThreeLoad = true;
+      this.roomTwoLoad = false;
+    },
+    roomThreeFin: function(){
+      console.log("Room Three is Finished")
+      this.roomFourLoad = true;
+      this.roomThreeLoad = false;
+    },
+    roomFourFin: function(){
+      console.log("Room Four is Finished")
+      //stop the timer and load success screen
+    }
   },
 };
 </script>
