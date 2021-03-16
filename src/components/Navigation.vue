@@ -1,8 +1,8 @@
 <template>
   <div class="login">
     <div class="login-content">
-      <h1>Crazy Escape Room</h1>
-      <button><div @click="signIn()">Sign In</div></button>
+      <header><h1>Crazy Escape Room</h1></header>
+      <button><div v-if="displayLanding" @click="signIn()">Sign In</div></button>
     </div>
   </div>
 </template>
@@ -51,8 +51,9 @@ export default {
           console.log("logged in");
           console.log(user);
 
-          const loginPage = document.querySelector(".login");
-          loginPage.style.display = "none";
+          // const loginPage = document.querySelector(".login");
+          // loginPage.style.display = "none";
+          displayLanding: false;
 
           const welcome = document.querySelector("#welcome");
           welcome.innerHTML= `Welcome ${user.displayName}`
