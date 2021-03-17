@@ -31,11 +31,15 @@ export default {
     },
     storetime: function() {
       console.log("I am being developed");
-      const yourtime = {Submittedtime:this.remainingtime};
-      const toupload = JSON.stringify(yourtime);
-      const storageRef = firebase.storage().ref('Leaderboard.json');
-      storageRef.putString(toupload).then((snapshot) => {console.log('Uploaded a raw string!' + snapshot);});
-      console.log(toupload);
+      const user = firebase.auth().currentUser;
+      const username = user.displayName
+      const yourtime = this.remainingtime;
+      const leaderboard = { name: username, time: yourtime };
+      const toupload = JSON.stringify(leaderboard);
+      const storageRef = firebase.storage().ref("Leaderboard.json");
+      storageRef.putString(toupload).then((snapshot) => {
+        console.log("Uploaded a raw string!" + snapshot);
+      });
     },
   },
   timers: { tickdown: { time: 1000, autostart: true, repeat: true } }, //when using disable autostart and make a button with function this.$timer.start('tickdown')
