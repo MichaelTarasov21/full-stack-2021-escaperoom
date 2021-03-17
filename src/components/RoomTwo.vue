@@ -7,14 +7,6 @@
         <input type="password" id="roomTwoAns" placeholder="Your Answer" />
         <input type="submit" value="Submit" @click="verify()"/>
     </div>
-    <div class="flex-row">
-      <div class="inventory-items">
-        <div id="item1" class="inventory-item"><img class="item-img" src="https://img.icons8.com/dusk/100/000000/key.png"/></div>
-        <div id="item2" class="inventory-item"><img class="item-img" src="https://img.icons8.com/dusk/100/000000/key.png"/></div>
-        <div id="item3" class="inventory-item"><img class="item-img" src="https://img.icons8.com/dusk/100/000000/key.png"/></div>
-      </div>
-      
-    </div>
   </div>
 </template>
 
@@ -48,23 +40,6 @@ export default {
 </script>
 
 <style scoped>
-.inventory-items{
-  display: flex;
-  justify-content: space-around;
-}
-.inventory-item{
-  border: solid;
-  padding: 0.5rem;
-  border-color: gray;
-  border-width: 0.5rem;
-}
-.item-img:hover{
-  transform: scale(1.2); 
-}
-.flex-row{
-  display:flex;
-  justify-content: space-around;
-}
 h3 {
   margin: 40px 0 0;
 }

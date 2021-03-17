@@ -7,14 +7,6 @@
         <input type="password" id="roomOneAns" placeholder="Your Answer" />
         <input type="submit" value="Submit" @click="verify()"/>
     </div>
-    <div class="flex-row">
-      <div class="inventory-items">
-        <div id="itemOne" class="inventory-item"><img class="item-img" src="https://img.icons8.com/dusk/100/000000/key.png"/></div>
-        <div id="itemTwo" class="inventory-item"><img class="item-img" src="https://img.icons8.com/dusk/100/000000/key.png"/></div>
-        <div id="itemThree" class="inventory-item"><img class="item-img" src="https://img.icons8.com/dusk/100/000000/key.png"/></div>
-      </div>
-      
-    </div>
   </div>
 </template>
 
@@ -49,23 +41,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.inventory-items{
-  display: flex;
-  justify-content: space-around;
-}
-.inventory-item{
-  border: solid;
-  padding: 0.5rem;
-  border-color: gray;
-  border-width: 0.5rem;
-}
-.item-img:hover{
-  transform: scale(1.2); 
-}
-.flex-row{
-  display:flex;
-  justify-content: space-around;
-}
 h3 {
   margin: 40px 0 0;
 }

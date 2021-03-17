@@ -66,22 +66,20 @@ export default {
     display: inline-block;
     color: black;
     width: 100%;
-    /* padding: 20px; */
-    border-radius: 10px;
   }
 
-  .tabs .tab{
+  /* .tabs .tab{
     background-color: #fff;
-  }
+  } */
 
-  .tabs li {
+  /* .tabs li {
     background-color: #ddd;
     color: #aaa;
-  }
+  } */
 
-  .tabs li.tab__selected {
+  /* .tabs li.tab__selected {
     background-color: #fff;
     color: #83FFB3;
-  }
+  } */
 
 </style>

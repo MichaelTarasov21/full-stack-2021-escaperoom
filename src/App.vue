@@ -1,5 +1,5 @@
-<template>
-  <div id="app">
+<template  lang="en" >
+  <div id="app" >
     <Fail v-if="lost" />
     <navigation />
     <start />
@@ -15,6 +15,7 @@
     <RoomThree v-if="roomThreeLoad" @roomThreeFin="roomThreeFin"/>
     <RoomFour v-if="roomFourLoad" @roomFourFin="roomFourFin"/>
     <Timer @Gameover="Gameover" />
+    <inventory/>
   </div>
 </template>
 
@@ -26,13 +27,20 @@ import Start from "./components/Start.vue";
 // import Success from "./components/Success.vue";
 // import Tab from "./components/Tab.vue";
 // import Tabs from "./components/Tabs.vue";
-import RoomOne from './components/RoomOne.vue';
-import RoomTwo from './components/RoomTwo.vue';
-import RoomThree from './components/RoomThree.vue';
-import RoomFour from './components/RoomFour.vue';
-import Menu from './components/Menu.vue';
+import RoomOne from "./components/RoomOne.vue";
+import RoomTwo from "./components/RoomTwo.vue";
+import RoomThree from "./components/RoomThree.vue";
+import RoomFour from "./components/RoomFour.vue";
+import Menu from "./components/Menu.vue";
+import inventory from "./components/inventory";
 
 export default {
+  head() {
+    return {
+      htmlAttrs: { lang: "sv" },
+    };
+  },
+
   name: "App",
   components: {
     Timer,
@@ -47,39 +55,47 @@ export default {
     RoomThree,
     RoomFour,
     Menu,
+    inventory,
   },
   data() {
-    return { lost:false, roomOneLoad:true, roomTwoLoad:false, roomThreeLoad:false, roomFourLoad:false};
+    return {
+      lost: false,
+      roomOneLoad: true,
+      roomTwoLoad: false,
+      roomThreeLoad: false,
+      roomFourLoad: false,
+    };
   },
   methods: {
     Gameover: function () {
       this.lost = true;
     },
-    roomOneFin: function(){
-      console.log("Room One is Finished")
+    roomOneFin: function () {
+      console.log("Room One is Finished");
       this.roomTwoLoad = true;
       this.roomOneLoad = false;
     },
-    roomTwoFin: function(){
-      console.log("Room Two is Finished")
+    roomTwoFin: function () {
+      console.log("Room Two is Finished");
       this.roomThreeLoad = true;
       this.roomTwoLoad = false;
     },
-    roomThreeFin: function(){
-      console.log("Room Three is Finished")
+    roomThreeFin: function () {
+      console.log("Room Three is Finished");
       this.roomFourLoad = true;
       this.roomThreeLoad = false;
     },
-    roomFourFin: function(){
-      console.log("Room Four is Finished")
+    roomFourFin: function () {
+      console.log("Room Four is Finished");
       //stop the timer and load success screen
-    }
+    },
   },
 };
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Mystery+Quest&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Mystery+Quest&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 
 @font-face {
   font-family: "analog";
@@ -96,6 +112,7 @@ export default {
 body {
   margin: 0 !important;
   padding: 0 !important;
+  image-rendering: pixelated;
 }
 
 #app {
@@ -107,21 +124,14 @@ body {
 
 button {
   text-align: center;
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   padding: 0.5rem;
   padding-left: 1rem;
   padding-right: 1rem;
   cursor: pointer;
-  border: none;
-  outline: 1pt solid rgb(251, 255, 233);
-  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: .5rem;
   color: white;
-}
-
-button:hover {
-  /* background-color: rgb(0, 0, 0); */
-  background-color: rgb(251, 255, 233);
-  color: black;
+  font-family: 'Roboto Mono', monospace;
   transition: 0.3s;
 }
 </style>
