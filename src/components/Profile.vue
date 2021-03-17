@@ -1,8 +1,8 @@
 <template>
   <div class="profile-info">
-    <h1>Profile</h1>
-    <h3 id="name" > </h3>
-    <h3 id="email" > </h3>
+    <h1 class="profile" >Profile</h1>
+    <h3 id="name"></h3>
+    <h3 id="email"></h3>
     <!-- <h3 id="joinDate" > </h3> -->
   </div>
 </template>
@@ -21,7 +21,7 @@ export default {
           const name = document.querySelector("#name");
           name.innerHTML = `Logged in as: ${user.displayName}`;
 
-          const email = document.querySelector('#email');
+          const email = document.querySelector("#email");
           email.innerHTML = `Email: ${user.email}`;
 
           // const joinDate = document.querySelector('#joinDate');
@@ -31,13 +31,15 @@ export default {
     },
   },
 
-    created: function () {
-    this.checkLogIn()
-  }
-
+  created: function () {
+    this.checkLogIn();
+  },
 };
 </script>
 
-<style>
+<style >
 
+.profile {
+  background-color: yellow;
+}
 </style>

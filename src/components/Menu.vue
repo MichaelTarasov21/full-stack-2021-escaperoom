@@ -8,7 +8,7 @@
         <!-- Modal content -->
         <div class="modal-content">
           <span class="close" @click="showModal = false">&times;</span>
-          <h1>Settings</h1>
+          <h1>SETTINGS</h1>
           <div class="flex-col menu-btns">
             <tabs>
               <tab class="menu-tab" title="Profile"><Profile/></tab>
@@ -62,11 +62,13 @@ export default {
   top: 0;
   right: 0;
   border: none;
-  padding: .4rem;
+  margin: 1.3rem;
+  background: initial;
 }
 
 #open-menu:hover{
-  background: grey;
+  /* background: grey; */
+  transform: scale(1.1);
   transition: .2s;
 }
 
@@ -78,7 +80,7 @@ export default {
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
+  background-color: rgba(0, 20, 2, 0.9);
 }
 
 /* Modal Content */
@@ -98,10 +100,10 @@ export default {
   font-weight: bold;
 }
 .menu-tab{
-  background-color: #b0b6b3;
   border: none;
   color: black;
   padding: 2rem;
+  padding-top: 0;
   text-align: center;
   text-decoration: none;
   font-size: .8rem;

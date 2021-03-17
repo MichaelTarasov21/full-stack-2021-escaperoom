@@ -1,8 +1,8 @@
 <template>
   <div class="login">
     <div class="login-content">
-      <h1>Crazy Escape Room</h1>
-      <button><div @click="signIn()">Sign In</div></button>
+      <header><h1>Crazy Escape Room</h1></header>
+      <button><div @click="signIn()">SIGN IN</div></button>
     </div>
   </div>
 </template>
@@ -27,7 +27,6 @@ export default {
         .then((result) => {
           /** @type {firebase.auth.OAuthCredential} */
           var credential = result.credential;
-
           // This gives you a Google Access Token. You can use it to access the Google API.
           var token = credential.accessToken;
           console.log(token);
@@ -37,7 +36,6 @@ export default {
           // ...
 
           this.checkLogIn();
-
         })
         .catch((error) => {
           console.log(error);
@@ -55,8 +53,8 @@ export default {
           loginPage.style.display = "none";
 
           const welcome = document.querySelector("#welcome");
-          welcome.innerHTML= `Welcome ${user.displayName}`
-
+          welcome.innerHTML = `Welcome ${user.displayName}`;
+        
         } else {
           // No user is signed in.
           console.log("not loggin in");
@@ -65,11 +63,10 @@ export default {
     },
   },
 
-//check if logged in on load
+  //check if logged in on load
   created: function () {
-    this.checkLogIn()
-  }
-
+    this.checkLogIn();
+  },
 };
 </script>
 
@@ -82,9 +79,9 @@ export default {
   background-size: 100%;
   color: white;
   z-index: 2;
-  position: absolute;
+  position: fixed;
   display: table;
-  font-family: 'Mystery Quest', cursive !important;
+  font-family: "Mystery Quest", cursive !important;
 }
 
 .login-content {
@@ -94,8 +91,21 @@ export default {
   padding: 3rem;
 }
 
+
+button {
+  border: 2pt solid rgb(251, 255, 233);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+}
+
+button:hover {
+  /* background-color: rgb(0, 0, 0); */
+  background-color: rgb(251, 255, 233);
+  color: black;
+}
+
+
 /* button {
     font-family: 'Mystery Quest', cursive !important;
 } */
-
 </style>
