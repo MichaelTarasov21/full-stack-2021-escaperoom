@@ -1,24 +1,57 @@
 <template>
-  <div class="alert">
-      <h1>Are you sure?</h1>
+  <div >
+    <h1 class="alert">Are you sure?</h1>
+    <button><div @click="logOut()">YES</div></button>
   </div>
 </template>
 
 <script>
+
+import firebase from "firebase/app";
+
 export default {
-  name: 'LogOut',
+  name: "LogOut",
   props: {
-    msg: String
-  }
-}
+    msg: String,
+  },
+  methods: {
+    logOut: function () {
+      firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          // Sign-out successful.
+          console.log("signed out")
+          window.location.reload();
+        })
+        .catch((error) => {
+          // An error happened.
+          console.log(error)
+        });
+    },
+  },
+};
 </script>
 
 <style scoped>
-.alert{
+.alert {
   background-color: rgb(202, 90, 62);
-  opacity: 80%;
 }
 h1 {
-    font-size: 5rem, bolder;
+  font-size: 5rem, bolder;
+}
+
+button {
+  color: black;
+  text-align: center;
+  font-size: 1rem;
+  cursor: pointer;
+  border: solid 2pt  rgb(56, 99, 61);
+    background-color: rgb(78, 255, 187);
+}
+
+button:hover {
+  background-color: rgb(56, 99, 61);
+  color: white;
 }
 </style>

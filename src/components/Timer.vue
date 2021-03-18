@@ -1,9 +1,11 @@
 <template>
+
 	<div><!-- To be removed -->
 		<div id="TimerBlock">{{ pad2(Math.floor(remainingtime / 60)) }}:{{ pad2(remainingtime % 60) }}</div>
 		<button @click="storetime(remainingtime)">Store Your Time!</button><!-- To be removed. Used for testing -->
 	</div><!-- To be removed -->
 </template>
+
 <script>
 	import { mixin as VueTimers } from "vue-timers";
 	import firebase from "firebase/app";
