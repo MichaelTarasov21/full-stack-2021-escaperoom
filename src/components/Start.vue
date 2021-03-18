@@ -1,8 +1,7 @@
 <template>
-  <div id="start">
+  <div id="start" v-if="hide">
     <section class="header">
       <h1 id="welcome"></h1>
-      <h2>Some Directions</h2>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed interdum
         faucibus porta. Cras elementum porttitor odio, at consequat justo cursus
@@ -15,7 +14,7 @@
         efficitur.
       </p>
       <p>Are you up for the challenge?</p>
-      <button id="begin" @click="hide()"><div>Begin</div></button>
+      <button id="begin" @click="hide = false"><div>Begin</div></button>
     </section>
     <!-- <button id="start">Start</button> -->
     <!-- <div class="btn-personals">
@@ -33,57 +32,71 @@ export default {
   props: {
     msg: String,
   },
-
-  methods: {
-    checkLogIn: function () {
-      firebase.auth().onAuthStateChanged(function (user) {
-        if (user) {
-          const welcome = document.querySelector("#welcome");
-          welcome.innerHTML = `Welcome ${user.displayName}`;
-        }
-      });
-    },
-
-    hide: function () {
-      const start = document.querySelector("#start");
-          start.style.display = "none";
-    }
-
+  
+  data() {
+    return {
+      hide: true,
+    };
   },
+
+  startScreen() {
+    firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+        const welcome = document.querySelector("#welcome");
+        welcome.innerHTML = `Welcome ${user.displayName}`;
+      }
+    });
+  },
+
 };
 </script>
 
-<style>
-
-
+<style scoped>
 #start {
   text-align: center;
   position: absolute;
   width: 100vw;
   height: 100vh;
+  z-index: 1;
+  background-color: rgba(0, 20, 2, 0.9);
 }
 .header {
-  background-color: #b0b6b3;
+  background-color: white;
   color: black;
   margin: 3rem;
   padding: 3rem;
+  border-radius: .75rem;
+  max-width: 40rem;
 }
+@media (min-width: 800px) {
+  .header {
+    margin: 5rem auto;
+  }
+}
+
 button {
-  background-color: white;
+  background-color: rgb(78, 255, 187);
   color: black;
   width: 25%;
   text-align: center;
   font-size: 1rem;
   cursor: pointer;
+  border: solid 2pt  rgb(56, 99, 61);
+}
+
+button:hover {
+  background-color: rgb(56, 99, 61);
+  color: white;
 }
 
 #begin {
   padding: 0.5rem;
 }
 
+/* 
 .btn-personals {
   display: flex;
   flex-direction: row;
   justify-content: center;
-}
+} */
 </style>

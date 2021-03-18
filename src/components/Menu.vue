@@ -5,23 +5,23 @@
     <!-- The Modal -->
     <transition name="fade" appear>
       <div id="myModal" class="modal" v-if="showModal"> 
-      <!-- Modal content -->
-      <div class="modal-content">
-        <span class="close" @click="showModal = false">&times;</span>
-        <h1>Settings</h1>
-        <div class="flex-col menu-btns">
-          <tabs>
-            <tab class="menu-tab" title="Profile"><Profile/></tab>
-            <tab class="menu-tab" title="Leaderboard"><Leaderboard/></tab>
-             <tab class="menu-tab" title="Log Out"><LogOut/></tab> 
-          </tabs>
-          <!-- <button class="menu-btn">Profile</button>
-          <button class="menu-btn">Leaderboard</button>
-          // creates an alert confirming if user wants to log out 
-          <button class="menu-btn">Log Out</button> -->
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close" @click="showModal = false">&times;</span>
+          <h1>SETTINGS</h1>
+          <div class="flex-col menu-btns">
+            <tabs>
+              <tab class="menu-tab" title="Profile"><Profile/></tab>
+              <tab class="menu-tab" title="Leaderboard"><Leaderboard/></tab>
+              <tab class="menu-tab" title="Log Out"><LogOut/></tab> 
+            </tabs>
+            <!-- <button class="menu-btn">Profile</button>
+            <button class="menu-btn">Leaderboard</button>
+            // creates an alert confirming if user wants to log out 
+            <button class="menu-btn">Log Out</button> -->
+          </div>
         </div>
       </div>
-    </div>
     </transition>
   </div>
 </template>
@@ -57,28 +57,39 @@ export default {
   padding: 0;
   box-sizing: border-box;
 }
+#open-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  border: none;
+  margin: 1.3rem;
+  background: initial;
+}
+
+#open-menu:hover{
+  /* background: grey; */
+  transform: scale(1.1);
+  transition: .2s;
+}
+
 /* The Modal (background) */
 .modal { 
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 0;
-  top: 0;
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  background-color: rgba(0, 20, 2, 0.9);
 }
 
 /* Modal Content */
 .modal-content {
   background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 70%;
-  z-index: 99;
+  margin: 4rem;
+  padding: 3rem;
+  z-index: 3;
+  border-radius: 1rem;
 }
 
 /* The Close Button */
@@ -89,16 +100,13 @@ export default {
   font-weight: bold;
 }
 .menu-tab{
-  background-color: #b0b6b3;
   border: none;
   color: black;
-  padding: 15px 32px;
-  width: 25%;
+  padding: 2rem;
+  padding-top: 0;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
+  font-size: .8rem;
   cursor: pointer;
 }
 
@@ -116,7 +124,4 @@ export default {
   justify-content: center;
 }
 
-#open-menu:hover{
-  transform: scale(1.2); 
-}
 </style>
