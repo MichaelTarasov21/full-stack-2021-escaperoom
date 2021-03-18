@@ -44,20 +44,20 @@
 						let newleaderboard = remoteleaderboard
 						newleaderboard[5].name = username
 						newleaderboard[5].time = yourtime
-						this.writedata(newleaderboard)
+						this.writedata(newleaderboard, [5])
 					} else if (remoteleaderboard[3].time > yourtime && yourtime > remoteleaderboard[4].time) {
 						let newleaderboard = remoteleaderboard
 						this.shiftdata(newleaderboard,4,5)
 						newleaderboard[4].name = username
 						newleaderboard[4].time = yourtime
-						this.writedata(newleaderboard)
+						this.writedata(newleaderboard, [4,5])
 					} else if (remoteleaderboard[2].time > yourtime && yourtime > remoteleaderboard[3].time) {
 						let newleaderboard = remoteleaderboard
 						this.shiftdata(newleaderboard,4,5)
 						this.shiftdata(newleaderboard,3,4)
 						newleaderboard[3].name = username
 						newleaderboard[3].time = yourtime
-						this.writedata(newleaderboard)
+						this.writedata(newleaderboard, [3,4,5])
 					} else if (remoteleaderboard[1].time > yourtime && yourtime > remoteleaderboard[2].time) {
 						let newleaderboard = remoteleaderboard
 						this.shiftdata(newleaderboard,4,5)
@@ -65,7 +65,7 @@
 						this.shiftdata(newleaderboard,2,3)
 						newleaderboard[2].name = username
 						newleaderboard[2].time = yourtime
-						this.writedata(newleaderboard)
+						this.writedata(newleaderboard, [2,3,4,5])
 					} else {
 						let newleaderboard = remoteleaderboard
 						this.shiftdata(newleaderboard,4,5)
@@ -74,7 +74,7 @@
 						this.shiftdata(newleaderboard,1,2)
 						newleaderboard[1].name = username
 						newleaderboard[1].time = yourtime
-						this.writedata(newleaderboard)
+						this.writedata(newleaderboard, [1,2,3,4,5])
 					}
 					console.log("You are on the leaderboard :)");
 				}
@@ -83,8 +83,14 @@
 				dataset[to].name = dataset[from].name
 				dataset[to].time = dataset[from].time
 			},
-			writedata: function(data){
+			writedata: function(data, changes){
 				console.log(data)
+				console.log(changes)
+				changes.forEach(element => {
+					let update = {};
+					update['/Leaderboard/' + element + '/'] = data[element]
+					return firebase.database().ref().update(update);
+				});
 			}
 		},
 		timers: { tickdown: { time: 1000, autostart: true, repeat: true } }, //when using disable autostart and make a button with function this.$timer.start('tickdown')
