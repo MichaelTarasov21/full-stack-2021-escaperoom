@@ -1,5 +1,5 @@
 <template>
-  <div id="start" v-if="hide">
+  <div id="start" v-if="!hidden">
     <section class="header">
       <h1 id="welcome"></h1>
       <p>
@@ -14,7 +14,7 @@
         efficitur.
       </p>
       <p>Are you up for the challenge?</p>
-      <button id="begin" @click="hide = false"><div>Begin</div></button>
+      <button id="begin" @click="hide()">Begin</button>
     </section>
     <!-- <button id="start">Start</button> -->
     <!-- <div class="btn-personals">
@@ -28,17 +28,20 @@
 <script>
 import firebase from "firebase/app";
 export default {
+  emits: ["Gamestarted"],
   name: "Start",
-  props: {
-    msg: String,
-  },
-  
+
+  methods: {
+      hide: function() {
+      this.hidden = true
+      this.$emit("Gamestarted");
+      }
+    },  
   data() {
     return {
-      hide: true,
+      hidden: false,
     };
   },
-
   startScreen() {
     firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
@@ -46,10 +49,12 @@ export default {
         welcome.innerHTML = `Welcome ${user.displayName}`;
       }
     });
+
   },
 
 };
 </script>
+
 
 <style scoped>
 #start {
