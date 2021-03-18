@@ -1,8 +1,9 @@
-<template  lang="en" >
-  <div id="app" >
+
+<template lang="en">
+  <div id="app">
     <Fail v-if="lost" />
-    <navigation />
-    <start />
+    <Navigation />
+    <Start @Gamestarted="StartGame" />
     <!-- <div class="tab-bkg">
       <tabs>
         <tab title="Start Tab"><Start /></tab>
@@ -15,14 +16,14 @@
     <RoomThree v-if="roomThreeLoad" @roomThreeFin="roomThreeFin"/>
     <RoomFour v-if="roomFourLoad" @roomFourFin="roomFourFin"/>
     <Success v-if="success" @roomFourFin="roomFourFin"/>
-    <Timer @Gameover="Gameover" />
+    <Timer v-if="start" @Gameover="Gameover" />
     <inventory/>
   </div>
 </template>
 
 <script>
 import Timer from "./components/Timer.vue";
-import navigation from "./components/Navigation";
+import Navigation from "./components/Navigation";
 import Start from "./components/Start.vue";
 import Success from "./components/Success.vue";
 // import Fail from "./components/Fail.vue";
@@ -45,7 +46,7 @@ export default {
   name: "App",
   components: {
     Timer,
-    navigation,
+    Navigation,
     Start,
     // Fail,
     Success,
@@ -61,6 +62,7 @@ export default {
   data() {
     return {
       lost: false,
+      start: false,
       roomOneLoad: true,
       roomTwoLoad: false,
       roomThreeLoad: false,
@@ -70,6 +72,9 @@ export default {
   methods: {
     Gameover: function () {
       this.lost = true;
+    },
+    StartGame: function(){
+      this.start = true;
     },
     roomOneFin: function () {
       console.log("Room One is Finished");

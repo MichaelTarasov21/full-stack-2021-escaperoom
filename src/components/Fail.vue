@@ -11,11 +11,11 @@
 
 <script>
 export default {
-  name: 'Fail',
+  name: "Fail",
   props: {
-    msg: String
-  }
-}
+    msg: String,
+  },
+};
 </script>
 
 <style scoped>
@@ -32,7 +32,6 @@ li {
   display: inline-block;
   color: black;
   font-size: 5rem;
-  
 }
 button {
   background-color: #b0b6b3;
