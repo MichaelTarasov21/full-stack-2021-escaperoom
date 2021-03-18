@@ -1,8 +1,6 @@
 <template>
 	<div><!-- To be removed -->
-		<div id="TimerBlock">
-			{{ pad2(Math.floor(remainingtime / 60)) }}:{{ pad2(remainingtime % 60) }}
-		</div>
+		<div id="TimerBlock">{{ pad2(Math.floor(remainingtime / 60)) }}:{{ pad2(remainingtime % 60) }}</div>
 		<button @click="storetime(remainingtime)">Store Your Time!</button><!-- To be removed. Used for testing -->
 	</div><!-- To be removed -->
 </template>
@@ -28,11 +26,16 @@
 			},
 			storetime: async function() {
 				let remoteleaderboard;
-				await firebase.database().ref().child("Leaderboard").get().then(function(snapshot) {
+				await firebase
+					.database()
+					.ref()
+					.child("Leaderboard")
+					.get()
+					.then(function(snapshot) {
 						if (snapshot.exists()) {
 							remoteleaderboard = snapshot.val();
 						} else {
-							console.log("No data available");
+							alert("This feature appears to be broken. This is most likely a conectivity error");
 						}
 					})
 					.catch(function(error) {
@@ -40,13 +43,21 @@
 					});
 				console.log(remoteleaderboard);
 				if (this.remainingtime > remoteleaderboard[5].time) {
-					console.log("You are on the leaderboard :)");
 					const user = firebase.auth().currentUser;
 					const username = user.displayName;
 					const yourtime = this.remainingtime;
-					const newleaderboard = { name: username, time: yourtime };
-					const toupload = JSON.stringify(newleaderboard);
-					console.log(toupload);
+					if (remoteleaderboard[4].time > yourtime > remoteleaderboard[5].time) {
+						console.log("5");
+					} else if (remoteleaderboard[3].time > yourtime > remoteleaderboard[4].time) {
+						console.log("4");
+					} else if (remoteleaderboard[2].time > yourtime > remoteleaderboard[3].time) {
+						console.log("3");
+					} else if (remoteleaderboard[1].time > yourtime > remoteleaderboard[2].time) {
+						console.log("2");
+					} else {
+						console.log(username + " is #1");
+					}
+					console.log("You are on the leaderboard :)");
 				}
 			},
 		},
