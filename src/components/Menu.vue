@@ -41,7 +41,7 @@ export default {
     Profile,
     LogOut,
   }, 
-el: '#menu',
+  el: '#menu',
   data(){
     return {
       showModal: false,
