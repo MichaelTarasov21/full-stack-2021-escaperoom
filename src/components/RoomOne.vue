@@ -1,6 +1,11 @@
 <template>
   <div class="roomOne">
     <h1>Room One Canvas Area</h1>
+    <div class="camera">
+      <div class="map">
+        <img class="player" src="../img/redsquare.png" alt="Red Square" height="50px" width="auto">
+      </div>
+    </div>
     <div>
         <p>Type Room One Answer to Go to Next Room</p>
         <div id="answerCheck"></div>
@@ -54,6 +59,15 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.camera{
+  
+}
+.map{
+  background-color: rgb(180, 180, 180);
+  height: 70vh;
+  width: 80%;
+  margin: 0 auto;
+}
 .inventory-items{
   display: flex;
   justify-content: space-around;
