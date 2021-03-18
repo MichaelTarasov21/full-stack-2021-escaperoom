@@ -1,5 +1,5 @@
 <template>
-  <div id="start" v-if="hide">
+  <div id="start" v-if="!hidden">
     <section class="header">
       <h1 id="welcome"></h1>
       <p>
@@ -33,14 +33,13 @@ export default {
 
   methods: {
       hide: function() {
-      const start = document.querySelector("#start");
-      this.hide = true
+      this.hidden = true
       this.$emit("Gamestarted");
       }
     },  
   data() {
     return {
-      hide: false,
+      hidden: false,
     };
   },
   startScreen() {
