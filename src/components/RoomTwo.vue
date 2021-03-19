@@ -4,7 +4,7 @@
     <div>
         <p>Type Room Two Answer to Go to Next Room</p>
         <div id="answerCheck"></div>
-        <input type="password" id="roomTwoAns" placeholder="Your Answer" />
+        <input type="text" id="roomTwoAns" placeholder="Your Answer" />
         <input type="submit" value="Submit" @click="verify()"/>
     </div>
   </div>
