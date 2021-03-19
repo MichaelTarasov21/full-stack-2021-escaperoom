@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import Tab from "./Tab"
-import Profile from './Profile'
+import Tab from "./Settings/Tab"
+import Profile from './Settings/Profile'
 export default {
   name: "Fail",
   props: {

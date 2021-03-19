@@ -13,10 +13,10 @@
 </template>
 
 <script>
-import Tab from "./Tab"
-import Tabs from "./Tabs"
-import Leaderboard from './Leaderboard'
-import Profile from './Profile'
+import Tab from "./Settings/Tab"
+import Tabs from "./Settings/Tabs"
+import Leaderboard from './Settings/Leaderboard'
+import Profile from './Settings/Profile'
 export default {
   name: 'Success',
   props: {

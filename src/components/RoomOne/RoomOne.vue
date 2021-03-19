@@ -9,7 +9,7 @@
     </div>
     <div class="camera">
       <div class="map">
-        <img class="player" src="../img/redsquare.png" alt="Red Square" height="50px" width="auto" walking="true">
+        <img class="player" src="../../img/redsquare.png" alt="Red Square" height="50px" width="auto" walking="true">
       </div>
     </div>
   </div>
@@ -142,7 +142,7 @@ export default {
    position:relative;
 }
 .map{
-  background-image: url("../img/maze.png");
+  background-image: url("../../img/maze.png");
   background-size: cover;
   background-color: black;
   height: 70vh;
