@@ -1,9 +1,5 @@
 <template>
-
-	<div><!-- To be removed -->
-		<div id="TimerBlock">{{ pad2(Math.floor(remainingtime / 60)) }}:{{ pad2(remainingtime % 60) }}</div>
-		<button @click="storetime(remainingtime)">Store Your Time!</button><!-- To be removed. Used for testing -->
-	</div><!-- To be removed -->
+	<div id="TimerBlock">{{ pad2(Math.floor(remainingtime / 60)) }}:{{ pad2(remainingtime % 60) }}</div>
 </template>
 
 <script>
@@ -11,12 +7,17 @@
 	import firebase from "firebase/app";
 	export default {
 		emits: ["Gameover"],
+		props: {Gamewon: Boolean},
 		data() {
 			return { remainingtime: 1200 };
 		},
 		mixins: [VueTimers],
 		methods: {
 			tickdown: function() {
+				if (this.Gamewon){
+					this.$timer.stop("tickdown");
+					this.storetime(this.remainingtime)
+				}
 				this.remainingtime = this.remainingtime - 1;
 				if (this.remainingtime === 0) {
 					this.$timer.stop("tickdown"); //Prevents memory leak on game loss
