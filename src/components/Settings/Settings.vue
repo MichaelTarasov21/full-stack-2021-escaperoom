@@ -41,7 +41,7 @@ export default {
     Profile,
     LogOut,
   }, 
-  el: '#settings',
+//  el: '#settings', Line causes errors in console
   data(){
     return {
       showModal: false,
