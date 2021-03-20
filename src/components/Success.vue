@@ -5,16 +5,28 @@
       <p>Credits to Our Puzzle n' Inspirations</p>
     </section>
     <button id="Restart">Restart</button>
-    <button id="Leaderboard">Leaderboard</button>
-    <button id="Account">Account</button>
+    <tabs>
+      <tab class="menu-tab" title="Profile"><Profile/></tab>
+      <tab class="menu-tab" title="Leaderboard"><Leaderboard/></tab>
+    </tabs>
   </div>
 </template>
 
 <script>
+import Tab from "./Settings/Tab"
+import Tabs from "./Settings/Tabs"
+import Leaderboard from './Settings/Leaderboard'
+import Profile from './Settings/Profile'
 export default {
   name: 'Success',
   props: {
     msg: String
+  },
+  component: {
+    Tab,
+    Tabs,
+    Leaderboard,
+    Profile,
   }
 }
 </script>
