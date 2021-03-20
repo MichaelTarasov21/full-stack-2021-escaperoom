@@ -87,8 +87,6 @@
 				dataset[to].time = dataset[from].time
 			},
 			writedata: function(data, changes){
-				console.log(data)
-				console.log(changes)
 				changes.forEach(element => {
 					let update = {};
 					update['/Leaderboard/' + element + '/'] = data[element]
