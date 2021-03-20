@@ -10,7 +10,7 @@
     <RoomThree v-if="roomThreeLoad" @roomThreeFin="roomThreeFin"/>
     <RoomFour v-if="roomFourLoad" @roomFourFin="roomFourFin"/>
     <Success v-if="success" @roomFourFin="roomFourFin"/>
-    <Timer v-if="start" @Gameover="Gameover" />
+    <Timer v-if="start" @Gameover="Gameover" v-bind:Gamewon="success" />
     <inventory/>
   </div>
 </template>
@@ -49,6 +49,7 @@ export default {
   },
   data() {
     return {
+      success: false,
       lost: false,
       start: false,
       roomOneLoad: true,
