@@ -1,10 +1,10 @@
 <template>
-  <div class="roomFour">
-    <h1>Room Four Canvas Area</h1>
+  <div class="roomThree">
+    <h1>Room Three Canvas Area</h1>
     <div>
-        <p>Type Room Four Answer to Go to Next Room</p>
+        <p>Type Room Three Answer to Go to Next Room</p>
         <div id="answerCheck"></div>
-        <input type="password" id="roomFourAns" placeholder="Your Answer" />
+        <input type="text" id="roomThreeAns" placeholder="Your Answer" />
         <input type="submit" value="Submit" @click="verify()"/>
     </div>
   </div>
@@ -12,20 +12,20 @@
 
 <script>
 export default {
-  name: 'RoomFour',
-  emits: ['roomFourFin'],
+  name: 'RoomThree',
+  emits: ['roomThreeFin'],
   methods:{
     verify: function (){
         console.log("connected");
-        var answer = document.getElementById("roomFourAns").value.toUpperCase();
+        var answer = document.getElementById("roomThreeAns").value.toUpperCase();
         console.log(answer);
-        if (answer == `ROOMFOUR`) {
+        if (answer == `ROOMTHREE`) {
           document.getElementById("answerCheck").innerHTML = "";
           document.getElementById("answerCheck").style.color = 'green';
           document
             .getElementById("answerCheck")
             .insertAdjacentHTML("beforeend", `${answer} is Correct :D!`);
-          this.$emit('roomFourFin');
+          this.$emit('roomThreeFin');
         } else {
           document.getElementById("answerCheck").innerHTML = "";
           document.getElementById("answerCheck").style.color =

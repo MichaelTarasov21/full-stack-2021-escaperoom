@@ -1,15 +1,10 @@
 <template>
-  <div class="roomOne">
-    <h1>Room One Canvas Area</h1>
-    <div class="camera">
-      <div class="map">
-        <img class="player" src="../img/redsquare.png" alt="Red Square" height="50px" width="auto">
-      </div>
-    </div>
+  <div class="roomTwo">
+    <h1>Room Two Canvas Area</h1>
     <div>
-        <p>Type Room One Answer to Go to Next Room</p>
+        <p>Type Room Two Answer to Go to Next Room</p>
         <div id="answerCheck"></div>
-        <input type="password" id="roomOneAns" placeholder="Your Answer" />
+        <input type="text" id="roomTwoAns" placeholder="Your Answer" />
         <input type="submit" value="Submit" @click="verify()"/>
     </div>
   </div>
@@ -17,25 +12,20 @@
 
 <script>
 export default {
-  name: 'RoomOne',
-  emits: ['roomOneFin'],
-  mounted() {
-      let gameCanvas = document.createElement('script')
-      gameCanvas.setAttribute('src', '../js/game.js')
-      document.head.appendChild(gameCanvas)
-    },
+  name: 'RoomTwo',
+  emits: ['roomTwoFin'],
   methods:{
     verify: function (){
         console.log("connected");
-        var answer = document.getElementById("roomOneAns").value.toUpperCase();
+        var answer = document.getElementById("roomTwoAns").value.toUpperCase();
         console.log(answer);
-        if (answer == `ROOMONE`) {
+        if (answer == `ROOMTWO`) {
           document.getElementById("answerCheck").innerHTML = "";
           document.getElementById("answerCheck").style.color = 'green';
           document
             .getElementById("answerCheck")
             .insertAdjacentHTML("beforeend", `${answer} is Correct :D!`);
-          this.$emit('roomOneFin');
+          this.$emit('roomTwoFin');
         } else {
           document.getElementById("answerCheck").innerHTML = "";
           document.getElementById("answerCheck").style.color =
@@ -49,17 +39,7 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.camera{
-  
-}
-.map{
-  background-color: rgb(180, 180, 180);
-  height: 70vh;
-  width: 80%;
-  margin: 0 auto;
-}
 h3 {
   margin: 40px 0 0;
 }
