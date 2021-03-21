@@ -33,7 +33,6 @@ export default {
       htmlAttrs: { lang: "sv" },
     };
   },
-
   name: "App",
   components: {
     Timer,
@@ -63,6 +62,7 @@ export default {
     },
     StartGame: function(){
       this.start = true;
+
     },
     roomOneFin: function () {
       console.log("Room One is Finished");
@@ -83,8 +83,6 @@ export default {
       console.log("Room Four is Finished")
       this.success = true;
       this.roomFourLoad = false;
-      
-      //stop the timer 
     }
   },
 };
