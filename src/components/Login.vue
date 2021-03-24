@@ -13,7 +13,7 @@ import firebase from "firebase/app";
 import "firebase/auth";
 // import func from "../../vue-temp/vue-editor-bridge";
 export default {
-  name: "navigation",
+  name: "login",
   props: {
     // msg: String
   },

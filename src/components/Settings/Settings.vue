@@ -1,5 +1,5 @@
 <template>
-  <div id="menu">
+  <div id="settings">
     <button id="open-menu" @click="showModal = true">
     <img src="https://img.icons8.com/dusk/64/000000/gear.png"/></button>
     <!-- The Modal -->
@@ -33,7 +33,7 @@ import Leaderboard from './Leaderboard'
 import Profile from './Profile'
 import LogOut from './LogOut'
 export default {
-  name: 'Menu',
+  name: 'Settings',
   components: {
     Tab,
     Tabs,
@@ -41,7 +41,7 @@ export default {
     Profile,
     LogOut,
   }, 
-  el: '#menu',
+//  el: '#settings', Line causes errors in console
   data(){
     return {
       showModal: false,

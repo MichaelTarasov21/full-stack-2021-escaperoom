@@ -4,19 +4,19 @@
       <div id="itemOne" class="inventory-item">
         <img
           class="item-img"
-          src="https://img.icons8.com/dusk/100/000000/key.png"
+          src="https://img.icons8.com/dusk/75/000000/key.png"
         />
       </div>
       <div id="itemTwo" class="inventory-item">
         <img
           class="item-img"
-          src="https://img.icons8.com/dusk/100/000000/key.png"
+          src="https://img.icons8.com/dusk/75/000000/key.png"
         />
       </div>
       <div id="itemThree" class="inventory-item">
         <img
           class="item-img"
-          src="https://img.icons8.com/dusk/100/000000/key.png"
+          src="https://img.icons8.com/dusk/75/000000/key.png"
         />
       </div>
     </div>

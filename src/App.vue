@@ -1,39 +1,31 @@
-<template  lang="en" >
-  <div id="app" >
+
+<template lang="en">
+  <div id="app">
     <Fail v-if="lost" />
-    <navigation />
-    <start />
-    <!-- <div class="tab-bkg">
-      <tabs>
-        <tab title="Start Tab"><Start /></tab>
-        <tab title="Success Tab"><Success /></tab>
-      </tabs>
-    </div> -->
-    <Menu/>
+    <Login />
+    <Start @Gamestarted="StartGame" />
+    <Settings/>
     <RoomOne v-if="roomOneLoad" @roomOneFin="roomOneFin"/>
     <RoomTwo v-if="roomTwoLoad" @roomTwoFin="roomTwoFin"/>
     <RoomThree v-if="roomThreeLoad" @roomThreeFin="roomThreeFin"/>
     <RoomFour v-if="roomFourLoad" @roomFourFin="roomFourFin"/>
     <Success v-if="success" @roomFourFin="roomFourFin"/>
-    <Timer @Gameover="Gameover" />
+    <Timer v-if="start" @Gameover="Gameover" v-bind:Gamewon="success" />
     <inventory/>
   </div>
 </template>
 
 <script>
 import Timer from "./components/Timer.vue";
-import navigation from "./components/Navigation";
+import Login from "./components/Login.vue";
 import Start from "./components/Start.vue";
 import Success from "./components/Success.vue";
-// import Fail from "./components/Fail.vue";
-// import Tab from "./components/Tab.vue";
-// import Tabs from "./components/Tabs.vue";
-import RoomOne from "./components/RoomOne.vue";
-import RoomTwo from "./components/RoomTwo.vue";
-import RoomThree from "./components/RoomThree.vue";
-import RoomFour from "./components/RoomFour.vue";
-import Menu from "./components/Menu.vue";
-import inventory from "./components/inventory";
+import RoomOne from "./components/RoomOne/RoomOne";
+import RoomTwo from "./components/RoomTwo/RoomTwo";
+import RoomThree from "./components/RoomThree/RoomThree";
+import RoomFour from "./components/RoomFour/RoomFour";
+import Settings from "./components/Settings/Settings.vue";
+import Inventory from "./components/Inventory";
 
 export default {
   head() {
@@ -41,26 +33,24 @@ export default {
       htmlAttrs: { lang: "sv" },
     };
   },
-
   name: "App",
   components: {
     Timer,
-    navigation,
+    Login,
     Start,
-    // Fail,
     Success,
-    // Tab,
-    // Tabs,
     RoomOne,
     RoomTwo,
     RoomThree,
     RoomFour,
-    Menu,
-    inventory,
+    Settings,
+    Inventory,
   },
   data() {
     return {
+      success: false,
       lost: false,
+      start: false,
       roomOneLoad: true,
       roomTwoLoad: false,
       roomThreeLoad: false,
@@ -70,6 +60,10 @@ export default {
   methods: {
     Gameover: function () {
       this.lost = true;
+    },
+    StartGame: function(){
+      this.start = true;
+
     },
     roomOneFin: function () {
       console.log("Room One is Finished");
@@ -90,8 +84,6 @@ export default {
       console.log("Room Four is Finished")
       this.success = true;
       this.roomFourLoad = false;
-      
-      //stop the timer 
     }
   },
 };
