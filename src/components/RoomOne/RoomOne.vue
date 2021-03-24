@@ -1,15 +1,25 @@
 <template>
   <div class="roomOne">
     <h1>Room One Canvas Area</h1>
+    <input type="text" v-on:keyup.37="movement">
     <div>
-        <p>Type Room One Answer to Go to Next Room</p>
-        <div id="answerCheck"></div>
-        <input type="text" id="roomOneAns" placeholder="Your Answer" />
-        <input type="submit" value="Submit" @click="verify()"/>
-    </div>
-    <div class="camera">
-      <div class="map">
-        <img class="player" src="../../img/redsquare.png" alt="Red Square" height="50px" width="auto" walking="true">
+    <button @click="roomOneModal = true">
+    <img src="https://img.icons8.com/bubbles/100/000000/lock-2.png"/></button>
+      <div class="modal_one" v-if="roomOneModal"> 
+        <div class="modal_one-content">
+          <span class="roome_one_close" @click="roomOneModal = false">&times;</span>
+          <p>Type Room One Answer to Go to Next Room</p>
+          <div id="answerCheck"></div>
+          <input type="text" id="roomOneAns" placeholder="Your Answer" />
+          <input type="submit" value="Submit" @click="verify()"/>
+        </div>
+      </div>
+      <div class="camera">
+        <div class="map">
+          <div class="player">
+            <img src="../../img/redsquare.png" alt="Red Square">
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -19,12 +29,15 @@
 export default {
   name: 'RoomOne',
   emits: ['roomOneFin'],
-  mounted() {
-      let gameCanvas = document.createElement('script')
-      gameCanvas.setAttribute('src', '../js/game.js')
-      document.head.appendChild(gameCanvas)
-    },
+  data(){
+    return {
+      roomOneModal: false,
+    }
+  },
+  props: {keyUpStart:Boolean},
   methods:{
+    //global method variable 
+    //how to connect methods together 
     verify: function (){
         console.log("connected");
         var answer = document.getElementById("roomOneAns").value.toUpperCase();
@@ -46,83 +59,101 @@ export default {
         }
     },
     movement: function(){
-      var Player = document.querySelector(".player");
-      var map = document.querySelector(".map");
+      //do this for all the directions
+      // make it effiecent by combining
+      //and looping 
+      console.log("movement function is connected");
       var x = 0;
       var y = 0;
-      var held_directions = []; 
-      var speed = 1; 
-
-      const placePlayer = () => {
-        var pixelSize = 2;
-        
-        const held_direction = held_directions[0];
-        if (held_direction) {
-            if (held_direction === directions.right) {x += speed;}
-            if (held_direction === directions.left) {x -= speed;}
-            if (held_direction === directions.down) {y += speed;}
-            if (held_direction === directions.up) {y -= speed;}
-        }
-        Player.setAttribute("walking", held_direction ? "true" : "false");
-        
-        var camera_left = pixelSize * 10;
-        var camera_top = pixelSize * 10;
-        
-        map.style.transform = `translate3d( ${-x*pixelSize+camera_left}px, ${-y*pixelSize+camera_top}px, 0 )`;
-        Player.style.transform = `translate3d( ${x*pixelSize}px, ${y*pixelSize}px, 0 )`;  
-        
-        //Limits (gives the illusion of walls)
-        // var leftLimit = -8;
-        // var rightLimit = (16 * 11)+8;
-        // var topLimit = -8 + 32;
-        // var bottomLimit = (16 * 7);
-        // if (x < leftLimit) { x = leftLimit; }
-        // if (x > rightLimit) { x = rightLimit; }
-        // if (y < topLimit) { y = topLimit; }
-        // if (y > bottomLimit) { y = bottomLimit; }
-        
+      document.addEventListener('keydown', function (event) {
+      if (event.key === 'w') {
+        console.log("Up key is connected");
+        y -= 20;
+        document.querySelector(".player").style.transform = `translate(${x}px,${y}px)`;        
       }
-
-      //Set up the game loop
-      const step = () => {
-        placePlayer();
-        window.requestAnimationFrame(() => {
-            step();
-        })
+      if (event.key === 'd') {
+        console.log("Right key is connected");
+        x += 20;
+        document.querySelector(".player").style.transform = `translate(${x}px,${y}px)`;        
       }
-      step(); //kick off the first step!
-
-      /* Direction key state */
-      const directions = {
-        up: "up",
-        down: "down",
-        left: "left",
-        right: "right",
+      if (event.key === 'a') {
+        console.log("Left key is connected");
+        x -= 20;
+        document.querySelector(".player").style.transform = `translate(${x}px,${y}px)`;        
       }
-      const keys = {
-        38: directions.up,
-        37: directions.left,
-        39: directions.right,
-        40: directions.down,
+      if (event.key === 's') {
+        console.log("Down key is connected");
+        y += 20;
+        document.querySelector(".player").style.transform = `translate(${x}px,${y}px)`;        
       }
-      
-      document.addEventListener("keydown", (e) => {
-        console.log("Key is being pushed down");
-        var dir = keys[e.which];
-        if (dir && held_directions.indexOf(dir) === -1) {
-            held_directions.unshift(dir)
-        }
-      })
-
-      document.addEventListener("keyup", (e) => {
-        console.log("Key is being let go of");
-        var dir = keys[e.which];
-        var index = held_directions.indexOf(dir);
-        if (index > -1) {
-            held_directions.splice(index, 1)
-        }
       });
+      
     },
+    // movement: function(){
+    //   var player = document.querySelector(".player");
+    //   var x = 0;
+    //   var y = 0;
+    //   var held_directions = []; //empty array 
+    //   var speed = 1; 
+
+    //   const placePlayer = () => {
+    //     const held_direction = held_directions[0];
+    //     //if there is a held direction
+    //     if (held_direction) {
+    //         if (held_direction === directions.right) {x += speed;}
+    //         if (held_direction === directions.left) {x -= speed;}
+    //         if (held_direction === directions.down) {y += speed;}
+    //         if (held_direction === directions.up) {y -= speed;}
+    //     }
+    //     player.setAttribute("walking", held_direction ? "true" : "false");
+    //     player.style.transform = `translate3d( ${x}px, ${y}px, 0)`;  
+        
+    //   }
+
+    //   //Set up the game loop
+    //   const step = () => {
+    //     placePlayer();
+    //     window.requestAnimationFrame(() => {
+    //     step();
+    //     })
+    //   }
+    //   step(); //kick off the first step!
+
+    //   /* Direction key state */
+    //   const directions = {
+    //     up: "up",
+    //     down: "down",
+    //     left: "left",
+    //     right: "right",
+    //   }
+    //   const keys = {
+    //     38: directions.up,
+    //     37: directions.left,
+    //     39: directions.right,
+    //     40: directions.down,
+    //   }
+
+    //   document.addEventListener("keydown", (e) => {
+    //     console.log("Key is being pushed down");
+    //     var dir = keys[e.which];
+    //     //if the key is not in the array
+    //     // adds it to the beginning of the array to be executed
+    //     if (dir && held_directions.indexOf(dir) === -1) {
+    //         held_directions.unshift(dir)
+    //     }
+    //   })
+    //   //after that direction movement has been finished
+    //   //and keyup -> deletes that mveoment from the aray 
+    //   document.addEventListener("keyup", (e) => {
+    //     console.log("Key is being let go of");
+    //     var dir = keys[e.which];
+    //     var index = held_directions.indexOf(dir);
+    //     if (index > -1) {
+    //         held_directions.splice(index, 1)
+    //     }
+    //   });
+      
+    // },
     //next method
   }
 }
@@ -132,11 +163,20 @@ export default {
 <style scoped>
 :root {
    --pixel-size: 2px;
+   /* if you want pixel size so that we don't need to do query 
+   will need to change below height adn width */
 
 }
+.player{
+  width: 2rem;
+  height: 2rem;
+  /* position: absolute; */
+  overflow: hidden;
+  /* transform: translate(20px,20px); */
+}
 .camera {
-   /* width: calc(var(--pixel-size) * 160);
-   height: calc(var(--pixel-size) * 144); */
+   width: 16rem;
+   height: 4.4rem; 
    overflow: hidden;
    background: #61ddf7;
    position:relative;
@@ -151,6 +191,23 @@ export default {
   position: relative;
 }
 
+.modal_one { 
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0, 20, 2, 0.9);
+}
+
+.modal_one-content {
+  background-color: #fefefe;
+  margin: 4rem;
+  padding: 3rem;
+  z-index: 3;
+  border-radius: 1rem;
+}
 h3 {
   margin: 40px 0 0;
 }
