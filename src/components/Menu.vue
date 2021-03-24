@@ -90,6 +90,12 @@ export default {
   padding: 3rem;
   z-index: 3;
   border-radius: 1rem;
+  max-width: 50rem;
+}
+@media (min-width: 800px) {
+  .modal-content {
+    margin: 5rem auto;
+  }
 }
 
 /* The Close Button */

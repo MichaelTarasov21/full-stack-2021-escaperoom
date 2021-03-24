@@ -66,7 +66,7 @@ export default {
   margin: 3rem;
   padding: 3rem;
   border-radius: .75rem;
-  max-width: 40rem;
+  max-width: 50rem;
 }
 @media (min-width: 800px) {
   .header {
