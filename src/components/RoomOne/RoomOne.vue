@@ -1,13 +1,9 @@
 <template>
   <div class="roomOne">
     <h1>Room One Canvas Area</h1>
-    <input type="text" v-on:keyup.37="movement">
-    <div>
-    <button @click="roomOneModal = true">
-    <img src="https://img.icons8.com/bubbles/100/000000/lock-2.png"/></button>
       <div class="modal_one" v-if="roomOneModal"> 
         <div class="modal_one-content">
-          <span class="roome_one_close" @click="roomOneModal = false">&times;</span>
+          <span class="room_one_close" @click="roomOneModal = false">&times;</span>
           <p>Type Room One Answer to Go to Next Room</p>
           <div id="answerCheck"></div>
           <input type="text" id="roomOneAns" placeholder="Your Answer" />
@@ -17,12 +13,12 @@
       <div class="camera">
         <div class="map">
           <div class="player">
-            <img src="../../img/redsquare.png" alt="Red Square">
+            <img id="player" src="../../img/redsquare.png" alt="Red Square">
           </div>
+          <img id="final-lock" class="final-lock" @click="roomOneModal = true" src="https://img.icons8.com/bubbles/100/000000/lock-2.png"/>
         </div>
       </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -33,6 +29,10 @@ export default {
     return {
       roomOneModal: false,
     }
+  },
+  created: function(){
+    this.movement();    
+    this.coordinates();
   },
   props: {keyUpStart:Boolean},
   methods:{
@@ -66,22 +66,22 @@ export default {
       var x = 0;
       var y = 0;
       document.addEventListener('keydown', function (event) {
-      if (event.key === 'w') {
+      if (event.keyCode == '38') {
         console.log("Up key is connected");
         y -= 20;
         document.querySelector(".player").style.transform = `translate(${x}px,${y}px)`;        
       }
-      if (event.key === 'd') {
+      else if (event.keyCode == '39') {
         console.log("Right key is connected");
         x += 20;
         document.querySelector(".player").style.transform = `translate(${x}px,${y}px)`;        
       }
-      if (event.key === 'a') {
+      else if (event.keyCode == '37') {
         console.log("Left key is connected");
         x -= 20;
         document.querySelector(".player").style.transform = `translate(${x}px,${y}px)`;        
       }
-      if (event.key === 's') {
+      else if (event.keyCode == '40') {
         console.log("Down key is connected");
         y += 20;
         document.querySelector(".player").style.transform = `translate(${x}px,${y}px)`;        
@@ -89,72 +89,15 @@ export default {
       });
       
     },
-    // movement: function(){
-    //   var player = document.querySelector(".player");
-    //   var x = 0;
-    //   var y = 0;
-    //   var held_directions = []; //empty array 
-    //   var speed = 1; 
-
-    //   const placePlayer = () => {
-    //     const held_direction = held_directions[0];
-    //     //if there is a held direction
-    //     if (held_direction) {
-    //         if (held_direction === directions.right) {x += speed;}
-    //         if (held_direction === directions.left) {x -= speed;}
-    //         if (held_direction === directions.down) {y += speed;}
-    //         if (held_direction === directions.up) {y -= speed;}
-    //     }
-    //     player.setAttribute("walking", held_direction ? "true" : "false");
-    //     player.style.transform = `translate3d( ${x}px, ${y}px, 0)`;  
-        
-    //   }
-
-    //   //Set up the game loop
-    //   const step = () => {
-    //     placePlayer();
-    //     window.requestAnimationFrame(() => {
-    //     step();
-    //     })
-    //   }
-    //   step(); //kick off the first step!
-
-    //   /* Direction key state */
-    //   const directions = {
-    //     up: "up",
-    //     down: "down",
-    //     left: "left",
-    //     right: "right",
-    //   }
-    //   const keys = {
-    //     38: directions.up,
-    //     37: directions.left,
-    //     39: directions.right,
-    //     40: directions.down,
-    //   }
-
-    //   document.addEventListener("keydown", (e) => {
-    //     console.log("Key is being pushed down");
-    //     var dir = keys[e.which];
-    //     //if the key is not in the array
-    //     // adds it to the beginning of the array to be executed
-    //     if (dir && held_directions.indexOf(dir) === -1) {
-    //         held_directions.unshift(dir)
-    //     }
-    //   })
-    //   //after that direction movement has been finished
-    //   //and keyup -> deletes that mveoment from the aray 
-    //   document.addEventListener("keyup", (e) => {
-    //     console.log("Key is being let go of");
-    //     var dir = keys[e.which];
-    //     var index = held_directions.indexOf(dir);
-    //     if (index > -1) {
-    //         held_directions.splice(index, 1)
-    //     }
-    //   });
-      
-    // },
-    //next method
+    coordinates: function(){
+      console.log("coordinates function is connected");
+      // const player = document.querySelector(".player");
+      // const lock = document.querySelector(".final-lock");
+      // let playerCoords = document.getElementById('player').getBoundingClientRect();
+      // console.log(playerCoords.left);
+      var lockCoords = document.getElementById('final-lock').getBoundingClientRect();
+      console.log(lockCoords.bottom);
+    },
   }
 }
 </script>
@@ -167,18 +110,22 @@ export default {
    will need to change below height adn width */
 
 }
+.final-lock{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
 .player{
   width: 2rem;
   height: 2rem;
   /* position: absolute; */
   overflow: hidden;
-  /* transform: translate(20px,20px); */
 }
 .camera {
-   width: 16rem;
-   height: 4.4rem; 
+   width: 100%; 
+   height: auto;
    overflow: hidden;
-   background: #61ddf7;
+   /* background: #61ddf7; */
    position:relative;
 }
 .map{
@@ -199,6 +146,20 @@ export default {
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0, 20, 2, 0.9);
+}
+
+.room_one_close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.room_one_close:hover,
+.room_one_close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .modal_one-content {
