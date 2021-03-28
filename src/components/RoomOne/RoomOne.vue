@@ -1,30 +1,43 @@
 <template>
   <div class="roomOne">
     <h1>Room One Canvas Area</h1>
-    <div>
-        <p>Type Room One Answer to Go to Next Room</p>
-        <div id="answerCheck"></div>
-        <input type="text" id="roomOneAns" placeholder="Your Answer" />
-        <input type="submit" value="Submit" @click="verify()"/>
-    </div>
-    <div class="camera">
-      <div class="map">
-        <img class="player" src="../../img/redsquare.png" alt="Red Square" height="50px" width="auto" walking="true">
+      <div class="modal_one" v-if="roomOneModal"> 
+        <div class="modal_one-content">
+          <span class="room_one_close" @click="roomOneModal = false">&times;</span>
+          <p>Type Room One Answer to Go to Next Room</p>
+          <div id="answerCheck"></div>
+          <input type="text" id="roomOneAns" placeholder="Your Answer" />
+          <input type="submit" value="Submit" @click="verify()"/>
+        </div>
+      </div>
+      <div class="camera">
+        <div class="map">
+          <div class="player">
+            <img id="player" src="../../img/redsquare.png" alt="Red Square">
+          </div>
+          <img id="final-lock" class="final-lock" @click="roomOneModal = true" src="https://img.icons8.com/bubbles/100/000000/lock-2.png"/>
+        </div>
       </div>
     </div>
-  </div>
 </template>
 
 <script>
 export default {
   name: 'RoomOne',
   emits: ['roomOneFin'],
-  mounted() {
-      let gameCanvas = document.createElement('script')
-      gameCanvas.setAttribute('src', '../js/game.js')
-      document.head.appendChild(gameCanvas)
-    },
+  data(){
+    return {
+      roomOneModal: false,
+    }
+  },
+  created: function(){
+    this.movement();    
+    this.coordinates();
+  },
+  props: {keyUpStart:Boolean},
   methods:{
+    //global method variable 
+    //how to connect methods together 
     verify: function (){
         console.log("connected");
         var answer = document.getElementById("roomOneAns").value.toUpperCase();
@@ -46,84 +59,45 @@ export default {
         }
     },
     movement: function(){
-      var Player = document.querySelector(".player");
-      var map = document.querySelector(".map");
+      //do this for all the directions
+      // make it effiecent by combining
+      //and looping 
+      console.log("movement function is connected");
       var x = 0;
       var y = 0;
-      var held_directions = []; 
-      var speed = 1; 
-
-      const placePlayer = () => {
-        var pixelSize = 2;
-        
-        const held_direction = held_directions[0];
-        if (held_direction) {
-            if (held_direction === directions.right) {x += speed;}
-            if (held_direction === directions.left) {x -= speed;}
-            if (held_direction === directions.down) {y += speed;}
-            if (held_direction === directions.up) {y -= speed;}
-        }
-        Player.setAttribute("walking", held_direction ? "true" : "false");
-        
-        var camera_left = pixelSize * 10;
-        var camera_top = pixelSize * 10;
-        
-        map.style.transform = `translate3d( ${-x*pixelSize+camera_left}px, ${-y*pixelSize+camera_top}px, 0 )`;
-        Player.style.transform = `translate3d( ${x*pixelSize}px, ${y*pixelSize}px, 0 )`;  
-        
-        //Limits (gives the illusion of walls)
-        // var leftLimit = -8;
-        // var rightLimit = (16 * 11)+8;
-        // var topLimit = -8 + 32;
-        // var bottomLimit = (16 * 7);
-        // if (x < leftLimit) { x = leftLimit; }
-        // if (x > rightLimit) { x = rightLimit; }
-        // if (y < topLimit) { y = topLimit; }
-        // if (y > bottomLimit) { y = bottomLimit; }
-        
+      document.addEventListener('keydown', function (event) {
+      if (event.keyCode == '38') {
+        console.log("Up key is connected");
+        y -= 20;
+        document.querySelector(".player").style.transform = `translate(${x}px,${y}px)`;        
       }
-
-      //Set up the game loop
-      const step = () => {
-        placePlayer();
-        window.requestAnimationFrame(() => {
-            step();
-        })
+      else if (event.keyCode == '39') {
+        console.log("Right key is connected");
+        x += 20;
+        document.querySelector(".player").style.transform = `translate(${x}px,${y}px)`;        
       }
-      step(); //kick off the first step!
-
-      /* Direction key state */
-      const directions = {
-        up: "up",
-        down: "down",
-        left: "left",
-        right: "right",
+      else if (event.keyCode == '37') {
+        console.log("Left key is connected");
+        x -= 20;
+        document.querySelector(".player").style.transform = `translate(${x}px,${y}px)`;        
       }
-      const keys = {
-        38: directions.up,
-        37: directions.left,
-        39: directions.right,
-        40: directions.down,
+      else if (event.keyCode == '40') {
+        console.log("Down key is connected");
+        y += 20;
+        document.querySelector(".player").style.transform = `translate(${x}px,${y}px)`;        
       }
-      
-      document.addEventListener("keydown", (e) => {
-        console.log("Key is being pushed down");
-        var dir = keys[e.which];
-        if (dir && held_directions.indexOf(dir) === -1) {
-            held_directions.unshift(dir)
-        }
-      })
-
-      document.addEventListener("keyup", (e) => {
-        console.log("Key is being let go of");
-        var dir = keys[e.which];
-        var index = held_directions.indexOf(dir);
-        if (index > -1) {
-            held_directions.splice(index, 1)
-        }
       });
+      
     },
-    //next method
+    coordinates: function(){
+      console.log("coordinates function is connected");
+      // const player = document.querySelector(".player");
+      // const lock = document.querySelector(".final-lock");
+      // let playerCoords = document.getElementById('player').getBoundingClientRect();
+      // console.log(playerCoords.left);
+      var lockCoords = document.getElementById('final-lock').getBoundingClientRect();
+      console.log(lockCoords.bottom);
+    },
   }
 }
 </script>
@@ -132,13 +106,26 @@ export default {
 <style scoped>
 :root {
    --pixel-size: 2px;
+   /* if you want pixel size so that we don't need to do query 
+   will need to change below height adn width */
 
 }
+.final-lock{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+.player{
+  width: 2rem;
+  height: 2rem;
+  /* position: absolute; */
+  overflow: hidden;
+}
 .camera {
-   /* width: calc(var(--pixel-size) * 160);
-   height: calc(var(--pixel-size) * 144); */
+   width: 100%; 
+   height: auto;
    overflow: hidden;
-   background: #61ddf7;
+   /* background: #61ddf7; */
    position:relative;
 }
 .map{
@@ -151,6 +138,37 @@ export default {
   position: relative;
 }
 
+.modal_one { 
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0, 20, 2, 0.9);
+}
+
+.room_one_close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.room_one_close:hover,
+.room_one_close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal_one-content {
+  background-color: #fefefe;
+  margin: 4rem;
+  padding: 3rem;
+  z-index: 3;
+  border-radius: 1rem;
+}
 h3 {
   margin: 40px 0 0;
 }

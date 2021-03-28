@@ -1,8 +1,15 @@
 <template>
-  <div class="profile-info">
-    <h1 class="profile" >Profile</h1>
-    <h3 id="name"></h3>
-    <h3 id="email"></h3>
+  <div>
+    <h1 class="profile">Profile</h1>
+    <div class="profile-info">
+      <h3 id="name"></h3>
+      <h3 id="email"></h3>
+      <h3 id="room1" ></h3>
+      <h3 id="room2" ></h3>
+      <h3 id="room3" ></h3>
+      <h3 id="room4" ></h3>
+      
+    </div>
     <!-- <h3 id="joinDate" > </h3> -->
   </div>
 </template>
@@ -24,8 +31,8 @@ export default {
           const email = document.querySelector("#email");
           email.innerHTML = `Email: ${user.email}`;
 
-          // const joinDate = document.querySelector('#joinDate');
-          // joinDate.innerHTML = `Account Created: ${user.email}`;
+          const room1 = document.querySelector("#room1");
+          room1.innerHTML = `Email: ${user.email}`;
         }
       });
     },
@@ -38,8 +45,11 @@ export default {
 </script>
 
 <style >
-
 .profile {
   background-color: yellow;
+}
+
+.profile-info {
+  text-align: left;
 }
 </style>
