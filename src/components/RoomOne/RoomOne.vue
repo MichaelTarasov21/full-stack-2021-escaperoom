@@ -1,7 +1,6 @@
 <template>
   <div class="roomOne">
     <h1>Room One Canvas Area</h1>
-    <input type="submit" value="Submit" @click="coordinates()"/>
       <div class="modal_one" v-if="roomOneModal"> 
         <div class="modal_one-content">
           <span class="room_one_close" @click="roomOneModal = false">&times;</span>
@@ -31,7 +30,7 @@ export default {
   },
   created: function(){
     this.movement();    
-    // this.coordinates();
+    this.coordinates();
   },
   props: {keyUpStart:Boolean},
   methods:{
@@ -94,23 +93,28 @@ export default {
       // console.log(playerCoords.left);
     coordinates: function(){
       console.log("coordinates function is connected");
-      let lockCoords = document.querySelector("#finalLock").getBoundingClientRect();
-      let lockLeft = Math.ceil(lockCoords.left / 100) * 100;
-      let lockTop = Math.ceil(lockCoords.top / 100) * 100; 
-      console.log("Lock left: " + lockLeft + " Lock top: " + lockTop);
-      let playerCoords = document.querySelector(".player").getBoundingClientRect();
-      let playerLeft = Math.ceil(playerCoords.left / 100) * 100;
-      let playerTop = Math.ceil(playerCoords.top / 100) * 100; 
-      console.log("player left: " + playerLeft + " player top: " + playerTop);
-      if (lockLeft === playerLeft && lockTop === playerTop){
-        // roomOneModal = true;
-        console.log("Player and Lock are touching!!!")
-        document.querySelector("#finalLock").style.transform = "scale(1.5)";
-      }
-      else{
-        console.log("Still not touching")
-        document.querySelector("#finalLock").style.transform = "scale(1)";
-      }
+      document.addEventListener('keydown', function (event) {
+        if (event.keyCode == '37' || event.keyCode == '38' || event.keyCode == '39' || event.keyCode == '40' ){
+          let lockCoords = document.querySelector("#finalLock").getBoundingClientRect();
+          let lockLeft = Math.ceil(lockCoords.left / 100) * 100;
+          let lockTop = Math.ceil(lockCoords.top / 100) * 100; 
+          console.log("Lock left: " + lockLeft + " Lock top: " + lockTop);
+          let playerCoords = document.querySelector(".player").getBoundingClientRect();
+          let playerLeft = Math.ceil(playerCoords.left / 100) * 100;
+          let playerTop = Math.ceil(playerCoords.top / 100) * 100; 
+          console.log("player left: " + playerLeft + " player top: " + playerTop);
+          //finding coordinates
+          if (lockLeft === playerLeft && lockTop === playerTop){
+            // roomOneModal = true; make the popup open
+            console.log("Player and Lock are touching!!!")
+            document.querySelector("#finalLock").style.transform = "scale(1.5)";
+          }
+          else{
+            console.log("Still not touching")
+            document.querySelector("#finalLock").style.transform = "scale(1)";
+          }
+        }
+      })
     },
   }
 }
