@@ -7,7 +7,12 @@
 	import firebase from "firebase/app";
 	export default {
 		emits: ["Gameover"],
-		props: { Gamewon: Boolean },
+		props: { 
+			RoomOneDone: Boolean,
+			RoomTwoDone: Boolean,
+			RoomThreeDone: Boolean,
+			Gamewon: Boolean,
+		},
 		data() {
 			return { remainingtime: 1200 };
 		},
