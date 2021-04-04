@@ -11,7 +11,7 @@
 			RoomOneDone: Boolean,
 			RoomTwoDone: Boolean,
 			RoomThreeDone: Boolean,
-			Gamewon: Boolean,
+			RoomFourDone: Boolean,
 		},
 		data() {
 			return { remainingtime: 1200 };
@@ -19,7 +19,7 @@
 		mixins: [VueTimers],
 		methods: {
 			tickdown: function() {
-				if (this.Gamewon) {
+				if (this.RoomFourDone) {
 					this.$timer.stop("tickdown");
 					firebase.database().ref().child("Users").child(firebase.auth().currentUser.uid).get().then(function(snapshot) {
 							const FalseStart = snapshot.val().FalseStart;
