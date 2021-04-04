@@ -27,7 +27,7 @@
 							if (!FalseStart) {
 								this.storetime(this.remainingtime);
 							} else {
-								alert("It appers that you have played the game before. Your score will not be saved in the leaderboard");
+								alert("It appers that you have played the game before. Your score will not be saved on the leaderboard");
 							}
 						});
 				}
