@@ -39,7 +39,7 @@
 				if (this.RoomFourDone) {
 					this.$timer.stop("tickdown");
 					this.RoomTimes.RoomFour = this.remainingtime;
-					firebase.database().ref().child("Users").child(firebase.auth().currentUser.uid).get().then(function(snapshot) {
+					firebase.database().ref().child("Users").child(firebase.auth().currentUser.uid).get().then((snapshot) => {
 							const FalseStart = snapshot.val().FalseStart;
 							this.storeroomtimes();
 							if (!FalseStart) {
@@ -59,11 +59,9 @@
 				return (number < 10 ? "0" : "") + number;
 			},
 			storeroomtimes: async function() {
-				console.log("I works");
-				firebase.database().ref().child("Users").child(firebase.auth().currentUser.uid).child("Runs").get().then(function(snapshot) {
+				firebase.database().ref().child("Users").child(firebase.auth().currentUser.uid).child("Runs").get().then((snapshot) => {
 						if (snapshot.exists()) {
 							const runs = snapshot.val();
-							console.log(runs);
 							firebase.database().ref().child("Users").child(firebase.auth().currentUser.uid).child("Runs").child(runs.length + 1).set(this.RoomTimes);
 						} else {
 							firebase.database().ref().child("Users").child(firebase.auth().currentUser.uid).child("Runs").child(1).set(this.RoomTimes);
@@ -71,8 +69,7 @@
 					});
 			},
 			storeleaderboardtime: async function() {
-				console.log("I also works");
-				await firebase.database().ref().child("Leaderboard").get().then(function(snapshot) {
+				await firebase.database().ref().child("Leaderboard").get().then((snapshot) => {
 						const remoteleaderboard = snapshot.val();
 						if (this.remainingtime > remoteleaderboard[5].time) {
 							const user = firebase.auth().currentUser;
