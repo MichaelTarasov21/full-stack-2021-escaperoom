@@ -4,7 +4,7 @@
 		<div class="profile-info">
 			<h3>Name: {{ name }}</h3>
 			<h3>Email: {{ email }}</h3>
-			<h3>Run# {{ run }}</h3>
+			<h3>Run# <select v-on:change="changerun" name="Run#" id="RunNumber" v-html="dropdown"></select></h3>
 			<h3>Room One Time: {{ pad2(Math.floor(data[run].RoomOne / 60)) + ":" + pad2(Math.floor(data[run].RoomOne % 60)) }}</h3>
 			<h3>Room Two Time: {{ pad2(Math.floor(data[run].RoomTwo / 60)) + ":" + pad2(Math.floor(data[run].RoomTwo % 60)) }}</h3>
 			<h3>Room Three Time: {{ pad2(Math.floor(data[run].RoomThree / 60)) + ":" + pad2(Math.floor(data[run].RoomThree % 60)) }}</h3>
@@ -23,19 +23,28 @@
 				email: null,
 				run: 1,
 				data: null,
+        dropdown: "",
 			};
 		},
 		methods: {
 			pad2: function(number) {
 				return (number < 10 ? "0" : "") + number;
 			},
+      changerun: function(){
+        console.log("stuff")
+        this.run = document.getElementById("RunNumber").value
+      }
 		},
 		created: function() {
 			this.name = firebase.auth().currentUser.displayName;
 			this.email = firebase.auth().currentUser.email;
 			const request = firebase.database().ref().child("Users").child(firebase.auth().currentUser.uid).child("Runs");
-			request.on("value", (snapshot) => {
+			request.get().then((snapshot) => {
 				this.data = snapshot.val();
+        for(let i=1; i < this.data.length; i++){
+        this.dropdown = this.dropdown + `<option value="value${i}">${i}</option>"`
+      }
+      document.getElementById("RunNumber").addEventListener("change", function(){alert("changes")})
 			});
 		},
 	};
