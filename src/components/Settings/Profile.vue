@@ -4,7 +4,7 @@
 		<div class="profile-info">
 			<h3>Name: {{ name }}</h3>
 			<h3>Email: {{ email }}</h3>
-			<h3>Run#<select v-model="run" name="Run#" v-html="dropdown"></select></h3>
+			<h3>Run# <select v-model="run" name="Run#" v-html="dropdown"></select></h3>
 			<h3>Room One Time: {{ pad2(Math.floor(data[run].RoomOne / 60)) + ":" + pad2(Math.floor(data[run].RoomOne % 60)) }}</h3>
 			<h3>Room Two Time: {{ pad2(Math.floor(data[run].RoomTwo / 60)) + ":" + pad2(Math.floor(data[run].RoomTwo % 60)) }}</h3>
 			<h3>Room Three Time: {{ pad2(Math.floor(data[run].RoomThree / 60)) + ":" + pad2(Math.floor(data[run].RoomThree % 60)) }}</h3>
