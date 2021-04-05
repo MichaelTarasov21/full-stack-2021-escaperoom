@@ -10,14 +10,12 @@
           <input type="submit" value="Submit" @click="verify()"/>
         </div>
       </div>
-      <div class="camera">
         <div class="map">
           <div class="player">
             <img id="player" src="../../img/redsquare.png" alt="Red Square">
           </div>
-          <img id="final-lock" class="final-lock" @click="roomOneModal = true" src="https://img.icons8.com/bubbles/100/000000/lock-2.png"/>
+          <img id="finalLock" class="final-lock" @click="roomOneModal = true" src="https://img.icons8.com/bubbles/100/000000/lock-2.png"/>
         </div>
-      </div>
     </div>
 </template>
 
@@ -89,14 +87,34 @@ export default {
       });
       
     },
-    coordinates: function(){
-      console.log("coordinates function is connected");
       // const player = document.querySelector(".player");
       // const lock = document.querySelector(".final-lock");
       // let playerCoords = document.getElementById('player').getBoundingClientRect();
       // console.log(playerCoords.left);
-      var lockCoords = document.getElementById('final-lock').getBoundingClientRect();
-      console.log(lockCoords.bottom);
+    coordinates: function(){
+      console.log("coordinates function is connected");
+      document.addEventListener('keydown', function (event) {
+        if (event.keyCode == '37' || event.keyCode == '38' || event.keyCode == '39' || event.keyCode == '40' ){
+          let lockCoords = document.querySelector("#finalLock").getBoundingClientRect();
+          let lockLeft = Math.ceil(lockCoords.left / 100) * 100;
+          let lockTop = Math.ceil(lockCoords.top / 100) * 100; 
+          console.log("Lock left: " + lockLeft + " Lock top: " + lockTop);
+          let playerCoords = document.querySelector(".player").getBoundingClientRect();
+          let playerLeft = Math.ceil(playerCoords.left / 100) * 100;
+          let playerTop = Math.ceil(playerCoords.top / 100) * 100; 
+          console.log("player left: " + playerLeft + " player top: " + playerTop);
+          //finding coordinates
+          if (lockLeft === playerLeft && lockTop === playerTop){
+            // roomOneModal = true; make the popup open
+            console.log("Player and Lock are touching!!!")
+            document.querySelector("#finalLock").style.transform = "scale(1.5)";
+          }
+          else{
+            console.log("Still not touching")
+            document.querySelector("#finalLock").style.transform = "scale(1)";
+          }
+        }
+      })
     },
   }
 }
@@ -108,8 +126,8 @@ export default {
    --pixel-size: 2px;
    /* if you want pixel size so that we don't need to do query 
    will need to change below height adn width */
-
 }
+
 .final-lock{
   position: absolute;
   right: 0;
@@ -118,24 +136,23 @@ export default {
 .player{
   width: 2rem;
   height: 2rem;
-  /* position: absolute; */
+  position: absolute;
   overflow: hidden;
 }
-.camera {
+/* .camera {
    width: 100%; 
    height: auto;
    overflow: hidden;
-   /* background: #61ddf7; */
-   position:relative;
-}
+   position: relative;
+} */
 .map{
-  background-image: url("../../img/maze.png");
+  /* background-image: url("../../img/maze.png"); */
   background-size: cover;
-  background-color: black;
   height: 70vh;
-  width: 80%;
+  width: 70%;
   margin: 0 auto;
   position: relative;
+  border: 0.5rem solid black;
 }
 
 .modal_one { 
