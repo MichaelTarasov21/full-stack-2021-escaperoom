@@ -62,7 +62,7 @@
 				firebase.database().ref().child("Users").child(firebase.auth().currentUser.uid).child("Runs").get().then((snapshot) => {
 						if (snapshot.exists()) {
 							const runs = snapshot.val();
-							firebase.database().ref().child("Users").child(firebase.auth().currentUser.uid).child("Runs").child(runs.length + 1).set(this.RoomTimes);
+							firebase.database().ref().child("Users").child(firebase.auth().currentUser.uid).child("Runs").child(runs.length).set(this.RoomTimes);
 						} else {
 							firebase.database().ref().child("Users").child(firebase.auth().currentUser.uid).child("Runs").child(1).set(this.RoomTimes);
 						}
