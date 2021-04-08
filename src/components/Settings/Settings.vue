@@ -1,7 +1,7 @@
 <template>
   <div id="settings">
     <button id="open-menu" @click="showModal = true">
-    <img alt="settings" src="https://img.icons8.com/dusk/64/000000/gear.png"/></button>
+    <img alt="settings" src="@/assets/Images/gear.png"/></button>
     <!-- The Modal -->
     <transition name="fade" appear>
       <div id="myModal" class="modal" v-if="showModal"> 
