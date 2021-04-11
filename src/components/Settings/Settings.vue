@@ -10,11 +10,11 @@
           <span class="close" @click="showModal = false">&times;</span>
           <h1>SETTINGS</h1>
           <div class="flex-col menu-btns">
-            <tabs>
-              <tab class="menu-tab" title="Profile"><Profile/></tab>
-              <tab class="menu-tab" title="Leaderboard"><Leaderboard/></tab>
-              <tab class="menu-tab" title="Log Out"><LogOut/></tab> 
-            </tabs>
+            <Tabs>
+              <Tab class="menu-tab" title="Profile"><Profile/></Tab>
+              <Tab class="menu-tab" title="Leaderboard"><Leaderboard/></Tab>
+              <Tab class="menu-tab" title="Log Out"><LogOut/></Tab> 
+            </Tabs>
             <!-- <button class="menu-btn">Profile</button>
             <button class="menu-btn">Leaderboard</button>
             // creates an alert confirming if user wants to log out 
