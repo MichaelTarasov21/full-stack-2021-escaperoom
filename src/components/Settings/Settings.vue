@@ -76,6 +76,7 @@
 		overflow: auto; /* Enable scroll if needed */
 		background-color: rgb(0, 0, 0); /* Fallback color */
 		background-color: rgba(0, 20, 2, 0.9);
+    z-index: 2;
 	}
 
 	/* Modal Content */

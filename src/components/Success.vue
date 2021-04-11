@@ -24,10 +24,15 @@
 <style scoped>
 	#success {
 		background-color: lightgreen;
-		height: 20rem;
-		width: 85%;
-		margin: 0;
+		height: 100vh;
+		width: 100%;
 		padding-top: 30px;
+		position: absolute;
+		top: 0%;
+		left: 0%;
+		right: 0%;
+		bottom: 0%;
+    z-index: 1;
 	}
 	.congrats-message {
 		color: black;
