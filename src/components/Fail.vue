@@ -1,72 +1,62 @@
 <template>
-  <div id="fail">
-    <ul>
-      <li>You Fool,</li>
-      <li>You Moron</li>
-    </ul>
-    <button id="restart">Restart</button>
-    <!-- this maybe should be a drop down instead or something -->
-    <tab class="menu-tab" title="Profile"><Profile/></tab>
-  </div>
+	<div id="fail">
+		<section class="message">
+			<h1>You lost. That is sad.</h1>
+			<p>Credits to Our Puzzle n' Inspirations</p>
+		</section>
+		<button id="Restart">Restart</button>
+		<button @click="OpenSettings" class="menu-tab" title="Profile">Profile</button>
+	</div>
 </template>
 
 <script>
-import Tab from "./Settings/Tab"
-import Profile from './Settings/Profile'
-export default {
-  name: "Fail",
-  props: {
-    msg: String
-  },
-  component: {
-    Tab,
-    Profile,
-  }
-}
+	export default {
+		emits: ["OpenSettings"],
+		name: "Fail",
+		methods: {
+			OpenSettings: function() {
+				this.$emit("OpenSettings");
+			},
+		},
+	};
 </script>
 
 <style scoped>
-ul {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 0;
-  margin: 0;
-}
-li {
-  list-style-type: none;
-  display: inline-block;
-  color: black;
-  font-size: 5rem;
-}
-button {
-  background-color: #b0b6b3;
-  border: none;
-  color: black;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-}
-#restart {
-  margin-right: 30px;
-}
-#account {
-  margin-left: 30px;
-}
-#fail {
-  background-color: red;
-  height: 100%;
-  width: 100%;
-  padding-top: 30px;
-  position: absolute;
-  top: 0%;
-  left: 0%;
-  right: 0%;
-  bottom: 0%;
-}
+	#fail {
+		background-color: red;
+		height: 100vh;
+		width: 100%;
+		padding-top: 30px;
+		position: absolute;
+		top: 0%;
+		left: 0%;
+		right: 0%;
+		bottom: 0%;
+    z-index: 1;
+	}
+	.message {
+		color: black;
+		background: #b0b6b3;
+		height: 8rem;
+		margin-bottom: 3rem;
+	}
+	h1 {
+		font-size: bolder;
+		padding-top: 10px;
+	}
+	p {
+		font-size: bold;
+	}
+	button {
+		background-color: #b0b6b3;
+		border: none;
+		color: black;
+		padding: 15px 32px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+		margin: 4px 2px;
+		cursor: pointer;
+	}
 </style>

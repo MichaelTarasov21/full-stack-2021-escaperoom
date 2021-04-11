@@ -1,14 +1,14 @@
 <template lang="en">
   <div id="app">
-    <Fail v-if="lost" />
+    <Fail v-if="lost" @OpenSettings="Menuopened = true" />
     <Login />
     <Start @Gamestarted="StartGame" />
-    <Settings/>
+    <Settings v-bind:showMenu="Menuopened" @closemenu="Menuopened = false"/>
     <RoomOne v-if="roomOneLoad" @roomOneFin="roomOneFin"/>
     <RoomTwo v-if="roomTwoLoad" @roomTwoFin="roomTwoFin"/>
     <RoomThree v-if="roomThreeLoad" @roomThreeFin="roomThreeFin"/>
     <RoomFour v-if="roomFourLoad" @roomFourFin="roomFourFin"/>
-    <Success v-if="success" @roomFourFin="roomFourFin"/>
+    <Success v-if="success" @OpenSettings="Menuopened = true"/>
     <Timer v-if="start" @Gameover="Gameover" v-bind:RoomOneDone="roomTwoLoad" v-bind:RoomTwoDone="roomThreeLoad" v-bind:RoomThreeDone="roomFourLoad"  v-bind:RoomFourDone="success" />
     <inventory/>
   </div>
@@ -50,6 +50,7 @@
 				success: false,
 				lost: false,
 				start: false,
+				Menuopened: false,
 				roomOneLoad: true,
 				roomTwoLoad: false,
 				roomThreeLoad: false,
