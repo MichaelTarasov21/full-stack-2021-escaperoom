@@ -8,7 +8,7 @@
 			<div id="myModal" class="modal" v-if="showMenu">
 				<!-- Modal content -->
 				<div class="modal-content">
-					<span class="close" @click="showMenu = false">&times;</span>
+					<span class="close" @click="closemenu">&times;</span>
 					<h1>SETTINGS</h1>
 					<div class="flex-col menu-btns">
 						<Tabs>
@@ -42,6 +42,12 @@
 		props: {
 			showMenu: Boolean,
 		},
+    emits: ["closemenu"],
+    methods: {
+      closemenu: function(){
+        this.$emit("closemenu")
+      }
+    }
 	};
 </script>
 
