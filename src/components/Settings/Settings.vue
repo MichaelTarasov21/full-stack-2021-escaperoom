@@ -15,10 +15,6 @@
               <Tab class="menu-tab" title="Leaderboard"><Leaderboard/></Tab>
               <Tab class="menu-tab" title="Log Out"><LogOut/></Tab> 
             </Tabs>
-            <!-- <button class="menu-btn">Profile</button>
-            <button class="menu-btn">Leaderboard</button>
-            // creates an alert confirming if user wants to log out 
-            <button class="menu-btn">Log Out</button> -->
           </div>
         </div>
       </div>
