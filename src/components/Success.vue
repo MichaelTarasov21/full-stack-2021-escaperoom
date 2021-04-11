@@ -10,15 +10,8 @@
 </template>
 
 <script>
-import Leaderboard from './Settings/Leaderboard'
 export default {
   name: 'Success',
-  props: {
-    msg: String
-  },
-  component: {
-    Leaderboard,
-  }
 }
 </script>
 
