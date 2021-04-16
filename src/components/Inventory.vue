@@ -45,33 +45,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
-.inventory {
-  position: fixed;
-  /* bottom: 0; */
-  width: 100%;
-  display: flex;
-}
 
-.inventory-item {
-  border: solid;
-  /* padding: 1rem; */
-  border-color: gray;
-  border-width: 0.5rem;
-}
-
-.item-img {
-  width: 7rem;
-  height: 7rem;
-}
-.item-img:hover {
-  transform: scale(1.1);
-  transition: 0.2s;
-}
-.flex-row {
-  display: flex;
-  justify-content: space-around;
-}
-.hidden {
-  display: none;
-}
 </style>

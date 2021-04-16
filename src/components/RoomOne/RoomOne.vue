@@ -24,11 +24,11 @@
       />
     </div>
     <div class="map-item" id="Key">
-      <img class="item-img" src="${item.img}" />
-      <div class="hidden">${item.img}</div>
-      <div>${item.name}</div>
+      <img class="item-img" src="https://source.unsplash.com/random" />
+      <div class="hidden">https://source.unsplash.com/random</div>
+      <div>Key</div>
     </div>
-    <div ref="mapItems"></div>
+    <!-- <div ref="mapItems"></div> -->
     <div class="inventory" ref="inventory"></div>
   </div>
 </template>
@@ -55,7 +55,7 @@ export default {
   props: { keyUpStart: Boolean },
 
   methods: {
-        //global method variable
+    //global method variable
     //how to connect methods together
     verify: function () {
       console.log("connected");
@@ -87,77 +87,92 @@ export default {
       console.log("movement function is connected");
       var x = 0;
       var y = 0;
-      document.addEventListener('keydown', function (event) {
-      if (event.keyCode == '38') {
-        console.log("Up key is connected");
-        y -= 20;
-        document.querySelector(".player").style.transform = `translate(${x}px,${y}px)`;        
-      }
-      else if (event.keyCode == '39') {
-        console.log("Right key is connected");
-        x += 20;
-        document.querySelector(".player").style.transform = `translate(${x}px,${y}px)`;        
-      }
-      else if (event.keyCode == '37') {
-        console.log("Left key is connected");
-        x -= 20;
-        document.querySelector(".player").style.transform = `translate(${x}px,${y}px)`;        
-      }
-      else if (event.keyCode == '40') {
-        console.log("Down key is connected");
-        y += 20;
-        document.querySelector(".player").style.transform = `translate(${x}px,${y}px)`;        
-      }
+      document.addEventListener("keydown", function (event) {
+        if (event.keyCode == "38") {
+          console.log("Up key is connected");
+          y -= 20;
+          document.querySelector(
+            ".player"
+          ).style.transform = `translate(${x}px,${y}px)`;
+        } else if (event.keyCode == "39") {
+          console.log("Right key is connected");
+          x += 20;
+          document.querySelector(
+            ".player"
+          ).style.transform = `translate(${x}px,${y}px)`;
+        } else if (event.keyCode == "37") {
+          console.log("Left key is connected");
+          x -= 20;
+          document.querySelector(
+            ".player"
+          ).style.transform = `translate(${x}px,${y}px)`;
+        } else if (event.keyCode == "40") {
+          console.log("Down key is connected");
+          y += 20;
+          document.querySelector(
+            ".player"
+          ).style.transform = `translate(${x}px,${y}px)`;
+        }
       });
     },
 
-      // const player = document.querySelector(".player");
-      // const lock = document.querySelector(".final-lock");
-      // let playerCoords = document.getElementById('player').getBoundingClientRect();
-      // console.log(playerCoords.left);
-    coordinates: function(){
+    // const player = document.querySelector(".player");
+    // const lock = document.querySelector(".final-lock");
+    // let playerCoords = document.getElementById('player').getBoundingClientRect();
+    // console.log(playerCoords.left);
+    coordinates: function () {
       console.log("coordinates function is connected");
-      document.addEventListener('keydown', function (event) {
-        if (event.keyCode == '37' || event.keyCode == '38' || event.keyCode == '39' || event.keyCode == '40' ){
-          let lockCoords = document.querySelector("#finalLock").getBoundingClientRect();
+      document.addEventListener("keydown", function (event) {
+        if (
+          event.keyCode == "37" ||
+          event.keyCode == "38" ||
+          event.keyCode == "39" ||
+          event.keyCode == "40"
+        ) {
+          let lockCoords = document
+            .querySelector("#finalLock")
+            .getBoundingClientRect();
           let lockLeft = Math.ceil(lockCoords.left / 100) * 100;
-          let lockTop = Math.ceil(lockCoords.top / 100) * 100; 
+          let lockTop = Math.ceil(lockCoords.top / 100) * 100;
           console.log("Lock left: " + lockLeft + " Lock top: " + lockTop);
-          let playerCoords = document.querySelector(".player").getBoundingClientRect();
+          let playerCoords = document
+            .querySelector(".player")
+            .getBoundingClientRect();
           let playerLeft = Math.ceil(playerCoords.left / 100) * 100;
-          let playerTop = Math.ceil(playerCoords.top / 100) * 100; 
-          console.log("player left: " + playerLeft + " player top: " + playerTop);
+          let playerTop = Math.ceil(playerCoords.top / 100) * 100;
+          console.log(
+            "player left: " + playerLeft + " player top: " + playerTop
+          );
           //finding coordinates
-          if (lockLeft === playerLeft && lockTop === playerTop){
+          if (lockLeft === playerLeft && lockTop === playerTop) {
             // roomOneModal = true; make the popup open
-            console.log("Player and Lock are touching!!!")
+            console.log("Player and Lock are touching!!!");
             document.querySelector("#finalLock").style.transform = "scale(1.5)";
-          }
-          else{
-            console.log("Still not touching")
+          } else {
+            console.log("Still not touching");
             document.querySelector("#finalLock").style.transform = "scale(1)";
           }
         }
-      })
+      });
     },
 
-    displayMapItems: function () {
-      this.$refs.mapItems.innerHTML = "";
-      this.mapItemsArr.forEach(this.printMapItems);
-    },
+    // displayMapItems: function () {
+    //   this.$refs.mapItems.innerHTML = "";
+    //   this.mapItemsArr.forEach(this.printMapItems);
+    // },
 
-    printMapItems: function (item) {
-      const mapItems = this.$refs.mapItems;
-      mapItems.insertAdjacentHTML(
-        "afterbegin",
-        `<div class="map-item" id="${item.name}">
-          <img class="item-img" src="${item.img}" >
-          <div class="hidden">${item.img}</div>
-          <div>${item.name}</div>
-        </div>`
-      );
-      // item.addEventListener("click", this.addToInventory());
-    },
+    // printMapItems: function (item) {
+    //   const mapItems = this.$refs.mapItems;
+    //   mapItems.insertAdjacentHTML(
+    //     "afterbegin",
+    //     `<div class="map-item" id="${item.name}">
+    //       <img class="item-img" src="${item.img}" >
+    //       <div class="hidden">${item.img}</div>
+    //       <div>${item.name}</div>
+    //     </div>`
+    //   );
+    //   // item.addEventListener("click", this.addToInventory());
+    // },
 
     addToInventory: function () {
       //get array of items on map
@@ -197,15 +212,15 @@ export default {
           );
         });
       };
-    }
-}, 
-  created: function(){
-    this.movement();    
+    },
+  },
+  mounted: function () {
+    this.movement();
     this.coordinates();
-    this.displayMapItems();
-    this.addToInventory()
-  }
-}
+    // this.displayMapItems();
+    this.addToInventory();
+  },
+};
 </script>
 
 
@@ -274,6 +289,7 @@ export default {
   z-index: 3;
   border-radius: 1rem;
 }
+
 h3 {
   margin: 40px 0 0;
 }
@@ -296,7 +312,38 @@ a {
 
 .inventory {
   border: 0.5rem black solid;
-  width: 90%;
-  height: 10rem;
+  width: calc(90vw - 1rem);
+  height: 8rem;
+  margin: 0 5vw 0 5vw;
+  position: fixed;
+  display: flex;
+  bottom: 0rem;
+}
+
+.inventory-item {
+  border: solid;
+  /* padding: 1rem; */
+  border-color: gray;
+  border-width: 0.5rem;
+  width: 4rem !important;
+  height: 4rem !important;
+  overflow: hidden;
+}
+
+.item-img {
+  width: 4rem !important;
+  height: 4rem !important;
+}
+
+.item-img:hover {
+  transform: scale(1.1);
+  transition: 0.2s;
+}
+.flex-row {
+  display: flex;
+  justify-content: space-around;
+}
+.hidden {
+  display: none;
 }
 </style>
