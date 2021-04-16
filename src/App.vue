@@ -3,7 +3,7 @@
     <Fail v-if="lost" @OpenSettings="Menuopened = true" />
     <Login />
     <Start @Gamestarted="StartGame" />
-    <Settings v-bind:showMenu="Menuopened" @closemenu="Menuopened = false"/>
+    <Settings v-bind:showMenu="Menuopened" @closemenu="Menuopened = false" @openmenu="Menuopened = true"/>
     <RoomOne v-if="roomOneLoad" @roomOneFin="roomOneFin"/>
     <RoomTwo v-if="roomTwoLoad" @roomTwoFin="roomTwoFin"/>
     <RoomThree v-if="roomThreeLoad" @roomThreeFin="roomThreeFin"/>

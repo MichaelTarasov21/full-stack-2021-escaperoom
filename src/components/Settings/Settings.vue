@@ -1,6 +1,6 @@
 <template>
 	<div id="settings">
-		<button id="open-menu" @click="showMenu = true">
+		<button id="open-menu" @click="displaymenu">
 			<img alt="settings" src="@/assets/Images/gear.png" />
 		</button>
 		<!-- The Modal -->
@@ -42,12 +42,15 @@
 		props: {
 			showMenu: Boolean,
 		},
-    emits: ["closemenu"],
-    methods: {
-      closemenu: function(){
-        this.$emit("closemenu")
-      }
-    }
+		emits: ["closemenu", "openmenu"],
+		methods: {
+			displaymenu: function() {
+				this.$emit("openmenu");
+			},
+			closemenu: function() {
+				this.$emit("closemenu");
+			},
+		},
 	};
 </script>
 
@@ -82,7 +85,7 @@
 		overflow: auto; /* Enable scroll if needed */
 		background-color: rgb(0, 0, 0); /* Fallback color */
 		background-color: rgba(0, 20, 2, 0.9);
-    z-index: 2;
+		z-index: 2;
 	}
 
 	/* Modal Content */
