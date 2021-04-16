@@ -33,8 +33,25 @@ export default {
 
   methods: {
       hide: function() {
+      this.sendstart();
       this.hidden = true
       this.$emit("Gamestarted");
+      },
+      sendstart: function () {
+        console.log("I worked")
+        firebase.database().ref().child("Users").child(firebase.auth().currentUser.uid).get().then(function(snapshot) {
+        if (snapshot.exists()) {
+          firebase.database().ref().child("Users").child(firebase.auth().currentUser.uid).update({
+            FalseStart: true
+          })
+          console.log("You are dirty cheater")
+        }
+        else {
+          firebase.database().ref().child("Users").child(firebase.auth().currentUser.uid).set({
+            FalseStart: false
+          })
+          console.log("You are somewhat ok for now")
+        }})
       }
     },  
   data() {

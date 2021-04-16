@@ -75,7 +75,7 @@ export default {
   width: 100%;
   height: 100%;
   background-color: black;
-  background-image: url(../media/Landing_Img.jpg);
+  background-image: url(../assets/Images/Landing_Img.jpg);
   background-size: 100%;
   color: white;
   z-index: 2;

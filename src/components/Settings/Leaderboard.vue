@@ -32,7 +32,7 @@
 			};
 		},
 		created: function() {
-			let request = firebase.database().ref("Leaderboard");
+			const request = firebase.database().ref("Leaderboard");
 			request.on("value", (snapshot) => {
 				this.leaderboard = snapshot.val();
 			});
