@@ -1,29 +1,27 @@
 <template>
   <div class="roomOne">
     <h1>Room One Canvas Area</h1>
-    <input type="text" v-on:keyup.37="movement" />
-    <div>
-      <button @click="roomOneModal = true">
-        <img src="https://img.icons8.com/bubbles/100/000000/lock-2.png" />
-      </button>
-      <div class="modal_one" v-if="roomOneModal">
-        <div class="modal_one-content">
-          <span class="roome_one_close" @click="roomOneModal = false"
-            >&times;</span
-          >
-          <p>Type Room One Answer to Go to Next Room</p>
-          <div id="answerCheck"></div>
-          <input type="text" id="roomOneAns" placeholder="Your Answer" />
-          <input type="submit" value="Submit" @click="verify()" />
-        </div>
+    <div class="modal_one" v-if="roomOneModal">
+      <div class="modal_one-content">
+        <span class="room_one_close" @click="roomOneModal = false"
+          >&times;</span
+        >
+        <p>Type Room One Answer to Go to Next Room</p>
+        <div id="answerCheck"></div>
+        <input type="text" id="roomOneAns" placeholder="Your Answer" />
+        <input type="submit" value="Submit" @click="verify()" />
       </div>
-      <div class="camera">
-        <div class="map">
-          <div class="player">
-            <img src="../../img/redsquare.png" alt="Red Square" />
-          </div>
-        </div>
+    </div>
+    <div class="map">
+      <div class="player">
+        <img id="player" src="../../img/redsquare.png" alt="Red Square" />
       </div>
+      <img
+        id="finalLock"
+        class="final-lock"
+        @click="roomOneModal = true"
+        src="https://img.icons8.com/bubbles/100/000000/lock-2.png"
+      />
     </div>
     <div class="map-item" id="Key">
       <img class="item-img" src="${item.img}" />
@@ -57,6 +55,92 @@ export default {
   props: { keyUpStart: Boolean },
 
   methods: {
+        //global method variable
+    //how to connect methods together
+    verify: function () {
+      console.log("connected");
+      var answer = document.getElementById("roomOneAns").value.toUpperCase();
+      console.log(answer);
+      if (answer == `ROOMONE`) {
+        document.getElementById("answerCheck").innerHTML = "";
+        document.getElementById("answerCheck").style.color = "green";
+        document
+          .getElementById("answerCheck")
+          .insertAdjacentHTML("beforeend", `${answer} is Correct :D!`);
+        this.$emit("roomOneFin");
+      } else {
+        document.getElementById("answerCheck").innerHTML = "";
+        document.getElementById("answerCheck").style.color = "red";
+        document
+          .getElementById("answerCheck")
+          .insertAdjacentHTML(
+            "beforeend",
+            `${answer} is incorrect, try again :(`
+          );
+      }
+    },
+
+    movement: function () {
+      //do this for all the directions
+      // make it effiecent by combining
+      //and looping
+      console.log("movement function is connected");
+      var x = 0;
+      var y = 0;
+      document.addEventListener('keydown', function (event) {
+      if (event.keyCode == '38') {
+        console.log("Up key is connected");
+        y -= 20;
+        document.querySelector(".player").style.transform = `translate(${x}px,${y}px)`;        
+      }
+      else if (event.keyCode == '39') {
+        console.log("Right key is connected");
+        x += 20;
+        document.querySelector(".player").style.transform = `translate(${x}px,${y}px)`;        
+      }
+      else if (event.keyCode == '37') {
+        console.log("Left key is connected");
+        x -= 20;
+        document.querySelector(".player").style.transform = `translate(${x}px,${y}px)`;        
+      }
+      else if (event.keyCode == '40') {
+        console.log("Down key is connected");
+        y += 20;
+        document.querySelector(".player").style.transform = `translate(${x}px,${y}px)`;        
+      }
+      });
+    },
+
+      // const player = document.querySelector(".player");
+      // const lock = document.querySelector(".final-lock");
+      // let playerCoords = document.getElementById('player').getBoundingClientRect();
+      // console.log(playerCoords.left);
+    coordinates: function(){
+      console.log("coordinates function is connected");
+      document.addEventListener('keydown', function (event) {
+        if (event.keyCode == '37' || event.keyCode == '38' || event.keyCode == '39' || event.keyCode == '40' ){
+          let lockCoords = document.querySelector("#finalLock").getBoundingClientRect();
+          let lockLeft = Math.ceil(lockCoords.left / 100) * 100;
+          let lockTop = Math.ceil(lockCoords.top / 100) * 100; 
+          console.log("Lock left: " + lockLeft + " Lock top: " + lockTop);
+          let playerCoords = document.querySelector(".player").getBoundingClientRect();
+          let playerLeft = Math.ceil(playerCoords.left / 100) * 100;
+          let playerTop = Math.ceil(playerCoords.top / 100) * 100; 
+          console.log("player left: " + playerLeft + " player top: " + playerTop);
+          //finding coordinates
+          if (lockLeft === playerLeft && lockTop === playerTop){
+            // roomOneModal = true; make the popup open
+            console.log("Player and Lock are touching!!!")
+            document.querySelector("#finalLock").style.transform = "scale(1.5)";
+          }
+          else{
+            console.log("Still not touching")
+            document.querySelector("#finalLock").style.transform = "scale(1)";
+          }
+        }
+      })
+    },
+
     displayMapItems: function () {
       this.$refs.mapItems.innerHTML = "";
       this.mapItemsArr.forEach(this.printMapItems);
@@ -113,173 +197,50 @@ export default {
           );
         });
       };
-    },
-
-    //global method variable
-    //how to connect methods together
-    verify: function () {
-      console.log("connected");
-      var answer = document.getElementById("roomOneAns").value.toUpperCase();
-      console.log(answer);
-      if (answer == `ROOMONE`) {
-        document.getElementById("answerCheck").innerHTML = "";
-        document.getElementById("answerCheck").style.color = "green";
-        document
-          .getElementById("answerCheck")
-          .insertAdjacentHTML("beforeend", `${answer} is Correct :D!`);
-        this.$emit("roomOneFin");
-      } else {
-        document.getElementById("answerCheck").innerHTML = "";
-        document.getElementById("answerCheck").style.color = "red";
-        document
-          .getElementById("answerCheck")
-          .insertAdjacentHTML(
-            "beforeend",
-            `${answer} is incorrect, try again :(`
-          );
-      }
-    },
-    movement: function () {
-      //do this for all the directions
-      // make it effiecent by combining
-      //and looping
-      console.log("movement function is connected");
-      var x = 0;
-      var y = 0;
-      document.addEventListener("keydown", function (event) {
-        if (event.key === "w") {
-          console.log("Up key is connected");
-          y -= 20;
-          document.querySelector(
-            ".player"
-          ).style.transform = `translate(${x}px,${y}px)`;
-        }
-        if (event.key === "d") {
-          console.log("Right key is connected");
-          x += 20;
-          document.querySelector(
-            ".player"
-          ).style.transform = `translate(${x}px,${y}px)`;
-        }
-        if (event.key === "a") {
-          console.log("Left key is connected");
-          x -= 20;
-          document.querySelector(
-            ".player"
-          ).style.transform = `translate(${x}px,${y}px)`;
-        }
-        if (event.key === "s") {
-          console.log("Down key is connected");
-          y += 20;
-          document.querySelector(
-            ".player"
-          ).style.transform = `translate(${x}px,${y}px)`;
-        }
-      });
-    },
-    // movement: function(){
-    //   var player = document.querySelector(".player");
-    //   var x = 0;
-    //   var y = 0;
-    //   var held_directions = []; //empty array
-    //   var speed = 1;
-
-    //   const placePlayer = () => {
-    //     const held_direction = held_directions[0];
-    //     //if there is a held direction
-    //     if (held_direction) {
-    //         if (held_direction === directions.right) {x += speed;}
-    //         if (held_direction === directions.left) {x -= speed;}
-    //         if (held_direction === directions.down) {y += speed;}
-    //         if (held_direction === directions.up) {y -= speed;}
-    //     }
-    //     player.setAttribute("walking", held_direction ? "true" : "false");
-    //     player.style.transform = `translate3d( ${x}px, ${y}px, 0)`;
-
-    //   }
-
-    //   //Set up the game loop
-    //   const step = () => {
-    //     placePlayer();
-    //     window.requestAnimationFrame(() => {
-    //     step();
-    //     })
-    //   }
-    //   step(); //kick off the first step!
-
-    //   /* Direction key state */
-    //   const directions = {
-    //     up: "up",
-    //     down: "down",
-    //     left: "left",
-    //     right: "right",
-    //   }
-    //   const keys = {
-    //     38: directions.up,
-    //     37: directions.left,
-    //     39: directions.right,
-    //     40: directions.down,
-    //   }
-
-    //   document.addEventListener("keydown", (e) => {
-    //     console.log("Key is being pushed down");
-    //     var dir = keys[e.which];
-    //     //if the key is not in the array
-    //     // adds it to the beginning of the array to be executed
-    //     if (dir && held_directions.indexOf(dir) === -1) {
-    //         held_directions.unshift(dir)
-    //     }
-    //   })
-    //   //after that direction movement has been finished
-    //   //and keyup -> deletes that mveoment from the aray
-    //   document.addEventListener("keyup", (e) => {
-    //     console.log("Key is being let go of");
-    //     var dir = keys[e.which];
-    //     var index = held_directions.indexOf(dir);
-    //     if (index > -1) {
-    //         held_directions.splice(index, 1)
-    //     }
-    //   });
-
-    // },
-    //next method
-  },
-  mounted: function () {
+    }
+}, 
+  created: function(){
+    this.movement();    
+    this.coordinates();
     this.displayMapItems();
-    this.addToInventory();
-  },
-};
+    this.addToInventory()
+  }
+}
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+
 <style scoped>
 :root {
   --pixel-size: 2px;
   /* if you want pixel size so that we don't need to do query 
    will need to change below height adn width */
 }
+
+.final-lock {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
 .player {
   width: 2rem;
   height: 2rem;
-  /* position: absolute; */
+  position: absolute;
   overflow: hidden;
-  /* transform: translate(20px,20px); */
 }
-.camera {
-  width: 16rem;
-  height: 4.4rem;
-  overflow: hidden;
-  background: #61ddf7;
-  position: relative;
-}
+/* .camera {
+   width: 100%; 
+   height: auto;
+   overflow: hidden;
+   position: relative;
+} */
 .map {
-  background-image: url("../../img/maze.png");
+  /* background-image: url("../../img/maze.png"); */
   background-size: cover;
-  background-color: black;
   height: 70vh;
-  width: 80%;
+  width: 70%;
   margin: 0 auto;
   position: relative;
+  border: 0.5rem solid black;
 }
 
 .modal_one {
@@ -290,6 +251,20 @@ export default {
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0, 0, 0); /* Fallback color */
   background-color: rgba(0, 20, 2, 0.9);
+}
+
+.room_one_close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.room_one_close:hover,
+.room_one_close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .modal_one-content {
@@ -320,9 +295,8 @@ a {
 }
 
 .inventory {
-  border: .5rem black solid;
+  border: 0.5rem black solid;
   width: 90%;
   height: 10rem;
-  
 }
 </style>

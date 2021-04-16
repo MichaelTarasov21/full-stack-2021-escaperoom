@@ -12,11 +12,11 @@
 				<h3 id="name5" class="names">{{ leaderboard[5].name }}</h3>
 			</div>
 			<div id="times" class="list">
-				<h3 id="time1" class="times">{{ leaderboard[1].time }}</h3>
-				<h3 id="time2" class="times">{{ leaderboard[2].time }}</h3>
-				<h3 id="time3" class="times">{{ leaderboard[3].time }}</h3>
-				<h3 id="time4" class="times">{{ leaderboard[4].time }}</h3>
-				<h3 id="time5" class="times">{{ leaderboard[5].time }}</h3>
+				<h3 id="time1" class="times">{{pad2(Math.floor(leaderboard[1].time / 60)) + ":" + pad2(Math.floor(leaderboard[1].time % 60)) }}</h3>
+				<h3 id="time2" class="times">{{pad2(Math.floor(leaderboard[2].time / 60)) + ":" + pad2(Math.floor(leaderboard[2].time % 60)) }}</h3>
+				<h3 id="time3" class="times">{{pad2(Math.floor(leaderboard[3].time / 60)) + ":" + pad2(Math.floor(leaderboard[3].time % 60)) }}</h3>
+				<h3 id="time4" class="times">{{pad2(Math.floor(leaderboard[4].time / 60)) + ":" + pad2(Math.floor(leaderboard[4].time % 60)) }}</h3>
+				<h3 id="time5" class="times">{{pad2(Math.floor(leaderboard[5].time / 60)) + ":" + pad2(Math.floor(leaderboard[5].time % 60)) }}</h3>
 			</div>
 		</div>
 	</div>
@@ -32,11 +32,16 @@
 			};
 		},
 		created: function() {
-			let request = firebase.database().ref("Leaderboard");
+			const request = firebase.database().ref("Leaderboard");
 			request.on("value", (snapshot) => {
 				this.leaderboard = snapshot.val();
 			});
 		},
+		methods:{
+			pad2: function(number) {
+				return (number < 10 ? "0" : "") + number;
+			}
+		}
 	};
 </script>
 
