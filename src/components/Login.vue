@@ -64,7 +64,7 @@ export default {
   },
 
   //check if logged in on load
-  created: function () {
+  mounted: function () {
     this.checkLogIn();
   },
 };

@@ -37,6 +37,7 @@ export default {
       this.$emit("Gamestarted");
       }
     },  
+    
   data() {
     return {
       hidden: false,
