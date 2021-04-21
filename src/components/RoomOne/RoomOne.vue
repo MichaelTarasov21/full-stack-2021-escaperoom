@@ -28,8 +28,8 @@
 
 <script>
 export default {
-  name: 'RoomOne',
-  emits: ['roomOneFin'],
+  name: "RoomOne",
+  emits: ["roomOneFin"],
   data() {
     return {
       roomOneModal: false,
@@ -141,17 +141,12 @@ export default {
             "player left: " + playerLeft + " player top: " + playerTop
           );
           //finding coordinates
-          if (lockLeft === playerLeft && lockTop === playerTop){
-            document.addEventListener('keydown', function (event){
-              if (event.keyCode == "13"){
-                document.querySelector("#final-ans-modal").style.display = "block";
-              }
-            })
-            console.log("Player and Lock are touching!!!")
-            document.querySelector("#finalLock").style.transform = "scale(1.3)";
-          }
-          else{
-            console.log("Still not touching")
+          if (lockLeft === playerLeft && lockTop === playerTop) {
+            // roomOneModal = true; make the popup open
+            console.log("Player and Lock are touching!!!");
+            document.querySelector("#finalLock").style.transform = "scale(1.5)";
+          } else {
+            console.log("Still not touching");
             document.querySelector("#finalLock").style.transform = "scale(1)";
           }
         }
@@ -292,8 +287,7 @@ export default {
   overflow: none;
 }
 
-.modal_one { 
-  display: none;
+.modal_one {
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
   width: 100%; /* Full width */
