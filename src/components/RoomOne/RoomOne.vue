@@ -10,13 +10,12 @@
           <input type="submit" value="Submit" @click="verify()"/>
         </div>
       </div>
-        <div class="map">
+      <!-- <div class="map">
           <div class="player">
             <img id="player" src="../../img/redsquare.png" alt="Red Square">
           </div>
           <img id="finalLock" class="final-lock" src="https://img.icons8.com/bubbles/100/000000/lock-2.png"/>
-        </div>
-    </div>
+        </div> -->
     <div class="map">
       <div class="player">
         <img id="player" src="../../img/redsquare.png" alt="Red Square" />
@@ -88,7 +87,7 @@ export default {
             .insertAdjacentHTML("beforeend", `${answer} is incorrect, try again :(`);
         }
     },
-
+    
     movement: function () {
       //do this for all the directions
       // make it effiecent by combining
@@ -152,6 +151,12 @@ export default {
           console.log(
             "player left: " + playerLeft + " player top: " + playerTop
           );
+          /* let mapCoords = document
+            .querySelector(".map")
+            .getBoundingClientRect();
+          let mapLeft = Math.ceil(mapCoords.left / 100) * 100;
+          let mapTop = Math.ceil(mapCoords.top / 100) * 100;
+          console.log("Map left: " + mapLeft + " Map top: " + mapTop);  */
           //finding coordinates
           if (lockLeft === playerLeft && lockTop === playerTop){
             document.addEventListener('keydown', function (event){
@@ -166,6 +171,16 @@ export default {
             console.log("Still not touching")
             document.querySelector("#finalLock").style.transform = "scale(1)";
           }
+          /* if (mapLeft === playerLeft || mapTop === playerTop) {
+            document.querySelector(
+            ".player"
+          ).style.transform = `translate(${x-20}px,${y-20}px)`;
+            //x -= 20;
+            //y -= 20;
+          document.querySelector(
+            ".player"
+          ).style.transform = `translate(${x}px,${y}px)`;
+          }  */
         }
       });
     },
