@@ -1,6 +1,6 @@
 <template>
   <div class="roomOne">
-    <h1>Room One Canvas Area</h1>
+    <h1>Room One</h1>
       <div class="modal_one" id="final-ans-modal"> 
         <div class="modal_one-content">
           <span class="room_one_close" id="final-ans-close" @click="closeModal()" >&times;</span>
@@ -10,29 +10,17 @@
           <input type="submit" value="Submit" @click="verify()"/>
         </div>
       </div>
-        <div class="map">
-          <div class="player">
-            <img id="player" src="../../img/redsquare.png" alt="Red Square">
-          </div>
-          <img id="finalLock" class="final-lock" src="https://img.icons8.com/bubbles/100/000000/lock-2.png"/>
+      <div class="map">
+        <div class="player">
+          <img id="player" src="../../img/redsquare.png" alt="Red Square">
         </div>
-    </div>
-    <div class="map">
-      <div class="player">
-        <img id="player" src="../../img/redsquare.png" alt="Red Square" />
+        <div class="map-item" id="Key">
+          <img class="item-img" src="https://source.unsplash.com/random" />
+          <div class="hidden">https://source.unsplash.com/random</div>
+          <div>Key</div>
+        </div>
+        <img id="finalLock" class="final-lock" src="https://img.icons8.com/bubbles/100/000000/lock-2.png"/>
       </div>
-      <img
-        id="finalLock"
-        class="final-lock"
-        @click="roomOneModal = true"
-        src="https://img.icons8.com/bubbles/100/000000/lock-2.png"
-      />
-    </div>
-    <div class="map-item" id="Key">
-      <img class="item-img" src="https://source.unsplash.com/random" />
-      <div class="hidden">https://source.unsplash.com/random</div>
-      <div>Key</div>
-    </div>
     <!-- <div ref="mapItems"></div> -->
     <div class="inventory" ref="inventory"></div>
   </div>
@@ -57,9 +45,15 @@ export default {
       ],
     };
   },
-  created: function(){
-    this.movement();    
+  // created: function(){
+  //   this.movement();    
+  //   this.coordinates();
+  // },
+  mounted: function () {
+    this.movement();
     this.coordinates();
+    // this.displayMapItems();
+    this.addToInventory();
   },
   props: {keyUpStart:Boolean},
   methods:{
@@ -88,7 +82,6 @@ export default {
             .insertAdjacentHTML("beforeend", `${answer} is incorrect, try again :(`);
         }
     },
-
     movement: function () {
       //do this for all the directions
       // make it effiecent by combining
@@ -124,11 +117,6 @@ export default {
         }
       });
     },
-
-    // const player = document.querySelector(".player");
-    // const lock = document.querySelector(".final-lock");
-    // let playerCoords = document.getElementById('player').getBoundingClientRect();
-    // console.log(playerCoords.left);
     coordinates: function () {
       console.log("coordinates function is connected");
       document.addEventListener("keydown", function (event) {
@@ -169,23 +157,46 @@ export default {
         }
       });
     },
-
-    // displayMapItems: function () {
-    //   this.$refs.mapItems.innerHTML = "";
-    //   this.mapItemsArr.forEach(this.printMapItems);
-    // },
-
-    // printMapItems: function (item) {
-    //   const mapItems = this.$refs.mapItems;
-    //   mapItems.insertAdjacentHTML(
-    //     "afterbegin",
-    //     `<div class="map-item" id="${item.name}">
-    //       <img class="item-img" src="${item.img}" >
-    //       <div class="hidden">${item.img}</div>
-    //       <div>${item.name}</div>
-    //     </div>`
-    //   );
-    //   // item.addEventListener("click", this.addToInventory());
+    //walls function 
+    // walls: function () {
+    //   console.log("coordinates function is connected");
+    //   document.addEventListener("keydown", function (event) {
+    //     if (
+    //       event.keyCode == "37" ||
+    //       event.keyCode == "38" ||
+    //       event.keyCode == "39" ||
+    //       event.keyCode == "40"
+    //     ) {
+    //       let lockCoords = document
+    //         .querySelector("#finalLock")
+    //         .getBoundingClientRect();
+    //       let lockLeft = Math.ceil(lockCoords.left / 100) * 100;
+    //       let lockTop = Math.ceil(lockCoords.top / 100) * 100;
+    //       console.log("Lock left: " + lockLeft + " Lock top: " + lockTop);
+    //       let playerCoords = document
+    //         .querySelector(".player")
+    //         .getBoundingClientRect();
+    //       let playerLeft = Math.ceil(playerCoords.left / 100) * 100;
+    //       let playerTop = Math.ceil(playerCoords.top / 100) * 100;
+    //       console.log(
+    //         "player left: " + playerLeft + " player top: " + playerTop
+    //       );
+    //       //finding coordinates
+    //       if (lockLeft === playerLeft && lockTop === playerTop){
+    //         document.addEventListener('keydown', function (event){
+    //           if (event.keyCode == "13"){
+    //             document.querySelector("#final-ans-modal").style.display = "block";
+    //           }
+    //         })
+    //         console.log("Player and Lock are touching!!!")
+    //         document.querySelector("#finalLock").style.transform = "scale(1.3)";
+    //       }
+    //       else{
+    //         console.log("Still not touching")
+    //         document.querySelector("#finalLock").style.transform = "scale(1)";
+    //       }
+    //     }
+    //   });
     // },
 
     addToInventory: function () {
@@ -213,7 +224,6 @@ export default {
           item.style.display = "none";
         });
       });
-
       const display = function () {
         inventoryArray.forEach(function (item) {
           inventory.insertAdjacentHTML(
@@ -227,17 +237,26 @@ export default {
         });
       };
     },
-  },
-  mounted: function () {
-    this.movement();
-    this.coordinates();
-    // this.displayMapItems();
-    this.addToInventory();
+    // displayMapItems: function () {
+    //   this.$refs.mapItems.innerHTML = "";
+    //   this.mapItemsArr.forEach(this.printMapItems);
+    // },
+
+    // printMapItems: function (item) {
+    //   const mapItems = this.$refs.mapItems;
+    //   mapItems.insertAdjacentHTML(
+    //     "afterbegin",
+    //     `<div class="map-item" id="${item.name}">
+    //       <img class="item-img" src="${item.img}" >
+    //       <div class="hidden">${item.img}</div>
+    //       <div>${item.name}</div>
+    //     </div>`
+    //   );
+    //   // item.addEventListener("click", this.addToInventory());
+    // },
   },
 };
 </script>
-
-
 <style scoped>
 :root {
   --pixel-size: 2px;
@@ -270,6 +289,7 @@ export default {
   margin: 0 auto;
   position: relative;
   border: 0.5rem solid black;
+  overflow: none;
 }
 
 .modal_one { 
@@ -324,6 +344,4 @@ a {
   position: absolute !important;
   top: 20% !important;
 }
-
-
 </style>
