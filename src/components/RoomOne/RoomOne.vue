@@ -1,21 +1,16 @@
 <template>
   <div class="roomOne">
     <h1>Room One Canvas Area</h1>
-      <div class="modal_one" id="final-ans-modal"> 
-        <div class="modal_one-content">
-          <span class="room_one_close" id="final-ans-close" @click="closeModal()" >&times;</span>
-          <p>Type Room One Answer</p>
-          <div id="answerCheck"></div>
-          <input type="text" id="roomOneAns" placeholder="Your Answer" />
-          <input type="submit" value="Submit" @click="verify()"/>
-        </div>
+    <div class="modal_one" v-if="roomOneModal">
+      <div class="modal_one-content">
+        <span class="room_one_close" @click="roomOneModal = false"
+          >&times;</span
+        >
+        <p>Type Room One Answer to Go to Next Room</p>
+        <div id="answerCheck"></div>
+        <input type="text" id="roomOneAns" placeholder="Your Answer" />
+        <input type="submit" value="Submit" @click="verify()" />
       </div>
-        <div class="map">
-          <div class="player">
-            <img id="player" src="../../img/redsquare.png" alt="Red Square">
-          </div>
-          <img id="finalLock" class="final-lock" src="https://img.icons8.com/bubbles/100/000000/lock-2.png"/>
-        </div>
     </div>
     <div class="map">
       <div class="player">
@@ -40,8 +35,8 @@
 
 <script>
 export default {
-  name: 'RoomOne',
-  emits: ['roomOneFin'],
+  name: "RoomOne",
+  emits: ["roomOneFin"],
   data() {
     return {
       roomOneModal: false,
@@ -57,36 +52,32 @@ export default {
       ],
     };
   },
-  created: function(){
-    this.movement();    
-    this.coordinates();
-  },
-  props: {keyUpStart:Boolean},
-  methods:{
-    //global method variable 
-    //how to connect methods together 
-    closeModal: function(){
-      document.querySelector("#final-ans-modal").style.display = "none"; 
-    },
-    verify: function (){
-        console.log("connected");
-        var answer = document.getElementById("roomOneAns").value.toUpperCase();
-        console.log(answer);
-        if (answer == `ROOMONE`) {
-          document.getElementById("answerCheck").innerHTML = "";
-          document.getElementById("answerCheck").style.color = 'green';
-          document
-            .getElementById("answerCheck")
-            .insertAdjacentHTML("beforeend", `${answer} is Correct :D!`);
-          this.$emit('roomOneFin');
-        } else {
-          document.getElementById("answerCheck").innerHTML = "";
-          document.getElementById("answerCheck").style.color =
-            'red';
-          document
-            .getElementById("answerCheck")
-            .insertAdjacentHTML("beforeend", `${answer} is incorrect, try again :(`);
-        }
+  props: { keyUpStart: Boolean },
+
+  methods: {
+    //global method variable
+    //how to connect methods together
+    verify: function () {
+      console.log("connected");
+      var answer = document.getElementById("roomOneAns").value.toUpperCase();
+      console.log(answer);
+      if (answer == `ROOMONE`) {
+        document.getElementById("answerCheck").innerHTML = "";
+        document.getElementById("answerCheck").style.color = "green";
+        document
+          .getElementById("answerCheck")
+          .insertAdjacentHTML("beforeend", `${answer} is Correct :D!`);
+        this.$emit("roomOneFin");
+      } else {
+        document.getElementById("answerCheck").innerHTML = "";
+        document.getElementById("answerCheck").style.color = "red";
+        document
+          .getElementById("answerCheck")
+          .insertAdjacentHTML(
+            "beforeend",
+            `${answer} is incorrect, try again :(`
+          );
+      }
     },
 
     movement: function () {
@@ -153,17 +144,12 @@ export default {
             "player left: " + playerLeft + " player top: " + playerTop
           );
           //finding coordinates
-          if (lockLeft === playerLeft && lockTop === playerTop){
-            document.addEventListener('keydown', function (event){
-              if (event.keyCode == "13"){
-                document.querySelector("#final-ans-modal").style.display = "block";
-              }
-            })
-            console.log("Player and Lock are touching!!!")
-            document.querySelector("#finalLock").style.transform = "scale(1.3)";
-          }
-          else{
-            console.log("Still not touching")
+          if (lockLeft === playerLeft && lockTop === playerTop) {
+            // roomOneModal = true; make the popup open
+            console.log("Player and Lock are touching!!!");
+            document.querySelector("#finalLock").style.transform = "scale(1.5)";
+          } else {
+            console.log("Still not touching");
             document.querySelector("#finalLock").style.transform = "scale(1)";
           }
         }
@@ -272,8 +258,7 @@ export default {
   border: 0.5rem solid black;
 }
 
-.modal_one { 
-  display: none;
+.modal_one {
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
   width: 100%; /* Full width */
