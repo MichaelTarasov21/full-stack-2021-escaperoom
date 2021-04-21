@@ -32,7 +32,7 @@ export default {
   emits: ["roomOneFin"],
   data() {
     return {
-      roomOneModal: false,
+      // roomOneModal: false,
       mapItemsArr: [
         {
           name: "Key",
@@ -142,7 +142,11 @@ export default {
           );
           //finding coordinates
           if (lockLeft === playerLeft && lockTop === playerTop) {
-            // roomOneModal = true; make the popup open
+            document.addEventListener('keydown', function (event){
+              if (event.keyCode == "13"){
+                document.querySelector("#final-ans-modal").style.display = "block";
+              }
+            })
             console.log("Player and Lock are touching!!!");
             document.querySelector("#finalLock").style.transform = "scale(1.5)";
           } else {
@@ -193,13 +197,11 @@ export default {
     //     }
     //   });
     // },
-
     addToInventory: function () {
       //get array of items on map
       const mapItemArray = Array.from(
         document.getElementsByClassName("map-item")
       );
-
       let inventoryArray = [];
       const inventory = document.querySelector(".inventory");
 
@@ -288,6 +290,7 @@ export default {
 }
 
 .modal_one {
+  display: none;
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
   width: 100%; /* Full width */
