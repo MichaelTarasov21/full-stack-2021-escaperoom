@@ -2,14 +2,6 @@ import firebase from "firebase";
 import Vue from 'vue'
 import App from './App.vue'
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-// data() { 
-//   return { 
-//       apiKey: process.env.API_KEY
-//   }
-// };
-
 var firebaseConfig = {
   apiKey: process.env.VUE_APP_API_KEY,
   authDomain: "escape-room-project-677cd.firebaseapp.com",
