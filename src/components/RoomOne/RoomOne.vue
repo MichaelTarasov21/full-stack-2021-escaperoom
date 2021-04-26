@@ -1,37 +1,50 @@
 <template>
   <div class="roomOne">
-    <h1>Room One Canvas Area</h1>
-      <div class="modal_one" id="final-ans-modal"> 
-        <div class="modal_one-content">
-          <span class="room_one_close" id="final-ans-close" @click="closeModal()" >&times;</span>
-          <p>Type Room One Answer</p>
+    <h1>Room One</h1>
+      <div class="modal-item"> 
+        <div class="modal-content">
+          <span class="modal_close" @click="closeModal()" >&times;</span>
+          <p>Computer Puzzle</p>
+        </div>
+      </div>
+      <div class="modal-item"> 
+        <div class="modal-content">
+          <span class="modal_close" @click="closeModal()" >&times;</span>
+          <p>Wire</p>
+        </div>
+      </div>
+      <div class="modal-item"> 
+        <div class="modal-content">
+          <span class="modal_close" @click="closeModal()" >&times;</span>
+          <p>Key</p>
+        </div>
+      </div>
+      <div class="modal-item" id="final-ans-modal"> 
+        <div class="modal-content">
+          <span class="modal_close" @click="closeModal()" >&times;</span>
+          <p>Room One Final Puzzle</p>
           <div id="answerCheck"></div>
           <input type="text" id="roomOneAns" placeholder="Your Answer" />
           <input type="submit" value="Submit" @click="verify()"/>
         </div>
       </div>
-      <!-- <div class="map">
-          <div class="player">
-            <img id="player" src="../../img/redsquare.png" alt="Red Square">
-          </div>
-          <img id="finalLock" class="final-lock" src="https://img.icons8.com/bubbles/100/000000/lock-2.png"/>
-        </div> -->
-    <div class="map">
-      <div class="player">
-        <img id="player" src="../../img/redsquare.png" alt="Red Square" />
+      <div class="map">
+        <div class="player">
+          <img id="player" src="../../img/redsquare.png" alt="Red Square">
+        </div>
+        <img class="pos-item" id="Computer" src="https://img.icons8.com/officel/100/000000/computer.png"/>
+        <div class="map-item" id="Wire">
+          <img class="item-img pos-item" src="https://img.icons8.com/dusk/100/000000/audio-cable.png" />
+          <div class="hidden">https://img.icons8.com/dusk/100/000000/audio-cable.png</div>
+          <div>Wire</div>
+        </div>
+        <div class="map-item" id="Key">
+          <img class="item-img pos-item" src="https://source.unsplash.com/random" />
+          <div class="hidden">https://source.unsplash.com/random</div>
+          <div>Key</div>
+        </div>
+        <img class="pos-item" id="FinalLock" src="https://img.icons8.com/bubbles/100/000000/lock-2.png"/>
       </div>
-      <img
-        id="finalLock"
-        class="final-lock"
-        @click="roomOneModal = true"
-        src="https://img.icons8.com/bubbles/100/000000/lock-2.png"
-      />
-    </div>
-    <div class="map-item" id="Key">
-      <img class="item-img" src="https://source.unsplash.com/random" />
-      <div class="hidden">https://source.unsplash.com/random</div>
-      <div>Key</div>
-    </div>
     <!-- <div ref="mapItems"></div> -->
     <div class="inventory" ref="inventory"></div>
   </div>
@@ -39,33 +52,23 @@
 
 <script>
 export default {
-  name: 'RoomOne',
-  emits: ['roomOneFin'],
-  data() {
-    return {
-      roomOneModal: false,
-      mapItemsArr: [
-        {
-          name: "Key",
-          img: "https://source.unsplash.com/random",
-        },
-        {
-          name: "Chest",
-          img: "https://source.unsplash.com/random",
-        },
-      ],
-    };
-  },
-  created: function(){
-    this.movement();    
+  name: "RoomOne",
+  emits: ["roomOneFin"],
+  mounted: function () {
+    this.movement();
     this.coordinates();
+    // this.displayMapItems();
+    this.addToInventory();
   },
   props: {keyUpStart:Boolean},
   methods:{
-    //global method variable 
-    //how to connect methods together 
     closeModal: function(){
-      document.querySelector("#final-ans-modal").style.display = "none"; 
+      const modalCloseArray = Array.from(
+        document.getElementsByClassName("modal-item")
+      );
+      modalCloseArray.forEach(function (item){
+        item.style.display = "none"; 
+      });
     },
     verify: function (){
         console.log("connected");
@@ -87,7 +90,6 @@ export default {
             .insertAdjacentHTML("beforeend", `${answer} is incorrect, try again :(`);
         }
     },
-    
     movement: function () {
       //do this for all the directions
       // make it effiecent by combining
@@ -123,7 +125,6 @@ export default {
         }
       });
     },
-
     coordinates: function () {
       console.log("coordinates function is connected");
       document.addEventListener("keydown", function (event) {
@@ -133,62 +134,55 @@ export default {
           event.keyCode == "39" ||
           event.keyCode == "40"
         ) {
-          let lockCoords = document
-            .querySelector("#finalLock")
-            .getBoundingClientRect();
-          let lockLeft = Math.ceil(lockCoords.left / 100) * 100;
-          let lockTop = Math.ceil(lockCoords.top / 100) * 100;
-          console.log("Lock left: " + lockLeft + " Lock top: " + lockTop);
-          let playerCoords = document
-            .querySelector(".player")
-            .getBoundingClientRect();
-          let playerLeft = Math.ceil(playerCoords.left / 100) * 100;
-          let playerTop = Math.ceil(playerCoords.top / 100) * 100;
-          console.log(
-            "player left: " + playerLeft + " player top: " + playerTop
+          //making the position item arry
+          const posItemArray = Array.from(
+            document.getElementsByClassName("pos-item")
           );
-          //finding coordinates
-          if (lockLeft === playerLeft && lockTop === playerTop){
-            document.addEventListener('keydown', function (event){
-              if (event.keyCode == "13"){
-                document.querySelector("#final-ans-modal").style.display = "block";
+          const modalArray = Array.from(
+            document.getElementsByClassName("modal-item")
+          );
+          //finding position for each pos-item 
+          posItemArray.forEach(function (item) {
+            modalArray.forEach(function (modalItem) {
+              //finding the coordinates of the player
+              let playerCoords = document
+                .querySelector(".player")
+                .getBoundingClientRect();
+              let playerLeft = Math.round(playerCoords.left / 100) * 100;
+              let playerTop = Math.round(playerCoords.top / 100) * 100;
+              console.log(
+                "player left: " + playerLeft + " player top: " + playerTop
+              );
+              //finding the coordinates of all objects
+              let objectCoords = item.getBoundingClientRect();
+              let objectLeft = Math.round(objectCoords.left / 100) * 100;
+              let objectTop = Math.round(objectCoords.top / 100) * 100;
+              console.log("left: " + objectLeft + " top: " + objectTop);
+              //if it is an inventory object - and enter is clicked = it gets added to inventory
+              //if it is a modal object - and enter is clicked = a popup opens 
+              if (objectLeft === playerLeft && objectTop === playerTop) {
+                document.addEventListener('keydown', function (event){
+                  if (event.keyCode == "13"){  
+                    modalItem.style.display = "block";
+                  }
+                })
+                console.log("Player and Object are touching!!!");
+                item.style.transform = "scale(1.2)";
+              } else {
+                console.log("Still not touching");
+                item.style.transform = "scale(1)";
               }
-            })
-            console.log("Player and Lock are touching!!!")
-            document.querySelector("#finalLock").style.transform = "scale(1.3)";
-          }
-          else{
-            console.log("Still not touching")
-            document.querySelector("#finalLock").style.transform = "scale(1)";
-          }
+            });
+          });  
         }
       });
     },
-
-    // displayMapItems: function () {
-    //   this.$refs.mapItems.innerHTML = "";
-    //   this.mapItemsArr.forEach(this.printMapItems);
-    // },
-
-    // printMapItems: function (item) {
-    //   const mapItems = this.$refs.mapItems;
-    //   mapItems.insertAdjacentHTML(
-    //     "afterbegin",
-    //     `<div class="map-item" id="${item.name}">
-    //       <img class="item-img" src="${item.img}" >
-    //       <div class="hidden">${item.img}</div>
-    //       <div>${item.name}</div>
-    //     </div>`
-    //   );
-    //   // item.addEventListener("click", this.addToInventory());
-    // },
-
+    //walls function 
     addToInventory: function () {
       //get array of items on map
       const mapItemArray = Array.from(
         document.getElementsByClassName("map-item")
       );
-
       let inventoryArray = [];
       const inventory = document.querySelector(".inventory");
 
@@ -222,25 +216,32 @@ export default {
         });
       };
     },
-  },
-  mounted: function () {
-    this.movement();
-    this.coordinates();
-    // this.displayMapItems();
-    this.addToInventory();
+    // displayMapItems: function () {
+    //   this.$refs.mapItems.innerHTML = "";
+    //   this.mapItemsArr.forEach(this.printMapItems);
+    // },
+
+    // printMapItems: function (item) {
+    //   const mapItems = this.$refs.mapItems;
+    //   mapItems.insertAdjacentHTML(
+    //     "afterbegin",
+    //     `<div class="map-item" id="${item.name}">
+    //       <img class="item-img" src="${item.img}" >
+    //       <div class="hidden">${item.img}</div>
+    //       <div>${item.name}</div>
+    //     </div>`
+    //   );
+    //   // item.addEventListener("click", this.addToInventory());
+    // },
   },
 };
 </script>
-
-
 <style scoped>
 :root {
   --pixel-size: 2px;
-  /* if you want pixel size so that we don't need to do query 
-   will need to change below height adn width */
 }
 
-.final-lock {
+#FinalLock {
   position: absolute;
   right: 0;
   bottom: 0;
@@ -251,12 +252,6 @@ export default {
   position: absolute;
   overflow: hidden;
 }
-/* .camera {
-   width: 100%; 
-   height: auto;
-   overflow: hidden;
-   position: relative;
-} */
 .map {
   /* background-image: url("../../img/maze.png"); */
   background-size: cover;
@@ -265,9 +260,10 @@ export default {
   margin: 0 auto;
   position: relative;
   border: 0.5rem solid black;
+  overflow: none;
 }
 
-.modal_one { 
+.modal-item {
   display: none;
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
@@ -278,21 +274,21 @@ export default {
   background-color: rgba(0, 20, 2, 0.9);
 }
 
-.room_one_close {
+.modal_close {
   color: #aaaaaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
 }
 
-.room_one_close:hover,
-.room_one_close:focus {
+.modal_close:hover,
+.modal_close:focus {
   color: #000;
   text-decoration: none;
   cursor: pointer;
 }
 
-.modal_one-content {
+.modal-content {
   background-color: #fefefe;
   margin: 4rem;
   padding: 3rem;
@@ -319,6 +315,4 @@ a {
   position: absolute !important;
   top: 20% !important;
 }
-
-
 </style>
