@@ -95,59 +95,42 @@ export default {
       var x = 0;
       var y = 0;
       let mapCoords = document.querySelector(".map").getBoundingClientRect();
-      let mapLeft = Math.ceil(mapCoords.left / 100) * 100;
+      //make everything "50"
+      let mapLeft = Math.ceil(mapCoords.left / 50) * 100;
       let mapRight = Math.ceil(mapCoords.right / 100) * 100;
       let mapTop = Math.ceil(mapCoords.top / 100) * 100;
       let mapBottom = Math.ceil(mapCoords.bottom / 100) * 100;
       let playerCoords = document.querySelector(".player").getBoundingClientRect();
-      let playerLeft = Math.round(playerCoords.left / 100) * 100;
-      let playerRight = Math.ceil(mapCoords.right / 100) * 100;
-      let playerTop = Math.round(playerCoords.top / 100) * 100;
-      let playerBottom = Math.ceil(mapCoords.bottom / 100) * 100;
+      let playerLeft = Math.ceil(playerCoords.left / 100) * 100;
+      let playerRight = Math.ceil(playerCoords.right / 100) * 100;
+      let playerTop = Math.ceil(playerCoords.top / 100) * 100;
+      let playerBottom = Math.ceil(playerCoords.bottom / 100) * 100;
     console.log("player left: " + playerLeft + " player top: " + playerTop);
     console.log("Map left: " + mapLeft + " Map top: " + mapTop + " Map right: " + mapRight + " Map bottom: " + mapBottom);
       document.addEventListener("keydown", function (event) {
-        if (event.keyCode == "38") {
+        if (event.keyCode == "38" && mapTop === playerTop) {
           console.log("Up key is connected");
-          }else if (mapTop === playerTop ) {
-            console.log("Touched Top Wall");
-            y -= 40;
+          console.log("Touched Top Wall");
+            y += 40;
             document.querySelector(
             ".player"
           ).style.transform = `translate(${x}px,${y}px)`;
-          }else{
-            y += 20;
+          }else if (event.keyCode == "38"){
+            y -= 20;
           document.querySelector(
             ".player"
           ).style.transform = `translate(${x}px,${y}px)`;
           }   
         });
         document.addEventListener("keydown", function (event) {
-        if (event.keyCode == "39") {
+        if (event.keyCode == "39" && mapRight === playerRight) {
           console.log("Right key is connected");
-          }else if (mapRight === playerRight ) {
-            console.log("Touched Right Wall");
-            x += 40;
-            document.querySelector(
-            ".player"
-          ).style.transform = `translate(${x}px,${y}px)`;
-          }else{
-            x -= 20;
-          document.querySelector(
-            ".player"
-          ).style.transform = `translate(${x}px,${y}px)`;
-          }   
-        });
-        document.addEventListener("keydown", function (event) {
-        if (event.keyCode == "37") {
-          console.log("Left key is connected");
-          }else if (mapLeft === playerLeft ) {
-            console.log("Touched Left Wall");
+          console.log("Touched Right Wall");
             x -= 40;
             document.querySelector(
             ".player"
           ).style.transform = `translate(${x}px,${y}px)`;
-          }else{
+          }else if (event.keyCode == "39" ) {
             x += 20;
           document.querySelector(
             ".player"
@@ -155,16 +138,30 @@ export default {
           }   
         });
         document.addEventListener("keydown", function (event) {
-        if (event.keyCode == "40") {
-          console.log("Down key is connected");
-          }else if (mapBottom === playerBottom ) {
-            console.log("Touched Bottom Wall");
-            y += 40;
+        if (event.keyCode == "37" && mapLeft === playerLeft) {
+          console.log("Left key is connected");
+          console.log("Touched Left Wall");
+            x += 40;
             document.querySelector(
             ".player"
           ).style.transform = `translate(${x}px,${y}px)`;
-          }else{
-            y -= 20;
+          }else if (event.keyCode == "37") {
+            x -= 20;
+          document.querySelector(
+            ".player"
+          ).style.transform = `translate(${x}px,${y}px)`;
+          }   
+        });
+        document.addEventListener("keydown", function (event) {
+        if (event.keyCode == "40" && mapBottom === playerBottom) {
+          console.log("Down key is connected");
+          console.log("Touched Bottom Wall");
+            y -= 40;
+            document.querySelector(
+            ".player"
+          ).style.transform = `translate(${x}px,${y}px)`;
+          }else if (event.keyCode == "40") {
+            y += 20;
           document.querySelector(
             ".player"
           ).style.transform = `translate(${x}px,${y}px)`;
@@ -232,9 +229,7 @@ export default {
           posItemArray.forEach(function (item) {
             modalArray.forEach(function (modalItem) {
               //finding the coordinates of the player
-              let playerCoords = document
-                .querySelector(".player")
-                .getBoundingClientRect();
+              let playerCoords = document.querySelector(".player").getBoundingClientRect();
               let playerLeft = Math.round(playerCoords.left / 100) * 100;
               let playerTop = Math.round(playerCoords.top / 100) * 100;
               console.log(
