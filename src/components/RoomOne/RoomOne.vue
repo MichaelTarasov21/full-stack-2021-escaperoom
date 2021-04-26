@@ -124,10 +124,6 @@ export default {
       });
     },
 
-    // const player = document.querySelector(".player");
-    // const lock = document.querySelector(".final-lock");
-    // let playerCoords = document.getElementById('player').getBoundingClientRect();
-    // console.log(playerCoords.left);
     coordinates: function () {
       console.log("coordinates function is connected");
       document.addEventListener("keydown", function (event) {
@@ -151,12 +147,6 @@ export default {
           console.log(
             "player left: " + playerLeft + " player top: " + playerTop
           );
-          /* let mapCoords = document
-            .querySelector(".map")
-            .getBoundingClientRect();
-          let mapLeft = Math.ceil(mapCoords.left / 100) * 100;
-          let mapTop = Math.ceil(mapCoords.top / 100) * 100;
-          console.log("Map left: " + mapLeft + " Map top: " + mapTop);  */
           //finding coordinates
           if (lockLeft === playerLeft && lockTop === playerTop){
             document.addEventListener('keydown', function (event){
@@ -171,16 +161,6 @@ export default {
             console.log("Still not touching")
             document.querySelector("#finalLock").style.transform = "scale(1)";
           }
-          /* if (mapLeft === playerLeft || mapTop === playerTop) {
-            document.querySelector(
-            ".player"
-          ).style.transform = `translate(${x-20}px,${y-20}px)`;
-            //x -= 20;
-            //y -= 20;
-          document.querySelector(
-            ".player"
-          ).style.transform = `translate(${x}px,${y}px)`;
-          }  */
         }
       });
     },
