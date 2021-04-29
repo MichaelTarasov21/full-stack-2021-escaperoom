@@ -3,15 +3,12 @@
     <section class="header">
       <h1 id="welcome"></h1>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed interdum
-        faucibus porta. Cras elementum porttitor odio, at consequat justo cursus
-        vel. Maecenas finibus molestie enim, ullamcorper feugiat enim sagittis
-        quis. Sed pulvinar urna eget lectus ultrices varius. Quisque consequat,
-        purus sed semper interdum, leo justo ornare velit, blandit luctus magna
-        diam in ex. Donec porta est at leo laoreet, maximus dictum sem molestie.
-        Orci varius natoque penatibus et magnis dis parturient montes, nascetur
-        ridiculus mus. Sed lacinia lectus at neque tempus, nec semper justo
-        efficitur.
+        Welcome to &lt;insert cretive name here&gt; escape room. 
+        <br>
+        <br>
+        Instructions: You can move around the screen using the arrow keys on your keyboards. 
+        <br>
+        Interact with items in the room by moving your character onto the item and pressing the "enter" key.
       </p>
       <p>Are you up for the challenge?</p>
       <button id="begin" @click="hide()">Begin</button>
