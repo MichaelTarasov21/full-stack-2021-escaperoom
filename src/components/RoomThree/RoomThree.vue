@@ -20,7 +20,7 @@
         @click="roomThreeModal = true"
         src="https://img.icons8.com/bubbles/100/000000/lock-2.png"
       />
-    <div class="map-item" id="Key">
+      <div class="map-item" id="Key">
       <img class="item-img" src="https://source.unsplash.com/random" />
       <div class="hidden">https://source.unsplash.com/random</div>
       <div>Key</div>
@@ -94,19 +94,56 @@ export default {
       console.log("movement function is connected");
       var x = 0;
       var y = 0;
-      /* let mapCoords = document.querySelector(".map").getBoundingClientRect();
-      let mapLeft = Math.ceil(mapCoords.left / 50) * 50;
-      let mapRight = Math.ceil(mapCoords.right / 50) * 50;
-      let mapTop = Math.ceil(mapCoords.top / 50) * 50;
-      let mapBottom = Math.ceil(mapCoords.bottom / 50) * 50;
-      let playerCoords = document.querySelector(".player").getBoundingClientRect();
-      let playerLeft = Math.ceil(playerCoords.left / 50) * 50;
-      let playerRight = Math.ceil(playerCoords.right / 50) * 50;
-      let playerTop = Math.ceil(playerCoords.top / 50) * 50;
-      let playerBottom = Math.ceil(playerCoords.bottom / 50) * 50; */
-    //console.log("player left: " + playerLeft + " player top: " + playerTop);
-    //console.log("Map left: " + mapLeft + " Map top: " + mapTop + " Map right: " + mapRight + " Map bottom: " + mapBottom);
+      var leftLimit = 0;
+      var rightLimit = 930;
+      var topLimit = 0;
+      var bottomLimit = 440;
       document.addEventListener("keydown", function (event) {
+        if (event.keyCode == "38") {
+          console.log("Up key is connected");
+          y -= 20;
+          if (y < topLimit) { y = topLimit }
+          document.querySelector(
+            ".player"
+          ).style.transform = `translate(${x}px,${y}px)`;
+        } else if (event.keyCode == "39") {
+          console.log("Right key is connected");
+          x += 20;
+          if (x > rightLimit) { x = rightLimit }
+          document.querySelector(
+            ".player"
+          ).style.transform = `translate(${x}px,${y}px)`;
+        } else if (event.keyCode == "37") {
+          console.log("Left key is connected");
+          x -= 20;
+          if (x < leftLimit) { x = leftLimit }
+          document.querySelector(
+            ".player"
+          ).style.transform = `translate(${x}px,${y}px)`;
+        } else if (event.keyCode == "40") {
+          console.log("Down key is connected");
+          y += 20;
+          if (y > bottomLimit) { y = bottomLimit }
+          document.querySelector(
+            ".player"
+          ).style.transform = `translate(${x}px,${y}px)`;
+        }
+        console.log(x, y)
+      });
+      
+      /* let mapCoords = document.querySelector(".map").getBoundingClientRect();
+      let mapLeft = Math.ceil(mapCoords.left / 10) * 10;
+      let mapRight = Math.ceil(mapCoords.right / 10) * 10;
+      let mapTop = Math.ceil(mapCoords.top / 10) * 10;
+      let mapBottom = Math.ceil(mapCoords.bottom / 10) * 10;
+      let playerCoords = document.querySelector(".player").getBoundingClientRect();
+      let playerLeft = Math.ceil(playerCoords.left / 10) * 10;
+      let playerRight = Math.ceil(playerCoords.right / 10) * 10;
+      let playerTop = Math.ceil(playerCoords.top / 10) * 10;
+      let playerBottom = Math.ceil(playerCoords.bottom / 10) * 10; */
+    //console.log("player left: " + playerLeft + " player top: " + playerTop + " player right: " + playerRight + " player bottom: " + playerBottom);
+    //console.log("Map left: " + mapLeft + " Map top: " + mapTop + " Map right: " + mapRight + " Map bottom: " + mapBottom);
+      /* document.addEventListener("keydown", function (event) {
       let playerCoords = document.querySelector(".player").getBoundingClientRect();
       let playerLeft = Math.ceil(playerCoords.left / 10) * 10;
       let playerTop = Math.ceil(playerCoords.top / 10) * 10;
@@ -170,16 +207,20 @@ export default {
             ".player"
           ).style.transform = `translate(${x}px,${y}px)`;
           }   
-        });
+        }); 
         document.addEventListener("keydown", function (event) {
         let mapCoords = document.querySelector(".map").getBoundingClientRect();
-        let mapBottom = Math.ceil(mapCoords.bottom / 10) * 10;
-        let playerCoords = document.querySelector(".player").getBoundingClientRect();
-        let playerBottom = Math.ceil(playerCoords.bottom / 10) * 10;
-        let playerLeft = Math.ceil(playerCoords.left / 10) * 10;
-        let playerTop = Math.ceil(playerCoords.top / 10) * 10;
-        console.log("player left: " + playerLeft + " player top: " + playerTop + " player bottom: " + playerBottom);
-        console.log(" Map bottom: " + mapBottom);
+      let mapLeft = Math.ceil(mapCoords.left / 10) * 10;
+      let mapRight = Math.ceil(mapCoords.right / 10) * 10;
+      let mapTop = Math.ceil(mapCoords.top / 10) * 10;
+      let mapBottom = Math.ceil(mapCoords.bottom / 10) * 10;
+      let playerCoords = document.querySelector(".player").getBoundingClientRect();
+      let playerLeft = Math.ceil(playerCoords.left / 10) * 10;
+      let playerRight = Math.ceil(playerCoords.right / 10) * 10;
+      let playerTop = Math.ceil(playerCoords.top / 10) * 10;
+      let playerBottom = Math.ceil(playerCoords.bottom / 10) * 10;
+        console.log("player left: " + playerLeft + " player top: " + playerTop + " player right: " + playerRight + " player bottom: " + playerBottom);
+        console.log("Map left: " + mapLeft + " Map top: " + mapTop + " Map right: " + mapRight + " Map bottom: " + mapBottom);
         if (event.keyCode == "40" && mapBottom === playerBottom) {
           console.log("Down key is connected");
           console.log("Touched Bottom Wall");
@@ -193,7 +234,7 @@ export default {
             ".player"
           ).style.transform = `translate(${x}px,${y}px)`;
           }   
-        });
+        });*/
        /* else if (event.keyCode == "39") {
           console.log("Right key is connected");
           if (mapRight === playerRight) {
@@ -236,7 +277,7 @@ export default {
         }
       }); */
     },
-    coordinates: function () {
+    /* coordinates: function () {
       console.log("coordinates function is connected");
       document.addEventListener("keydown", function (event) {
         if (
@@ -285,13 +326,29 @@ export default {
           });  
         }
       });
-    },
+    }, */
           /* var location = movement();
           if(board.isEmpty(location)) {
           player.unshift(location);
           } */
-  /* walls: function() {
+    /*walls: function() {
     console.log("walls function is connected");
+      let mapCoords = document.querySelector(".map").getBoundingClientRect();
+      let mapLeft = Math.ceil(mapCoords.left / 10) * 10;
+      let mapRight = Math.ceil(mapCoords.right / 10) * 10;
+      let mapTop = Math.ceil(mapCoords.top / 10) * 10;
+      let mapBottom = Math.ceil(mapCoords.bottom / 10) * 10;
+      console.log("Map left: " + mapLeft + " Map top: " + mapTop + " Map right: " + mapRight + " Map bottom: " + mapBottom);
+      let playerCoords = document.querySelector(".player").getBoundingClientRect();
+      let playerLeft = Math.ceil(playerCoords.left / 10) * 10;
+      let playerRight = Math.ceil(playerCoords.right / 10) * 10;
+      let playerTop = Math.ceil(playerCoords.top / 10) * 10;
+      let playerBottom = Math.ceil(playerCoords.bottom / 10) * 10; 
+      console.log("player left: " + playerLeft + " player top: " + playerTop + " player right: " + playerRight + " player bottom: " + playerBottom);
+      if (playerLeft < mapLeft) { this.playerLeft = mapLeft }
+      if (playerRight > mapRight) { playerRight = mapRight }
+      if (playerTop < mapTop) { playerTop = mapTop }
+      if (playerBottom > mapBottom) { playerBottom = mapBottom }
   let mapCoords = document.querySelector(".map").getBoundingClientRect();
   let mapLeft = Math.ceil(mapCoords.left / 110) * 110;
   let mapRight = Math.ceil(mapCoords.right / 110) * 110;
@@ -341,8 +398,8 @@ export default {
             //y -= 20;
           document.querySelector(
             ".player"
-          ).style.transform = `translate(${x}px,${y}px)`;
-          }  */
+          ).style.transform = `translate(${x}px,${y}px)`; 
+          } */ 
   addToInventory: function () {
       //get array of items on map
       const mapItemArray = Array.from(
