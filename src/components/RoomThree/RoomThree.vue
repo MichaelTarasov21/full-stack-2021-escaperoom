@@ -1,31 +1,50 @@
 <template>
   <div class="roomThree">
     <h1>Room Three Canvas Area</h1>
-      <div class="modal_three" id="final-ans-modal"> 
-        <div class="modal_three-content">
-          <span class="room_three_close" id="final-ans-close" @click="closeModal()" >&times;</span>
-          <p>Type Room One Answer</p>
+      <div class="modal-item"> 
+        <div class="modal-content">
+          <span class="modal_close" @click="closeModal()" >&times;</span>
+          <p>Computer Puzzle</p>
+        </div>
+      </div>
+      <div class="modal-item"> 
+        <div class="modal-content">
+          <span class="modal_close" @click="closeModal()" >&times;</span>
+          <p>Wire</p>
+        </div>
+      </div>
+      <div class="modal-item"> 
+        <div class="modal-content">
+          <span class="modal_close" @click="closeModal()" >&times;</span>
+          <p>Key</p>
+        </div>
+      </div>
+      <div class="modal-item" id="final-ans-modal"> 
+        <div class="modal-content">
+          <span class="modal_close" @click="closeModal()" >&times;</span>
+          <p>Room Three Final Puzzle</p>
           <div id="answerCheck"></div>
           <input type="text" id="roomThreeAns" placeholder="Your Answer" />
           <input type="submit" value="Submit" @click="verify()"/>
         </div>
       </div>
-     <div class="map">
-      <div class="player">
-        <img id="player" src="../../img/redsquare.png" alt="Red Square" />
+      <div class="map">
+        <div class="player">
+          <img id="player" src="../../img/redsquare.png" alt="Red Square">
+        </div>
+        <img class="pos-item" id="Computer" src="https://img.icons8.com/officel/75/000000/computer.png"/>
+        <div class="map-item" id="Wire">
+          <img class="item-img pos-item" src="https://img.icons8.com/dusk/75/000000/audio-cable.png" />
+          <div class="hidden">https://img.icons8.com/dusk/75/000000/audio-cable.png</div>
+          <div>Wire</div>
+        </div>
+        <div class="map-item" id="Key">
+          <img class="item-img pos-item" src="https://source.unsplash.com/random" />
+          <div class="hidden">https://source.unsplash.com/random</div>
+          <div>Key</div>
+        </div>
+        <img class="pos-item" id="FinalLock" src="https://img.icons8.com/bubbles/75/000000/lock-2.png"/>
       </div>
-      <img
-        id="finalLock"
-        class="final-lock"
-        @click="roomThreeModal = true"
-        src="https://img.icons8.com/bubbles/100/000000/lock-2.png"
-      />
-      <div class="map-item" id="Key">
-      <img class="item-img" src="https://source.unsplash.com/random" />
-      <div class="hidden">https://source.unsplash.com/random</div>
-      <div>Key</div>
-    </div>
-    </div>
     <!-- <div ref="mapItems"></div> -->
     <div class="inventory" ref="inventory"></div>
   </div>
@@ -35,21 +54,6 @@
 export default {
   name: 'RoomThree',
   emits: ['roomThreeFin'],
-  data() {
-    return {
-      roomThreeModal: false,
-      mapItemsArr: [
-        {
-          name: "Key",
-          img: "https://source.unsplash.com/random",
-        },
-        {
-          name: "Chest",
-          img: "https://source.unsplash.com/random",
-        },
-      ],
-    };
-  },
   mounted: function(){
     this.movement();  
     this.coordinates();
@@ -68,15 +72,15 @@ export default {
     },
     verify: function (){
         console.log("connected");
-        var answer = document.getElementById("roomOneAns").value.toUpperCase();
+        var answer = document.getElementById("roomThreeAns").value.toUpperCase();
         console.log(answer);
-        if (answer == `ROOMONE`) {
+        if (answer == `ROOMTHREE`) {
           document.getElementById("answerCheck").innerHTML = "";
           document.getElementById("answerCheck").style.color = 'green';
           document
             .getElementById("answerCheck")
             .insertAdjacentHTML("beforeend", `${answer} is Correct :D!`);
-          this.$emit('roomOneFin');
+          this.$emit('roomThreeFin');
         } else {
           document.getElementById("answerCheck").innerHTML = "";
           document.getElementById("answerCheck").style.color =
@@ -86,7 +90,6 @@ export default {
             .insertAdjacentHTML("beforeend", `${answer} is incorrect, try again :(`);
         }
     },
-
     movement: function () {
       console.log("movement function is connected");
       var x = 0;
@@ -129,154 +132,8 @@ export default {
         }
         console.log(x, y)
       });
-      
-      /* let mapCoords = document.querySelector(".map").getBoundingClientRect();
-      let mapLeft = Math.ceil(mapCoords.left / 10) * 10;
-      let mapRight = Math.ceil(mapCoords.right / 10) * 10;
-      let mapTop = Math.ceil(mapCoords.top / 10) * 10;
-      let mapBottom = Math.ceil(mapCoords.bottom / 10) * 10;
-      let playerCoords = document.querySelector(".player").getBoundingClientRect();
-      let playerLeft = Math.ceil(playerCoords.left / 10) * 10;
-      let playerRight = Math.ceil(playerCoords.right / 10) * 10;
-      let playerTop = Math.ceil(playerCoords.top / 10) * 10;
-      let playerBottom = Math.ceil(playerCoords.bottom / 10) * 10; */
-    //console.log("player left: " + playerLeft + " player top: " + playerTop + " player right: " + playerRight + " player bottom: " + playerBottom);
-    //console.log("Map left: " + mapLeft + " Map top: " + mapTop + " Map right: " + mapRight + " Map bottom: " + mapBottom);
-      /* document.addEventListener("keydown", function (event) {
-      let playerCoords = document.querySelector(".player").getBoundingClientRect();
-      let playerLeft = Math.ceil(playerCoords.left / 10) * 10;
-      let playerTop = Math.ceil(playerCoords.top / 10) * 10;
-      console.log("player left: " + playerLeft + " player top: " + playerTop);
-      let mapCoords = document.querySelector(".map").getBoundingClientRect();
-      let mapTop = Math.ceil(mapCoords.top / 10) * 10;
-      console.log(" Map top: " + mapTop);
-        if (event.keyCode == "38" && mapTop === playerTop) {
-          console.log("Up key is connected");
-          console.log("Touched Top Wall");
-            y += 40;
-            document.querySelector(".player").style.transform = `translate(${x}px,${y}px)`;
-          }else if (event.keyCode == "38"){
-            y -= 10;
-          document.querySelector(
-            ".player"
-          ).style.transform = `translate(${x}px,${y}px)`;
-          }   
-        });
-        document.addEventListener("keydown", function (event) {
-        let playerCoords = document.querySelector(".player").getBoundingClientRect();
-        let playerRight = Math.ceil(playerCoords.right / 10) * 10;
-        let playerLeft = Math.ceil(playerCoords.left / 10) * 10;
-        let playerTop = Math.ceil(playerCoords.top / 10) * 10;
-        console.log("player left: " + playerLeft + " player top: " + playerTop + " player right: " + playerRight);
-        let mapCoords = document.querySelector(".map").getBoundingClientRect();
-        let mapRight = Math.ceil(mapCoords.right / 10) * 10;
-        console.log(" Map right: " + mapRight);
-        if (event.keyCode == "39" && mapRight === playerRight) {
-          console.log("Right key is connected");
-          console.log("Touched Right Wall");
-            x -= 40;
-            document.querySelector(
-            ".player"
-          ).style.transform = `translate(${x}px,${y}px)`;
-          }else if (event.keyCode == "39" ) {
-            x += 10;
-          document.querySelector(
-            ".player"
-          ).style.transform = `translate(${x}px,${y}px)`;
-          }   
-        });
-        document.addEventListener("keydown", function (event) {
-        let mapCoords = document.querySelector(".map").getBoundingClientRect();
-        let mapLeft = Math.ceil(mapCoords.left / 10) * 10;
-        let playerCoords = document.querySelector(".player").getBoundingClientRect();
-        let playerLeft = Math.ceil(playerCoords.left / 10) * 10;
-        let playerTop = Math.ceil(playerCoords.top / 10) * 10;
-        console.log("player left: " + playerLeft + " player top: " + playerTop);
-        console.log("Map left: " + mapLeft);
-        if (event.keyCode == "37" && mapLeft === playerLeft) {
-          console.log("Left key is connected");
-          console.log("Touched Left Wall");
-            x += 40;
-            document.querySelector(
-            ".player"
-          ).style.transform = `translate(${x}px,${y}px)`;
-          }else if (event.keyCode == "37") {
-            x -= 10;
-          document.querySelector(
-            ".player"
-          ).style.transform = `translate(${x}px,${y}px)`;
-          }   
-        }); 
-        document.addEventListener("keydown", function (event) {
-        let mapCoords = document.querySelector(".map").getBoundingClientRect();
-      let mapLeft = Math.ceil(mapCoords.left / 10) * 10;
-      let mapRight = Math.ceil(mapCoords.right / 10) * 10;
-      let mapTop = Math.ceil(mapCoords.top / 10) * 10;
-      let mapBottom = Math.ceil(mapCoords.bottom / 10) * 10;
-      let playerCoords = document.querySelector(".player").getBoundingClientRect();
-      let playerLeft = Math.ceil(playerCoords.left / 10) * 10;
-      let playerRight = Math.ceil(playerCoords.right / 10) * 10;
-      let playerTop = Math.ceil(playerCoords.top / 10) * 10;
-      let playerBottom = Math.ceil(playerCoords.bottom / 10) * 10;
-        console.log("player left: " + playerLeft + " player top: " + playerTop + " player right: " + playerRight + " player bottom: " + playerBottom);
-        console.log("Map left: " + mapLeft + " Map top: " + mapTop + " Map right: " + mapRight + " Map bottom: " + mapBottom);
-        if (event.keyCode == "40" && mapBottom === playerBottom) {
-          console.log("Down key is connected");
-          console.log("Touched Bottom Wall");
-            y -= 40;
-            document.querySelector(
-            ".player"
-          ).style.transform = `translate(${x}px,${y}px)`;
-          }else if (event.keyCode == "40") {
-            y += 10;
-          document.querySelector(
-            ".player"
-          ).style.transform = `translate(${x}px,${y}px)`;
-          }   
-        });*/
-       /* else if (event.keyCode == "39") {
-          console.log("Right key is connected");
-          if (mapRight === playerRight) {
-            console.log("Touched Right Wall");
-            x -= 0;
-            document.querySelector(
-            ".player"
-          ).style.transform = `translate(${x}px,${y}px)`;}
-          
-          x += 20;
-          document.querySelector(
-            ".player"
-          ).style.transform = `translate(${x}px,${y}px)`;
-        } else if (event.keyCode == "37") {
-          console.log("Left key is connected");
-          if (mapLeft === playerLeft) {
-            console.log("Touched Left Wall");
-            x+= 0;
-            document.querySelector(
-            ".player"
-          ).style.transform = `translate(${x}px,${y}px)`;}
-          
-            x -= 20;
-            document.querySelector(
-            ".player"
-          ).style.transform = `translate(${x}px,${y}px)`;
-        } else if (event.keyCode == "40") {
-          console.log("Down key is connected");
-          if (mapBottom === playerBottom) {
-            console.log("Touched Bottom Wall");
-            y -= 0;
-            document.querySelector(
-            ".player"
-          ).style.transform = `translate(${x}px,${y}px)`;}
-
-            y += 20;
-            document.querySelector(
-            ".player"
-          ).style.transform = `translate(${x}px,${y}px)`;
-        }
-      }); */
     },
-    /* coordinates: function () {
+    coordinates: function () {
       console.log("coordinates function is connected");
       document.addEventListener("keydown", function (event) {
         if (
@@ -293,10 +150,11 @@ export default {
             document.getElementsByClassName("modal-item")
           );
           //finding position for each pos-item 
-          posItemArray.forEach(function (item) {
-            modalArray.forEach(function (modalItem) {
+          posItemArray.forEach(function (item, index) {
               //finding the coordinates of the player
-              let playerCoords = document.querySelector(".player").getBoundingClientRect();
+              let playerCoords = document
+                .querySelector(".player")
+                .getBoundingClientRect();
               let playerLeft = Math.round(playerCoords.left / 100) * 100;
               let playerTop = Math.round(playerCoords.top / 100) * 100;
               console.log(
@@ -312,6 +170,7 @@ export default {
               if (objectLeft === playerLeft && objectTop === playerTop) {
                 document.addEventListener('keydown', function (event){
                   if (event.keyCode == "13"){  
+                    const modalItem = modalArray[index];
                     modalItem.style.display = "block";
                   }
                 })
@@ -321,85 +180,11 @@ export default {
                 console.log("Still not touching");
                 item.style.transform = "scale(1)";
               }
-            });
           });  
         }
       });
-    }, */
-          /* var location = movement();
-          if(board.isEmpty(location)) {
-          player.unshift(location);
-          } */
-    /*walls: function() {
-    console.log("walls function is connected");
-      let mapCoords = document.querySelector(".map").getBoundingClientRect();
-      let mapLeft = Math.ceil(mapCoords.left / 10) * 10;
-      let mapRight = Math.ceil(mapCoords.right / 10) * 10;
-      let mapTop = Math.ceil(mapCoords.top / 10) * 10;
-      let mapBottom = Math.ceil(mapCoords.bottom / 10) * 10;
-      console.log("Map left: " + mapLeft + " Map top: " + mapTop + " Map right: " + mapRight + " Map bottom: " + mapBottom);
-      let playerCoords = document.querySelector(".player").getBoundingClientRect();
-      let playerLeft = Math.ceil(playerCoords.left / 10) * 10;
-      let playerRight = Math.ceil(playerCoords.right / 10) * 10;
-      let playerTop = Math.ceil(playerCoords.top / 10) * 10;
-      let playerBottom = Math.ceil(playerCoords.bottom / 10) * 10; 
-      console.log("player left: " + playerLeft + " player top: " + playerTop + " player right: " + playerRight + " player bottom: " + playerBottom);
-      if (playerLeft < mapLeft) { this.playerLeft = mapLeft }
-      if (playerRight > mapRight) { playerRight = mapRight }
-      if (playerTop < mapTop) { playerTop = mapTop }
-      if (playerBottom > mapBottom) { playerBottom = mapBottom }
-  let mapCoords = document.querySelector(".map").getBoundingClientRect();
-  let mapLeft = Math.ceil(mapCoords.left / 110) * 110;
-  let mapRight = Math.ceil(mapCoords.right / 110) * 110;
-  let mapTop = Math.ceil(mapCoords.top / 110) * 110;
-  let mapBottom = Math.ceil(mapCoords.bottom / 110) * 110;
-    console.log("Map left: " + mapLeft + " Map top: " + mapTop);
-
-  let playerCoords = document.querySelector(".player").getBoundingClientRect();
-  let playerLeft = Math.round(playerCoords.left / 100) * 100;
-  let playerRight = Math.ceil(mapCoords.right / 100) * 100;
-  let playerTop = Math.round(playerCoords.top / 100) * 100;
-  let playerBottom = Math.ceil(mapCoords.bottom / 100) * 100;
-    console.log("player left: " + playerLeft + " player top: " + playerTop); 
-
-    if (mapLeft === playerLeft) {
-    document.addEventListener('keydown', function (event) {
-    if (event.keyCode == "37"){  
-      this.movement = ;
-      console.log("Touched Left Wall");
-      }})
-      }else if (mapRight === playerRight) {
-    document.addEventListener('keydown', function (event)
-    {if (event.keyCode == "38"){  
-      this.movement = false;
-      console.log("Touched Right Wall");
-      }})
-      }else if (mapTop === playerTop) {
-    document.addEventListener('keydown', function (event)
-    {if (event.keyCode == "39"){  
-      this.movement = false;
-      console.log("Touched Top Wall");
-      }})
-      }else if (mapBottom === playerBottom) {
-    document.addEventListener('keydown', function (event)
-    {if (event.keyCode == "40"){  
-      this.movement = false;
-      console.log("Touched Bottom Wall");
-      }})
-    }else{
-      console.log("Touched No Walls");
-    }
-  }, */
-          /*  document.querySelector(
-            ".player"
-          ).style.transform = `translate(${x-20}px,${y-20}px)`;
-            //x -= 20;
-            //y -= 20;
-          document.querySelector(
-            ".player"
-          ).style.transform = `translate(${x}px,${y}px)`; 
-          } */ 
-  addToInventory: function () {
+    }, 
+    addToInventory: function () {
       //get array of items on map
       const mapItemArray = Array.from(
         document.getElementsByClassName("map-item")
@@ -462,11 +247,9 @@ export default {
 <style scoped>
 :root {
   --pixel-size: 2px;
-  /* if you want pixel size so that we don't need to do query 
-   will need to change below height adn width */
 }
 
-.final-lock {
+#FinalLock {
   position: absolute;
   right: 0;
   bottom: 0;
@@ -477,12 +260,6 @@ export default {
   position: absolute;
   overflow: hidden;
 }
-/* .camera {
-   width: 100%; 
-   height: auto;
-   overflow: hidden;
-   position: relative;
-} */
 .map {
   /* background-image: url("../../img/maze.png"); */
   background-size: cover;
@@ -490,10 +267,11 @@ export default {
   width: 70%;
   margin: 0 auto;
   position: relative;
-  border: 0.5rem solid red;
+  border: 0.5rem solid black;
+  overflow: none;
 }
 
-.modal_three { 
+.modal-item {
   display: none;
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
@@ -504,21 +282,21 @@ export default {
   background-color: rgba(0, 20, 2, 0.9);
 }
 
-.room_three_close {
+.modal_close {
   color: #aaaaaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
 }
 
-.room_three_close:hover,
-.room_three_close:focus {
+.modal_close:hover,
+.modal_close:focus {
   color: #000;
   text-decoration: none;
   cursor: pointer;
 }
 
-.modal_three-content {
+.modal-content {
   background-color: #fefefe;
   margin: 4rem;
   padding: 3rem;
