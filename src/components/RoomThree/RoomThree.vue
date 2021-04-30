@@ -88,16 +88,15 @@ export default {
     },
 
     movement: function () {
-      //do this for all the directions
-      // make it effiecent by combining
-      //and looping
       console.log("movement function is connected");
       var x = 0;
       var y = 0;
       var leftLimit = 0;
-      var rightLimit = 930;
+      var rightLimit = document.querySelector(".map").offsetWidth;
+      console.log("width:" + rightLimit);
       var topLimit = 0;
-      var bottomLimit = 440;
+      var bottomLimit = document.querySelector(".map").offsetHeight;
+      console.log("height:" + bottomLimit);
       document.addEventListener("keydown", function (event) {
         if (event.keyCode == "38") {
           console.log("Up key is connected");
