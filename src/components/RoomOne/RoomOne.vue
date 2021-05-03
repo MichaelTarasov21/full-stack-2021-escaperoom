@@ -32,10 +32,10 @@
         <div class="player">
           <img id="player" src="../../img/redsquare.png" alt="Red Square">
         </div>
-        <img class="pos-item" id="Computer" src="https://img.icons8.com/officel/100/000000/computer.png"/>
+        <img class="pos-item" id="Computer" src="https://img.icons8.com/officel/75/000000/computer.png"/>
         <div class="map-item" id="Wire">
-          <img class="item-img pos-item" src="https://img.icons8.com/dusk/100/000000/audio-cable.png" />
-          <div class="hidden">https://img.icons8.com/dusk/100/000000/audio-cable.png</div>
+          <img class="item-img pos-item" src="https://img.icons8.com/dusk/75/000000/audio-cable.png" />
+          <div class="hidden">https://img.icons8.com/dusk/75/000000/audio-cable.png</div>
           <div>Wire</div>
         </div>
         <div class="map-item" id="Key">
@@ -43,7 +43,7 @@
           <div class="hidden">https://source.unsplash.com/random</div>
           <div>Key</div>
         </div>
-        <img class="pos-item" id="FinalLock" src="https://img.icons8.com/bubbles/100/000000/lock-2.png"/>
+        <img class="pos-item" id="FinalLock" src="https://img.icons8.com/bubbles/75/000000/lock-2.png"/>
       </div>
     <!-- <div ref="mapItems"></div> -->
     <div class="inventory" ref="inventory"></div>
@@ -91,38 +91,46 @@ export default {
         }
     },
     movement: function () {
-      //do this for all the directions
-      // make it effiecent by combining
-      //and looping
       console.log("movement function is connected");
       var x = 0;
       var y = 0;
+      var leftLimit = 0;
+      var rightLimit = document.querySelector(".map").getBoundingClientRect().width;
+      console.log("width:" + rightLimit);
+      var topLimit = 0;
+      var bottomLimit = document.querySelector(".map").offsetHeight;
+      console.log("height:" + bottomLimit);
       document.addEventListener("keydown", function (event) {
         if (event.keyCode == "38") {
           console.log("Up key is connected");
           y -= 20;
+          if (y < topLimit) { y = topLimit }
           document.querySelector(
             ".player"
           ).style.transform = `translate(${x}px,${y}px)`;
         } else if (event.keyCode == "39") {
           console.log("Right key is connected");
           x += 20;
+          if (x > rightLimit) { x = rightLimit }
           document.querySelector(
             ".player"
           ).style.transform = `translate(${x}px,${y}px)`;
         } else if (event.keyCode == "37") {
           console.log("Left key is connected");
           x -= 20;
+          if (x < leftLimit) { x = leftLimit }
           document.querySelector(
             ".player"
           ).style.transform = `translate(${x}px,${y}px)`;
         } else if (event.keyCode == "40") {
           console.log("Down key is connected");
           y += 20;
+          if (y > bottomLimit) { y = bottomLimit }
           document.querySelector(
             ".player"
           ).style.transform = `translate(${x}px,${y}px)`;
         }
+        console.log(x, y)
       });
     },
     coordinates: function () {
@@ -142,8 +150,7 @@ export default {
             document.getElementsByClassName("modal-item")
           );
           //finding position for each pos-item 
-          posItemArray.forEach(function (item) {
-            modalArray.forEach(function (modalItem) {
+          posItemArray.forEach(function (item, index) {
               //finding the coordinates of the player
               let playerCoords = document
                 .querySelector(".player")
@@ -163,6 +170,7 @@ export default {
               if (objectLeft === playerLeft && objectTop === playerTop) {
                 document.addEventListener('keydown', function (event){
                   if (event.keyCode == "13"){  
+                    const modalItem = modalArray[index];
                     modalItem.style.display = "block";
                   }
                 })
@@ -172,12 +180,10 @@ export default {
                 console.log("Still not touching");
                 item.style.transform = "scale(1)";
               }
-            });
           });  
         }
       });
-    },
-    //walls function 
+    }, 
     addToInventory: function () {
       //get array of items on map
       const mapItemArray = Array.from(
