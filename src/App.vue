@@ -1,15 +1,15 @@
 <template lang="en">
   <div id="app">
-    <Fail v-if="lost" @OpenSettings="Menuopened = true" />
+    <Fail v-if="lost" @Restart="Restart" @OpenSettings="Menuopened = true" />
     <Login />
-    <Start @Gamestarted="StartGame" />
+	<Timer v-if="start" @Gameover="Gameover" v-bind:RoomOneDone="roomTwoLoad" v-bind:RoomTwoDone="roomThreeLoad" v-bind:RoomThreeDone="roomFourLoad"  v-bind:RoomFourDone="success" />
+    <Start v-else @Gamestarted="StartGame" />
     <Settings v-bind:showMenu="Menuopened" @closemenu="Menuopened = false" @openmenu="Menuopened = true"/>
     <RoomOne v-if="roomOneLoad" @roomOneFin="roomOneFin"/>
     <RoomTwo v-if="roomTwoLoad" @roomTwoFin="roomTwoFin"/>
     <RoomThree v-if="roomThreeLoad" @roomThreeFin="roomThreeFin"/>
     <RoomFour v-if="roomFourLoad" @roomFourFin="roomFourFin"/>
-    <Success v-if="success" @OpenSettings="Menuopened = true"/>
-    <Timer v-if="start" @Gameover="Gameover" v-bind:RoomOneDone="roomTwoLoad" v-bind:RoomTwoDone="roomThreeLoad" v-bind:RoomThreeDone="roomFourLoad"  v-bind:RoomFourDone="success" />
+    <Success v-if="success" @Restart="Restart" @OpenSettings="Menuopened = true"/>
     <inventory/>
   </div>
 </template>
@@ -51,7 +51,7 @@
 				lost: false,
 				start: false,
 				Menuopened: false,
-				roomOneLoad: true,
+				roomOneLoad: false,
 				roomTwoLoad: false,
 				roomThreeLoad: false,
 				roomFourLoad: false,
@@ -63,6 +63,7 @@
 			},
 			StartGame: function() {
 				this.start = true;
+				this.roomOneLoad = true;
 			},
 			roomOneFin: function() {
 				console.log("Room One is Finished");
@@ -83,6 +84,11 @@
 				console.log("Room Four is Finished");
 				this.success = true;
 				this.roomFourLoad = false;
+			},
+			Restart: function() {
+				this.lost = false;
+				this.success = false;
+				this.start = false;
 			},
 		},
 	};
