@@ -4,7 +4,8 @@
     <div class="modal-item"> 
         <div class="modal-content">
           <span class="modal_close" @click="closeModal()" >&times;</span>
-          <p>Computer Puzzle</p>
+          <img src="@/assets/Images/Number_Clue.jpg" v-if="Minigamewon" />
+          <WallBreaker v-else @Minigamewon="Minigamewon = true"/>
         </div>
       </div>
       <div class="modal-item"> 
@@ -30,9 +31,9 @@
       </div>
       <div class="map">
         <div class="player">
-          <img id="player" src="../../img/redsquare.png" alt="Red Square">
+          <img id="player" src="@/img/redsquare.png" alt="Red Square">
         </div>
-        <img class="pos-item" id="Computer" src="https://img.icons8.com/officel/75/000000/computer.png"/>
+        <img class="pos-item" id="Arcade" width=75px height="80px" src="@/assets/Images/Arcade_Machine.jpg"/>
         <div class="map-item" id="Wire">
           <img class="item-img pos-item" src="https://img.icons8.com/dusk/75/000000/audio-cable.png" />
           <div class="hidden">https://img.icons8.com/dusk/75/000000/audio-cable.png</div>
@@ -51,9 +52,18 @@
 </template>
 
 <script>
+import WallBreaker from "./WallBreaker.vue"
 export default {
   name: 'RoomFour',
   emits: ['roomFourFin'],
+  components:{
+    WallBreaker
+  },
+  data(){
+    return{
+    Minigamewon: false
+    }
+  },
   methods:{
     closeModal: function(){
       const modalCloseArray = Array.from(
