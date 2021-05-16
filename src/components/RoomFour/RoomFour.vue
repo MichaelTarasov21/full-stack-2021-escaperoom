@@ -64,6 +64,12 @@ export default {
     Minigamewon: false
     }
   },
+  mounted: function () {
+    this.movement();
+    this.coordinates();
+    // this.displayMapItems();
+    this.addToInventory();
+  },
   methods:{
     closeModal: function(){
       const modalCloseArray = Array.from(
@@ -74,9 +80,7 @@ export default {
       });
     },
     verify: function (){
-        console.log("connected");
         var answer = document.getElementById("roomFourAns").value.toUpperCase();
-        console.log(answer);
         if (answer == `ROOMFOUR`) {
           document.getElementById("answerCheck").innerHTML = "";
           document.getElementById("answerCheck").style.color = 'green';
@@ -94,50 +98,41 @@ export default {
         }
     },
     movement: function () {
-      console.log("movement function is connected");
       var x = 0;
       var y = 0;
       var leftLimit = 0;
       var rightLimit = document.querySelector(".map").getBoundingClientRect().width;
-      console.log("width:" + rightLimit);
       var topLimit = 0;
       var bottomLimit = document.querySelector(".map").offsetHeight;
-      console.log("height:" + bottomLimit);
       document.addEventListener("keydown", function (event) {
         if (event.keyCode == "38") {
-          console.log("Up key is connected");
           y -= 20;
           if (y < topLimit) { y = topLimit }
           document.querySelector(
             ".player"
           ).style.transform = `translate(${x}px,${y}px)`;
         } else if (event.keyCode == "39") {
-          console.log("Right key is connected");
           x += 20;
           if (x > rightLimit) { x = rightLimit }
           document.querySelector(
             ".player"
           ).style.transform = `translate(${x}px,${y}px)`;
         } else if (event.keyCode == "37") {
-          console.log("Left key is connected");
           x -= 20;
           if (x < leftLimit) { x = leftLimit }
           document.querySelector(
             ".player"
           ).style.transform = `translate(${x}px,${y}px)`;
         } else if (event.keyCode == "40") {
-          console.log("Down key is connected");
           y += 20;
           if (y > bottomLimit) { y = bottomLimit }
           document.querySelector(
             ".player"
           ).style.transform = `translate(${x}px,${y}px)`;
         }
-        console.log(x, y)
       });
     },
     coordinates: function () {
-      console.log("coordinates function is connected");
       document.addEventListener("keydown", function (event) {
         if (
           event.keyCode == "37" ||
@@ -160,14 +155,10 @@ export default {
                 .getBoundingClientRect();
               let playerLeft = Math.round(playerCoords.left / 100) * 100;
               let playerTop = Math.round(playerCoords.top / 100) * 100;
-              console.log(
-                "player left: " + playerLeft + " player top: " + playerTop
-              );
               //finding the coordinates of all objects
               let objectCoords = item.getBoundingClientRect();
               let objectLeft = Math.round(objectCoords.left / 100) * 100;
               let objectTop = Math.round(objectCoords.top / 100) * 100;
-              console.log("left: " + objectLeft + " top: " + objectTop);
               //if it is an inventory object - and enter is clicked = it gets added to inventory
               //if it is a modal object - and enter is clicked = a popup opens 
               if (objectLeft === playerLeft && objectTop === playerTop) {
@@ -177,10 +168,8 @@ export default {
                     modalItem.style.display = "block";
                   }
                 })
-                console.log("Player and Object are touching!!!");
                 item.style.transform = "scale(1.2)";
               } else {
-                console.log("Still not touching");
                 item.style.transform = "scale(1)";
               }
           });  
@@ -204,7 +193,6 @@ export default {
             img: item.children[1].textContent,
           };
           inventoryArray.push(addedItem);
-          console.log(inventoryArray);
           inventory.innerHTML = "";
           display();
 
