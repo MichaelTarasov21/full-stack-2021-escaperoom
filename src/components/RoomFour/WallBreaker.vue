@@ -2,6 +2,11 @@
 		<div id="screen">
 			<div id="enemies">
 				<img class="enemy" width="71.6px" height="54px" src="@/assets/Images/Blue_Space_Invader.gif" />
+				<img class="enemy" width="71.6px" height="54px" src="@/assets/Images/Red_Space_Invader.gif" />
+				<img class="enemy" width="71.6px" height="54px" src="@/assets/Images/Green_Space_Invader.gif" />
+				<img class="enemy" width="71.6px" height="54px" src="@/assets/Images/Purple_Space_Invader.gif" />
+				<img class="enemy" width="71.6px" height="54px" src="@/assets/Images/Yellow_Space_Invader.gif" />
+				<img class="enemy" width="71.6px" height="54px" src="@/assets/Images/White_Space_Invader.gif" />
 			</div>
 		</div>
 </template>
@@ -29,6 +34,7 @@
 <style scoped>
 	.enemy{
 		size: 10%;
+		padding: .5%;
 	}
 	#screen {
 		position: absolute;
