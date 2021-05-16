@@ -2,7 +2,7 @@
   <div class="roomFour">
     <h1>Room Four Canvas Area</h1>
     <div class="modal-item"> 
-        <div class="modal-content">
+        <div class="modal-content" id="ArcadeBackdrop">
           <span class="modal_close" @click="closeModal()" >&times;</span>
           <img src="@/assets/Images/Number_Clue.jpg" v-if="Minigamewon" />
           <WallBreaker v-else @Minigamewon="Minigamewon = true"/>
@@ -312,5 +312,9 @@ a {
 #Key {
   position: absolute !important;
   top: 20% !important;
+}
+#ArcadeBackdrop{
+  height: 70%;
+  background-image: url("~@/assets/Images/Arcade_Backdrop.jpg");
 }
 </style>
