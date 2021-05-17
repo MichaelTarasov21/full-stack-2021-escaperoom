@@ -1,48 +1,48 @@
 <template>
-	<div id="screen">
+	<div class="screen" id="screen" v-on:keydown.left.prevent="HeroMove(-1)" v-on:keydown.right.prevent="HeroMove(1)">
 		<div id="enemies">
-			<div id="row1">
-				<img class="enemy" width="71.6px" height="54px" src="@/assets/Images/Blue_Space_Invader.gif" />
-				<img class="enemy" width="71.6px" height="54px" src="@/assets/Images/Red_Space_Invader.gif" />
-				<img class="enemy" width="71.6px" height="54px" src="@/assets/Images/Green_Space_Invader.gif" />
-				<img class="enemy" width="71.6px" height="54px" src="@/assets/Images/Purple_Space_Invader.gif" />
-				<img class="enemy" width="71.6px" height="54px" src="@/assets/Images/Yellow_Space_Invader.gif" />
-				<img class="enemy" width="71.6px" height="54px" src="@/assets/Images/White_Space_Invader.gif" />
+			<div id="row1" v-bind:style="EnemyR1">
+				<img v-if="Enemies[0]" v-bind:style="EnemyC1" class="enemy" width="50px" height="40px" src="@/assets/Images/Blue_Space_Invader.gif" />
+				<img v-if="Enemies[1]" v-bind:style="EnemyC2" class="enemy" width="50px" height="40px" src="@/assets/Images/Red_Space_Invader.gif" />
+				<img v-if="Enemies[2]" v-bind:style="EnemyC3" class="enemy" width="50px" height="40px" src="@/assets/Images/Green_Space_Invader.gif" />
+				<img v-if="Enemies[3]" v-bind:style="EnemyC4" class="enemy" width="50px" height="40px" src="@/assets/Images/Purple_Space_Invader.gif" />
+				<img v-if="Enemies[4]" v-bind:style="EnemyC5" class="enemy" width="50px" height="40px" src="@/assets/Images/Yellow_Space_Invader.gif" />
+				<img v-if="Enemies[5]" v-bind:style="EnemyC6" class="enemy" width="50px" height="40px" src="@/assets/Images/White_Space_Invader.gif" />
 			</div>
-			<div id="row2">
-				<img class="enemy" width="71.6px" height="54px" src="@/assets/Images/Blue_Space_Invader.gif" />
-				<img class="enemy" width="71.6px" height="54px" src="@/assets/Images/Red_Space_Invader.gif" />
-				<img class="enemy" width="71.6px" height="54px" src="@/assets/Images/Green_Space_Invader.gif" />
-				<img class="enemy" width="71.6px" height="54px" src="@/assets/Images/Purple_Space_Invader.gif" />
-				<img class="enemy" width="71.6px" height="54px" src="@/assets/Images/Yellow_Space_Invader.gif" />
-				<img class="enemy" width="71.6px" height="54px" src="@/assets/Images/White_Space_Invader.gif" />
+			<div id="row2" v-bind:style="EnemyR2">
+				<img v-if="Enemies[6]" v-bind:style="EnemyC1" class="enemy" width="50px" height="40px" src="@/assets/Images/Blue_Space_Invader.gif" />
+				<img v-if="Enemies[7]" v-bind:style="EnemyC2" class="enemy" width="50px" height="40px" src="@/assets/Images/Red_Space_Invader.gif" />
+				<img v-if="Enemies[8]" v-bind:style="EnemyC3" class="enemy" width="50px" height="40px" src="@/assets/Images/Green_Space_Invader.gif" />
+				<img v-if="Enemies[9]" v-bind:style="EnemyC4" class="enemy" width="50px" height="40px" src="@/assets/Images/Purple_Space_Invader.gif" />
+				<img v-if="Enemies[10]" v-bind:style="EnemyC5" class="enemy" width="50px" height="40px" src="@/assets/Images/Yellow_Space_Invader.gif" />
+				<img v-if="Enemies[11]" v-bind:style="EnemyC6" class="enemy" width="50px" height="40px" src="@/assets/Images/White_Space_Invader.gif" />
 			</div>
-			<div id="row3">
-				<img class="enemy" width="71.6px" height="54px" src="@/assets/Images/Blue_Space_Invader.gif" />
-				<img class="enemy" width="71.6px" height="54px" src="@/assets/Images/Red_Space_Invader.gif" />
-				<img class="enemy" width="71.6px" height="54px" src="@/assets/Images/Green_Space_Invader.gif" />
-				<img class="enemy" width="71.6px" height="54px" src="@/assets/Images/Purple_Space_Invader.gif" />
-				<img class="enemy" width="71.6px" height="54px" src="@/assets/Images/Yellow_Space_Invader.gif" />
-				<img class="enemy" width="71.6px" height="54px" src="@/assets/Images/White_Space_Invader.gif" />
+			<div id="row3" v-bind:style="EnemyR3">
+				<img v-if="Enemies[12]" v-bind:style="EnemyC1" class="enemy" width="50px" height="40px" src="@/assets/Images/Blue_Space_Invader.gif" />
+				<img v-if="Enemies[13]" v-bind:style="EnemyC2" class="enemy" width="50px" height="40px" src="@/assets/Images/Red_Space_Invader.gif" />
+				<img v-if="Enemies[14]" v-bind:style="EnemyC3" class="enemy" width="50px" height="40px" src="@/assets/Images/Green_Space_Invader.gif" />
+				<img v-if="Enemies[15]" v-bind:style="EnemyC4" class="enemy" width="50px" height="40px" src="@/assets/Images/Purple_Space_Invader.gif" />
+				<img v-if="Enemies[16]" v-bind:style="EnemyC5" class="enemy" width="50px" height="40px" src="@/assets/Images/Yellow_Space_Invader.gif" />
+				<img v-if="Enemies[17]" v-bind:style="EnemyC6" class="enemy" width="50px" height="40px" src="@/assets/Images/White_Space_Invader.gif" />
 			</div>
-			<div id="row4">
-				<img class="enemy" width="71.6px" height="54px" src="@/assets/Images/Blue_Space_Invader.gif" />
-				<img class="enemy" width="71.6px" height="54px" src="@/assets/Images/Red_Space_Invader.gif" />
-				<img class="enemy" width="71.6px" height="54px" src="@/assets/Images/Green_Space_Invader.gif" />
-				<img class="enemy" width="71.6px" height="54px" src="@/assets/Images/Purple_Space_Invader.gif" />
-				<img class="enemy" width="71.6px" height="54px" src="@/assets/Images/Yellow_Space_Invader.gif" />
-				<img class="enemy" width="71.6px" height="54px" src="@/assets/Images/White_Space_Invader.gif" />
+			<div id="row4" v-bind:style="EnemyR4">
+				<img v-if="Enemies[18]" v-bind:style="EnemyC1" class="enemy" width="50px" height="40px" src="@/assets/Images/Blue_Space_Invader.gif" />
+				<img v-if="Enemies[19]" v-bind:style="EnemyC2" class="enemy" width="50px" height="40px" src="@/assets/Images/Red_Space_Invader.gif" />
+				<img v-if="Enemies[20]" v-bind:style="EnemyC3" class="enemy" width="50px" height="40px" src="@/assets/Images/Green_Space_Invader.gif" />
+				<img v-if="Enemies[21]" v-bind:style="EnemyC4" class="enemy" width="50px" height="40px" src="@/assets/Images/Purple_Space_Invader.gif" />
+				<img v-if="Enemies[22]" v-bind:style="EnemyC5" class="enemy" width="50px" height="40px" src="@/assets/Images/Yellow_Space_Invader.gif" />
+				<img v-if="Enemies[23]" v-bind:style="EnemyC6" class="enemy" width="50px" height="40px" src="@/assets/Images/White_Space_Invader.gif" />
 			</div>
-			<div id="row5">
-				<img class="enemy" width="71.6px" height="54px" src="@/assets/Images/Blue_Space_Invader.gif" />
-				<img class="enemy" width="71.6px" height="54px" src="@/assets/Images/Red_Space_Invader.gif" />
-				<img class="enemy" width="71.6px" height="54px" src="@/assets/Images/Green_Space_Invader.gif" />
-				<img class="enemy" width="71.6px" height="54px" src="@/assets/Images/Purple_Space_Invader.gif" />
-				<img class="enemy" width="71.6px" height="54px" src="@/assets/Images/Yellow_Space_Invader.gif" />
-				<img class="enemy" width="71.6px" height="54px" src="@/assets/Images/White_Space_Invader.gif" />
+			<div id="row5" v-bind:style="EnemyR5">
+				<img v-if="Enemies[24]" v-bind:style="EnemyC1" class="enemy" width="50px" height="40px" src="@/assets/Images/Blue_Space_Invader.gif" />
+				<img v-if="Enemies[25]" v-bind:style="EnemyC2" class="enemy" width="50px" height="40px" src="@/assets/Images/Red_Space_Invader.gif" />
+				<img v-if="Enemies[26]" v-bind:style="EnemyC3" class="enemy" width="50px" height="40px" src="@/assets/Images/Green_Space_Invader.gif" />
+				<img v-if="Enemies[27]" v-bind:style="EnemyC4" class="enemy" width="50px" height="40px" src="@/assets/Images/Purple_Space_Invader.gif" />
+				<img v-if="Enemies[28]" v-bind:style="EnemyC5" class="enemy" width="50px" height="40px" src="@/assets/Images/Yellow_Space_Invader.gif" />
+				<img v-if="Enemies[29]" v-bind:style="EnemyC6" class="enemy" width="50px" height="40px" src="@/assets/Images/White_Space_Invader.gif" />
 			</div>
 		</div>
-	<img id="hero" width="71.6px" height="54px" src="@/assets/Images/Space_Ship.png" />
+		<img id="hero" v-bind:style="Playerstyle" width="71.6px" height="54px" src="@/assets/Images/Space_Ship.png" />
 	</div>
 </template>
 <script>
@@ -51,15 +51,59 @@
 		emits: ["Minigamewon"],
 		data() {
 			return {
-				Enemies: [],
+				Playerstyle: {
+					position: "absolute",
+					bottom: "0%",
+					left: "50%",
+				},
+				EnemyC1: {
+					left: "0px",
+				},
+				EnemyC2: {
+					left: "70px",
+				},
+				EnemyC3: {
+					left: "140px",
+				},
+				EnemyC4: {
+					left: "210px",
+				},
+				EnemyC5: {
+					left: "280px",
+				},
+				EnemyC6: {
+					left: "350px",
+				},
+				EnemyR1: {
+					top: "0px",
+				},
+				EnemyR2: {
+					top: "40px",
+				},
+				EnemyR3: {
+					top: "80px",
+				},
+				EnemyR4: {
+					top: "120px",
+				},
+				EnemyR5: {
+					top: "160px",
+				},
+				Enemies: [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true],
 				Minigamewon: false,
+//				Screen: "",
 			};
 		},
-		mounted: function() {
-			const enemylist = document.getElementsByClassName("enemy");
-			enemylist.forEach((this.Enemies = this.Enemies.push(true)));
-		},
+/* 		mounted() {
+			this.Screen = document.querySelector(".screen").getBoundingClientRect();
+		}, */
 		methods: {
+			HeroMove: function(velocity) {
+				let move = parseInt(this.Playerstyle.left);
+				move = move + velocity;
+				move = move + "%";
+				this.Playerstyle.left = move;
+			},
 			DisplayClue() {
 				this.$emit("Minigamewon");
 			},
@@ -68,12 +112,23 @@
 </script>
 <style scoped>
 	.enemy {
-		size: 10%;
-		padding: 0.5%;
-	}
-	#hero {
 		position: absolute;
-		bottom: 0%;
+		size: 10%;
+	}
+	#row1{
+		position: absolute;
+	}
+	#row2{
+		position: absolute;
+	}
+	#row3{
+		position: absolute;
+	}
+	#row4{
+		position: absolute;
+	}
+	#row5{
+		position: absolute;
 	}
 	#screen {
 		position: absolute;
