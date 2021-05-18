@@ -5,22 +5,16 @@
         <div class="modal-content">
           <span class="modal_close" @click="closeModal()" >&times;</span>
           <p>Hedge Maze</p>
+          <img src="../../img/hedgemaze.png" alt="Hedge Maze"/>
         </div>
       </div>
       <!-- <div class="modal-item"> 
         <div class="modal-content">
           <span class="modal_close" @click="closeModal()" >&times;</span>
-          <p>Torch</p> 
-        </div> 
-      </div>
-      <div class="modal-item"> 
-        <div class="modal-content">
-          <span class="modal_close" @click="closeModal()" >&times;</span>
           <p>Skull</p>
           <h3>Just a Skull</h3>
         </div>
-      </div> -->
-      
+      </div> --> 
       <div class="modal-item" id="final-ans-modal"> 
         <div class="modal-content">
           <span class="modal_close" @click="closeModal()" >&times;</span>
