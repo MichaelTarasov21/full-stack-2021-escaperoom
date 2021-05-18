@@ -4,19 +4,25 @@
       <div class="modal-item"> 
         <div class="modal-content">
           <span class="modal_close" @click="closeModal()" >&times;</span>
-          <p>Computer Puzzle</p>
+          <p>Hedge Maze</p>
         </div>
       </div>
-      <div class="modal-item"> 
+      <!-- <div class="modal-item"> 
         <div class="modal-content">
           <span class="modal_close" @click="closeModal()" >&times;</span>
-          <p>Wire</p>
-        </div>
+          <p>Torch</p> 
+        </div> 
       </div>
       <div class="modal-item"> 
         <div class="modal-content">
           <span class="modal_close" @click="closeModal()" >&times;</span>
           <p>Key</p>
+        </div>
+      </div> -->
+      <div class="item"> 
+        <div class="modal-content">
+          <span class="modal_close" @click="closeModal()" >&times;</span>
+          <p>Skull</p>
         </div>
       </div>
       <div class="modal-item" id="final-ans-modal"> 
@@ -32,17 +38,17 @@
         <div class="player">
           <img id="player" src="../../img/redsquare.png" alt="Red Square">
         </div>
-        <img class="pos-item" id="Computer" src="https://img.icons8.com/officel/75/000000/computer.png"/>
-        <div class="map-item" id="Wire">
+        <img class="pos-item" id="Hedge-Maze" src="https://img.icons8.com/officel/75/000000/computer.png"/>
+        <div class="map-item" id="Torch">
           <img class="item-img pos-item" src="https://img.icons8.com/dusk/75/000000/audio-cable.png" />
           <div class="hidden">https://img.icons8.com/dusk/75/000000/audio-cable.png</div>
-          <div>Wire</div>
+          <div>Torch</div>
         </div>
-        <div class="map-item" id="Key">
+        <!-- <div class="map-item" id="Key">
           <img class="item-img pos-item" src="https://source.unsplash.com/random" />
           <div class="hidden">https://source.unsplash.com/random</div>
           <div>Key</div>
-        </div>
+        </div> -->
         <img class="pos-item" id="FinalLock" src="https://img.icons8.com/bubbles/75/000000/lock-2.png"/>
       </div>
     <!-- <div ref="mapItems"></div> -->
@@ -60,7 +66,7 @@ export default {
     //this.walls();
     this.addToInventory();
   },
-  props: {keyUpStart:Boolean},
+  //props: {keyUpStart:Boolean},
   methods:{
     closeModal: function(){
       const modalCloseArray = Array.from(
@@ -261,7 +267,6 @@ export default {
   overflow: hidden;
 }
 .map {
-  /* background-image: url("../../img/maze.png"); */
   background-size: cover;
   height: 70vh;
   width: 70%;
