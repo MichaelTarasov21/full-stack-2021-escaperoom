@@ -16,15 +16,11 @@
       <div class="modal-item"> 
         <div class="modal-content">
           <span class="modal_close" @click="closeModal()" >&times;</span>
-          <p>Key</p>
+          <p>Skull</p>
+          <h3>Just a Skull</h3>
         </div>
       </div> -->
-      <div class="item"> 
-        <div class="modal-content">
-          <span class="modal_close" @click="closeModal()" >&times;</span>
-          <p>Skull</p>
-        </div>
-      </div>
+      
       <div class="modal-item" id="final-ans-modal"> 
         <div class="modal-content">
           <span class="modal_close" @click="closeModal()" >&times;</span>
@@ -40,15 +36,25 @@
         </div>
         <img class="pos-item" id="Hedge-Maze" src="https://img.icons8.com/officel/75/000000/computer.png"/>
         <div class="map-item" id="Torch">
-          <img class="item-img pos-item" src="https://img.icons8.com/dusk/75/000000/audio-cable.png" />
-          <div class="hidden">https://img.icons8.com/dusk/75/000000/audio-cable.png</div>
+          <img class="item-img pos-item" src="https://img.icons8.com/cotton/64/000000/torch.png" />
+          <div class="hidden">https://img.icons8.com/cotton/64/000000/torch.png</div>
           <div>Torch</div>
         </div>
-        <!-- <div class="map-item" id="Key">
-          <img class="item-img pos-item" src="https://source.unsplash.com/random" />
-          <div class="hidden">https://source.unsplash.com/random</div>
-          <div>Key</div>
-        </div> -->
+        <div class="map-item" id="Skull-1">
+          <img class="item-img pos-item" src="https://img.icons8.com/material-two-tone/24/000000/skull.png" />
+          <div class="hidden">https://img.icons8.com/ultraviolet/40/000000/paper.png</div>
+          <div>Skull</div>
+        </div> 
+        <div class="map-item" id="Skull-2">
+          <img class="item-img pos-item" src="https://img.icons8.com/material-two-tone/24/000000/skull.png" />
+          <div class="hidden">https://img.icons8.com/ultraviolet/40/000000/paper.png</div>
+          <div>"Skull"</div>
+        </div> 
+        <div class="map-item" id="Skull-3">
+          <img class="item-img pos-item" src="https://img.icons8.com/material-two-tone/24/000000/skull.png" />
+          <div class="hidden">https://img.icons8.com/ultraviolet/40/000000/paper.png</div>
+          <div>A Skull</div>
+        </div> 
         <img class="pos-item" id="FinalLock" src="https://img.icons8.com/bubbles/75/000000/lock-2.png"/>
       </div>
     <!-- <div ref="mapItems"></div> -->
@@ -324,8 +330,19 @@ a {
   color: #42b983;
 }
 
-#Key {
+#Skull-1 {
   position: absolute !important;
-  top: 20% !important;
+  top: 40% !important;
+  left: 15% !important;
+}
+#Skull-2 {
+  position: absolute !important;
+  top: 60% !important;
+  left: 35% !important;
+}
+#Skull-3 {
+  position: absolute !important;
+  top: 30% !important;
+  right: 25% !important;
 }
 </style>

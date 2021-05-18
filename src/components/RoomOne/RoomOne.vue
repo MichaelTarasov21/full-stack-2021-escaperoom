@@ -762,7 +762,7 @@ body {
   overflow: hidden;
 } */
 .map {
-  background-image: url("../../img/maze.png");
+  /* background-image: url("../../img/maze.png"); */
   background-size: cover;
   height: 70vh;
   width: 70%;
