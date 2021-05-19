@@ -1,5 +1,5 @@
 <template>
-	<div class="screen" id="screen" v-on:keydown.left.prevent="HeroMove(-1)" v-on:keydown.right.prevent="HeroMove(1)">
+	<div class="screen" id="screen">
 		<div id="enemies">
 			<div id="row1" v-bind:style="EnemyR1">
 				<img v-if="Enemies[0]" v-bind:style="EnemyC1" class="enemy" width="50px" height="40px" src="@/assets/Images/Blue_Space_Invader.gif" />
@@ -43,12 +43,17 @@
 			</div>
 		</div>
 		<img id="hero" v-bind:style="Playerstyle" width="71.6px" height="54px" src="@/assets/Images/Space_Ship.png" />
+		<img id="leftarrow" class="button" @click="HeroMove(-1)" />
+		<img id="rightarrow" class="button" @click="HeroMove(1)" />
+		<img id="fire" class="button" />
 	</div>
 </template>
 <script>
+	import { mixin as VueTimers } from "vue-timers";
 	export default {
 		name: "WallBreaker",
 		emits: ["Minigamewon"],
+		mixins: [VueTimers],
 		data() {
 			return {
 				Playerstyle: {
@@ -91,13 +96,43 @@
 				},
 				Enemies: [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true],
 				Minigamewon: false,
-//				Screen: "",
+				//				Screen: "",
 			};
 		},
-/* 		mounted() {
-			this.Screen = document.querySelector(".screen").getBoundingClientRect();
-		}, */
+		mounted() {
+			//			this.Screen = document.querySelector(".screen").getBoundingClientRect();
+			window.addEventListener("keydown", function(event) {
+				const buttons = document.getElementsByClassName("button");
+				if (event.key === "ArrowLeft") {
+					buttons[0].click();
+				} else if (event.key === "ArrowRight") {
+					buttons[1].click();
+				} else if (event.key === " ") {
+					buttons[2].click();
+				}
+			});
+		},
 		methods: {
+			/*			ListenToEvent: function() {
+				// I know its hacky but it works
+				console.log("Working")
+				let move = parseInt(this.Playerstyle.left);
+				function PlayerInput(event) {
+					if (event.left) {
+						console.log("Moving")
+						move = move - 1;
+						move = move = "%";
+					} else if (event.right) {
+						move = move + 1;
+						move = move = "%";
+					} else if (event.space) {
+						console.log("Bang Bang");
+					}
+				}
+				window.addEventListener("keydown", PlayerInput);
+				this.Playerstyle.left = move;
+				window.removeEventListener("keydown", PlayerInput);
+			},*/
 			HeroMove: function(velocity) {
 				let move = parseInt(this.Playerstyle.left);
 				move = move + velocity;
@@ -108,26 +143,30 @@
 				this.$emit("Minigamewon");
 			},
 		},
+		//		timers: { ListenToEvent: {time: 1000, autostart: true, repeat: true }},
 	};
 </script>
 <style scoped>
+	.button {
+		display: none;
+	}
 	.enemy {
 		position: absolute;
 		size: 10%;
 	}
-	#row1{
+	#row1 {
 		position: absolute;
 	}
-	#row2{
+	#row2 {
 		position: absolute;
 	}
-	#row3{
+	#row3 {
 		position: absolute;
 	}
-	#row4{
+	#row4 {
 		position: absolute;
 	}
-	#row5{
+	#row5 {
 		position: absolute;
 	}
 	#screen {
