@@ -1,5 +1,5 @@
 <template>
-	<div class="screen" id="screen">
+	<div class="screen">
 		<div id="enemies">
 			<div id="row1" v-bind:style="EnemyR1">
 				<img v-if="Enemies[0]" v-bind:style="EnemyC1" class="enemy" width="50px" height="40px" src="@/assets/Images/Blue_Space_Invader.gif" />
@@ -43,8 +43,8 @@
 			</div>
 		</div>
 		<img id="hero" v-bind:style="Playerstyle" width="71.6px" height="54px" src="@/assets/Images/Space_Ship.png" />
-		<img id="leftarrow" class="button" @click="HeroMove(-1)" />
-		<img id="rightarrow" class="button" @click="HeroMove(1)" />
+		<img id="leftarrow" class="button" @click="HeroMove(-5)" />
+		<img id="rightarrow" class="button" @click="HeroMove(5)" />
 		<img id="fire" class="button" />
 	</div>
 </template>
@@ -59,7 +59,7 @@
 				Playerstyle: {
 					position: "absolute",
 					bottom: "0%",
-					left: "50%",
+					left: "",
 				},
 				EnemyC1: {
 					left: "0px",
@@ -96,12 +96,24 @@
 				},
 				Enemies: [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true],
 				Minigamewon: false,
-				//				Screen: "",
 			};
 		},
 		mounted() {
-			//			this.Screen = document.querySelector(".screen").getBoundingClientRect();
+			this.Playerstyle.left = ((((screen.width - 128) * .7) / 2) - 35) + "px";
+			console.log(this.Screen);
 			window.addEventListener("keydown", function(event) {
+				const buttons = document.getElementsByClassName("button");
+				if (event.key === "ArrowLeft") {
+					buttons[0].click();
+				} else if (event.key === "ArrowRight") {
+					buttons[1].click();
+				} else if (event.key === " ") {
+					buttons[2].click();
+				}
+			});
+		},
+		destroyed() {
+			window.removeEventListener("keydown", function(event) {
 				const buttons = document.getElementsByClassName("button");
 				if (event.key === "ArrowLeft") {
 					buttons[0].click();
@@ -116,7 +128,12 @@
 			HeroMove: function(velocity) {
 				let move = parseInt(this.Playerstyle.left);
 				move = move + velocity;
-				move = move + "%";
+				if (move > (screen.width - 128) * .7) {
+					move = (screen.width - 128) * .7;
+				} else if (move < 0) {
+					move = 0;
+				}
+				move = move + "px";
 				this.Playerstyle.left = move;
 			},
 			DisplayClue() {
@@ -129,6 +146,13 @@
 <style scoped>
 	.button {
 		display: none;
+	}
+	.screen {
+		position: absolute;
+		left: 15%;
+		background-image: url("~@/assets/Images/Space_Invaders_Background.jpg");
+		width: 70%;
+		height: 70%;
 	}
 	.enemy {
 		position: absolute;
@@ -148,12 +172,5 @@
 	}
 	#row5 {
 		position: absolute;
-	}
-	#screen {
-		position: absolute;
-		left: 15%;
-		background-image: url("~@/assets/Images/Space_Invaders_Background.jpg");
-		width: 70%;
-		height: 70%;
 	}
 </style>
