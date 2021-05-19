@@ -113,26 +113,6 @@
 			});
 		},
 		methods: {
-			/*			ListenToEvent: function() {
-				// I know its hacky but it works
-				console.log("Working")
-				let move = parseInt(this.Playerstyle.left);
-				function PlayerInput(event) {
-					if (event.left) {
-						console.log("Moving")
-						move = move - 1;
-						move = move = "%";
-					} else if (event.right) {
-						move = move + 1;
-						move = move = "%";
-					} else if (event.space) {
-						console.log("Bang Bang");
-					}
-				}
-				window.addEventListener("keydown", PlayerInput);
-				this.Playerstyle.left = move;
-				window.removeEventListener("keydown", PlayerInput);
-			},*/
 			HeroMove: function(velocity) {
 				let move = parseInt(this.Playerstyle.left);
 				move = move + velocity;
