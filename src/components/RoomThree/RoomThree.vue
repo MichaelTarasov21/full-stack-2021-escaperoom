@@ -5,7 +5,7 @@
         <div class="modal-content">
           <span class="modal_close" @click="closeModal()" >&times;</span>
           <p>Hedge Maze</p>
-          <img src="../../img/hedgemaze.png" alt="Hedge Maze"/>
+          <img id="Hedge_Maze" src="../../img/hedgemaze.png" alt="Hedge Maze"/>
         </div>
       </div>
       <!-- <div class="modal-item"> 
@@ -60,7 +60,7 @@
 export default {
   name: 'RoomThree',
   emits: ['roomThreeFin'],
-  mounted: function(){
+    mounted: function(){
     this.movement();  
     this.coordinates();
     //this.walls();
@@ -175,8 +175,8 @@ export default {
               //if it is a modal object - and enter is clicked = a popup opens 
               if (objectLeft === playerLeft && objectTop === playerTop) {
                 document.addEventListener('keydown', function (event){
-                  if (event.keyCode == "13"){  
-                    const modalItem = modalArray[index];
+                  const modalItem = modalArray[index];
+                  if (event.keyCode == "13"){
                     modalItem.style.display = "block";
                   }
                 })
@@ -312,31 +312,40 @@ export default {
 h3 {
   margin: 40px 0 0;
 }
+
 ul {
   list-style-type: none;
   padding: 0;
 }
+
 li {
   display: inline-block;
   margin: 0 10px;
 }
+
 a {
   color: #42b983;
 }
 
 #Skull-1 {
-  position: absolute !important;
-  top: 40% !important;
-  left: 15% !important;
+  position: absolute;
+  top: 40%;
+  left: 15%;
 }
 #Skull-2 {
-  position: absolute !important;
-  top: 60% !important;
-  left: 35% !important;
+  position: absolute;
+  top: 60%;
+  left: 35%;
 }
 #Skull-3 {
-  position: absolute !important;
-  top: 30% !important;
-  right: 25% !important;
+  position: absolute;
+  top: 30%;
+  right: 25%;
+}
+
+#Hedge_Maze{
+  /* position: relative;
+  height: 75%; */
+  width: 75%;
 }
 </style>
