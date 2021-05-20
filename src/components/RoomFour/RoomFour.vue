@@ -4,7 +4,10 @@
     <div class="modal-item"> 
         <div class="modal-content" id="ArcadeBackdrop">
           <span class="modal_close" @click="closeModal()" >&times;</span>
-          <img src="@/assets/Images/Number_Clue.jpg" v-if="Minigamewon" />
+          <div id="Error" v-if="Minigamewon">
+          <h2>Error</h2>
+          <img src="@/assets/Images/Number_Clue.jpg">
+          </div>
           <WallBreaker v-else @Minigamewon="Minigamewon = true"/>
         </div>
       </div>
@@ -316,5 +319,13 @@ a {
 #ArcadeBackdrop{
   height: 70%;
   background-image: url("~@/assets/Images/Arcade_Backdrop.jpg");
+}
+#Error{
+  position: absolute;
+	left: 15%;
+  color: white;
+  height: 70%;
+  width: 70%;
+  background-color: black;
 }
 </style>
