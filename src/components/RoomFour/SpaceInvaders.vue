@@ -156,8 +156,8 @@
 				this.EnemyR5.top = "160px";
 				this.Enemies = [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true];
 				this.EnemySpeed = 1;
-				this.PlayerShot = false;
 				this.EnemyVelocity = 1;
+				this.PlayerShot = false;
 				this.Lost = false;
 				this.$timer.start("AlienMove");
 			},
@@ -255,6 +255,7 @@
 					}
 					if (parseInt(LowestRow) >= (screen.availHeight - 128) * 0.7 - 80) {
 						this.$timer.stop("AlienMove");
+						this.$timer.stop("HeroLaserMove");
 						this.Lost = true;
 					}
 				}
@@ -306,7 +307,7 @@
 						if (this.Enemies[Hit]) {
 							this.Enemies[Hit] = false;
 							this.PlayerShot = false;
-							this.EnemySpeed = this.EnemySpeed + .75;
+							this.EnemySpeed = this.EnemySpeed + 0.75;
 							this.$timer.stop("HeroLaserMove");
 							return;
 						}
@@ -315,7 +316,7 @@
 						if (this.Enemies[Hit]) {
 							this.Enemies[Hit] = false;
 							this.PlayerShot = false;
-							this.EnemySpeed = this.EnemySpeed + .75;
+							this.EnemySpeed = this.EnemySpeed + 0.75;
 							this.$timer.stop("HeroLaserMove");
 							return;
 						}
@@ -324,7 +325,7 @@
 						if (this.Enemies[Hit]) {
 							this.Enemies[Hit] = false;
 							this.PlayerShot = false;
-							this.EnemySpeed = this.EnemySpeed + .75;
+							this.EnemySpeed = this.EnemySpeed + 0.75;
 							this.$timer.stop("HeroLaserMove");
 							return;
 						}
@@ -333,7 +334,7 @@
 						if (this.Enemies[Hit]) {
 							this.Enemies[Hit] = false;
 							this.PlayerShot = false;
-							this.EnemySpeed = this.EnemySpeed + .75;
+							this.EnemySpeed = this.EnemySpeed + 0.75;
 							this.$timer.stop("HeroLaserMove");
 							return;
 						}
@@ -342,7 +343,7 @@
 						if (this.Enemies[Hit]) {
 							this.Enemies[Hit] = false;
 							this.PlayerShot = false;
-							this.EnemySpeed = this.EnemySpeed + .75;
+							this.EnemySpeed = this.EnemySpeed + 0.75;
 							this.$timer.stop("HeroLaserMove");
 							return;
 						}
