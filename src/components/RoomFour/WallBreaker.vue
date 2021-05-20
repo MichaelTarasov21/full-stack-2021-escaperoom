@@ -3,7 +3,7 @@
 	<ArcadeLost v-else-if="Lost" @Restart="Reset" />
 	<div v-else class="screen">
 		<div id="enemies">
-			<div id="row1" v-bind:style="EnemyR1">
+			<div class="EnemyRow" v-bind:style="EnemyR1">
 				<img v-if="Enemies[0]" v-bind:style="EnemyC1" class="enemy" width="50px" height="40px" src="@/assets/Images/Blue_Space_Invader.gif" />
 				<img v-if="Enemies[1]" v-bind:style="EnemyC2" class="enemy" width="50px" height="40px" src="@/assets/Images/Red_Space_Invader.gif" />
 				<img v-if="Enemies[2]" v-bind:style="EnemyC3" class="enemy" width="50px" height="40px" src="@/assets/Images/Green_Space_Invader.gif" />
@@ -11,7 +11,7 @@
 				<img v-if="Enemies[4]" v-bind:style="EnemyC5" class="enemy" width="50px" height="40px" src="@/assets/Images/Yellow_Space_Invader.gif" />
 				<img v-if="Enemies[5]" v-bind:style="EnemyC6" class="enemy" width="50px" height="40px" src="@/assets/Images/White_Space_Invader.gif" />
 			</div>
-			<div id="row2" v-bind:style="EnemyR2">
+			<div class="EnemyRow" v-bind:style="EnemyR2">
 				<img v-if="Enemies[6]" v-bind:style="EnemyC1" class="enemy" width="50px" height="40px" src="@/assets/Images/Blue_Space_Invader.gif" />
 				<img v-if="Enemies[7]" v-bind:style="EnemyC2" class="enemy" width="50px" height="40px" src="@/assets/Images/Red_Space_Invader.gif" />
 				<img v-if="Enemies[8]" v-bind:style="EnemyC3" class="enemy" width="50px" height="40px" src="@/assets/Images/Green_Space_Invader.gif" />
@@ -19,7 +19,7 @@
 				<img v-if="Enemies[10]" v-bind:style="EnemyC5" class="enemy" width="50px" height="40px" src="@/assets/Images/Yellow_Space_Invader.gif" />
 				<img v-if="Enemies[11]" v-bind:style="EnemyC6" class="enemy" width="50px" height="40px" src="@/assets/Images/White_Space_Invader.gif" />
 			</div>
-			<div id="row3" v-bind:style="EnemyR3">
+			<div class="EnemyRow" v-bind:style="EnemyR3">
 				<img v-if="Enemies[12]" v-bind:style="EnemyC1" class="enemy" width="50px" height="40px" src="@/assets/Images/Blue_Space_Invader.gif" />
 				<img v-if="Enemies[13]" v-bind:style="EnemyC2" class="enemy" width="50px" height="40px" src="@/assets/Images/Red_Space_Invader.gif" />
 				<img v-if="Enemies[14]" v-bind:style="EnemyC3" class="enemy" width="50px" height="40px" src="@/assets/Images/Green_Space_Invader.gif" />
@@ -27,7 +27,7 @@
 				<img v-if="Enemies[16]" v-bind:style="EnemyC5" class="enemy" width="50px" height="40px" src="@/assets/Images/Yellow_Space_Invader.gif" />
 				<img v-if="Enemies[17]" v-bind:style="EnemyC6" class="enemy" width="50px" height="40px" src="@/assets/Images/White_Space_Invader.gif" />
 			</div>
-			<div id="row4" v-bind:style="EnemyR4">
+			<div class="EnemyRow" v-bind:style="EnemyR4">
 				<img v-if="Enemies[18]" v-bind:style="EnemyC1" class="enemy" width="50px" height="40px" src="@/assets/Images/Blue_Space_Invader.gif" />
 				<img v-if="Enemies[19]" v-bind:style="EnemyC2" class="enemy" width="50px" height="40px" src="@/assets/Images/Red_Space_Invader.gif" />
 				<img v-if="Enemies[20]" v-bind:style="EnemyC3" class="enemy" width="50px" height="40px" src="@/assets/Images/Green_Space_Invader.gif" />
@@ -35,7 +35,7 @@
 				<img v-if="Enemies[22]" v-bind:style="EnemyC5" class="enemy" width="50px" height="40px" src="@/assets/Images/Yellow_Space_Invader.gif" />
 				<img v-if="Enemies[23]" v-bind:style="EnemyC6" class="enemy" width="50px" height="40px" src="@/assets/Images/White_Space_Invader.gif" />
 			</div>
-			<div id="row5" v-bind:style="EnemyR5">
+			<div class="EnemyRow" v-bind:style="EnemyR5">
 				<img v-if="Enemies[24]" v-bind:style="EnemyC1" class="enemy" width="50px" height="40px" src="@/assets/Images/Blue_Space_Invader.gif" />
 				<img v-if="Enemies[25]" v-bind:style="EnemyC2" class="enemy" width="50px" height="40px" src="@/assets/Images/Red_Space_Invader.gif" />
 				<img v-if="Enemies[26]" v-bind:style="EnemyC3" class="enemy" width="50px" height="40px" src="@/assets/Images/Green_Space_Invader.gif" />
@@ -45,9 +45,10 @@
 			</div>
 		</div>
 		<img id="hero" v-bind:style="Playerstyle" width="71.6px" height="54px" src="@/assets/Images/Space_Ship.png" />
+		<div id="herolaser" class="laser" v-if="PlayerShot" v-bind:style="PlayerLaser" />
 		<img id="leftarrow" class="button" @click="HeroMove(-5)" />
 		<img id="rightarrow" class="button" @click="HeroMove(5)" />
-		<img id="fire" class="button" />
+		<img id="fire" class="button" @click="HeroShoot" />
 	</div>
 </template>
 <script>
@@ -67,6 +68,11 @@
 				Playerstyle: {
 					position: "absolute",
 					bottom: "0%",
+					left: "",
+				},
+				PlayerShot: false,
+				PlayerLaser: {
+					bottom: "54px",
 					left: "",
 				},
 				EnemyC1: {
@@ -150,6 +156,7 @@
 				this.EnemyR5.top = "160px";
 				this.Enemies = [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true];
 				this.EnemySpeed = 1;
+				this.PlayerShot = false;
 				this.EnemyVelocity = 2;
 				this.Lost = false;
 				this.$timer.start("AlienMove");
@@ -218,7 +225,6 @@
 					rightrow = C1;
 				}
 				if (rightrow + this.EnemySpeed * this.EnemyVelocity >= (screen.width - 128) * 0.7 || leftrow + this.EnemySpeed * this.EnemyVelocity <= 0) {
-					console.log(screen);
 					this.EnemyVelocity = this.EnemyVelocity * -1;
 					const R1 = this.EnemyR1.top;
 					const R2 = this.EnemyR2.top;
@@ -248,7 +254,6 @@
 						LowestRow = this.EnemyR1.top;
 					}
 					if (parseInt(LowestRow) >= (screen.availHeight - 128) * 0.7 - 40) {
-						console.log("You are loserman");
 						this.$timer.stop("AlienMove");
 						this.Lost = true;
 					}
@@ -261,11 +266,101 @@
 				this.EnemyC5.left = move(C5, speed);
 				this.EnemyC6.left = move(C6, speed);
 			},
+			HeroShoot: function() {
+				if (!this.PlayerShot) {
+					this.PlayerShot = true;
+					this.PlayerLaser.bottom = "54px";
+					this.PlayerLaser.left = parseInt(this.Playerstyle.left) + 71.6 / 2 - 2 + "px";
+					this.$timer.start("HeroLaserMove");
+				}
+			},
+			HeroLaserMove: function() {
+				function Hitscan(EnemyLocation, LaserLocation, Offset) {
+					const result = (parseInt(EnemyLocation) <= parseInt(LaserLocation)) * (parseInt(LaserLocation) <= parseInt(EnemyLocation) + Offset);
+					return result;
+				}
+				let PotentialHit;
+				let Hit;
+				const LaserFromTop = document.querySelector(".screen").getBoundingClientRect().height - parseInt(this.PlayerLaser.bottom) - 30;
+				if (Hitscan(this.EnemyC1.left, this.PlayerLaser.left, 55)) {
+					PotentialHit = true;
+					Hit = 0;
+				} else if (Hitscan(this.EnemyC2.left, this.PlayerLaser.left, 50)) {
+					PotentialHit = true;
+					Hit = 1;
+				} else if (Hitscan(this.EnemyC3.left, this.PlayerLaser.left, 50)) {
+					PotentialHit = true;
+					Hit = 2;
+				} else if (Hitscan(this.EnemyC4.left, this.PlayerLaser.left, 50)) {
+					PotentialHit = true;
+					Hit = 3;
+				} else if (Hitscan(this.EnemyC5.left, this.PlayerLaser.left, 50)) {
+					PotentialHit = true;
+					Hit = 4;
+				} else if (Hitscan(this.EnemyC6.left, this.PlayerLaser.left, 50)) {
+					PotentialHit = true;
+					Hit = 5;
+				}
+				if (PotentialHit) {
+					if (Hitscan(this.EnemyR1.top, LaserFromTop, 70)) {
+						if (this.Enemies[Hit]) {
+							this.Enemies[Hit] = false;
+							this.PlayerShot = false;
+							this.$timer.stop("HeroLaserMove");
+							return;
+						}
+					} else if (Hitscan(this.EnemyR2.top, LaserFromTop, 70)) {
+						Hit = Hit + 6;
+						if (this.Enemies[Hit]) {
+							this.Enemies[Hit] = false;
+							this.PlayerShot = false;
+							this.$timer.stop("HeroLaserMove");
+							return;
+						}
+					} else if (Hitscan(this.EnemyR3.top, LaserFromTop, 70)) {
+						Hit = Hit + 12;
+						if (this.Enemies[Hit]) {
+							this.Enemies[Hit] = false;
+							this.PlayerShot = false;
+							this.$timer.stop("HeroLaserMove");
+							return;
+						}
+					} else if (Hitscan(this.EnemyR4.top, LaserFromTop, 70)) {
+						Hit = Hit + 18;
+						if (this.Enemies[Hit]) {
+							this.Enemies[Hit] = false;
+							this.PlayerShot = false;
+							this.$timer.stop("HeroLaserMove");
+							return;
+						}
+					} else if (Hitscan(this.EnemyR5.top, LaserFromTop, 70)) {
+						Hit = Hit + 24;
+						if (this.Enemies[Hit]) {
+							this.Enemies[Hit] = false;
+							this.PlayerShot = false;
+							this.$timer.stop("HeroLaserMove");
+							return;
+						}
+					}
+				}
+				if (LaserFromTop - 20 <= 0) {
+					this.PlayerShot = false;
+					this.$timer.stop("HeroLaserMove");
+					return;
+				}
+				let LaserPos = parseInt(this.PlayerLaser.bottom);
+				LaserPos = LaserPos + 20;
+				LaserPos = LaserPos + "px";
+				this.PlayerLaser.bottom = LaserPos;
+			},
 			ShowHint: function() {
 				this.$emit("Minigamewon");
 			},
 		},
-		timers: { AlienMove: { time: 40, autostart: true, repeat: true } }, // 40 milliseconds seems to be the lowest time interval at which the movement of the aliens still appears smoothe
+		timers: {
+			AlienMove: { time: 40, autostart: true, repeat: true }, // 40 milliseconds seems to be the lowest time interval at which the movement of the aliens still appears smooth (25 fps)
+			HeroLaserMove: { time: 40, repeat: true },
+		},
 	};
 </script>
 <style scoped>
@@ -279,23 +374,20 @@
 		width: 70%;
 		height: 70%;
 	}
+	.laser {
+		position: absolute;
+		height: 30px;
+		width: 5px;
+	}
 	.enemy {
 		position: absolute;
 		size: 10%;
 	}
-	#row1 {
+	.EnemyRow {
 		position: absolute;
 	}
-	#row2 {
-		position: absolute;
-	}
-	#row3 {
-		position: absolute;
-	}
-	#row4 {
-		position: absolute;
-	}
-	#row5 {
-		position: absolute;
+	#herolaser {
+		z-index: 7;
+		background-color: green;
 	}
 </style>
