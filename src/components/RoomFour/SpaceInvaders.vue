@@ -46,8 +46,8 @@
 		</div>
 		<img id="hero" v-bind:style="Playerstyle" width="71.6px" height="54px" src="@/assets/Images/Space_Ship.png" />
 		<div id="herolaser" class="laser" v-if="PlayerShot" v-bind:style="PlayerLaser" />
-		<img id="leftarrow" class="button" @click="HeroMove(-5)" />
-		<img id="rightarrow" class="button" @click="HeroMove(5)" />
+		<img id="leftarrow" class="button" @click="HeroMove(-10)" />
+		<img id="rightarrow" class="button" @click="HeroMove(10)" />
 		<img id="fire" class="button" @click="HeroShoot" />
 	</div>
 </template>
