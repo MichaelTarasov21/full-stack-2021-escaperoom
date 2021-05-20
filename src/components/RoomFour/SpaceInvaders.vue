@@ -157,7 +157,7 @@
 				this.Enemies = [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true];
 				this.EnemySpeed = 1;
 				this.PlayerShot = false;
-				this.EnemyVelocity = 2;
+				this.EnemyVelocity = 1;
 				this.Lost = false;
 				this.$timer.start("AlienMove");
 			},
