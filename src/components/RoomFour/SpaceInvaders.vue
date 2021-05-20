@@ -56,7 +56,7 @@
 	import ArcadeLost from "./ArcadeLost";
 	import { mixin as VueTimers } from "vue-timers";
 	export default {
-		name: "WallBreaker",
+		name: "SpaceInvaders",
 		emits: ["Minigamewon"],
 		components: {
 			ArcadeWon,

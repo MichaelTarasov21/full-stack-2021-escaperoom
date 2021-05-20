@@ -8,7 +8,7 @@
           <h2>Error</h2>
           <img src="@/assets/Images/Number_Clue.jpg">
           </div>
-          <WallBreaker v-else @Minigamewon="Minigamewon = true"/>
+          <SpaceInvaders v-else @Minigamewon="Minigamewon = true"/>
         </div>
       </div>
       <div class="modal-item"> 
@@ -55,12 +55,12 @@
 </template>
 
 <script>
-import WallBreaker from "./WallBreaker.vue"
+import SpaceInvaders from "./SpaceInvaders.vue"
 export default {
   name: 'RoomFour',
   emits: ['roomFourFin'],
   components:{
-    WallBreaker
+    SpaceInvaders
   },
   data(){
     return{
