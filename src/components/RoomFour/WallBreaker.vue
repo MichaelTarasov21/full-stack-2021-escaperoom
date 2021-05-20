@@ -110,7 +110,7 @@
 				},
 				Enemies: [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true],
 				EnemySpeed: 1,
-				EnemyVelocity: 2,
+				EnemyVelocity: 1,
 				Lost: false,
 				Won: false,
 			};
@@ -253,7 +253,7 @@
 					} else if (R1Active) {
 						LowestRow = this.EnemyR1.top;
 					}
-					if (parseInt(LowestRow) >= (screen.availHeight - 128) * 0.7 - 40) {
+					if (parseInt(LowestRow) >= (screen.availHeight - 128) * 0.7 - 111.6) {
 						this.$timer.stop("AlienMove");
 						this.Lost = true;
 					}
@@ -306,6 +306,7 @@
 						if (this.Enemies[Hit]) {
 							this.Enemies[Hit] = false;
 							this.PlayerShot = false;
+							this.EnemySpeed = this.EnemySpeed + .9; //It may not seem like a big difference but .9 is significantly easier than playing with a 1px increase for each alien killed.
 							this.$timer.stop("HeroLaserMove");
 							return;
 						}
@@ -314,6 +315,7 @@
 						if (this.Enemies[Hit]) {
 							this.Enemies[Hit] = false;
 							this.PlayerShot = false;
+							this.EnemySpeed = this.EnemySpeed + .9; //It may not seem like a big difference but .9 is significantly easier than playing with a 1px increase for each alien killed.
 							this.$timer.stop("HeroLaserMove");
 							return;
 						}
@@ -322,6 +324,7 @@
 						if (this.Enemies[Hit]) {
 							this.Enemies[Hit] = false;
 							this.PlayerShot = false;
+							this.EnemySpeed = this.EnemySpeed + .9; //It may not seem like a big difference but .9 is significantly easier than playing with a 1px increase for each alien killed.
 							this.$timer.stop("HeroLaserMove");
 							return;
 						}
@@ -330,6 +333,7 @@
 						if (this.Enemies[Hit]) {
 							this.Enemies[Hit] = false;
 							this.PlayerShot = false;
+							this.EnemySpeed = this.EnemySpeed + .9; //It may not seem like a big difference but .9 is significantly easier than playing with a 1px increase for each alien killed.
 							this.$timer.stop("HeroLaserMove");
 							return;
 						}
@@ -338,6 +342,7 @@
 						if (this.Enemies[Hit]) {
 							this.Enemies[Hit] = false;
 							this.PlayerShot = false;
+							this.EnemySpeed = this.EnemySpeed + .9; //It may not seem like a big difference but .9 is significantly easier than playing with a 1px increase for each alien killed.
 							this.$timer.stop("HeroLaserMove");
 							return;
 						}
