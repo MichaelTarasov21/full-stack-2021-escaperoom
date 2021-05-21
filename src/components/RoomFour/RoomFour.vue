@@ -5,8 +5,8 @@
         <div class="modal-content" id="ArcadeBackdrop">
           <span class="modal_close" @click="closeModal()" >&times;</span>
           <div id="Error" v-if="Minigamewon">
-          <h2>Error</h2>
-          <img src="@/assets/Images/Number_Clue.jpg">
+            <h2>Error</h2>
+            <img src="@/assets/Images/Number_Clue.jpg">
           </div>
           <SpaceInvaders v-else @Minigamewon="Minigamewon = true"/>
         </div>
