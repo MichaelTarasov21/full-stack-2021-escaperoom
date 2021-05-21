@@ -12,15 +12,9 @@
         </div>
       </div>
       <div class="modal-item"> 
-        <div class="modal-content">
+        <div class="modal-content" id="BriefcaseBackdrop">
           <span class="modal_close" @click="closeModal()" >&times;</span>
-          <p>Wire</p>
-        </div>
-      </div>
-      <div class="modal-item"> 
-        <div class="modal-content">
-          <span class="modal_close" @click="closeModal()" >&times;</span>
-          <p>Key</p>
+              
         </div>
       </div>
       <div class="modal-item" id="final-ans-modal"> 
@@ -37,16 +31,7 @@
           <img id="player" src="@/img/redsquare.png" alt="Red Square">
         </div>
         <img class="pos-item" id="Arcade" width=75px height="80px" src="@/assets/Images/Arcade_Machine.jpg"/>
-        <div class="map-item" id="Wire">
-          <img class="item-img pos-item" src="https://img.icons8.com/dusk/75/000000/audio-cable.png" />
-          <div class="hidden">https://img.icons8.com/dusk/75/000000/audio-cable.png</div>
-          <div>Wire</div>
-        </div>
-        <div class="map-item" id="Key">
-          <img class="item-img pos-item" src="https://source.unsplash.com/random" />
-          <div class="hidden">https://source.unsplash.com/random</div>
-          <div>Key</div>
-        </div>
+        <img class="pos-item" id="Briefcase" width=75px height="80px"  src="@/assets/Images/Briefcase.png" />
         <img class="pos-item" id="FinalLock" src="https://img.icons8.com/bubbles/75/000000/lock-2.png"/>
       </div>
     <!-- <div ref="mapItems"></div> -->
@@ -241,7 +226,6 @@ export default {
 :root {
   --pixel-size: 2px;
 }
-
 #FinalLock {
   position: absolute;
   right: 0;
@@ -311,10 +295,13 @@ li {
 a {
   color: #42b983;
 }
-
-#Key {
-  position: absolute !important;
-  top: 20% !important;
+#Briefcase{
+  position: absolute;
+  right: 0%;
+}
+#BriefcaseBackdrop{
+   background-image: url("~@/assets/Images/Briefcase_Backdrop.jpg");
+   height: 50%;
 }
 #ArcadeBackdrop{
   height: 70%;
