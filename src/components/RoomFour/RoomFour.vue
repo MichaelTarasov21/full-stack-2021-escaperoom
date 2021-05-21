@@ -304,12 +304,16 @@ a {
   right: 0%;
 }
 #BriefcaseBackdrop{
-   background-image: url("~@/assets/Images/Briefcase_Backdrop.jpg");
-   height: 50%;
+  background-image: url("~@/assets/Images/Briefcase_Backdrop.jpg");
+  height: 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 #ArcadeBackdrop{
   height: 70%;
   background-image: url("~@/assets/Images/Arcade_Backdrop.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 #Error{
   position: absolute;
