@@ -49,30 +49,36 @@
 		},
 		methods: {
 			ChangeDigit1(Direction) {
-				if (this.Digit1 === 9 && Direction === 1) {
-					this.Digit1 = 0;
-				} else if (this.Digit1 === 0 && Direction === -1) {
-					this.Digit1 = 9;
-				} else {
-					this.Digit1 = this.Digit1 + Direction;
+				if (!this.Attempt) {
+					if (this.Digit1 === 9 && Direction === 1) {
+						this.Digit1 = 0;
+					} else if (this.Digit1 === 0 && Direction === -1) {
+						this.Digit1 = 9;
+					} else {
+						this.Digit1 = this.Digit1 + Direction;
+					}
 				}
 			},
 			ChangeDigit2(Direction) {
-				if (this.Digit2 === 9 && Direction === 1) {
-					this.Digit2 = 0;
-				} else if (this.Digit2 === 0 && Direction === -1) {
-					this.Digit2 = 9;
-				} else {
-					this.Digit2 = this.Digit2 + Direction;
+				if (!this.Attempt) {
+					if (this.Digit2 === 9 && Direction === 1) {
+						this.Digit2 = 0;
+					} else if (this.Digit2 === 0 && Direction === -1) {
+						this.Digit2 = 9;
+					} else {
+						this.Digit2 = this.Digit2 + Direction;
+					}
 				}
 			},
 			ChangeDigit3(Direction) {
-				if (this.Digit3 === 9 && Direction === 1) {
-					this.Digit3 = 0;
-				} else if (this.Digit3 === 0 && Direction === -1) {
-					this.Digit3 = 9;
-				} else {
-					this.Digit3 = this.Digit3 + Direction;
+				if (!this.Attempt) {
+					if (this.Digit3 === 9 && Direction === 1) {
+						this.Digit3 = 0;
+					} else if (this.Digit3 === 0 && Direction === -1) {
+						this.Digit3 = 9;
+					} else {
+						this.Digit3 = this.Digit3 + Direction;
+					}
 				}
 			},
 			CheckCombination() {
@@ -80,22 +86,19 @@
 					this.Attempt = true;
 					if (this.Digit1 === 4 && this.Digit2 === 7 && this.Digit3 === 5) {
 						this.Correct = true;
-						setTimeout(this.FlashLight("Correct"), 1000);
+						setTimeout(this.OpenBrifcase, 2000);
 					} else {
 						this.Incorrect = true;
 						setTimeout(this.FlashLight, 2000);
 					}
 				}
 			},
-			FlashLight(result = "Incorrect") {
-					if (result === "Correct") {
-						this.Correct = false
-						this.$emit("BriefcaseOpened")
-                        return
-					} else{
-                        this.Incorrect = false;
-                        this.Attempt = false
-                    }
+			FlashLight() {
+				this.Incorrect = false;
+				this.Attempt = false;
+			},
+			OpenBrifcase() {
+				this.$emit("BriefcaseOpened");
 			},
 		},
 	};
