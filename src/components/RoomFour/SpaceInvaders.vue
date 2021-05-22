@@ -283,6 +283,7 @@
 				let PotentialHit;
 				let Hit;
 				const LaserFromTop = document.querySelector(".screen").getBoundingClientRect().height - parseInt(this.PlayerLaser.bottom) - 30;
+				const LaserBottomFromTop = document.querySelector(".screen").getBoundingClientRect().height - parseInt(this.PlayerLaser.bottom);
 				if (Hitscan(this.EnemyC1.left, this.PlayerLaser.left, 55)) {
 					PotentialHit = true;
 					Hit = 0;
@@ -303,7 +304,8 @@
 					Hit = 5;
 				}
 				if (PotentialHit) {
-					if (Hitscan(this.EnemyR1.top, LaserFromTop, 70)) {
+					if (Hitscan(this.EnemyR5.top, LaserFromTop, 70) || Hitscan(this.EnemyR5.top, LaserBottomFromTop, 70)) {
+						Hit = Hit + 24;
 						if (this.Enemies[Hit]) {
 							this.Enemies[Hit] = false;
 							this.PlayerShot = false;
@@ -311,25 +313,7 @@
 							this.$timer.stop("HeroLaserMove");
 							return;
 						}
-					} else if (Hitscan(this.EnemyR2.top, LaserFromTop, 70)) {
-						Hit = Hit + 6;
-						if (this.Enemies[Hit]) {
-							this.Enemies[Hit] = false;
-							this.PlayerShot = false;
-							this.EnemySpeed = this.EnemySpeed + 0.75;
-							this.$timer.stop("HeroLaserMove");
-							return;
-						}
-					} else if (Hitscan(this.EnemyR3.top, LaserFromTop, 70)) {
-						Hit = Hit + 12;
-						if (this.Enemies[Hit]) {
-							this.Enemies[Hit] = false;
-							this.PlayerShot = false;
-							this.EnemySpeed = this.EnemySpeed + 0.75;
-							this.$timer.stop("HeroLaserMove");
-							return;
-						}
-					} else if (Hitscan(this.EnemyR4.top, LaserFromTop, 70)) {
+					} else if (Hitscan(this.EnemyR4.top, LaserFromTop, 70) || Hitscan(this.EnemyR4.top, LaserBottomFromTop, 70)) {
 						Hit = Hit + 18;
 						if (this.Enemies[Hit]) {
 							this.Enemies[Hit] = false;
@@ -338,8 +322,25 @@
 							this.$timer.stop("HeroLaserMove");
 							return;
 						}
-					} else if (Hitscan(this.EnemyR5.top, LaserFromTop, 70)) {
-						Hit = Hit + 24;
+					} else if (Hitscan(this.EnemyR3.top, LaserFromTop, 70) || Hitscan(this.EnemyR3.top, LaserBottomFromTop, 70)) {
+						Hit = Hit + 12;
+						if (this.Enemies[Hit]) {
+							this.Enemies[Hit] = false;
+							this.PlayerShot = false;
+							this.EnemySpeed = this.EnemySpeed + 0.75;
+							this.$timer.stop("HeroLaserMove");
+							return;
+						}
+					} else if (Hitscan(this.EnemyR2.top, LaserFromTop, 70) || Hitscan(this.EnemyR2.top, LaserBottomFromTop, 70)) {
+						Hit = Hit + 6;
+						if (this.Enemies[Hit]) {
+							this.Enemies[Hit] = false;
+							this.PlayerShot = false;
+							this.EnemySpeed = this.EnemySpeed + 0.75;
+							this.$timer.stop("HeroLaserMove");
+							return;
+						}
+					} else if (Hitscan(this.EnemyR1.top, LaserFromTop, 70) || Hitscan(this.EnemyR1.top, LaserBottomFromTop, 70)) {
 						if (this.Enemies[Hit]) {
 							this.Enemies[Hit] = false;
 							this.PlayerShot = false;
