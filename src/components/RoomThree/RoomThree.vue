@@ -32,22 +32,22 @@
         <div class="map-item" id="Torch">
           <img class="item-img pos-item" src="https://img.icons8.com/cotton/64/000000/torch.png" />
           <div class="hidden">https://img.icons8.com/cotton/64/000000/torch.png</div>
-          <div>Torch</div>
+          <div>&#8204;</div>
         </div>
         <div class="map-item" id="Skull-1">
           <img class="item-img pos-item" src="https://img.icons8.com/material-two-tone/24/000000/skull.png" />
           <div class="hidden">https://img.icons8.com/ultraviolet/40/000000/paper.png</div>
-          <div>Skull</div>
+          <div>‌</div>
         </div> 
         <div class="map-item" id="Skull-2">
           <img class="item-img pos-item" src="https://img.icons8.com/material-two-tone/24/000000/skull.png" />
           <div class="hidden">https://img.icons8.com/ultraviolet/40/000000/paper.png</div>
-          <div>"Skull"</div>
+          <div>‌</div>
         </div> 
         <div class="map-item" id="Skull-3">
           <img class="item-img pos-item" src="https://img.icons8.com/material-two-tone/24/000000/skull.png" />
           <div class="hidden">https://img.icons8.com/ultraviolet/40/000000/paper.png</div>
-          <div>A Skull</div>
+          <div>‌</div>
         </div> 
         <img class="pos-item" id="FinalLock" src="https://img.icons8.com/bubbles/75/000000/lock-2.png"/>
       </div>
@@ -195,6 +195,7 @@ export default {
       const mapItemArray = Array.from(
         document.getElementsByClassName("map-item")
       );
+      console.log(mapItemArray);
       let inventoryArray = [];
       const inventory = document.querySelector(".inventory");
 
