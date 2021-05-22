@@ -1,33 +1,33 @@
 <template>
 	<div>
 		<span class="Lock" id="Digit1">
-			<button class="Up_Arrow">
+			<button class="Up_Arrow" @click="ChangeDigit1(1)">
 				<img src="@/assets/Images/Suitcase_Arrow.png" />
 			</button>
 			<div class="Digit">{{ Digit1 }}</div>
-			<button class="Down_Arrow Digit1">
+			<button class="Down_Arrow" @click="ChangeDigit1(-1)">
 				<img src="@/assets/Images/Suitcase_Arrow.png" />
 			</button>
 		</span>
 		<span class="Lock" id="Digit2">
-			<button class="Up_Arrow">
+			<button class="Up_Arrow" @click="ChangeDigit2(1)">
 				<img src="@/assets/Images/Suitcase_Arrow.png" />
 			</button>
 			<div class="Digit">{{ Digit2 }}</div>
-			<button class="Down_Arrow">
+			<button class="Down_Arrow" @click="ChangeDigit2(-1)">
 				<img src="@/assets/Images/Suitcase_Arrow.png" />
 			</button>
 		</span>
 		<span class="Lock" id="Digit3">
-			<button class="Up_Arrow">
+			<button class="Up_Arrow" @click="ChangeDigit3(1)">
 				<img src="@/assets/Images/Suitcase_Arrow.png" />
 			</button>
 			<div class="Digit">{{ Digit3 }}</div>
-			<button class="Down_Arrow">
+			<button class="Down_Arrow" @click="ChangeDigit3(-1)">
 				<img src="@/assets/Images/Suitcase_Arrow.png" />
 			</button>
 		</span>
-		<button id="Unlock"><img height="60px" src="@/assets/Images/Unlock_Button.png" /></button>
+		<button id="Unlock" @click="CheckCombination"><img height="60px" src="@/assets/Images/Unlock_Button.png" /></button>
 		<img v-if="Correct" src="@/assets/Images/Led_Correct.jpg" id="Indicator" />
 		<img v-else-if="Incorrect" src="@/assets/Images/Led_Incorrect.jpg" id="Indicator" />
 		<img v-else src="@/assets/Images/Led_Indicator.jpg" id="Indicator" />
@@ -46,6 +46,57 @@
 				Incorrect: false,
 				Attempt: false, // Set to true while the led animation plays
 			};
+		},
+		methods: {
+			ChangeDigit1(Direction) {
+				if (this.Digit1 === 9 && Direction === 1) {
+					this.Digit1 = 0;
+				} else if (this.Digit1 === 0 && Direction === -1) {
+					this.Digit1 = 9;
+				} else {
+					this.Digit1 = this.Digit1 + Direction;
+				}
+			},
+			ChangeDigit2(Direction) {
+				if (this.Digit2 === 9 && Direction === 1) {
+					this.Digit2 = 0;
+				} else if (this.Digit2 === 0 && Direction === -1) {
+					this.Digit2 = 9;
+				} else {
+					this.Digit2 = this.Digit2 + Direction;
+				}
+			},
+			ChangeDigit3(Direction) {
+				if (this.Digit3 === 9 && Direction === 1) {
+					this.Digit3 = 0;
+				} else if (this.Digit3 === 0 && Direction === -1) {
+					this.Digit3 = 9;
+				} else {
+					this.Digit3 = this.Digit3 + Direction;
+				}
+			},
+			CheckCombination() {
+				if (!this.Attempt) {
+					this.Attempt = true;
+					if (this.Digit1 === 4 && this.Digit2 === 7 && this.Digit3 === 5) {
+						this.Correct = true;
+						setTimeout(this.FlashLight("Correct"), 1000);
+					} else {
+						this.Incorrect = true;
+						setTimeout(this.FlashLight, 2000);
+					}
+				}
+			},
+			FlashLight(result = "Incorrect") {
+					if (result === "Correct") {
+						this.Correct = false
+						this.$emit("BriefcaseOpened")
+                        return
+					} else{
+                        this.Incorrect = false;
+                        this.Attempt = false
+                    }
+			},
 		},
 	};
 </script>
@@ -95,7 +146,7 @@
 	#Indicator {
 		position: absolute;
 		height: 30px;
-        width: 30px;
+		width: 30px;
 		left: 47%;
 		top: 36%;
 		border-radius: 50%;

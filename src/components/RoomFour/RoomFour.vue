@@ -15,7 +15,7 @@
         <div class="modal-content" id="BriefcaseBackdrop">
           <span class="modal_close" @click="closeModal()" >&times;</span>
           <div v-if="BriefcaseOpened"> Opened Briefcase Placeholder </div>
-          <Briefcase  v-else @OpenBriefcase="BriefcaseOpened = true" />
+          <Briefcase  v-else @BriefcaseOpened="BriefcaseOpened = true" />
         </div>
       </div>
       <div class="modal-item" id="final-ans-modal"> 
