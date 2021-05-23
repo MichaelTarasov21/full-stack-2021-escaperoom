@@ -17,7 +17,7 @@
           <Note v-if="Notetaken" />
           <div v-else-if="BriefcaseOpened">
           <h1> You see a note inside the suitecase </h1>
-          <button @click="Notetaken = true; closeModal"> Take </button>
+          <button id="NoteTaker" @click="Notetaken = true"> Take </button>
           </div>
           <Briefcase v-else @BriefcaseOpened="BriefcaseOpened = true" />
         </div>
@@ -329,5 +329,8 @@ a {
   height: 70%;
   width: 70%;
   background-color: black;
+}
+#NoteTaker{
+          background-color: black;
 }
 </style>
