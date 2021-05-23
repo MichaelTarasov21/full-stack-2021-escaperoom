@@ -14,8 +14,12 @@
       <div class="modal-item"> 
         <div class="modal-content" id="BriefcaseBackdrop">
           <span class="modal_close" @click="closeModal()" >&times;</span>
-          <div v-if="BriefcaseOpened"> Opened Briefcase Placeholder </div>
-          <Briefcase  v-else @BriefcaseOpened="BriefcaseOpened = true" />
+          <Note v-if="Notetaken" />
+          <div v-else-if="BriefcaseOpened">
+          <h1> You see a note inside the suitecase </h1>
+          <button @click="Notetaken = true; closeModal"> Take </button>
+          </div>
+          <Briefcase v-else @BriefcaseOpened="BriefcaseOpened = true" />
         </div>
       </div>
       <div class="modal-item" id="final-ans-modal"> 
@@ -43,17 +47,20 @@
 <script>
 import SpaceInvaders from "./SpaceInvaders.vue"
 import Briefcase from "./Briefcase.vue"
+import Note from "./Note.vue"
 export default {
   name: 'RoomFour',
   emits: ['roomFourFin'],
   components:{
     SpaceInvaders,
     Briefcase,
+    Note,
   },
   data(){
     return{
     Minigamewon: false,
     BriefcaseOpened: false,
+    Notetaken: false,
     }
   },
   mounted: function () {
