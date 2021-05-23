@@ -22,13 +22,10 @@
           <Briefcase v-else @BriefcaseOpened="BriefcaseOpened = true" />
         </div>
       </div>
-      <div class="modal-item" id="final-ans-modal"> 
-        <div class="modal-content">
+      <div class="modal-item"> 
+        <div class="modal-content" id="final-ans-modal-content">
           <span class="modal_close" @click="closeModal()" >&times;</span>
-          <p>Room Four Final Puzzle</p>
-          <div id="answerCheck"></div>
-          <input type="text" id="roomFourAns" placeholder="Your Answer" />
-          <input type="submit" value="Submit" @click="verify()"/>
+          <LogicPuzzle @Finish="finish" />
         </div>
       </div>
       <div class="map">
@@ -48,6 +45,7 @@
 import SpaceInvaders from "./SpaceInvaders.vue"
 import Briefcase from "./Briefcase.vue"
 import Note from "./Note.vue"
+import LogicPuzzle from "./LogicPuzzle.vue"
 export default {
   name: 'RoomFour',
   emits: ['roomFourFin'],
@@ -55,6 +53,7 @@ export default {
     SpaceInvaders,
     Briefcase,
     Note,
+    LogicPuzzle,
   },
   data(){
     return{
@@ -78,23 +77,8 @@ export default {
         item.style.display = "none"; 
       });
     },
-    verify: function (){
-        var answer = document.getElementById("roomFourAns").value.toUpperCase();
-        if (answer == `ROOMFOUR`) {
-          document.getElementById("answerCheck").innerHTML = "";
-          document.getElementById("answerCheck").style.color = 'green';
-          document
-            .getElementById("answerCheck")
-            .insertAdjacentHTML("beforeend", `${answer} is Correct :D!`);
-          this.$emit('roomFourFin');
-        } else {
-          document.getElementById("answerCheck").innerHTML = "";
-          document.getElementById("answerCheck").style.color =
-            'red';
-          document
-            .getElementById("answerCheck")
-            .insertAdjacentHTML("beforeend", `${answer} is incorrect, try again :(`);
-        }
+    finish: function (){
+        this.$emit('roomFourFin');
     },
     movement: function () {
       var x = 0;
@@ -332,5 +316,8 @@ a {
 }
 #NoteTaker{
           background-color: black;
+}
+#final-ans-modal-content {
+  height: 70%;
 }
 </style>
