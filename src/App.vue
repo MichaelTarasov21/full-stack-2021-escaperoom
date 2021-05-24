@@ -63,7 +63,7 @@
 			},
 			StartGame: function() {
 				this.start = true;
-				this.roomFourLoad = true;
+				this.roomOneLoad = true;
 			},
 			roomOneFin: function() {
 				console.log("Room One is Finished");
