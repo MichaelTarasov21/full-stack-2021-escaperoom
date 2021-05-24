@@ -232,15 +232,23 @@
 		</table>
 
 		<button v-show="AnswersReady()" id="Submit" @click="CheckAnswers">Submit</button>
+		<div id="DoorContainer">
+			<h2>{{ Result }}</h2>
+			<img class="Door" @click="EscapeRoom" v-if="DoorOpen" src="@/assets/Images/Door_Open.png" />
+			<img class="Door" @click="TryDoor" v-else src="@/assets/Images/Door_Closed.jpg" />
+		</div>
 	</div>
 </template>
 <script>
 	export default {
 		name: "LogicPuzzle",
+		emits: ["Finish"],
 		data() {
 			return {
 				Grid: ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
 				Escape: false,
+				DoorOpen: false,
+				Result: "The door is locked up tight",
 			};
 		},
 		methods: {
@@ -270,23 +278,46 @@
 				}
 			},
 			CheckAnswers() {
-				function CheckBox(Box, Cell1, Cell2, Cell3, Cell4){
-					return (Box[Cell1] === "✔" && Box[Cell2] === "✔" && Box[Cell3] === "✔" && Box[Cell4] === "✔")
+				function CheckBox(Box, Cell1, Cell2, Cell3, Cell4) {
+					return Box[Cell1] === "✔" && Box[Cell2] === "✔" && Box[Cell3] === "✔" && Box[Cell4] === "✔";
 				}
 				const Box1 = this.Grid.slice(0, 16);
 				const Box2 = this.Grid.slice(16, 32);
 				const Box3 = this.Grid.slice(32, 48);
-				if (CheckBox(Box1, 3, 4, 10, 13) && (CheckBox(Box2, 1, 7, 10, 12) || CheckBox(Box3, 1, 7, 10, 12))){
-					this.Escape = true
+				if (CheckBox(Box1, 3, 4, 10, 13) && (CheckBox(Box2, 1, 7, 10, 12) || CheckBox(Box3, 1, 7, 10, 12))) {
+					this.Escape = true;
+					this.Result = "The locks click";
+				} else {
+					this.Result = "The locks won't turn";
+					setTimeout(this.ResetResult, 2000);
 				}
 			},
+			TryDoor() {
+				if (this.Escape) {
+					this.Result = "The door swings open";
+					this.DoorOpen = true;
+				} else {
+					this.Result = "The door won't budge";
+					setTimeout(this.ResetResult, 2000);
+				}
+			},
+			ResetResult() {
+				this.Result = "The door is locked up tight";
+			},
+			EscapeRoom(){
+				this.$emit("Finish")
+			}
 		},
 	};
 </script>
 <style scoped>
+	div {
+		text-align: left;
+	}
 	table {
-		position: absolute;
-		top: 20%;
+		text-align: center;
+		margin-left: 2rem;
+		margin-top: 2rem;
 		-webkit-user-select: none; /* Safari */
 		-moz-user-select: none; /* Firefox */
 		-ms-user-select: none; /* IE10+/Edge */
@@ -325,19 +356,26 @@
 	.Thicker_Bottom {
 		border-bottom: 2px solid black;
 	}
+	.Door {
+		cursor: pointer;
+	}
 	.Blank {
 		outline: none;
 		border: none;
 	}
 	#Submit {
-		position: absolute;
-		left: 8rem;
-		bottom: 15rem;
+		margin-left: 2rem;
+		margin-top: 2rem;
 		width: 14rem;
 		color: black;
 		background-color: lightgray;
 	}
 	#Submit:hover {
 		background-color: gray;
+	}
+	#DoorContainer {
+		position: absolute;
+		right: 10%;
+		top: 10%;
 	}
 </style>
