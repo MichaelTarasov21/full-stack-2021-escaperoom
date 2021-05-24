@@ -26,6 +26,7 @@
         <div class="modal-content" id="final-ans-modal-content">
           <span class="modal_close" @click="closeModal()" >&times;</span>
           <LogicPuzzle @Finish="finish" />
+          <Note v-if="Notetaken" />
         </div>
       </div>
       <div class="map">

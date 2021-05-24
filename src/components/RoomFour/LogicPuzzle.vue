@@ -230,6 +230,8 @@
 				</td>
 			</tr>
 		</table>
+
+		<button v-show="AnswersReady()" id="Submit" @click="CheckAnswers">Submit</button>
 	</div>
 </template>
 <script>
@@ -238,26 +240,57 @@
 		data() {
 			return {
 				Grid: ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+				Escape: false,
 			};
 		},
 		methods: {
 			Toggle(number) {
-				console.log(number)
-				if (this.Grid[number] === ""){
-					this.$set(this.Grid, number, "X")
-				} else if (this.Grid[number] === "X"){
-					this.$set(this.Grid, number, "✔")
+				if (this.Grid[number] === "") {
+					this.$set(this.Grid, number, "X");
+				} else if (this.Grid[number] === "X") {
+					this.$set(this.Grid, number, "✔");
 				} else {
-					this.$set(this.Grid, number, "")
+					this.$set(this.Grid, number, "");
 				}
-			} ,
-		}
+			},
+			AnswersReady() {
+				function IsCheck(Box) {
+					return Box === "✔";
+				}
+				const Box1 = this.Grid.slice(0, 16);
+				const Box2 = this.Grid.slice(16, 32);
+				const Box3 = this.Grid.slice(32, 48);
+				const Box1Checked = Box1.filter(IsCheck);
+				const Box2Checked = Box2.filter(IsCheck);
+				const Box3Checked = Box3.filter(IsCheck);
+				if (Box1Checked.length === 4 && (Box2Checked.length === 4 || Box3Checked.length === 4)) {
+					return true;
+				} else {
+					return false;
+				}
+			},
+			CheckAnswers() {
+				function CheckBox(Box, Cell1, Cell2, Cell3, Cell4){
+					return (Box[Cell1] === "✔" && Box[Cell2] === "✔" && Box[Cell3] === "✔" && Box[Cell4] === "✔")
+				}
+				const Box1 = this.Grid.slice(0, 16);
+				const Box2 = this.Grid.slice(16, 32);
+				const Box3 = this.Grid.slice(32, 48);
+				if (CheckBox(Box1, 3, 4, 10, 13) && (CheckBox(Box2, 1, 7, 10, 12) || CheckBox(Box3, 1, 7, 10, 12))){
+					this.Escape = true
+				}
+			},
+		},
 	};
 </script>
 <style scoped>
 	table {
 		position: absolute;
 		top: 20%;
+		-webkit-user-select: none; /* Safari */
+		-moz-user-select: none; /* Firefox */
+		-ms-user-select: none; /* IE10+/Edge */
+		user-select: none; /* Standard */
 	}
 	td {
 		width: 2rem;
@@ -295,5 +328,16 @@
 	.Blank {
 		outline: none;
 		border: none;
+	}
+	#Submit {
+		position: absolute;
+		left: 8rem;
+		bottom: 15rem;
+		width: 14rem;
+		color: black;
+		background-color: lightgray;
+	}
+	#Submit:hover {
+		background-color: gray;
 	}
 </style>
