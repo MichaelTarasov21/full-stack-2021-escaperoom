@@ -147,9 +147,9 @@
 		position: fixed;
 		top: 0%;
 		left: 0%;
-		height: 10%;
-		width: 10%;
-		text-align: left;
+		height: 5rem;
+		width: 12rem;
+		text-align: center;
 		background-color: black;
 		color: yellow;
 		font-size: 590%;

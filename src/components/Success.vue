@@ -4,18 +4,21 @@
 			<h1>Congrats WOW!</h1>
 			<p>Credits to Our Puzzle n' Inspirations</p>
 		</section>
-		<button id="Restart">Restart</button>
+		<button @click="Restart" id="Restart">Restart</button>
 		<button @click="OpenSettings" class="menu-tab" title="Profile">Profile</button>
 	</div>
 </template>
 
 <script>
 	export default {
-		emits: ["OpenSettings"],
+		emits: ["OpenSettings, Restart"],
 		name: "Success",
 		methods: {
 			OpenSettings: function() {
 				this.$emit("OpenSettings");
+			},
+			Restart: function() {
+				this.$emit("Restart");
 			},
 		},
 	};
@@ -32,7 +35,7 @@
 		left: 0%;
 		right: 0%;
 		bottom: 0%;
-    z-index: 1;
+		z-index: 1;
 	}
 	.congrats-message {
 		color: black;
