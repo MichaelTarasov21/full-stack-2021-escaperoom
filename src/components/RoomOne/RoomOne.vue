@@ -617,6 +617,7 @@ body {
   padding: 0;
   /* margin: 3rem; */
   position: absolute;
+  z-index: -1;
 }
 
 #character {
