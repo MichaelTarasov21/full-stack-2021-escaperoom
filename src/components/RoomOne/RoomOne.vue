@@ -24,6 +24,7 @@
       </div>
 
       <div class="mapItems" id="mapItems">
+
         <div class="map-item forPuzzle" id="FinalLock">
           <img
             class="item-img forTouch"
@@ -34,6 +35,7 @@
           </div>
           <div>FinalLock</div>
         </div>
+
         <div class="map-item forPuzzle" id="Computer">
           <img
             class="item-img forTouch"
@@ -44,6 +46,7 @@
           </div>
           <div>Computer</div>
         </div>
+        
         <div class="map-item forInventory" id="Wire">
           <img
             class="item-img"
@@ -66,11 +69,12 @@
         <div class="modal-content">
           <span class="modal_close" @click="closeModal()">&times;</span>
           <div id="changePuzzle"></div>
-          <!-- <div id="answerCheck"></div>
-          <input type="text" id="roomOneAns" placeholder="Your Answer" /> -->
+          <div id="answerCheck"></div>
+          <input type="text" id="roomOneAns" placeholder="Your Answer" />
           <input type="submit" value="Submit" @click="verify()" />
         </div>
       </div>
+
     </div>
 
     <!-- <div id="keypadBtns" class="keypadBtns"></div> -->
