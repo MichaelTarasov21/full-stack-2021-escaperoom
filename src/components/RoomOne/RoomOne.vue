@@ -1,11 +1,5 @@
 <template>
   <div class="roomOne">
-    <!-- <h1>Room One</h1> -->
-
-    <div class="popUpModal" id="popUpModal">
-      <div class="closeModal" id="closeModal"></div>
-      <div id="modal-content"></div>
-    </div>
 
     <div class="canvas" id="canvas">
       <div id="character">
@@ -22,125 +16,58 @@
           alt="Character"
         />
       </div>
-
       <div class="mapItems" id="mapItems">
-        <div class="map-item" id="Computer">
+        <div class="map-item forPuzzle" id="FinalLock">
+          <img class="item-img forTouch" src="https://img.icons8.com/dusk/200/000000/door-closed.png"/>
+          <div class="hidden">
+            https://i.ibb.co/qFBnL0y/compscipuzzle.jpg
+          </div>
+          <div>Portal</div>
+          <div class="hidden">
+            https://i.ibb.co/WDd9BMQ/compscianswer.png
+          </div>
+        </div>
+        <div class="map-item forPuzzle" id="Computer">
           <img
-            class="item-img pos-item"
+            class="item-img forTouch"
             src="https://img.icons8.com/officel/75/000000/computer.png"
           />
           <div class="hidden">
-            src="https://img.icons8.com/officel/75/000000/computer.png"
+            https://i.ibb.co/qFBnL0y/compscipuzzle.jpg
           </div>
           <div>Computer</div>
+          <div class="hidden">
+            https://i.ibb.co/WDd9BMQ/compscianswer.png
+          </div>
         </div>
         <div class="map-item forInventory" id="Wire">
           <img
-            class="item-img pos-item"
+            class="item-img"
             src="https://img.icons8.com/dusk/75/000000/audio-cable.png"
           />
-          <div class="hidden">
-            https://img.icons8.com/dusk/75/000000/audio-cable.png
-          </div>
+          <div class="hidden">https://img.icons8.com/dusk/75/000000/audio-cable.png</div>
           <div>Wire</div>
         </div>
         <div class="map-item forInventory" id="Key">
-          <img
-            class="item-img pos-item"
-            src="https://source.unsplash.com/random"
-          />
-          <div class="hidden">https://source.unsplash.com/random</div>
-          <div>Key</div>
-        </div>
-        <div class="map-item" id="FinalLock">
-          <img
-            class="item-img pos-item"
-            src="https://img.icons8.com/bubbles/75/000000/lock-2.png"
-            @click="nextRoom()"
-          />
-          <div class="hidden">
-            src="https://img.icons8.com/bubbles/75/000000/lock-2.png"
-          </div>
-          <div>FinalLock</div>
+          <img class="item-img" src="https://img.icons8.com/emoji/100/000000/goggles-emoji.png"/>
+          <div class="hidden">https://img.icons8.com/emoji/100/000000/goggles-emoji.png</div>
+          <div>Goggles</div>
         </div>
       </div>
+
 
       <div class="modal-item" id="final-ans-modal">
         <div class="modal-content">
           <span class="modal_close" @click="closeModal()">&times;</span>
-          <p>Room One Final Puzzle</p>
-          <div id="answerCheck"></div>
-          <input type="text" id="roomOneAns" placeholder="Your Answer" />
+          <div id="changePuzzle"></div>
+          <!-- <div id="answerCheck"></div>
+          <input type="text" id="roomOneAns" placeholder="Your Answer" /> -->
           <input type="submit" value="Submit" @click="verify()" />
         </div>
       </div>
     </div>
 
     <!-- <div id="keypadBtns" class="keypadBtns"></div> -->
-
-    <!-- start of old code -->
-
-    <!-- <div class="modal-item">
-      <div class="modal-content">
-        <span class="modal_close" @click="closeModal()">&times;</span>
-        <p>Computer Puzzle</p>
-      </div>
-    </div>
-    <div class="modal-item">
-      <div class="modal-content">
-        <span class="modal_close" @click="closeModal()">&times;</span>
-        <p>Wire</p>
-      </div>
-    </div>
-    <div class="modal-item">
-      <div class="modal-content">
-        <span class="modal_close" @click="closeModal()">&times;</span>
-        <p>Key</p>
-      </div>
-    </div>
-    <div class="modal-item" id="final-ans-modal">
-      <div class="modal-content">
-        <span class="modal_close" @click="closeModal()">&times;</span>
-        <p>Room One Final Puzzle</p>
-        <div id="answerCheck"></div>
-        <input type="text" id="roomOneAns" placeholder="Your Answer" />
-        <input type="submit" value="Submit" @click="verify()" />
-      </div>
-    </div> -->
-
-    <!-- <div class="map">
-      <div class="player">
-        <img id="player" src="../../img/redsquare.png" alt="Red Square" />
-      </div>
-      <img
-        class="pos-item"
-        id="Computer"
-        src="https://img.icons8.com/officel/75/000000/computer.png"
-      />
-      <div class="map-item" id="Wire">
-        <img
-          class="item-img pos-item"
-          src="https://img.icons8.com/dusk/75/000000/audio-cable.png"
-        />
-        <div class="hidden">
-          https://img.icons8.com/dusk/75/000000/audio-cable.png
-        </div>
-        <div>Wire</div>
-      </div>
-      <div class="map-item" id="Key">
-        <img
-          class="item-img pos-item"
-          src="https://source.unsplash.com/random"
-        />
-        <div class="hidden">https://source.unsplash.com/random</div>
-        <div>Key</div>
-      </div>
-      <img
-        class="pos-item"
-        id="FinalLock"
-        src="https://img.icons8.com/bubbles/75/000000/lock-2.png"
-      />
-    </div> -->
     <!-- <div ref="mapItems"></div> -->
     <div class="inventory" ref="inventory"></div>
   </div>
@@ -152,10 +79,11 @@ export default {
   name: "RoomOne",
   emits: ["roomOneFin"],
   mounted: function() {
-    // this.movement();
-    // this.coordinates();
-    // // this.displayMapItems();
+    this.coordinates();
     this.addToInventory();
+    this.changePuzzle();
+
+    // // this.displayMapItems();
 
     const sprite = document.getElementById("spriteCharacter");
     const character = document.getElementById("character");
@@ -167,7 +95,7 @@ export default {
     let screenHeight;
 
     let x = 0;
-    let y = 0;
+    let y = 5;
 
     //screen size
     const findScreenSize = function() {
@@ -207,7 +135,6 @@ export default {
       sprite.classList.add("face-right");
       sprite.classList.remove("face-down", "face-left", "face-up");
       x = x + 1;
-      console.log(x);
     };
 
     const moveLeft = function() {
@@ -412,6 +339,12 @@ export default {
           .getElementById("answerCheck")
           .insertAdjacentHTML("beforeend", `${answer} is Correct :D!`);
         this.$emit("roomOneFin");
+      } else if (answer == `COMPSCI`) {
+        document.getElementById("answerCheck").innerHTML = "";
+        document.getElementById("answerCheck").style.color = "green";
+        document
+          .getElementById("answerCheck")
+          .insertAdjacentHTML("beforeend", `${answer} is Correct :D!`);
       } else {
         document.getElementById("answerCheck").innerHTML = "";
         document.getElementById("answerCheck").style.color = "red";
@@ -423,109 +356,109 @@ export default {
           );
       }
     },
-    // movement: function () {
-    //   console.log("movement function is connected");
-    //   var x = 0;
-    //   var y = 0;
-    //   var leftLimit = 0;
-    //   var rightLimit = document.querySelector(".map").getBoundingClientRect()
-    //     .width;
-    //   console.log("width:" + rightLimit);
-    //   var topLimit = 0;
-    //   var bottomLimit = document.querySelector(".map").offsetHeight;
-    //   console.log("height:" + bottomLimit);
-    //   document.addEventListener("keydown", function (event) {
-    //     if (event.keyCode == "38") {
-    //       console.log("Up key is connected");
-    //       y -= 20;
-    //       if (y < topLimit) {
-    //         y = topLimit;
-    //       }
-    //       document.querySelector(
-    //         ".player"
-    //       ).style.transform = `translate(${x}px,${y}px)`;
-    //     } else if (event.keyCode == "39") {
-    //       console.log("Right key is connected");
-    //       x += 20;
-    //       if (x > rightLimit) {
-    //         x = rightLimit;
-    //       }
-    //       document.querySelector(
-    //         ".player"
-    //       ).style.transform = `translate(${x}px,${y}px)`;
-    //     } else if (event.keyCode == "37") {
-    //       console.log("Left key is connected");
-    //       x -= 20;
-    //       if (x < leftLimit) {
-    //         x = leftLimit;
-    //       }
-    //       document.querySelector(
-    //         ".player"
-    //       ).style.transform = `translate(${x}px,${y}px)`;
-    //     } else if (event.keyCode == "40") {
-    //       console.log("Down key is connected");
-    //       y += 20;
-    //       if (y > bottomLimit) {
-    //         y = bottomLimit;
-    //       }
-    //       document.querySelector(
-    //         ".player"
-    //       ).style.transform = `translate(${x}px,${y}px)`;
-    //     }
-    //     console.log(x, y);
-    //   });
-    // },
-    // coordinates: function () {
-    //   console.log("coordinates function is connected");
-    //   document.addEventListener("keydown", function (event) {
-    //     if (
-    //       event.keyCode == "37" ||
-    //       event.keyCode == "38" ||
-    //       event.keyCode == "39" ||
-    //       event.keyCode == "40"
-    //     ) {
-    //       //making the position item arry
-    //       const posItemArray = Array.from(
-    //         document.getElementsByClassName("pos-item")
-    //       );
-    //       const modalArray = Array.from(
-    //         document.getElementsByClassName("modal-item")
-    //       );
-    //       //finding position for each pos-item
-    //       posItemArray.forEach(function (item, index) {
-    //         //finding the coordinates of the player
-    //         let playerCoords = document
-    //           .querySelector(".player")
-    //           .getBoundingClientRect();
-    //         let playerLeft = Math.round(playerCoords.left / 100) * 100;
-    //         let playerTop = Math.round(playerCoords.top / 100) * 100;
-    //         console.log(
-    //           "player left: " + playerLeft + " player top: " + playerTop
-    //         );
-    //         //finding the coordinates of all objects
-    //         let objectCoords = item.getBoundingClientRect();
-    //         let objectLeft = Math.round(objectCoords.left / 100) * 100;
-    //         let objectTop = Math.round(objectCoords.top / 100) * 100;
-    //         console.log("left: " + objectLeft + " top: " + objectTop);
-    //         //if it is an inventory object - and enter is clicked = it gets added to inventory
-    //         //if it is a modal object - and enter is clicked = a popup opens
-    //         if (objectLeft === playerLeft && objectTop === playerTop) {
-    //           document.addEventListener("keydown", function (event) {
-    //             if (event.keyCode == "13") {
-    //               const modalItem = modalArray[index];
-    //               modalItem.style.display = "block";
-    //             }
-    //           });
-    //           console.log("Player and Object are touching!!!");
-    //           item.style.transform = "scale(1.2)";
-    //         } else {
-    //           console.log("Still not touching");
-    //           item.style.transform = "scale(1)";
-    //         }
-    //       });
-    //     }
-    //   });
-    // },
+    coordinates: function () {
+      console.log("coordinates function is connected");
+      document.addEventListener("keydown", function (event) {
+        if (
+          event.keyCode == "37" ||
+          event.keyCode == "38" ||
+          event.keyCode == "39" ||
+          event.keyCode == "40"
+        ) {
+          //making the position item arry
+          const puzzleArray = Array.from(
+            document.getElementsByClassName("forTouch")
+          );
+          const finalModal = document.querySelector("#final-ans-modal");
+          puzzleArray.forEach(function (item) {
+            //finding the coordinates of the player
+            let playerCoords = document
+              .querySelector("#character")
+              .getBoundingClientRect();
+            let playerLeft = Math.round(playerCoords.left / 100) * 100;
+            let playerTop = Math.round(playerCoords.top / 100) * 100;
+            //finding the coordinates of all objects
+            let objectCoords = item.getBoundingClientRect();
+            let objectLeft = Math.round(objectCoords.left / 100) * 100;
+            let objectTop = Math.round(objectCoords.top / 100) * 100;
+            // const changeModal = document.querySelector("#changePuzzle");
+            // let modalArray = [];
+            // changeModal.innerHTML = "";
+            if (objectLeft === playerLeft && objectTop === playerTop) {
+              document.addEventListener("keydown", function (event) {
+                if (event.keyCode == "13") {
+                  finalModal.style.display = "block";
+                  this.changePuzzle();
+                }
+              });
+              console.log("Player and Object are touching!!!");
+              item.style.transform = "scale(1.2)";
+              // item.addEventListener("click", function() {
+              //   let addedItem = {
+              //     name: item.parent.children[2].textContent,
+              //     img: item.parent.children[1].textContent,
+              //   };
+              //   modalArray.push(addedItem);
+              //   modalArray.forEach(function(modalItem) {
+              //     changeModal.innerHTML = 
+              //     `<h2>${modalItem.name}</h2>
+              //     <p>${modalItem.name}</p>
+              //     <img
+              //       class=""
+              //       src="${modalItem.img}"
+              //     />
+              //     <div id="answerCheck"></div>
+              //     <input type="text" id="roomOneAns" placeholder="Your Answer" />
+              //     `
+              //     ;
+              //   });
+              // });
+            } else {
+              finalModal.style.display = "none";
+              console.log("Still not touching");
+              item.style.transform = "scale(1)";
+            }
+          });
+        }
+      });
+    },
+    changePuzzle: function() {
+      const puzzleArray = Array.from(
+        document.getElementsByClassName("forPuzzle")
+      );
+      let modalArray = [];
+      const changeModal = document.querySelector("#changePuzzle");
+      changeModal.innerHTML = "";
+      puzzleArray.forEach(function(item) {
+        //when img is clicked
+        item.addEventListener("click", function() {
+          let addedItem = {
+            name: item.children[2].textContent,
+            img: item.children[1].textContent,
+            answerimg: item.children[3].textContent,
+          };
+          // modalArray.splice(0, 1, addedItem);
+          modalArray.push(addedItem);
+          display();
+        });
+      });
+      const display = function() {
+        modalArray.forEach(function(item) {
+          changeModal.innerHTML = 
+          `<h2>${item.name}</h2>
+          <p>${item.name}</p>
+          <div class="flex-row">
+            <img src="${item.img}" width="250rem" height="auto" alt="">
+            <div class="flex-column">
+              <img src="${item.answerimg}" width="250rem" height="auto" alt="">
+              <div id="answerCheck"></div>
+              <input type="text" id="roomOneAns" placeholder="Your Answer" />
+            </div>
+          </div>`
+          ;
+        });
+      };
+    },
     addToInventory: function() {
       //get array of items on map
       const mapItemArray = Array.from(
@@ -614,9 +547,14 @@ body {
 .canvas {
   /* width: 100%;
   height: 100%; */
-  padding: 0;
   /* margin: 3rem; */
+  padding: 0;
   position: absolute;
+  background-color:black;
+  background-image: url("../../img/space2.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   z-index: -1;
 }
 
@@ -625,9 +563,9 @@ body {
   height: calc(1rem * var(--scale));
   overflow: hidden;
   position: absolute;
-  top: 0;
+  top: 5rem;
   left: 0;
-}
+  z-index: 1}
 
 .Character_spritesheet {
   width: calc(4rem * var(--scale));
@@ -700,15 +638,36 @@ body {
   width: 2rem;
   background-color: red;
 }
+.flex-column{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.flex-row{
+  display: flex;
+  justify-content: center;
+}
 
 #FinalLock {
   position: absolute;
-  bottom: 0;
-  right: 0;
+  bottom: 5rem;
+  right: 5rem;
+}
+
+#Wire {
+  position: absolute;
+  bottom: 5rem;
+  left: 5rem;
+}
+
+#Computer{
+  position: absolute;
+  top: 5rem;
+  left: 20rem;
 }
 
 /* inventory styling */
-
 .inventory {
   border: 0.5rem black solid;
   width: calc(30rem);
