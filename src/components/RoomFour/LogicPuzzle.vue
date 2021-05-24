@@ -15,35 +15,35 @@
 			</tr>
 			<tr>
 				<td class="Horizontal_Item Thicker_Top"><img src="@/assets/Images/Horizontal_Word_1.jpg" /></td>
-				<td class="Hoverable Thicker_Left" @click="Toggle(0)">
+				<td class="Hoverable Thicker_Left Thicker_Top" @click="Toggle(0)">
 					<span v-show="Grid[0] === '✔'" class="Correct">✔</span>
 					<span v-show="(Grid[0] === 'X' || Grid[2] === '✔' || Grid[1] === '✔' || Grid[3] === '✔' || Grid[12] === '✔' || Grid[8] === '✔' || Grid[4] === '✔') && Grid[0] !== '✔'" class="Incorrect">X</span>
 				</td>
-				<td class="Hoverable" @click="Toggle(1)">
+				<td class="Hoverable Thicker_Top" @click="Toggle(1)">
 					<span v-show="Grid[1] === '✔'" class="Correct">✔</span>
 					<span v-show="(Grid[1] === 'X' || Grid[2] === '✔' || Grid[3] === '✔' || Grid[0] === '✔' || Grid[13] === '✔' || Grid[9] === '✔' || Grid[5] === '✔') && Grid[1] !== '✔'" class="Incorrect">X</span>
 				</td>
-				<td class="Hoverable" @click="Toggle(2)">
+				<td class="Hoverable Thicker_Top" @click="Toggle(2)">
 					<span v-show="Grid[2] === '✔'" class="Correct">✔</span>
 					<span v-show="(Grid[2] === 'X' || Grid[3] === '✔' || Grid[1] === '✔' || Grid[0] === '✔' || Grid[14] === '✔' || Grid[10] === '✔' || Grid[6] === '✔') && Grid[2] !== '✔'" class="Incorrect">X</span>
 				</td>
-				<td class="Thicker_Right Hoverable" @click="Toggle(3)">
+				<td class="Thicker_Right Hoverable Thicker_Top" @click="Toggle(3)">
 					<span v-show="Grid[3] === '✔'" class="Correct">✔</span>
 					<span v-show="(Grid[3] === 'X' || Grid[2] === '✔' || Grid[1] === '✔' || Grid[0] === '✔' || Grid[15] === '✔' || Grid[11] === '✔' || Grid[7] === '✔') && Grid[3] !== '✔'" class="Incorrect">X</span>
 				</td>
-				<td class="Hoverable" @click="Toggle(16)">
+				<td class="Hoverable Thicker_Top" @click="Toggle(16)">
 					<span v-show="Grid[16] === '✔'" class="Correct">✔</span>
 					<span v-show="(Grid[16] === 'X' || Grid[18] === '✔' || Grid[17] === '✔' || Grid[19] === '✔' || Grid[28] === '✔' || Grid[24] === '✔' || Grid[20] === '✔') && Grid[16] !== '✔'" class="Incorrect">X</span>
 				</td>
-				<td class="Hoverable" @click="Toggle(17)">
+				<td class="Hoverable Thicker_Top" @click="Toggle(17)">
 					<span v-show="Grid[17] === '✔'" class="Correct">✔</span>
 					<span v-show="(Grid[17] === 'X' || Grid[18] === '✔' || Grid[19] === '✔' || Grid[16] === '✔' || Grid[29] === '✔' || Grid[25] === '✔' || Grid[21] === '✔') && Grid[17] !== '✔'" class="Incorrect">X</span>
 				</td>
-				<td class="Hoverable" @click="Toggle(18)">
+				<td class="Hoverable Thicker_Top" @click="Toggle(18)">
 					<span v-show="Grid[18] === '✔'" class="Correct">✔</span>
 					<span v-show="(Grid[18] === 'X' || Grid[19] === '✔' || Grid[17] === '✔' || Grid[16] === '✔' || Grid[30] === '✔' || Grid[26] === '✔' || Grid[22] === '✔') && Grid[18] !== '✔'" class="Incorrect">X</span>
 				</td>
-				<td class="Thicker_Right Hoverable" @click="Toggle(19)">
+				<td class="Thicker_Right Hoverable Thicker_Top" @click="Toggle(19)">
 					<span v-show="Grid[19] === '✔'" class="Correct">✔</span>
 					<span v-show="(Grid[19] === 'X' || Grid[18] === '✔' || Grid[17] === '✔' || Grid[16] === '✔' || Grid[31] === '✔' || Grid[27] === '✔' || Grid[23] === '✔') && Grid[19] !== '✔'" class="Incorrect">X</span>
 				</td>
@@ -273,7 +273,6 @@
 		width: 2rem;
 		height: 6rem;
 		border-top: 2px solid black;
-		border-bottom: 2px solid black;
 	}
 	.Horizontal_Item {
 		font-weight: bold;
