@@ -112,7 +112,7 @@ export default {
     let screenHeight;
 
     let x = 0;
-    let y = 0;
+    let y = 5;
 
     //screen size
     const findScreenSize = function() {
@@ -152,7 +152,6 @@ export default {
       sprite.classList.add("face-right");
       sprite.classList.remove("face-down", "face-left", "face-up");
       x = x + 1;
-      console.log(x);
     };
 
     const moveLeft = function() {
@@ -561,7 +560,11 @@ body {
   /* margin: 3rem; */
   position: absolute;
   background-color:black;
-  background-image: url("../../img/maze.png");
+  background-image: url("../../img/space2.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  z-index: -1;
 }
 
 #character {
@@ -569,8 +572,9 @@ body {
   height: calc(1rem * var(--scale));
   overflow: hidden;
   position: absolute;
-  top: 0;
+  top: 5rem;
   left: 0;
+  z-index: 1;
 }
 
 .Character_spritesheet {
