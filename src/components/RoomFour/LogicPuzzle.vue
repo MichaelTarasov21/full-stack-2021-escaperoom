@@ -15,75 +15,75 @@
 			</tr>
 			<tr>
 				<td class="Horizontal_Item Thicker_Top"><img src="@/assets/Images/Horizontal_Word_1.jpg" /></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td class="Thicker_Left"></td>
-				<td></td>
-				<td></td>
-				<td class="Thicker_Right"></td>
+				<td class="Hoverable"></td>
+				<td class="Hoverable"></td>
+				<td class="Hoverable"></td>
+				<td class="Hoverable"></td>
+				<td class="Thicker_Left Hoverable"></td>
+				<td class="Hoverable"></td>
+				<td class="Hoverable"></td>
+				<td class="Thicker_Right Hoverable"></td>
 			</tr>
 			<tr>
 				<td class="Horizontal_Item"><img src="@/assets/Images/Horizontal_Word_2.jpg" /></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td class="Thicker_Left"></td>
-				<td></td>
-				<td></td>
-				<td class="Thicker_Right"></td>
+				<td class="Hoverable"></td>
+				<td class="Hoverable"></td>
+				<td class="Hoverable"></td>
+				<td class="Hoverable"></td>
+				<td class="Thicker_Left Hoverable"></td>
+				<td class="Hoverable"></td>
+				<td class="Hoverable"></td>
+				<td class="Thicker_Right Hoverable"></td>
 			</tr>
 			<tr>
 				<td class="Horizontal_Item"><img src="@/assets/Images/Horizontal_Word_3.jpg" /></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td class="Thicker_Left"></td>
-				<td></td>
-				<td></td>
-				<td class="Thicker_Right"></td>
+				<td class="Hoverable"></td>
+				<td class="Hoverable"></td>
+				<td class="Hoverable"></td>
+				<td class="Hoverable"></td>
+				<td class="Thicker_Left Hoverable"></td>
+				<td class="Hoverable"></td>
+				<td class="Hoverable"></td>
+				<td class="Thicker_Right Hoverable"></td>
 			</tr>
 			<tr>
 				<td class="Horizontal_Item Thicker_Bottom"><img src="@/assets/Images/Horizontal_Word_4.jpg" /></td>
-				<td class="Thicker_Bottom"></td>
-				<td class="Thicker_Bottom"></td>
-				<td class="Thicker_Bottom"></td>
-				<td class="Thicker_Bottom"></td>
-				<td class="Thicker_Bottom Thicker_Left"></td>
-				<td class="Thicker_Bottom"></td>
-				<td class="Thicker_Bottom"></td>
-				<td class="Thicker_Bottom Thicker_Right"></td>
+				<td class="Thicker_Bottom Hoverable"></td>
+				<td class="Thicker_Bottom Hoverable"></td>
+				<td class="Thicker_Bottom Hoverable"></td>
+				<td class="Thicker_Bottom" Hoverable></td>
+				<td class="Thicker_Bottom Thicker_Left Hoverable"></td>
+				<td class="Thicker_Bottom Hoverable"></td>
+				<td class="Thicker_Bottom Hoverable"></td>
+				<td class="Thicker_Bottom Thicker_Right Hoverable"></td>
 			</tr>
 			<tr>
 				<td class="Horizontal_Item"><img src="@/assets/Images/Horizontal_Word_5.jpg" /></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td class="Thicker_Right"></td>
+				<td class="Hoverable"></td>
+				<td class="Hoverable"></td>
+				<td class="Hoverable"></td>
+				<td class="Thicker_Right Hoverable"></td>
 			</tr>
 			<tr>
 				<td class="Horizontal_Item"><img src="@/assets/Images/Horizontal_Word_6.jpg" /></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td class="Thicker_Right"></td>
+				<td class="Hoverable"></td>
+				<td class="Hoverable"></td>
+				<td class="Hoverable"></td>
+				<td class="Thicker_Right Hoverable"></td>
 			</tr>
 			<tr>
 				<td class="Horizontal_Item"><img src="@/assets/Images/Horizontal_Word_7.jpg" /></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td class="Thicker_Right"></td>
+				<td class="Hoverable"></td>
+				<td class="Hoverable"></td>
+				<td class="Hoverable"></td>
+				<td class="Thicker_Right Hoverable"></td>
 			</tr>
 			<tr>
 				<td class="Horizontal_Item Thicker_Bottom"><img src="@/assets/Images/Horizontal_Word_8.jpg" /></td>
-				<td class="Thicker_Bottom"></td>
-				<td class="Thicker_Bottom"></td>
-				<td class="Thicker_Bottom"></td>
-				<td class="Thicker_Bottom Thicker_Right"></td>
+				<td class="Thicker_Bottom Hoverable"></td>
+				<td class="Thicker_Bottom Hoverable"></td>
+				<td class="Thicker_Bottom Hoverable"></td>
+				<td class="Thicker_Bottom Thicker_Right Hoverable"></td>
 			</tr>
 		</table>
 	</div>
@@ -105,6 +105,9 @@
 		outline-width: 2px;
 		outline-style: solid;
 	}
+    .Hoverable:hover{
+        background-color: lightblue;
+    }
 	.Vertical_Item {
 		width: 2rem;
 		height: 6rem;
