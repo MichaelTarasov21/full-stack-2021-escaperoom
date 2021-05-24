@@ -91,6 +91,11 @@
 <script>
 	export default {
 		name: "LogicPuzzle",
+		data() {
+			return {
+				Grid: ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+			};
+		},
 	};
 </script>
 <style scoped>
@@ -105,21 +110,21 @@
 		outline-width: 2px;
 		outline-style: solid;
 	}
-    .Hoverable:hover{
-        background-color: lightblue;
-    }
+	.Hoverable:hover {
+		background-color: lightblue;
+	}
 	.Vertical_Item {
 		width: 2rem;
 		height: 6rem;
-        border-top: 2px solid black;
-        border-bottom: 2px solid black;
+		border-top: 2px solid black;
+		border-bottom: 2px solid black;
 	}
 	.Horizontal_Item {
 		font-weight: bold;
 		font-size: 13px;
 		width: 6rem;
-        border-left: 2px solid black;
-        border-right: 2px solid black;
+		border-left: 2px solid black;
+		border-right: 2px solid black;
 	}
 	.Thicker_Left {
 		border-left: 2px solid black;
@@ -133,8 +138,8 @@
 	.Thicker_Bottom {
 		border-bottom: 2px solid black;
 	}
-    .Blank {
-        outline: none;
+	.Blank {
+		outline: none;
 		border: none;
 	}
 </style>
