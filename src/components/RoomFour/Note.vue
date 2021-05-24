@@ -11,12 +11,6 @@
 			4. The circular lock requires a number greater than that of the usefull green key.
 			<br />
 			5. The key that unlocks the triangular lock has a number one larger than the key that unlocks the circular lock.
-
-<!--             Answers
-            Round: Blue 2
-            Triangular: 3 Orange
-            Pentagonal: Green 1
-            Square: Red 4 -->
 		</body>
 	</div>
 </template>
