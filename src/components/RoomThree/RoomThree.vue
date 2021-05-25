@@ -28,7 +28,7 @@
       <div class="mapItems" id="mapItems">
         <div class="map-item forPuzzle" id="FinalLock">
           <img
-            class="item-img forTouch"
+            class="pos-img forTouch"
             src="https://img.icons8.com/bubbles/75/000000/lock-2.png"
           />
           <div class="hidden">
@@ -38,7 +38,7 @@
         </div>
         <div class="map-item forPuzzle" id="Maze">
           <img
-            class="item-img forTouch"
+            class="pos-img forTouch"
             src="https://img.icons8.com/officel/75/000000/computer.png"
           />
           <div class="hidden">
@@ -71,6 +71,14 @@
           <div>‌</div>
         </div>
         <div class="map-item forInventory" id="Skull-3">
+          <img
+            class="item-img"
+            src="https://img.icons8.com/material-two-tone/24/000000/skull.png"
+          />
+          <div class="hidden">https://img.icons8.com/ultraviolet/40/000000/paper.png</div>
+          <div>‌</div>
+        </div>
+        <div class="map-item forInventory" id="Skull-4">
           <img
             class="item-img"
             src="https://img.icons8.com/material-two-tone/24/000000/skull.png"
@@ -263,7 +271,7 @@ export default {
         console.log("connected");
         var answer = document.getElementById("roomThreeAns").value.toUpperCase();
         console.log(answer);
-        if (answer == `ROOMTHREE`) {
+        if (answer == `ROOMTHREE` || `DUD?`) {
           document.getElementById("answerCheck").innerHTML = "";
           document.getElementById("answerCheck").style.color = 'green';
           document
@@ -321,10 +329,10 @@ export default {
                   }
                 })
                 console.log("Player and Object are touching!!!");
-                item.style.transform = "scale(1.2)";
+                //item.style.transform = "scale(1.2)";
               } else {
                 console.log("Still not touching");
-                item.style.transform = "scale(1)";
+                //item.style.transform = "scale(1)";
               }
           });  
         }
@@ -347,12 +355,17 @@ export default {
             name: item.children[2].textContent,
             img: item.children[1].textContent,
           };
-          inventoryArray.push(addedItem);
-          console.log(inventoryArray);
-          inventory.innerHTML = "";
-          display();
+          console.log(addedItem);
+          if(addedItem.img === "https://img.icons8.com/cotton/64/000000/torch.png" || inventoryArray.length >= 1){
+            inventoryArray.push(addedItem);
+            console.log(inventoryArray);
+            inventory.innerHTML = "";
+            display();
 
           item.style.display = "none";
+          } else{
+            console.log("NO TORCH");
+          }
         });
       });
 
@@ -428,7 +441,7 @@ body {
   /* margin: 3rem; */
   position: absolute;
   background-color:black;
-  background-image: url("../../img/dungeon.jpg");
+  background-image: url("../../img/dungeonfloor.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -545,14 +558,14 @@ body {
 }
 
 .item-img {
-  width: 5rem !important;
-  height: 5rem !important;
+  width: 2rem !important;
+  height: 2rem !important;
 }
 
-.item-img:hover {
+/* .item-img:hover {
   transform: scale(1.1);
   transition: 0.2s;
-}
+} */
 .flex-row {
   display: flex;
   justify-content: space-around;
@@ -623,6 +636,18 @@ a {
   color: #42b983;
 }
 
+#Maze {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+}
+
+#Torch {
+  position: absolute;
+  top: 10%;
+  left: 5%;
+}
+
 #Skull-1 {
   position: absolute;
   top: 40%;
@@ -630,7 +655,7 @@ a {
 }
 #Skull-2 {
   position: absolute;
-  top: 60%;
+  bottom: 20%;
   left: 35%;
 }
 #Skull-3 {
@@ -638,7 +663,11 @@ a {
   top: 30%;
   right: 25%;
 }
-
+#Skull-4 {
+  position: absolute;
+  top: 10%;
+  left: 30%;
+}
 #Hedge_Maze{
   /* position: relative;
   height: 75%; */
