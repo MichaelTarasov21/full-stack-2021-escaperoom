@@ -17,6 +17,7 @@
         />
       </div>
       <div class="mapItems" id="mapItems">
+
         <div class="map-item forPuzzle" id="FinalLock">
           <img class="item-img forTouch" src="https://img.icons8.com/dusk/200/000000/door-closed.png"/>
           <div class="hidden">
@@ -27,6 +28,7 @@
             https://i.ibb.co/WDd9BMQ/compscianswer.png
           </div>
         </div>
+
         <div class="map-item forPuzzle" id="Computer">
           <img
             class="item-img forTouch"
@@ -40,6 +42,7 @@
             https://i.ibb.co/WDd9BMQ/compscianswer.png
           </div>
         </div>
+        
         <div class="map-item forInventory" id="Wire">
           <img
             class="item-img"
@@ -60,11 +63,12 @@
         <div class="modal-content">
           <span class="modal_close" @click="closeModal()">&times;</span>
           <div id="changePuzzle"></div>
-          <!-- <div id="answerCheck"></div>
-          <input type="text" id="roomOneAns" placeholder="Your Answer" /> -->
+          <div id="answerCheck"></div>
+          <input type="text" id="roomOneAns" placeholder="Your Answer" />
           <input type="submit" value="Submit" @click="verify()" />
         </div>
       </div>
+
     </div>
 
     <!-- <div id="keypadBtns" class="keypadBtns"></div> -->
@@ -722,7 +726,7 @@ body {
   overflow: hidden;
 } */
 .map {
-  background-image: url("../../img/maze.png");
+  /* background-image: url("../../img/maze.png"); */
   background-size: cover;
   height: 70vh;
   width: 70%;
