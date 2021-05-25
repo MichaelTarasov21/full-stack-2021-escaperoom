@@ -18,7 +18,7 @@
         <span class="modal_close" @click="closeModal(1)">&times;</span>
         <Note v-if="Notetaken" />
         <div v-else-if="BriefcaseOpened">
-          <h1>You see a note inside the suitecase</h1>
+          <h1 id="NoteSeen">You see a note inside the suitecase</h1>
           <button id="NoteTaker" @click="Notetaken = true">Take</button>
         </div>
         <Briefcase v-else @BriefcaseOpened="BriefcaseOpened = true" />
@@ -120,7 +120,7 @@
       },
       coordinates: function() {
         document.addEventListener("keydown", function(event) {
-          const posItemArray = Array.from(document.getElementsByClassName("pos-item"));
+          const posItemArray = document.getElementsByClassName("pos-item")
           if (event.keyCode == "37" || event.keyCode == "38" || event.keyCode == "39" || event.keyCode == "40") {
             //making the position item arry
             //finding position for each pos-item
@@ -317,6 +317,9 @@
     height: 70%;
     width: 70%;
     background-color: black;
+  }
+  #NoteSeen {
+    color: white;
   }
   #NoteTaker {
     background-color: black;
