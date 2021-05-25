@@ -1,9 +1,10 @@
 <template>
   <div class="roomFour">
     <h1>Room Four Canvas Area</h1>
-    <div class="modal-item">
+    <button class="ModalOpener" @click="openModal(0)"/>
+    <div class="modal-item" v-if="OpenPuzzles[0]">
       <div class="modal-content" id="ArcadeBackdrop">
-        <span class="modal_close" @click="closeModal()">&times;</span>
+        <span class="modal_close" @click="closeModal(0)">&times;</span>
         <div id="Error" v-if="Minigamewon">
           <h2>Error</h2>
           <img src="@/assets/Images/Number_Clue.jpg" />
@@ -11,9 +12,10 @@
         <SpaceInvaders v-else @Minigamewon="Minigamewon = true" />
       </div>
     </div>
-    <div class="modal-item">
+    <button class="ModalOpener" @click="openModal(1)"/>
+    <div class="modal-item" v-if="OpenPuzzles[1]">
       <div class="modal-content" id="BriefcaseBackdrop">
-        <span class="modal_close" @click="closeModal()">&times;</span>
+        <span class="modal_close" @click="closeModal(1)">&times;</span>
         <Note v-if="Notetaken" />
         <div v-else-if="BriefcaseOpened">
           <h1>You see a note inside the suitecase</h1>
@@ -22,9 +24,10 @@
         <Briefcase v-else @BriefcaseOpened="BriefcaseOpened = true" />
       </div>
     </div>
-    <div class="modal-item">
+    <button class="ModalOpener" @click="openModal(2)"/>
+    <div class="modal-item" v-if="OpenPuzzles[2]">
       <div class="modal-content" id="final-ans-modal-content">
-        <span class="modal_close" @click="closeModal()">&times;</span>
+        <span class="modal_close" @click="closeModal(2)">&times;</span>
         <LogicPuzzle @Finish="finish" />
         <Note id="NoteFinal" v-if="Notetaken" />
       </div>
@@ -58,6 +61,7 @@
     },
     data() {
       return {
+        OpenPuzzles: [false, false, false],
         Minigamewon: false,
         BriefcaseOpened: false,
         Notetaken: false,
@@ -70,11 +74,11 @@
       this.addToInventory();
     },
     methods: {
-      closeModal: function() {
-        const modalCloseArray = Array.from(document.getElementsByClassName("modal-item"));
-        modalCloseArray.forEach(function(item) {
-          item.style.display = "none";
-        });
+      closeModal: function(index) {
+        this.$set(this.OpenPuzzles, index, false)
+        },
+      openModal: function(index) {
+        this.$set(this.OpenPuzzles, index, true)
       },
       finish: function() {
         this.$emit("roomFourFin");
@@ -116,12 +120,11 @@
       },
       coordinates: function() {
         document.addEventListener("keydown", function(event) {
+          const posItemArray = Array.from(document.getElementsByClassName("pos-item"));
           if (event.keyCode == "37" || event.keyCode == "38" || event.keyCode == "39" || event.keyCode == "40") {
             //making the position item arry
-            const posItemArray = Array.from(document.getElementsByClassName("pos-item"));
-            const modalArray = Array.from(document.getElementsByClassName("modal-item"));
             //finding position for each pos-item
-            posItemArray.forEach(function(item, index) {
+            posItemArray.forEach(function(item) {
               //finding the coordinates of the player
               let playerCoords = document.querySelector(".player").getBoundingClientRect();
               let playerLeft = Math.round(playerCoords.left / 100) * 100;
@@ -133,15 +136,27 @@
               //if it is an inventory object - and enter is clicked = it gets added to inventory
               //if it is a modal object - and enter is clicked = a popup opens
               if (objectLeft === playerLeft && objectTop === playerTop) {
-                document.addEventListener("keydown", function(event) {
-                  if (event.keyCode == "13") {
-                    const modalItem = modalArray[index];
-                    modalItem.style.display = "block";
-                  }
-                });
                 item.style.transform = "scale(1.2)";
               } else {
                 item.style.transform = "scale(1)";
+              }
+            });
+          } else if (event.code == "Enter"){
+              posItemArray.forEach(function(item, index) {
+              //finding the coordinates of the player
+              let playerCoords = document.querySelector(".player").getBoundingClientRect();
+              let playerLeft = Math.round(playerCoords.left / 100) * 100;
+              let playerTop = Math.round(playerCoords.top / 100) * 100;
+              //finding the coordinates of all objects
+              let objectCoords = item.getBoundingClientRect();
+              let objectLeft = Math.round(objectCoords.left / 100) * 100;
+              let objectTop = Math.round(objectCoords.top / 100) * 100;
+              //if it is an inventory object - and enter is clicked = it gets added to inventory
+              //if it is a modal object - and enter is clicked = a popup opens
+              if (objectLeft === playerLeft && objectTop === playerTop) {
+                const buttons = document.getElementsByClassName("ModalOpener")
+                console.log(buttons)
+                buttons[index].click()
               }
             });
           }
@@ -230,7 +245,6 @@
   }
 
   .modal-item {
-    display: none;
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     width: 100%; /* Full width */
@@ -238,6 +252,10 @@
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0, 0, 0); /* Fallback color */
     background-color: rgba(0, 20, 2, 0.9);
+  }
+
+  .ModalOpener{
+    display: none;
   }
 
   .modal_close {
