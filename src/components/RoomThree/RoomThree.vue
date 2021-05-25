@@ -26,7 +26,7 @@
       </div>
 
       <div class="mapItems" id="mapItems">
-        <div class="map-item forPuzzle" id="FinalLock">
+        <div class="pos-item forPuzzle" id="FinalLock">
           <img
             class="pos-img forTouch"
             src="https://img.icons8.com/bubbles/75/000000/lock-2.png"
@@ -36,7 +36,7 @@
           </div>
           <div>FinalLock</div>
         </div>
-        <div class="map-item forPuzzle" id="Maze">
+        <div class="pos-item forPuzzle" id="Maze">
           <img
             class="pos-img forTouch"
             src="https://img.icons8.com/officel/75/000000/computer.png"
@@ -59,7 +59,7 @@
             class="item-img"
             src="https://img.icons8.com/material-two-tone/24/000000/skull.png"
           />
-          <div class="hidden">https://img.icons8.com/ultraviolet/40/000000/paper.png</div>
+          <div class="hidden">https://media.giphy.com/media/Kxm02CJJazqCFBqYWK/giphy.gif</div>
           <div>‌</div>
         </div>
         <div class="map-item forInventory" id="Skull-2">
@@ -67,7 +67,7 @@
             class="item-img"
             src="https://img.icons8.com/material-two-tone/24/000000/skull.png"
           />
-          <div class="hidden">https://img.icons8.com/ultraviolet/40/000000/paper.png</div>
+          <div class="hidden">https://media.giphy.com/media/BWjvxs4uCsGvSY0ak1/giphy.gif</div>
           <div>‌</div>
         </div>
         <div class="map-item forInventory" id="Skull-3">
@@ -75,7 +75,7 @@
             class="item-img"
             src="https://img.icons8.com/material-two-tone/24/000000/skull.png"
           />
-          <div class="hidden">https://img.icons8.com/ultraviolet/40/000000/paper.png</div>
+          <div class="hidden">https://media.giphy.com/media/J6eXrQczJ1EYSBEkVk/giphy.gif</div>
           <div>‌</div>
         </div>
         <div class="map-item forInventory" id="Skull-4">
@@ -83,7 +83,7 @@
             class="item-img"
             src="https://img.icons8.com/material-two-tone/24/000000/skull.png"
           />
-          <div class="hidden">https://img.icons8.com/ultraviolet/40/000000/paper.png</div>
+          <div class="hidden">https://media.giphy.com/media/LEcRRnZuTOEhmlYgMQ/giphy.gif</div>
           <div>‌</div>
         </div>
       </div>
@@ -511,9 +511,9 @@ body {
   margin: 3rem;
 }
 
-.map-item {
+/* .map-item {
   cursor: pointer;
-}
+} */
 
 .popUpModal {
   position: absolute;
@@ -575,16 +575,6 @@ body {
   display: none;
 }
 
-.map {
-  background-size: cover;
-  height: 70vh;
-  width: 70%;
-  margin: 0 auto;
-  position: relative;
-  border: 0.5rem solid black;
-  overflow: none;
-}
-
 .modal-item {
   display: none;
   position: fixed; /* Stay in place */
@@ -616,10 +606,6 @@ body {
   padding: 3rem;
   z-index: 3;
   border-radius: 1rem;
-}
-
-h3 {
-  margin: 40px 0 0;
 }
 
 ul {
@@ -669,8 +655,6 @@ a {
   left: 30%;
 }
 #Hedge_Maze{
-  /* position: relative;
-  height: 75%; */
   width: 75%;
 }
 </style>
