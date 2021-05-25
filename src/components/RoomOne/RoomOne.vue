@@ -682,8 +682,8 @@ body {
 .inventory-item {
   border: solid;
   /* padding: 1rem; */
-  border-color: gray;
-  border-width: 0.5rem;
+  /* border-color: gray;
+  border-width: 0.5rem; */
   cursor: pointer;
 }
 

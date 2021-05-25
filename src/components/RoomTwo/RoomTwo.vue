@@ -748,14 +748,16 @@ body {
   display: flex;
   bottom: 0rem;
   background-color: rgba(23, 65, 19, 0.8);
+  left: 25%;
 }
 
 .inventory-item {
-  border: solid;
+  /* border: solid; */
   /* padding: 1rem; */
   border-color: rgb(99, 88, 194);
-  border-width: 0.2rem;
+  /* border-width: 0.2rem !important; */
   cursor: pointer;
+  padding: 1rem;
 }
 
 .item-img {
