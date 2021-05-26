@@ -301,7 +301,7 @@ export default {
         console.log("connected");
         var answer = document.getElementById("roomThreeAns").value.toUpperCase();
         console.log(answer);
-        if (answer == `ROOMTHREE` || `DUD?`) {
+        if (answer == `A.I.T.H.` || `A.I.T.M.` || `ROOMTHREE`) {
           document.getElementById("answerCheck").innerHTML = "";
           document.getElementById("answerCheck").style.color = 'green';
           document
