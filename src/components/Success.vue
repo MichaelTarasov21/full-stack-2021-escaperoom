@@ -1,8 +1,9 @@
 <template>
 	<div id="success">
 		<section class="congrats-message">
-			<h1>Congrats WOW!</h1>
-			<p>Credits to Our Puzzle n' Inspirations</p>
+			<h1>Congrats!</h1>
+			<br>
+			<p>You have finished the game. </p>
 		</section>
 		<button @click="Restart" id="Restart">Restart</button>
 		<button @click="OpenSettings" class="menu-tab" title="Profile">Profile</button>
@@ -26,7 +27,7 @@
 
 <style scoped>
 	#success {
-		background-color: lightgreen;
+		background-color: rgb(93, 150, 255);
 		height: 100vh;
 		width: 100%;
 		padding-top: 30px;

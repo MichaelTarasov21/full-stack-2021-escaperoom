@@ -147,10 +147,10 @@
 		position: fixed;
 		top: 0%;
 		left: 0%;
-		height: 10%;
-		width: 10%;
-		text-align: left;
-		background-color: black;
+		height: 5rem;
+		width: 12rem;
+		text-align: center;
+		background-color: rgba(0, 0, 0, 0.5);
 		color: yellow;
 		font-size: 590%;
 		font-family: "analog";

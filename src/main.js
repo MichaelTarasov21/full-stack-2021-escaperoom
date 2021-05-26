@@ -2,6 +2,8 @@ import firebase from "firebase";
 import Vue from 'vue'
 import App from './App.vue'
 
+require('dotenv').config()
+
 var firebaseConfig = {
   apiKey: process.env.VUE_APP_API_KEY,
   authDomain: "escape-room-project-677cd.firebaseapp.com",

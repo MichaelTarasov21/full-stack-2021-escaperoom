@@ -1,6 +1,7 @@
 <template>
   <div >
     <h1 class="alert">Are you sure?</h1>
+    <br>
     <button><div @click="logOut()">YES</div></button>
   </div>
 </template>
@@ -42,7 +43,7 @@ h1 {
 }
 
 button {
-  color: black;
+  color: black !important;
   text-align: center;
   font-size: 1rem;
   cursor: pointer;
@@ -52,6 +53,7 @@ button {
 
 button:hover {
   background-color: rgb(56, 99, 61);
-  color: white;
+  color: white !important;
+  transition: 0.1s;
 }
 </style>

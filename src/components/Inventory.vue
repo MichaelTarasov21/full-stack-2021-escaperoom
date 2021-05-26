@@ -47,19 +47,19 @@ export default {
 <style>
 .inventory {
   border: 0.5rem black solid;
-  width: calc(90vw - 1rem);
-  height: 8rem;
-  margin: 0 5vw 0 5vw;
+  width: calc(30rem);
+  height: 6rem;
+  margin: auto;
   position: fixed;
   display: flex;
   bottom: 0rem;
 }
 
 .inventory-item {
-  border: solid;
-  /* padding: 1rem; */
-  border-color: gray;
-  border-width: 0.5rem;
+  /* border: solid; */
+  padding: 0.5rem;
+  /* border-color: gray; */
+  /* border-width: 0.5rem; */
 }
 
 .item-img {

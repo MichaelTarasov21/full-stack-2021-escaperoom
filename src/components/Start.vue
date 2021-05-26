@@ -3,7 +3,7 @@
     <section class="header">
       <h1 id="welcome"></h1>
       <p>
-        Welcome to &lt;insert cretive name here&gt; escape room. 
+        Welcome to Random Escape Room! 
         <br>
         <br>
         Instructions: You can move around the screen using the arrow keys on your keyboards. 
@@ -11,6 +11,7 @@
         Interact with items in the room by moving your character onto the item and pressing the "enter" key.
       </p>
       <p>Are you up for the challenge?</p>
+      <br>
       <button id="begin" @click="hide()">Begin</button>
     </section>
     <!-- <button id="start">Start</button> -->
@@ -41,13 +42,11 @@ export default {
           firebase.database().ref().child("Users").child(firebase.auth().currentUser.uid).update({
             FalseStart: true
           })
-          console.log("You are dirty cheater")
         }
         else {
           firebase.database().ref().child("Users").child(firebase.auth().currentUser.uid).set({
             FalseStart: false
           })
-          console.log("You are somewhat ok for now")
         }})
       }
     },  

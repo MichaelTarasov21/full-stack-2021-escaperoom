@@ -1,7 +1,9 @@
 <template>
 	<div>
 		<h1 class="profile">Profile</h1>
+		<br>
 		<div class="profile-info">
+			<br>
 			<h3>Name: {{ name }}</h3>
 			<h3>Email: {{ email }}</h3>
 			<h3>Run# <select v-model="run" name="Run#" v-html="dropdown"></select></h3>
@@ -62,4 +64,10 @@
 	.profile-info {
 		text-align: left;
 	}
+
+	h3 {
+		line-height: 1.5rem !important;
+		margin: 0 !important;
+	}
+	
 </style>
