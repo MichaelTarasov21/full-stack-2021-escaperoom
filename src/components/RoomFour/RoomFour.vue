@@ -1,9 +1,10 @@
 <template>
-  <div class="roomFour">
+  <div id="roomFour">
     <h1>Room Four Canvas Area</h1>
-    <div class="modal-item">
+    <button class="ModalOpener" @click="openModal(0)" />
+    <div class="modal-item" v-if="OpenPuzzles[0]">
       <div class="modal-content" id="ArcadeBackdrop">
-        <span class="modal_close" @click="closeModal()">&times;</span>
+        <span class="modal_close" @click="closeModal(0)">&times;</span>
         <div id="Error" v-if="Minigamewon">
           <h2>Error</h2>
           <img src="@/assets/Images/Number_Clue.jpg" />
@@ -11,31 +12,34 @@
         <SpaceInvaders v-else @Minigamewon="Minigamewon = true" />
       </div>
     </div>
-    <div class="modal-item">
+    <button class="ModalOpener" @click="openModal(1)" />
+    <div class="modal-item" v-if="OpenPuzzles[1]">
       <div class="modal-content" id="BriefcaseBackdrop">
-        <span class="modal_close" @click="closeModal()">&times;</span>
+        <span class="modal_close" @click="closeModal(1)">&times;</span>
         <Note v-if="Notetaken" />
         <div v-else-if="BriefcaseOpened">
-          <h1>You see a note inside the suitecase</h1>
+          <h1 id="NoteSeen">You see a note inside the suitecase</h1>
           <button id="NoteTaker" @click="Notetaken = true">Take</button>
         </div>
         <Briefcase v-else @BriefcaseOpened="BriefcaseOpened = true" />
       </div>
     </div>
-    <div class="modal-item">
+    <button class="ModalOpener" @click="openModal(2)" />
+    <div class="modal-item" v-if="OpenPuzzles[2]">
       <div class="modal-content" id="final-ans-modal-content">
-        <span class="modal_close" @click="closeModal()">&times;</span>
+        <span class="modal_close" @click="closeModal(2)">&times;</span>
         <LogicPuzzle @Finish="finish" />
         <Note id="NoteFinal" v-if="Notetaken" />
       </div>
     </div>
-    <div class="map">
-      <div class="player">
-        <img id="player" src="@/img/redsquare.png" alt="Red Square" />
+    <div class="canvas" id="canvas">
+      <div class="player" id="Character">
+        <img class="Character_shadow pixelart" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/21542/DemoRpgCharacterShadow.png" alt="Shadow" />
+        <img class="Character_spritesheet pixelart face-down" id="spriteCharacter" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/21542/DemoRpgCharacter.png" alt="Character" />
       </div>
-      <img class="pos-item" id="Arcade" width="75px" height="80px" src="@/assets/Images/Arcade_Machine.jpg" />
-      <img class="pos-item" id="Briefcase" width="75px" height="80px" src="@/assets/Images/Briefcase.png" />
-      <img class="pos-item" id="FinalLock" src="https://img.icons8.com/bubbles/75/000000/lock-2.png" />
+        <img class="pos-item" id="Arcade" width="75px" height="80px" src="@/assets/Images/Arcade_Machine.jpg" />
+        <img class="pos-item" id="Briefcase" width="75px" height="80conspx" src="@/assets/Images/Briefcase.png" />
+        <img class="pos-item" id="FinalLock" src="https://img.icons8.com/bubbles/75/000000/lock-2.png" />
     </div>
     <!-- <div ref="mapItems"></div> -->
     <div class="inventory" ref="inventory"></div>
@@ -58,69 +62,98 @@
     },
     data() {
       return {
+        OpenPuzzles: [false, false, false],
         Minigamewon: false,
         BriefcaseOpened: false,
         Notetaken: false,
       };
     },
     mounted: function() {
-      this.movement();
-      this.coordinates();
-      // this.displayMapItems();
-      this.addToInventory();
-    },
-    methods: {
-      closeModal: function() {
-        const modalCloseArray = Array.from(document.getElementsByClassName("modal-item"));
-        modalCloseArray.forEach(function(item) {
-          item.style.display = "none";
-        });
-      },
-      finish: function() {
-        this.$emit("roomFourFin");
-      },
-      movement: function() {
-        var x = 0;
-        var y = 0;
-        var leftLimit = 0;
-        var rightLimit = document.querySelector(".map").getBoundingClientRect().width;
-        var topLimit = 0;
-        var bottomLimit = document.querySelector(".map").offsetHeight;
+      const sprite = document.getElementById("spriteCharacter");
+      const character = document.getElementById("Character");
+      let x = 0;
+      let y = 0;
+      let screenWidth;
+      let screenHeight;
+
+      function findScreenSize() {
+        screenWidth = window.innerWidth / 16 - 3;
+        screenHeight = (window.innerHeight * .9) / 16 - 14;
+      }
+      window.onresize = findScreenSize;
+      findScreenSize()
+      function addAnimation() {
+        sprite.classList.add("Character_animation");
+      }
+      function removeAnimation() {
+        sprite.classList.remove("Character_animation");
+      }
+
+      function moveUp() {
+        sprite.classList.add("face-up");
+        sprite.classList.remove("face-down", "face-right", "face-left");
+        y = y - 1;
+      }
+      function moveRight() {
+        sprite.classList.add("face-right");
+        sprite.classList.remove("face-down", "face-left", "face-up");
+        x = x + 1;
+        console.log(x);
+      }
+      function moveLeft() {
+        sprite.classList.add("face-left");
+        sprite.classList.remove("face-down", "face-right", "face-up");
+        x = x - 1;
+      }
+      function moveDown() {
+        sprite.classList.add("face-down");
+        sprite.classList.remove("face-right", "face-left", "face-up");
+        y = y + 1;
+      }
+      function updateSpritePosition() {
+        character.style.left = x + "rem";
+        character.style.top = y + "rem";
+      }
+
+      function walls() {
+        if (x < 0) {
+          sprite.classList.remove("Character_animation");
+          x = 0;
+        } else if (x > screenWidth) {
+          console.log("Hitting wall")
+          sprite.classList.remove("Character_animation");
+          x = screenWidth;
+        } else if (y < 0) {
+          sprite.classList.remove("Character_animation");
+          y = 0;
+        } else if (y > screenHeight) {
+          sprite.classList.remove("Character_animation");
+          y = screenHeight;
+        }
+      }
+
+      function coordinates() {
         document.addEventListener("keydown", function(event) {
-          if (event.keyCode == "38") {
-            y -= 20;
-            if (y < topLimit) {
-              y = topLimit;
-            }
-            document.querySelector(".player").style.transform = `translate(${x}px,${y}px)`;
-          } else if (event.keyCode == "39") {
-            x += 20;
-            if (x > rightLimit) {
-              x = rightLimit;
-            }
-            document.querySelector(".player").style.transform = `translate(${x}px,${y}px)`;
-          } else if (event.keyCode == "37") {
-            x -= 20;
-            if (x < leftLimit) {
-              x = leftLimit;
-            }
-            document.querySelector(".player").style.transform = `translate(${x}px,${y}px)`;
-          } else if (event.keyCode == "40") {
-            y += 20;
-            if (y > bottomLimit) {
-              y = bottomLimit;
-            }
-            document.querySelector(".player").style.transform = `translate(${x}px,${y}px)`;
-          }
-        });
-      },
-      coordinates: function() {
-        document.addEventListener("keydown", function(event) {
+          const posItemArray = document.getElementsByClassName("pos-item");
           if (event.keyCode == "37" || event.keyCode == "38" || event.keyCode == "39" || event.keyCode == "40") {
             //making the position item arry
-            const posItemArray = Array.from(document.getElementsByClassName("pos-item"));
-            const modalArray = Array.from(document.getElementsByClassName("modal-item"));
             //finding position for each pos-item
+            posItemArray.forEach(function(item) {
+              //finding the coordinates of the player
+              let playerCoords = document.querySelector(".player").getBoundingClientRect();
+              let playerLeft = Math.round(playerCoords.left / 100) * 100;
+              let playerTop = Math.round(playerCoords.top / 100) * 100;
+              //finding the coordinates of all objects
+              let objectCoords = item.getBoundingClientRect();
+              let objectLeft = Math.round(objectCoords.left / 100) * 100;
+              let objectTop = Math.round(objectCoords.top / 100) * 100;
+              if (objectLeft === playerLeft && objectTop === playerTop) {
+                item.style.transform = "scale(1.2)";
+              } else {
+                item.style.transform = "scale(1)";
+              }
+            });
+          } else if (event.code == "Enter") {
             posItemArray.forEach(function(item, index) {
               //finding the coordinates of the player
               let playerCoords = document.querySelector(".player").getBoundingClientRect();
@@ -130,87 +163,71 @@
               let objectCoords = item.getBoundingClientRect();
               let objectLeft = Math.round(objectCoords.left / 100) * 100;
               let objectTop = Math.round(objectCoords.top / 100) * 100;
-              //if it is an inventory object - and enter is clicked = it gets added to inventory
-              //if it is a modal object - and enter is clicked = a popup opens
               if (objectLeft === playerLeft && objectTop === playerTop) {
-                document.addEventListener("keydown", function(event) {
-                  if (event.keyCode == "13") {
-                    const modalItem = modalArray[index];
-                    modalItem.style.display = "block";
-                  }
-                });
-                item.style.transform = "scale(1.2)";
-              } else {
-                item.style.transform = "scale(1)";
+                const buttons = document.getElementsByClassName("ModalOpener");
+                buttons[index].click(); // Checks if the object and player are touching and presses the button to mount the component if they are
               }
             });
           }
         });
+      }
+
+      function keyboardAnimate() {
+        if (event.keyCode == "38" || event.keyCode == "87") {
+          moveUp();
+        } else if (event.keyCode == "39" || event.keyCode == "68") {
+          moveRight();
+        } else if (event.keyCode == "37" || event.keyCode == "65") {
+          moveLeft();
+        } else if (event.keyCode == "40" || event.keyCode == "83") {
+          moveDown();
+        }
+        coordinates();
+      }
+      document.addEventListener("keydown", function() {
+        addAnimation();
+        keyboardAnimate();
+        coordinates();
+        walls();
+        updateSpritePosition();
+      });
+      document.addEventListener("keyup", function() {
+        removeAnimation();
+        clearInterval();
+      });
+    },
+    methods: {
+      closeModal: function(index) {
+        this.$set(this.OpenPuzzles, index, false);
       },
-      addToInventory: function() {
-        //get array of items on map
-        const mapItemArray = Array.from(document.getElementsByClassName("map-item"));
-        let inventoryArray = [];
-        const inventory = document.querySelector(".inventory");
-
-        //if item on map is selected, add to inventory
-        mapItemArray.forEach(function(item) {
-          //when img is clicked
-          item.addEventListener("click", function() {
-            let addedItem = {
-              name: item.children[2].textContent,
-              img: item.children[1].textContent,
-            };
-            inventoryArray.push(addedItem);
-            inventory.innerHTML = "";
-            display();
-
-            item.style.display = "none";
-          });
-        });
-
-        const display = function() {
-          inventoryArray.forEach(function(item) {
-            inventory.insertAdjacentHTML(
-              "afterbegin",
-              `<div class="inventory-item" id="${item.name}" >
-          <img class="item-img" src="${item.img}" >
-          <div class="hidden">${item.img}</div>
-          <div>${item.name}</div>
-        </div>`
-            );
-          });
-        };
+      openModal: function(index) {
+        this.$set(this.OpenPuzzles, index, true);
       },
-      // displayMapItems: function () {
-      //   this.$refs.mapItems.innerHTML = "";
-      //   this.mapItemsArr.forEach(this.printMapItems);
-      // },
-
-      // printMapItems: function (item) {
-      //   const mapItems = this.$refs.mapItems;
-      //   mapItems.insertAdjacentHTML(
-      //     "afterbegin",
-      //     `<div class="map-item" id="${item.name}">
-      //       <img class="item-img" src="${item.img}" >
-      //       <div class="hidden">${item.img}</div>
-      //       <div>${item.name}</div>
-      //     </div>`
-      //   );
-      //   // item.addEventListener("click", this.addToInventory());
-      // },
+      finish: function() {
+        this.$emit("roomFourFin");
+      },
     },
   };
 </script>
 
 <style scoped>
-  :root {
-    --pixel-size: 2px;
+  * {
+    margin: 0;
+    padding: 0;
   }
-  #FinalLock {
-    position: absolute;
-    right: 0;
-    bottom: 0;
+  html {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    width: 100%;
+    scroll-behavior: smooth;
+  }
+  body {
+    overflow: hidden;
+  }
+  #RoomFour {
+    width: 100%;
+    height: 100%;
   }
   .player {
     width: 2rem;
@@ -219,18 +236,47 @@
     overflow: hidden;
   }
   .map {
-    /* background-image: url("../../img/maze.png"); */
-    background-size: cover;
-    height: 70vh;
-    width: 70%;
-    margin: 0 auto;
-    position: relative;
-    border: 0.5rem solid black;
-    overflow: none;
+    padding: 0;
+    position: absolute;
+    z-index: -1;
+    background-image: url("~@/assets/Images/Arcade_Backdrop.jpg");
+    z-index: -2;
   }
-
+  .Character_spritesheet {
+    width: calc(4rem * var(--scale));
+    position: absolute;
+    left: 0;
+  }
+  .Character_animation {
+    animation: moveSpritesheet 1s steps(4) infinite;
+  }
+  .pixelart {
+    image-rendering: pixelated;
+  }
+  .face-right {
+    top: calc(-1rem * var(--scale));
+  }
+  .face-up {
+    top: calc(-2rem * var(--scale));
+  }
+  .face-left {
+    top: calc(-3rem * var(--scale));
+  }
+  @keyframes moveSpritesheet {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(-100%, 0, 0);
+    }
+  }
+  .Character_shadow {
+    position: absolute;
+    width: calc(1rem * var(--scale));
+    height: calc(1rem * var(--scale));
+    left: 0;
+  }
   .modal-item {
-    display: none;
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     width: 100%; /* Full width */
@@ -239,7 +285,14 @@
     background-color: rgb(0, 0, 0); /* Fallback color */
     background-color: rgba(0, 20, 2, 0.9);
   }
-
+  .ModalOpener {
+    display: none;
+  }
+  .map-item {
+    cursor: pointer;
+    position: absolute;
+    pointer-events: none;
+  }
   .modal_close {
     color: #aaaaaa;
     float: right;
@@ -276,6 +329,14 @@
   a {
     color: #42b983;
   }
+  #canvas {
+    position: absolute;
+    top: 10%;
+    height: calc(90% - 8.5rem);
+    width: 100%;
+    overflow: hidden;
+    background-image: url("~@/assets/Images/Room_Four_Background.jpg");
+  }
   #Briefcase {
     position: absolute;
     right: 0%;
@@ -300,8 +361,16 @@
     width: 70%;
     background-color: black;
   }
+  #NoteSeen {
+    color: white;
+  }
   #NoteTaker {
     background-color: black;
+  }
+  #FinalLock {
+    position: absolute;
+    right: 0;
+    bottom: 0;
   }
   #final-ans-modal-content {
     height: 70%;
@@ -312,5 +381,8 @@
     left: 35%;
     height: 50%;
     width: 30%;
+  }
+  #Character {
+    scale: 3;
   }
 </style>
