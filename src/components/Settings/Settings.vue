@@ -10,8 +10,10 @@
 				<div class="modal-content">
 					<span class="close" @click="closemenu">&times;</span>
 					<h1>SETTINGS</h1>
+					<br>
 					<div class="flex-col menu-btns">
 						<Tabs>
+							<br>
 							<Tab class="menu-tab" title="Profile"><Profile /></Tab>
 							<Tab class="menu-tab" title="Leaderboard"><Leaderboard /></Tab>
 							<Tab class="menu-tab" title="Log Out"><LogOut /></Tab>
@@ -90,7 +92,7 @@
 
 	/* Modal Content */
 	.modal-content {
-		background-color: #fefefe;
+		background-color: rgb(253, 255, 228);
 		margin: 4rem;
 		padding: 3rem;
 		z-index: 3;

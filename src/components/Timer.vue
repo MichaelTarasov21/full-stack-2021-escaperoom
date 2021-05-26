@@ -150,7 +150,7 @@
 		height: 5rem;
 		width: 12rem;
 		text-align: center;
-		background-color: black;
+		background-color: rgba(0, 0, 0, 0.5);
 		color: yellow;
 		font-size: 590%;
 		font-family: "analog";

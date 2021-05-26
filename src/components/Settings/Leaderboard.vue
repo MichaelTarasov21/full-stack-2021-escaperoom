@@ -3,6 +3,7 @@
 		<div id="leaderboard-info">
 			<h1>Leaderboard</h1>
 		</div>
+		<br>
 		<div id="leaderboard">
 			<div id="names" class="list">
 				<h3 id="name1" class="names">{{ leaderboard[1].name }}</h3>

@@ -37,9 +37,11 @@
             <div class="modal-content">
               <span class="modal_close" @click="closeModal()">&times;</span>
               <h4>The Chest Catastrophe</h4>
-              <button id="Ocean-Chest-Button" @click="addToInventory()">
+              <br />
+              <button id="Ocean-Chest-Button">
                 Use Key
               </button>
+              <p id="Ocean-Chest-Message"></p>
               <div id="Ocean-Chest-Riddle">
                 <p>Here's a long lost letter... Find the addressed...</p>
                 <img
@@ -52,7 +54,11 @@
                   id="OceanChestAns"
                   placeholder="Your Answer"
                 />
-                <input type="submit" value="Submit" @click="OceanChestVerify()" />
+                <input
+                  type="submit"
+                  value="Submit"
+                  @click="OceanChestVerify()"
+                />
               </div>
             </div>
           </div>
@@ -125,8 +131,13 @@
               <span class="modal_close" @click="closeModal()">&times;</span>
               <h4>The Final Puzzle</h4>
               <p>Mr.Krabs[0]</p>
-              <p>Chest's _ _ _</p>
-              <p>(san spaces)</p>
+
+              <p>Chest Surname</p>
+              <p style="font-style: italic">*san spaces*</p>
+              <br />
+              <p>_ _ _ _</p>
+              <br />
+
               <div id="answerCheck"></div>
               <input type="text" id="roomTwoAns" placeholder="Your Answer" />
               <input type="submit" value="Submit" @click="verify()" />
@@ -141,6 +152,7 @@
 </template>
 
 <script>
+// import { use } from 'vue/types/umd';
 // import func from "vue-editor-bridge";
 let inventoryArray = [];
 
@@ -668,9 +680,16 @@ export default {
           document.getElementById("Ocean-Chest-Riddle").style.display = "block";
           document.getElementById("Ocean-Chest-Button").style.display = "none";
           inventory.innerHTML = "";
+        } else {
+          document
+            .getElementById("Ocean-Chest-Button")
+            .addEventListener("click", function() {
+              document.getElementById("Ocean-Chest-Message").innerHTML =
+                "No Key in Inventory";
+            });
         }
       };
-      useKey();
+      console.log(useKey());
     },
     // displayMapItems: function () {
     //   this.$refs.mapItems.innerHTML = "";
@@ -806,7 +825,7 @@ img {
 
 #Ocean-Chest {
   top: 10%;
-  left: 50%;
+  left: 70%;
 }
 
 #Ocean-Chest-Riddle {
@@ -814,8 +833,8 @@ img {
 }
 
 #Ocean-Key {
-  top: 50%;
-  left: 30%;
+  top: 60%;
+  left: 45%;
 }
 
 #Ocean-Lobster {
@@ -840,7 +859,8 @@ img {
 
 #FinalLock {
   position: absolute;
-  bottom: 0;
+  top: 100;
+  bottom: 0 !important;
   right: 0;
 }
 

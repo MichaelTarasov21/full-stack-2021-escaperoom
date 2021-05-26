@@ -522,8 +522,9 @@ body {
 }
 
 #FinalLock {
-  top: 15rem;
-  right: 5rem;
+  /* top: 15rem; */
+  bottom: 0;
+  right: 0;
 }
 
 #Computer{
