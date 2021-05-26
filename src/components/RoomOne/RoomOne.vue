@@ -5,14 +5,14 @@
       <div id="character">
         <img
           class="Character_shadow pixelart"
-          src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/21542/DemoRpgCharacterShadow.png"
+          src="@/assets/Images/Character_Shadow.png"
           alt="Shadow"
         />
 
         <img
           class="Character_spritesheet pixelart face-down"
           id="spriteCharacter"
-          src=" https://s3-us-west-2.amazonaws.com/s.cdpn.io/21542/DemoRpgCharacter.png"
+          src="@/assets/Images/Character.png"
           alt="Character"
         />
       </div>
@@ -31,9 +31,9 @@
               <br>
               <p>Is there something you're not <s>seeing?</s></p>
               <div class="flex-row">
-                <img src="../../img/finalpuzzle.jpg" width="300rem" height="auto" alt="">
+                <img src="@/assets/Images/RoomOne/finalpuzzle.jpg" width="300rem" height="auto" alt="">
                 <div class="flex-column">
-                  <img src="../../img/finalanswer.jpg" width="250rem" height="auto" alt="">
+                  <img src="@/assets/Images/RoomOne/finalanswer.jpg" width="250rem" height="auto" alt="">
                   <br>
                   <div id="answerCheck"></div>
                   <br>
@@ -65,9 +65,9 @@
               <br>
               <p>Look Down</p>
               <div class="flex-row">
-                <img src="../../img/compsci.jpg" width="300rem" height="auto" alt="">
+                <img src="@/assets/Images/RoomOne/compsci.jpg" width="300rem" height="auto" alt="">
                 <div class="flex-column">
-                  <img src="../../img/compscianswer.jpg" width="250rem" height="auto" alt="">
+                  <img src="@/assets/Images/RoomOne/compscianswer.jpg" width="250rem" height="auto" alt="">
                   <br>
                   <div id="computerCheck"></div>
                   <input type="text" id="computerAnswer" placeholder="Your Answer" />
@@ -99,7 +99,7 @@
          <div class="modal-item" id="barModal">
           <div>
             <!-- <span class="modal_close" @click="closeModal()">&times;</span> -->
-            <img src="../../img/bar.jpg" alt="" height="400rem" width="auto">
+            <img src="@/assets/Images/RoomOne/bar.jpg" alt="" height="400rem" width="auto">
           </div>
         </div>
 
@@ -454,7 +454,7 @@ body {
 .canvas {
   padding: 0;
   position: absolute;
-  background-image: url("../../img/space2.jpg");
+  background-image: url("~@/assets/Images/RoomOne/space2.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;

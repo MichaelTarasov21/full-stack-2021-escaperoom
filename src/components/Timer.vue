@@ -137,12 +137,6 @@
 	};
 </script>
 <style scoped>
-	button {
-		position: absolute;
-		left: 0%;
-		bottom: 0%;
-		z-index: 5;
-	}
 	#TimerBlock {
 		position: fixed;
 		top: 0%;
@@ -154,5 +148,6 @@
 		color: yellow;
 		font-size: 590%;
 		font-family: "analog";
+		z-index: 40;
 	}
 </style>

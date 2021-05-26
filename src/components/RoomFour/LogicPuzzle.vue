@@ -4,17 +4,17 @@
 			<tr>
 				<td class="Blank Vertical_Item"></td>
 				<!-- Used to make the items fit into the grid -->
-				<td class="Vertical_Item Thicker_Left"><img src="@/assets/Images/Vertical_Word_1.jpg" /></td>
-				<td class="Vertical_Item"><img src="@/assets/Images/Vertical_Word_2.jpg" /></td>
-				<td class="Vertical_Item"><img src="@/assets/Images/Vertical_Word_3.jpg" /></td>
-				<td class="Vertical_Item Thicker_Right"><img src="@/assets/Images/Vertical_Word_4.jpg" /></td>
-				<td class="Vertical_Item"><img src="@/assets/Images/Vertical_Word_5.jpg" /></td>
-				<td class="Vertical_Item"><img src="@/assets/Images/Vertical_Word_6.jpg" /></td>
-				<td class="Vertical_Item"><img src="@/assets/Images/Vertical_Word_7.jpg" /></td>
-				<td class="Vertical_Item Thicker_Right"><img src="@/assets/Images/Vertical_Word_8.jpg" /></td>
+				<td class="Vertical_Item Thicker_Left"><img src="@/assets/Images/RoomFour/Vertical_Word_1.jpg" /></td>
+				<td class="Vertical_Item"><img src="@/assets/Images/RoomFour/Vertical_Word_2.jpg" /></td>
+				<td class="Vertical_Item"><img src="@/assets/Images/RoomFour/Vertical_Word_3.jpg" /></td>
+				<td class="Vertical_Item Thicker_Right"><img src="@/assets/Images/RoomFour/Vertical_Word_4.jpg" /></td>
+				<td class="Vertical_Item"><img src="@/assets/Images/RoomFour/Vertical_Word_5.jpg" /></td>
+				<td class="Vertical_Item"><img src="@/assets/Images/RoomFour/Vertical_Word_6.jpg" /></td>
+				<td class="Vertical_Item"><img src="@/assets/Images/RoomFour/Vertical_Word_7.jpg" /></td>
+				<td class="Vertical_Item Thicker_Right"><img src="@/assets/Images/RoomFour/Vertical_Word_8.jpg" /></td>
 			</tr>
 			<tr>
-				<td class="Horizontal_Item Thicker_Top"><img src="@/assets/Images/Horizontal_Word_1.jpg" /></td>
+				<td class="Horizontal_Item Thicker_Top"><img src="@/assets/Images/RoomFour/Horizontal_Word_1.jpg" /></td>
 				<td class="Hoverable Thicker_Left Thicker_Top" @click="Toggle(0)">
 					<span v-show="Grid[0] === '✔'" class="Correct">✔</span>
 					<span v-show="(Grid[0] === 'X' || Grid[2] === '✔' || Grid[1] === '✔' || Grid[3] === '✔' || Grid[12] === '✔' || Grid[8] === '✔' || Grid[4] === '✔') && Grid[0] !== '✔'" class="Incorrect">X</span>
@@ -49,7 +49,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="Horizontal_Item"><img src="@/assets/Images/Horizontal_Word_2.jpg" /></td>
+				<td class="Horizontal_Item"><img src="@/assets/Images/RoomFour/Horizontal_Word_2.jpg" /></td>
 				<td class="Hoverable Thicker_Left" @click="Toggle(4)">
 					<span v-show="Grid[4] === '✔'" class="Correct">✔</span>
 					<span v-show="(Grid[4] === 'X' || Grid[6] === '✔' || Grid[5] === '✔' || Grid[7] === '✔' || Grid[12] === '✔' || Grid[8] === '✔' || Grid[0] === '✔') && Grid[4] !== '✔'" class="Incorrect">X</span>
@@ -84,7 +84,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="Horizontal_Item"><img src="@/assets/Images/Horizontal_Word_3.jpg" /></td>
+				<td class="Horizontal_Item"><img src="@/assets/Images/RoomFour/Horizontal_Word_3.jpg" /></td>
 				<td class="Hoverable Thicker_Left" @click="Toggle(8)">
 					<span v-show="Grid[8] === '✔'" class="Correct">✔</span>
 					<span v-show="(Grid[8] === 'X' || Grid[10] === '✔' || Grid[9] === '✔' || Grid[11] === '✔' || Grid[12] === '✔' || Grid[4] === '✔' || Grid[0] === '✔') && Grid[8] !== '✔'" class="Incorrect">X</span>
@@ -119,7 +119,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="Horizontal_Item Thicker_Bottom"><img src="@/assets/Images/Horizontal_Word_4.jpg" /></td>
+				<td class="Horizontal_Item Thicker_Bottom"><img src="@/assets/Images/RoomFour/Horizontal_Word_4.jpg" /></td>
 				<td class="Thicker_Bottom Hoverable Thicker_Left" @click="Toggle(12)">
 					<span v-show="Grid[12] === '✔'" class="Correct">✔</span>
 					<span v-show="(Grid[12] === 'X' || Grid[14] === '✔' || Grid[13] === '✔' || Grid[15] === '✔' || Grid[8] === '✔' || Grid[4] === '✔' || Grid[0] === '✔') && Grid[12] !== '✔'" class="Incorrect">X</span>
@@ -154,7 +154,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="Horizontal_Item"><img src="@/assets/Images/Horizontal_Word_5.jpg" /></td>
+				<td class="Horizontal_Item"><img src="@/assets/Images/RoomFour/Horizontal_Word_5.jpg" /></td>
 				<td class="Hoverable Thicker_Left" @click="Toggle(32)">
 					<span v-show="Grid[32] === '✔'" class="Correct">✔</span>
 					<span v-show="(Grid[32] === 'X' || Grid[34] === '✔' || Grid[33] === '✔' || Grid[35] === '✔' || Grid[44] === '✔' || Grid[40] === '✔' || Grid[36] === '✔') && Grid[32] !== '✔'" class="Incorrect">X</span>
@@ -173,7 +173,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="Horizontal_Item"><img src="@/assets/Images/Horizontal_Word_6.jpg" /></td>
+				<td class="Horizontal_Item"><img src="@/assets/Images/RoomFour/Horizontal_Word_6.jpg" /></td>
 				<td class="Hoverable Thicker_Left" @click="Toggle(36)">
 					<span v-show="Grid[36] === '✔'" class="Correct">✔</span>
 					<span v-show="(Grid[36] === 'X' || Grid[38] === '✔' || Grid[37] === '✔' || Grid[39] === '✔' || Grid[44] === '✔' || Grid[40] === '✔' || Grid[32] === '✔') && Grid[36] !== '✔'" class="Incorrect">X</span>
@@ -192,7 +192,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="Horizontal_Item"><img src="@/assets/Images/Horizontal_Word_7.jpg" /></td>
+				<td class="Horizontal_Item"><img src="@/assets/Images/RoomFour/Horizontal_Word_7.jpg" /></td>
 				<td class="Hoverable Thicker_Left" @click="Toggle(40)">
 					<span v-show="Grid[40] === '✔'" class="Correct">✔</span>
 					<span v-show="(Grid[40] === 'X' || Grid[42] === '✔' || Grid[41] === '✔' || Grid[43] === '✔' || Grid[44] === '✔' || Grid[36] === '✔' || Grid[32] === '✔') && Grid[40] !== '✔'" class="Incorrect">X</span>
@@ -211,7 +211,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="Horizontal_Item Thicker_Bottom"><img src="@/assets/Images/Horizontal_Word_8.jpg" /></td>
+				<td class="Horizontal_Item Thicker_Bottom"><img src="@/assets/Images/RoomFour/Horizontal_Word_8.jpg" /></td>
 				<td class="Thicker_Bottom Hoverable Thicker_Left" @click="Toggle(44)">
 					<span v-show="Grid[44] === '✔'" class="Correct">✔</span>
 					<span v-show="(Grid[44] === 'X' || Grid[46] === '✔' || Grid[45] === '✔' || Grid[47] === '✔' || Grid[40] === '✔' || Grid[36] === '✔' || Grid[32] === '✔') && Grid[44] !== '✔'" class="Incorrect">X</span>
@@ -234,8 +234,8 @@
 		<button v-show="AnswersReady()" id="Submit" @click="CheckAnswers">Submit</button>
 		<div id="DoorContainer">
 			<h2>{{ Result }}</h2>
-			<img class="Door" @click="EscapeRoom" v-if="DoorOpen" src="@/assets/Images/Door_Open.png" />
-			<img class="Door" @click="TryDoor" v-else src="@/assets/Images/Door_Closed.jpg" />
+			<img class="Door" @click="EscapeRoom" v-if="DoorOpen" src="@/assets/Images/RoomFour/Door_Open.png" />
+			<img class="Door" @click="TryDoor" v-else src="@/assets/Images/RoomFour/Door_Closed.jpg" />
 		</div>
 	</div>
 </template>
