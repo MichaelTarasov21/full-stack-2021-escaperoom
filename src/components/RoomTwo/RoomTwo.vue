@@ -36,10 +36,24 @@
           <div class="modal-item" id="final-ans-modal">
             <div class="modal-content">
               <span class="modal_close" @click="closeModal()">&times;</span>
-              <p>The Chest Conundrum</p>
-              <div id="answerCheck"></div>
-              <input type="text" id="roomTwoAns" placeholder="Your Answer" />
-              <input type="submit" value="Submit" @click="verify()" />
+              <h4>The Chest Catastrophe</h4>
+              <button id="Ocean-Chest-Button" @click="addToInventory()">
+                Use Key
+              </button>
+              <div id="Ocean-Chest-Riddle">
+                <p>Here's a long lost letter... Find the addressed...</p>
+                <img
+                  src="https://i1.wp.com/escaperoomtips.com/wp-content/uploads/2016/09/VirginiaValentine.jpg?w=917&ssl=1"
+                  alt=""
+                />
+                <div id="Ocean-Chest-answerCheck"></div>
+                <input
+                  type="text"
+                  id="OceanChestAns"
+                  placeholder="Your Answer"
+                />
+                <input type="submit" value="Submit" @click="OceanChestVerify()" />
+              </div>
             </div>
           </div>
         </div>
@@ -70,10 +84,28 @@
           <div class="modal-item" id="Ocean-Lobster-Modal">
             <div class="modal-content">
               <span class="modal_close" @click="closeModal()">&times;</span>
-              <p>Mr.Krabs' Dilemma</p>
+              <h4>Mr.Krabs' Kandy Kunundrum</h4>
+              <p>
+                Mr. Krab's has gotten greedy with his gummy bears and won't
+                share with the Bikini Bottom. Find the passcode to help free
+                them!
+              </p>
+              <p>Red Orange Yellow Green</p>
+              <img
+                src="https://i0.wp.com/escaperoomtips.com/wp-content/uploads/2016/09/gummy_bears.jpg?w=1200&ssl=1"
+                alt=""
+              />
               <div id="Ocean-Lobster-answerCheck"></div>
-              <input type="text" placeholder="Your Answer" />
-              <input type="submit" value="Submit" @click="verify()" />
+              <input
+                type="text"
+                id="OceanLobsterAns"
+                placeholder="Your Answer"
+              />
+              <input
+                type="submit"
+                value="Submit"
+                @click="OceanLobsterVerify()"
+              />
             </div>
           </div>
         </div>
@@ -91,7 +123,10 @@
           <div class="modal-item" id="final-ans-modal">
             <div class="modal-content">
               <span class="modal_close" @click="closeModal()">&times;</span>
-              <p>Room Two Final Puzzle</p>
+              <h4>The Final Puzzle</h4>
+              <p>Mr.Krabs[0]</p>
+              <p>Chest's _ _ _</p>
+              <p>(san spaces)</p>
               <div id="answerCheck"></div>
               <input type="text" id="roomTwoAns" placeholder="Your Answer" />
               <input type="submit" value="Submit" @click="verify()" />
@@ -107,9 +142,12 @@
 
 <script>
 // import func from "vue-editor-bridge";
+let inventoryArray = [];
+
 export default {
   name: "RoomTwo",
   emits: ["roomTwoFin"],
+
   mounted: function() {
     // this.movement();
     // this.coordinates();
@@ -415,7 +453,7 @@ export default {
       console.log("connected");
       var answer = document.getElementById("roomTwoAns").value.toUpperCase();
       console.log(answer);
-      if (answer == `ROOMTWO`) {
+      if (answer == `6POE`) {
         document.getElementById("answerCheck").innerHTML = "";
         document.getElementById("answerCheck").style.color = "green";
         document
@@ -433,6 +471,59 @@ export default {
           );
       }
     },
+    OceanLobsterVerify: function() {
+      console.log("connected");
+      var answer = document.getElementById("OceanLobsterAns").value;
+      console.log(answer);
+      if (answer == `6245`) {
+        document.getElementById("Ocean-Lobster-answerCheck").innerHTML = "";
+        document.getElementById("Ocean-Lobster-answerCheck").style.color =
+          "green";
+        document
+          .getElementById("Ocean-Lobster-answerCheck")
+          .insertAdjacentHTML(
+            "beforeend",
+            `${answer} is Correct ..  Quick! Swim away before Mr. Krabs finds out!`
+          );
+      } else {
+        document.getElementById("Ocean-Lobster-answerCheck").innerHTML = "";
+        document.getElementById("Ocean-Lobster-answerCheck").style.color =
+          "red";
+        document
+          .getElementById("Ocean-Lobster-answerCheck")
+          .insertAdjacentHTML(
+            "beforeend",
+            `${answer} is incorrect, these candies are all mine!`
+          );
+      }
+    },
+
+    OceanChestVerify: function() {
+      console.log("connected");
+      var answer = document.getElementById("OceanChestAns").value.toUpperCase();
+      console.log(answer);
+      if (answer == `EDGAR ALLAN POE`) {
+        document.getElementById("Ocean-Chest-answerCheck").innerHTML = "";
+        document.getElementById("Ocean-Chest-answerCheck").style.color =
+          "green";
+        document
+          .getElementById("Ocean-Chest-answerCheck")
+          .insertAdjacentHTML(
+            "beforeend",
+            `${answer} is Correct .. edgar allan poe poe poe poe poeeee...`
+          );
+      } else {
+        document.getElementById("Ocean-Chest-answerCheck").innerHTML = "";
+        document.getElementById("Ocean-Chest-answerCheck").style.color = "red";
+        document
+          .getElementById("Ocean-Chest-answerCheck")
+          .insertAdjacentHTML(
+            "beforeend",
+            `${answer} is incorrect, these candies are all mine!`
+          );
+      }
+    },
+
     // movement: function () {
     //   console.log("movement function is connected");
     //   var x = 0;
@@ -541,8 +632,8 @@ export default {
       const mapItemArray = Array.from(
         document.getElementsByClassName("forInventory")
       );
-      console.log(mapItemArray);
-      let inventoryArray = [];
+      // console.log(mapItemArray);
+
       const inventory = document.querySelector(".inventory");
       //if item on map is selected, add to inventory
       mapItemArray.forEach(function(item) {
@@ -553,7 +644,7 @@ export default {
             img: item.children[1].textContent,
           };
           inventoryArray.push(addedItem);
-          console.log(inventoryArray);
+          // console.log(inventoryArray);
           inventory.innerHTML = "";
           display();
           item.style.display = "none";
@@ -570,6 +661,16 @@ export default {
           );
         });
       };
+
+      const useKey = function() {
+        console.log(inventoryArray.length);
+        if (inventoryArray.length === 1) {
+          document.getElementById("Ocean-Chest-Riddle").style.display = "block";
+          document.getElementById("Ocean-Chest-Button").style.display = "none";
+          inventory.innerHTML = "";
+        }
+      };
+      useKey();
     },
     // displayMapItems: function () {
     //   this.$refs.mapItems.innerHTML = "";
@@ -614,6 +715,9 @@ body {
   /* width: 100vw;
   height: 100vh; */
   overflow: hidden;
+}
+img {
+  width: 100%;
 }
 
 .roomTwo {
@@ -705,6 +809,10 @@ body {
   left: 50%;
 }
 
+#Ocean-Chest-Riddle {
+  display: none;
+}
+
 #Ocean-Key {
   top: 50%;
   left: 30%;
@@ -712,7 +820,6 @@ body {
 
 #Ocean-Lobster {
   top: 40%;
-
 }
 
 .popUpModal {
@@ -748,16 +855,18 @@ body {
   display: flex;
   bottom: 0rem;
   background-color: rgba(23, 65, 19, 0.8);
-  left: 25%;
+  /* left: 25%; */
 }
 
 .inventory-item {
   /* border: solid; */
   /* padding: 1rem; */
-  border-color: rgb(99, 88, 194);
+  /* border-color: rgb(99, 88, 194); */
   /* border-width: 0.2rem !important; */
+  border: none;
   cursor: pointer;
-  padding: 1rem;
+  padding: 0.5rem;
+  /* padding: 1rem; */
 }
 
 .item-img {
@@ -789,7 +898,7 @@ body {
   position: fixed; /* Stay in place */
   top: 0;
   left: 0;
-  z-index: 3; /* Sit on top */
+  z-index: 10; /* Sit on top */
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
@@ -813,10 +922,16 @@ body {
 
 .modal-content {
   background-color: #fefefe;
-  margin: 4rem;
+  margin: 3rem auto;
   padding: 3rem;
   z-index: 3;
   border-radius: 1rem;
+  max-width: 50rem;
+}
+
+.modal-content img {
+  max-width: 25rem;
+  max-height: 25rem;
 }
 
 h3 {
