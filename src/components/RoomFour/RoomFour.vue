@@ -37,7 +37,7 @@
         <img class="Character_shadow pixelart" src="@/assets/Images/Character_Shadow.png" alt="Shadow" />
         <img class="Character_spritesheet pixelart face-down" id="spriteCharacter" src="@/assets/Images/Character.png" alt="Character" />
       </div>
-      <img class="pos-item" id="Arcade" width="75px" height="80px" src="@/assets/Images/RoomFour/Arcade_Machine.jpg" />
+      <img class="pos-item" id="Arcade" width="75px" height="80px" src="@/assets/Images/RoomFour/Arcade_Machine.png" />
       <img class="pos-item" id="Briefcase" width="75px" height="80conspx" src="@/assets/Images/RoomFour/Briefcase.png" />
       <img class="pos-item" id="FinalLock1" src="@/assets/Images/RoomFour/Lock.png" />
     </div>
