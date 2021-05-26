@@ -19,7 +19,7 @@
       <div class="mapItems" id="mapItems">
         <div class="map-item" id="FinalLock">
           <!-- <img  src="https://img.icons8.com/dusk/200/000000/door-closed.png"/> -->
-          <img class="item-img" src="https://img.icons8.com/dusk/200/000000/portal.png"/>
+          <img id="hideLock" class="item-img" src="https://img.icons8.com/dusk/200/000000/portal.png"/>
           <div class="hidden">
             https://i.ibb.co/qFBnL0y/compscipuzzle.jpg
           </div>
@@ -47,8 +47,8 @@
           </div>
         </div>
 
-        <div class="map-item" id="Computer">
-          <img
+        <div class="map-item hideComputer" id="Computer">
+          <img id="hideComp"
             class="item-img"
             src="https://img.icons8.com/officel/75/000000/computer.png"
           />
@@ -394,12 +394,18 @@ export default {
       const barModal = function(){
         const wear = document.querySelector("#wear");
         const takeoff = document.querySelector("#takeoff");
+        const computer = document.querySelector(".hideComputer");
+        const lock = document.querySelector("#FinalLock");
+
         wear.addEventListener("click", function(){
           console.log("collectedgoggles are clicked");
           const bar = document.querySelector("#barModal");
           bar.style.display = "block";
           wear.style.display = "none";
           takeoff.style.display = "block";
+          computer.style.display = "none";
+          lock.style.display = "none";
+
         });
         takeoff.addEventListener("click", function(){
           console.log("collectedgoggles are clicked");
@@ -407,6 +413,8 @@ export default {
           bar.style.display = "none";
           takeoff.style.display = "none";
           wear.style.display = "block";
+          computer.style.display = "block";
+          lock.style.display = "block";
         });
       };
     }
@@ -523,12 +531,12 @@ body {
   pointer-events: none;
 }
 
-#Goggles{
+#Computer{
   top: 15rem;
   right: 5rem;
 }
 
-#Computer{
+#Goggles{
   top: 5rem;
   left: 30rem;
 }
