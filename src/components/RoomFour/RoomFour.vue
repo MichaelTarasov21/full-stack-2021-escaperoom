@@ -39,7 +39,7 @@
       </div>
       <img class="pos-item" id="Arcade" width="75px" height="80px" src="@/assets/Images/Arcade_Machine.jpg" />
       <img class="pos-item" id="Briefcase" width="75px" height="80conspx" src="@/assets/Images/Briefcase.png" />
-      <img class="pos-item" id="FinalLock" src="https://img.icons8.com/bubbles/75/000000/lock-2.png" />
+      <img class="pos-item" id="FinalLock1" src="https://img.icons8.com/bubbles/75/000000/lock-2.png" />
     </div>
     <div class="inventory" ref="inventory"></div>
   </div>
@@ -358,7 +358,7 @@
   #NoteTaker {
     background-color: black;
   }
-  #FinalLock {
+  #FinalLock1 {
     position: absolute;
     right: 0;
     bottom: 0;
