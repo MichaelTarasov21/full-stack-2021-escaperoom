@@ -19,6 +19,7 @@
   import Login from "./components/Login.vue";
   import Start from "./components/Start.vue";
   import Success from "./components/Success.vue";
+  import Fail from "./components/Fail.vue";
   import RoomOne from "./components/RoomOne/RoomOne";
   import RoomTwo from "./components/RoomTwo/RoomTwo";
   import RoomThree from "./components/RoomThree/RoomThree";
@@ -38,6 +39,7 @@
       Login,
       Start,
       Success,
+      Fail,
       RoomOne,
       RoomTwo,
       RoomThree,
@@ -87,6 +89,10 @@
       Restart: function() {
         this.lost = false;
         this.success = false;
+        this.roomOneLoad = false;
+        this.roomTwoLoad = false;
+        this.roomThreeLoad = false;
+        this.roomFourLoad = false;
         this.start = false;
       },
     },
