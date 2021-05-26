@@ -2,6 +2,7 @@
 	<div id="fail">
 		<section class="message">
 			<h1>You lost. That is sad.</h1>
+			<br>
 			<p>Credits to Our Puzzle n' Inspirations</p>
 		</section>
 		<button @click="Restart" id="Restart">Restart</button>
@@ -35,9 +36,11 @@
 		left: 0%;
 		right: 0%;
 		bottom: 0%;
-		z-index: 1;
+		z-index: 100;
 	}
 	.message {
+		display: block;
+		width: 100%;
 		color: black;
 		background: #b0b6b3;
 		height: 8rem;
