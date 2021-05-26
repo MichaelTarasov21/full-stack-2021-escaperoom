@@ -15,7 +15,6 @@ var firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-firebase.analytics();
 firebase.auth();
 
 Vue.config.productionTip = false;
