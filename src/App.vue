@@ -8,7 +8,7 @@
     <RoomOne v-if="roomOneLoad" @roomOneFin="roomOneFin"/>
     <RoomTwo v-if="roomTwoLoad" @roomTwoFin="roomTwoFin"/>
     <RoomThree v-if="roomThreeLoad" @roomThreeFin="roomThreeFin"/>
-    <RoomFour v-if="roomFourLoad" @roomFourFin="roomFourFin"/>
+    <!-- <RoomFour v-if="roomFourLoad" @roomFourFin="roomFourFin"/> -->
     <Success v-if="success" @Restart="Restart" @OpenSettings="Menuopened = true"/>
     <!-- <inventory/> -->
   </div>
@@ -22,7 +22,7 @@ import Success from "./components/Success.vue";
 import RoomOne from "./components/RoomOne/RoomOne";
 import RoomTwo from "./components/RoomTwo/RoomTwo";
 import RoomThree from "./components/RoomThree/RoomThree";
-import RoomFour from "./components/RoomFour/RoomFour";
+// import RoomFour from "./components/RoomFour/RoomFour";
 import Settings from "./components/Settings/Settings.vue";
 // import Inventory from "./components/Inventory";
 
@@ -41,7 +41,7 @@ export default {
     RoomOne,
     RoomTwo,
     RoomThree,
-    RoomFour,
+    // RoomFour,
     Settings,
     // Inventory,
   },
@@ -77,15 +77,15 @@ export default {
     },
     roomThreeFin: function() {
       console.log("Room Three is Finished");
-      this.roomFourLoad = true;
+      // this.roomFourLoad = true;
       this.roomThreeLoad = false;
-            this.success = true;
-    },
-    roomFourFin: function() {
-      console.log("Room Four is Finished");
       this.success = true;
-      this.roomFourLoad = false;
     },
+    // roomFourFin: function() {
+    //   console.log("Room Four is Finished");
+    //   this.success = true;
+    //   this.roomFourLoad = false;
+    // },
     Restart: function() {
       this.lost = false;
       this.success = false;
