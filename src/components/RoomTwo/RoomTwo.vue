@@ -689,6 +689,8 @@ export default {
             });
         }
       };
+      document.getElementById("Ocean-Chest-Button").addEventListener('click', useKey)
+
       console.log(useKey());
     },
     // displayMapItems: function () {
@@ -712,6 +714,7 @@ export default {
 </script>
 
 <style scoped>
+
 :root {
   --scale: 6;
 }
