@@ -116,7 +116,7 @@
           </div>
         </div>
 
-        <div class="map-item" id="FinalLock">
+        <div class="map-item" id="Ocean-FinalLock">
           <img
             class="item-img pos-item"
             src="https://img.icons8.com/dusk/256/000000/lock-2.png"
@@ -125,7 +125,7 @@
           <div class="hidden">
             src="https://img.icons8.com/dusk/256/000000/lock-2.png"
           </div>
-          <div class="hidden">FinalLock</div>
+          <div class="hidden">Ocean-FinalLock</div>
           <div class="modal-item" id="final-ans-modal">
             <div class="modal-content">
               <span class="modal_close" @click="closeModal()">&times;</span>
@@ -860,7 +860,7 @@ img {
   background-color: red;
 }
 
-#FinalLock {
+#Ocean-FinalLock {
   position: absolute;
   top: 100;
   bottom: 0 !important;
