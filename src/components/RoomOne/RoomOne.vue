@@ -31,9 +31,9 @@
               <br>
               <p>Is there something you're not <s>seeing?</s></p>
               <div class="flex-row">
-                <img src="../../img/finalpuzzle.jpg" width="300rem" height="auto" alt="">
+                <img src="@/assets/Images/finalpuzzle.jpg" width="300rem" height="auto" alt="">
                 <div class="flex-column">
-                  <img src="../../img/finalanswer.jpg" width="250rem" height="auto" alt="">
+                  <img src="@/assets/Images/finalanswer.jpg" width="250rem" height="auto" alt="">
                   <br>
                   <div id="answerCheck"></div>
                   <br>
@@ -65,9 +65,9 @@
               <br>
               <p>Look Down</p>
               <div class="flex-row">
-                <img src="../../img/compsci.jpg" width="300rem" height="auto" alt="">
+                <img src="@/assets/Images/compsci.jpg" width="300rem" height="auto" alt="">
                 <div class="flex-column">
-                  <img src="../../img/compscianswer.jpg" width="250rem" height="auto" alt="">
+                  <img src="@/assets/Images/compscianswer.jpg" width="250rem" height="auto" alt="">
                   <br>
                   <div id="computerCheck"></div>
                   <input type="text" id="computerAnswer" placeholder="Your Answer" />
@@ -99,7 +99,7 @@
          <div class="modal-item" id="barModal">
           <div>
             <!-- <span class="modal_close" @click="closeModal()">&times;</span> -->
-            <img src="../../img/bar.jpg" alt="" height="400rem" width="auto">
+            <img src="@/assets/Images/bar.jpg" alt="" height="400rem" width="auto">
           </div>
         </div>
 
@@ -454,7 +454,7 @@ body {
 .canvas {
   padding: 0;
   position: absolute;
-  background-image: url("../../img/space2.jpg");
+  background-image: url("~@/assets/Images/space2.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
