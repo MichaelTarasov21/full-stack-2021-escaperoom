@@ -1,5 +1,5 @@
 <template>
-  <div id="roomFour">
+  <div id="RoomFour">
     <h1>Room Four Canvas Area</h1>
     <button class="ModalOpener" @click="openModal(0)" />
     <div class="modal-item" v-if="OpenPuzzles[0]">
@@ -210,9 +210,9 @@
 </script>
 
 <style scoped>
-:root {
-  --scale1: 6;
-}
+  :root {
+    --scale1: 6;
+  }
   * {
     margin: 0;
     padding: 0;
@@ -228,6 +228,8 @@
     overflow: hidden;
   }
   #RoomFour {
+    position: absolute;
+    background-image: url("~@/assets/Images/RoomFour/Room_Four_Background.jpg");
     width: 100%;
     height: 100%;
   }
@@ -270,6 +272,9 @@
     width: calc(1rem * var(--scale1));
     height: calc(1rem * var(--scale1));
     left: 0;
+  }
+  .inventory{
+    z-index: 3;
   }
   .modal-item {
     position: fixed; /* Stay in place */
@@ -323,10 +328,9 @@
   #canvas {
     position: absolute;
     top: 10%;
-    height: calc(90% - 8.5rem);
+    height: calc(90% - 6.5rem);
     width: 100%;
     overflow: hidden;
-    background-image: url("~@/assets/Images/RoomFour/Room_Four_Background.jpg");
   }
   #Briefcase {
     position: absolute;
