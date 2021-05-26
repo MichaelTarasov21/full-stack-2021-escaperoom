@@ -754,7 +754,7 @@ img {
   /* margin: 3rem; */
   position: absolute;
   z-index: -1;
-  background-image: url("../../assets/Images/RoomTwo/Ocean Background.png");
+  background-image: url("../../assets/Images/RoomTwo/Ocean Background_New.jpg");
   z-index: -2;
 }
 
