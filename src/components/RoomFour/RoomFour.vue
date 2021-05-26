@@ -7,7 +7,7 @@
         <span class="modal_close" @click="closeModal(0)">&times;</span>
         <div id="Error" v-if="Minigamewon">
           <h2>Error</h2>
-          <img src="@/assets/Images/Number_Clue.jpg" />
+          <img src="@/assets/Images/RoomFour/Number_Clue.jpg" />
         </div>
         <SpaceInvaders v-else @Minigamewon="Minigamewon = true" />
       </div>
@@ -34,12 +34,12 @@
     </div>
     <div id="canvas">
       <div class="player" id="Character">
-        <img class="Character_shadow pixelart" src="@/assets/Images/DemoRpgCharacterShadow.png" alt="Shadow" />
-        <img class="Character_spritesheet pixelart face-down" id="spriteCharacter" src="@/assets/Images/DemoRpgCharacter.png" alt="Character" />
+        <img class="Character_shadow pixelart" src="@/assets/Images/Character_Shadow.png" alt="Shadow" />
+        <img class="Character_spritesheet pixelart face-down" id="spriteCharacter" src="@/assets/Images/Character.png" alt="Character" />
       </div>
-      <img class="pos-item" id="Arcade" width="75px" height="80px" src="@/assets/Images/Arcade_Machine.jpg" />
-      <img class="pos-item" id="Briefcase" width="75px" height="80conspx" src="@/assets/Images/Briefcase.png" />
-      <img class="pos-item" id="FinalLock1" src="@/assets/Images/lock-2.png" />
+      <img class="pos-item" id="Arcade" width="75px" height="80px" src="@/assets/Images/RoomFour/Arcade_Machine.jpg" />
+      <img class="pos-item" id="Briefcase" width="75px" height="80conspx" src="@/assets/Images/RoomFour/Briefcase.png" />
+      <img class="pos-item" id="FinalLock1" src="@/assets/Images/RoomFour/Lock.png" />
     </div>
     <div class="inventory" ref="inventory"></div>
   </div>
@@ -326,21 +326,21 @@
     height: calc(90% - 8.5rem);
     width: 100%;
     overflow: hidden;
-    background-image: url("~@/assets/Images/Room_Four_Background.jpg");
+    background-image: url("~@/assets/Images/RoomFour/Room_Four_Background.jpg");
   }
   #Briefcase {
     position: absolute;
     right: 0%;
   }
   #BriefcaseBackdrop {
-    background-image: url("~@/assets/Images/Briefcase_Backdrop.jpg");
+    background-image: url("~@/assets/Images/RoomFour/Briefcase_Backdrop.jpg");
     height: 50%;
     background-size: cover;
     background-repeat: no-repeat;
   }
   #ArcadeBackdrop {
     height: 70%;
-    background-image: url("~@/assets/Images/Arcade_Backdrop.jpg");
+    background-image: url("~@/assets/Images/RoomFour/Arcade_Backdrop.jpg");
     background-size: cover;
     background-repeat: no-repeat;
   }
