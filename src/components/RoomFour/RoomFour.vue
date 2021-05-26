@@ -249,13 +249,13 @@
     image-rendering: pixelated;
   }
   .face-right {
-    top: calc(-1rem * var(--scale1));
+    top: calc(-2rem);
   }
   .face-up {
-    top: calc(-2rem * var(--scale1));
+    top: calc(-4rem);
   }
   .face-left {
-    top: calc(-3rem * var(--scale1));
+    top: calc(-6rem);
   }
   @keyframes moveSpritesheet {
     from {
