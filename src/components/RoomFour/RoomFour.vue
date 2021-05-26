@@ -210,6 +210,9 @@
 </script>
 
 <style scoped>
+:root {
+  --scale1: 6;
+}
   * {
     margin: 0;
     padding: 0;
@@ -235,7 +238,7 @@
     overflow: hidden;
   }
   .Character_spritesheet {
-    width: calc(4rem * var(--scale));
+    width: calc(4rem * var(--scale1));
     position: absolute;
     left: 0;
   }
@@ -246,13 +249,13 @@
     image-rendering: pixelated;
   }
   .face-right {
-    top: calc(-1rem * var(--scale));
+    top: calc(-1rem * var(--scale1));
   }
   .face-up {
-    top: calc(-2rem * var(--scale));
+    top: calc(-2rem * var(--scale1));
   }
   .face-left {
-    top: calc(-3rem * var(--scale));
+    top: calc(-3rem * var(--scale1));
   }
   @keyframes moveSpritesheet {
     from {
@@ -264,12 +267,13 @@
   }
   .Character_shadow {
     position: absolute;
-    width: calc(1rem * var(--scale));
-    height: calc(1rem * var(--scale));
+    width: calc(1rem * var(--scale1));
+    height: calc(1rem * var(--scale1));
     left: 0;
   }
   .modal-item {
     position: fixed; /* Stay in place */
+    display: block; /* Overrides Css from Room1 */
     z-index: 1; /* Sit on top */
     width: 100%; /* Full width */
     height: 100%; /* Full height */
