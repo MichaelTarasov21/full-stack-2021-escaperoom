@@ -1,13 +1,12 @@
 <template>
-  <div id="roomFour">
-    <h1>Room Four Canvas Area</h1>
+  <div id="RoomFour">
     <button class="ModalOpener" @click="openModal(0)" />
     <div class="modal-item" v-if="OpenPuzzles[0]">
       <div class="modal-content" id="ArcadeBackdrop">
         <span class="modal_close" @click="closeModal(0)">&times;</span>
         <div id="Error" v-if="Minigamewon">
           <h2>Error</h2>
-          <img src="@/assets/Images/Number_Clue.jpg" />
+          <img src="@/assets/Images/RoomFour/Number_Clue.jpg" />
         </div>
         <SpaceInvaders v-else @Minigamewon="Minigamewon = true" />
       </div>
@@ -34,12 +33,12 @@
     </div>
     <div id="canvas">
       <div class="player" id="Character">
-        <img class="Character_shadow pixelart" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/21542/DemoRpgCharacterShadow.png" alt="Shadow" />
-        <img class="Character_spritesheet pixelart face-down" id="spriteCharacter" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/21542/DemoRpgCharacter.png" alt="Character" />
+        <img class="Character_shadow pixelart" src="@/assets/Images/Character_Shadow.png" alt="Shadow" />
+        <img class="Character_spritesheet pixelart face-down" id="spriteCharacter" src="@/assets/Images/Character.png" alt="Character" />
       </div>
-      <img class="pos-item" id="Arcade" width="75px" height="80px" src="@/assets/Images/Arcade_Machine.jpg" />
-      <img class="pos-item" id="Briefcase" width="75px" height="80conspx" src="@/assets/Images/Briefcase.png" />
-      <img class="pos-item" id="FinalLock1" src="https://img.icons8.com/bubbles/75/000000/lock-2.png" />
+      <img class="pos-item" id="Arcade" width="75px" height="80px" src="@/assets/Images/RoomFour/Arcade_Machine.png" />
+      <img class="pos-item" id="Briefcase" width="75px" height="80conspx" src="@/assets/Images/RoomFour/Briefcase.png" />
+      <img class="pos-item" id="FinalLock1" src="@/assets/Images/RoomFour/Lock.png" />
     </div>
     <div class="inventory" ref="inventory"></div>
   </div>
@@ -210,9 +209,9 @@
 </script>
 
 <style scoped>
-:root {
-  --scale1: 6;
-}
+  :root {
+    --scale1: 6;
+  }
   * {
     margin: 0;
     padding: 0;
@@ -228,6 +227,8 @@
     overflow: hidden;
   }
   #RoomFour {
+    position: absolute;
+    background-image: url("~@/assets/Images/RoomFour/Room_Four_Background.jpg");
     width: 100%;
     height: 100%;
   }
@@ -270,6 +271,9 @@
     width: calc(1rem * var(--scale1));
     height: calc(1rem * var(--scale1));
     left: 0;
+  }
+  .inventory{
+    z-index: 3;
   }
   .modal-item {
     position: fixed; /* Stay in place */
@@ -323,24 +327,28 @@
   #canvas {
     position: absolute;
     top: 10%;
-    height: calc(90% - 8.5rem);
+    height: calc(90% - 6.5rem);
     width: 100%;
     overflow: hidden;
-    background-image: url("~@/assets/Images/Room_Four_Background.jpg");
   }
   #Briefcase {
     position: absolute;
+    top: 5%;
     right: 0%;
   }
   #BriefcaseBackdrop {
-    background-image: url("~@/assets/Images/Briefcase_Backdrop.jpg");
+    background-image: url("~@/assets/Images/RoomFour/Briefcase_Backdrop.jpg");
     height: 50%;
     background-size: cover;
     background-repeat: no-repeat;
   }
+  #Arcade {
+    position: absolute;
+    top: 10px;
+  }
   #ArcadeBackdrop {
     height: 70%;
-    background-image: url("~@/assets/Images/Arcade_Backdrop.jpg");
+    background-image: url("~@/assets/Images/RoomFour/Arcade_Backdrop.jpg");
     background-size: cover;
     background-repeat: no-repeat;
   }

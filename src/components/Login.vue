@@ -75,7 +75,7 @@ export default {
   width: 100%;
   height: 100%;
   background-color: black;
-  background-image: url(../img/login.jpg);
+  background-image: url(~@/assets/Images/login.jpg);
   background-size: 100%;
   color: white;
   z-index: 2;

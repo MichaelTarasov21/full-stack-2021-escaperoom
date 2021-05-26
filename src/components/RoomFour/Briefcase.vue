@@ -2,35 +2,35 @@
 	<div>
 		<span class="Lock" id="Digit1">
 			<button class="Up_Arrow" @click="ChangeDigit1(1)">
-				<img src="@/assets/Images/Suitcase_Arrow.png" />
+				<img src="@/assets/Images/RoomFour/Suitcase_Arrow.png" />
 			</button>
 			<div class="Digit">{{ Digit1 }}</div>
 			<button class="Down_Arrow" @click="ChangeDigit1(-1)">
-				<img src="@/assets/Images/Suitcase_Arrow.png" />
+				<img src="@/assets/Images/RoomFour/Suitcase_Arrow.png" />
 			</button>
 		</span>
 		<span class="Lock" id="Digit2">
 			<button class="Up_Arrow" @click="ChangeDigit2(1)">
-				<img src="@/assets/Images/Suitcase_Arrow.png" />
+				<img src="@/assets/Images/RoomFour/Suitcase_Arrow.png" />
 			</button>
 			<div class="Digit">{{ Digit2 }}</div>
 			<button class="Down_Arrow" @click="ChangeDigit2(-1)">
-				<img src="@/assets/Images/Suitcase_Arrow.png" />
+				<img src="@/assets/Images/RoomFour/Suitcase_Arrow.png" />
 			</button>
 		</span>
 		<span class="Lock" id="Digit3">
 			<button class="Up_Arrow" @click="ChangeDigit3(1)">
-				<img src="@/assets/Images/Suitcase_Arrow.png" />
+				<img src="@/assets/Images/RoomFour/Suitcase_Arrow.png" />
 			</button>
 			<div class="Digit">{{ Digit3 }}</div>
 			<button class="Down_Arrow" @click="ChangeDigit3(-1)">
-				<img src="@/assets/Images/Suitcase_Arrow.png" />
+				<img src="@/assets/Images/RoomFour/Suitcase_Arrow.png" />
 			</button>
 		</span>
-		<button id="Unlock" @click="CheckCombination"><img height="60px" src="@/assets/Images/Unlock_Button.png" /></button>
-		<img v-if="Correct" src="@/assets/Images/Led_Correct.jpg" id="Indicator" />
-		<img v-else-if="Incorrect" src="@/assets/Images/Led_Incorrect.jpg" id="Indicator" />
-		<img v-else src="@/assets/Images/Led_Indicator.jpg" id="Indicator" />
+		<button id="Unlock" @click="CheckCombination"><img height="60px" src="@/assets/Images/RoomFour/Unlock_Button.png" /></button>
+		<img v-if="Correct" src="@/assets/Images/RoomFour/Led_Correct.jpg" id="Indicator" />
+		<img v-else-if="Incorrect" src="@/assets/Images/RoomFour/Led_Incorrect.jpg" id="Indicator" />
+		<img v-else src="@/assets/Images/RoomFour/Led_Indicator.jpg" id="Indicator" />
 	</div>
 </template>
 <script>

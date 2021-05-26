@@ -3,7 +3,7 @@
 		<h1>You Lost</h1>
         <br>
 		<button @click="Restart">Restart</button>
-        <div id="hint"> <img src="@/assets/Images/Zoom_Out.png" height="40px"> It might be helpful if you had a bigger screen</div>
+        <div id="hint"> <img src="@/assets/Images/RoomFour/Zoom_Out.png" height="40px"> It might be helpful if you had a bigger screen</div>
 	</div>
 </template>
 <script>

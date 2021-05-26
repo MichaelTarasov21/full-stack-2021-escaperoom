@@ -11,14 +11,14 @@
       <div id="character">
         <img
           class="Character_shadow pixelart"
-          src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/21542/DemoRpgCharacterShadow.png"
+          src="@/assets/Images/Character_Shadow.png"
           alt="Shadow"
         />
 
         <img
           class="Character_spritesheet pixelart face-down"
           id="spriteCharacter"
-          src=" https://s3-us-west-2.amazonaws.com/s.cdpn.io/21542/DemoRpgCharacter.png"
+          src="@/assets/Images/Character.png"
           alt="Character"
         />
       </div>
@@ -754,7 +754,7 @@ img {
   /* margin: 3rem; */
   position: absolute;
   z-index: -1;
-  background-image: url("../../assets/Images/RoomTwo/Ocean Background.png");
+  background-image: url("../../assets/Images/RoomTwo/Ocean Background_New.jpg");
   z-index: -2;
 }
 
