@@ -334,6 +334,7 @@
   }
   #Briefcase {
     position: absolute;
+    top: 5%;
     right: 0%;
   }
   #BriefcaseBackdrop {
@@ -341,6 +342,10 @@
     height: 50%;
     background-size: cover;
     background-repeat: no-repeat;
+  }
+  #Arcade {
+    position: absolute;
+    top: 10px;
   }
   #ArcadeBackdrop {
     height: 70%;
