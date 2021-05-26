@@ -1,15 +1,12 @@
 <template>
   <div class="roomThree">
 
-      <div class="modal-item"> 
-        <div class="modal-content">
-          <span class="modal_close" @click="closeModal()" >&times;</span>
-          <p>Hedge Maze</p>
-          <img id="Hedge_Maze" src="../../img/hedgemaze.png" alt="Hedge Maze"/>
-        </div>
-      </div>
+    <div class="popUpModal" id="popUpModal">
+      <div class="closeModal" id="closeModal"></div>
+      <div id="modal-content"></div>
+    </div>
 
-      <div class="canvas" id="canvas">
+    <div class="canvas" id="canvas">
       <div id="character">
         <img
           class="Character_shadow pixelart"
@@ -26,108 +23,89 @@
       </div>
 
       <div class="mapItems" id="mapItems">
-        <div class="pos-item forPuzzle" id="FinalLock">
+
+        <div class="map-item" id="FinalLock">
           <img
-            class="pos-img forTouch"
-            src="https://img.icons8.com/bubbles/75/000000/lock-2.png"
+            class="item-img pos-item"
+            src="https://img.icons8.com/windows/32/000000/jail-cell-door.png"
           />
-          <div class="hidden">
-            https://img.icons8.com/bubbles/75/000000/lock-2.png
+          <div class="hidden">https://img.icons8.com/ios-filled/50/000000/jail-cell-door--v1.png</div>
+          <div class="hidden">FinalLock</div>
+          <div class="modal-item" id="final-ans-modal"> 
+            <div class="modal-content">
+              <span class="modal_close" @click="closeModal()" >&times;</span>
+              <p>Room Three Final Puzzle</p>
+              <div id="answerCheck"></div>
+              <input type="text" id="roomThreeAns" placeholder="Your Answer" />
+              <input type="submit" value="Submit" @click="verify()"/>
+            </div>
           </div>
-          <div>FinalLock</div>
         </div>
-        <div class="pos-item forPuzzle" id="Maze">
+
+        <div class="map-item" id="Maze">
           <img
-            class="pos-img forTouch"
-            src="https://img.icons8.com/officel/75/000000/computer.png"
+            class="item-img pos-item"
+            src="https://img.icons8.com/ultraviolet/40/000000/open-window.png"
           />
-          <div class="hidden">
-            ../../img/hedgemaze.png
+          <div class="hidden">https://media.giphy.com/media/ocD16iiLhlt0q8IQgR/giphy.gif</div>
+          <div class="hidden">Hedge Maze</div>
+          <div class="modal-item"> 
+            <div class="modal-content">
+            <span class="modal_close" @click="closeModal()" >&times;</span>
+            <p>Hedge Maze</p>
+            <img id="Hedge_Maze" src="https://media.giphy.com/media/ocD16iiLhlt0q8IQgR/giphy.gif" alt="Hedge Maze"/>
+            </div>
           </div>
-          <div>Hedge Maze</div>
         </div>
+
         <div class="map-item forInventory" id="Torch">
           <img
-            class="item-img"
+            class="item-img pos-item"
             src="https://img.icons8.com/cotton/64/000000/torch.png"
           />
           <div class="hidden">https://img.icons8.com/cotton/64/000000/torch.png</div>
           <div>&#8204;</div>
         </div>
+
         <div class="map-item forInventory" id="Skull-1">
           <img
-            class="item-img"
+            class="item-img pos-item"
             src="https://img.icons8.com/material-two-tone/24/000000/skull.png"
           />
           <div class="hidden">https://media.giphy.com/media/Kxm02CJJazqCFBqYWK/giphy.gif</div>
           <div>‌</div>
         </div>
+
         <div class="map-item forInventory" id="Skull-2">
           <img
-            class="item-img"
+            class="item-img pos-item"
             src="https://img.icons8.com/material-two-tone/24/000000/skull.png"
           />
           <div class="hidden">https://media.giphy.com/media/BWjvxs4uCsGvSY0ak1/giphy.gif</div>
           <div>‌</div>
         </div>
+
         <div class="map-item forInventory" id="Skull-3">
           <img
-            class="item-img"
+            class="item-img pos-item"
             src="https://img.icons8.com/material-two-tone/24/000000/skull.png"
           />
           <div class="hidden">https://media.giphy.com/media/J6eXrQczJ1EYSBEkVk/giphy.gif</div>
           <div>‌</div>
         </div>
+
         <div class="map-item forInventory" id="Skull-4">
           <img
-            class="item-img"
+            class="item-img pos-item"
             src="https://img.icons8.com/material-two-tone/24/000000/skull.png"
           />
           <div class="hidden">https://media.giphy.com/media/LEcRRnZuTOEhmlYgMQ/giphy.gif</div>
           <div>‌</div>
         </div>
       </div>
-      
-      <div class="modal-item" id="final-ans-modal"> 
-        <div class="modal-content">
-          <span class="modal_close" @click="closeModal()" >&times;</span>
-          <p>Room Three Final Puzzle</p>
-          <div id="answerCheck"></div>
-          <input type="text" id="roomThreeAns" placeholder="Your Answer" />
-          <input type="submit" value="Submit" @click="verify()"/>
-        </div>
-      </div>
+    </div>
 
-      <!-- <div class="map">
-        <div class="player">
-          <img id="player" src="../../img/redsquare.png" alt="Red Square">
-        </div>
-        <img class="pos-item" id="Hedge-Maze" src="https://img.icons8.com/officel/75/000000/computer.png"/>
-        <div class="map-item" id="Torch">
-          <img class="item-img pos-item" src="https://img.icons8.com/cotton/64/000000/torch.png" />
-          <div class="hidden">https://img.icons8.com/cotton/64/000000/torch.png</div>
-          <div>&#8204;</div>
-        </div>
-        <div class="map-item" id="Skull-1">
-          <img class="item-img pos-item" src="https://img.icons8.com/material-two-tone/24/000000/skull.png" />
-          <div class="hidden">https://img.icons8.com/ultraviolet/40/000000/paper.png</div>
-          <div>‌</div>
-        </div> 
-        <div class="map-item" id="Skull-2">
-          <img class="item-img pos-item" src="https://img.icons8.com/material-two-tone/24/000000/skull.png" />
-          <div class="hidden">https://img.icons8.com/ultraviolet/40/000000/paper.png</div>
-          <div>‌</div>
-        </div> 
-        <div class="map-item" id="Skull-3">
-          <img class="item-img pos-item" src="https://img.icons8.com/material-two-tone/24/000000/skull.png" />
-          <div class="hidden">https://img.icons8.com/ultraviolet/40/000000/paper.png</div>
-          <div>‌</div>
-        </div> 
-        <img class="pos-item" id="FinalLock" src="https://img.icons8.com/bubbles/75/000000/lock-2.png"/>
-      </div> -->
-    <!-- <div ref="mapItems"></div> -->
     <div class="inventory" ref="inventory"></div>
-  </div>
   </div>
 </template>
 
@@ -136,11 +114,11 @@ export default {
   name: 'RoomThree',
   emits: ['roomThreeFin'],
     mounted: function(){ 
-    this.coordinates();
-    //this.walls();
+    //this.coordinates();
+    //this.changePuzzle();
     this.addToInventory();
   
-  const sprite = document.getElementById("spriteCharacter");
+    const sprite = document.getElementById("spriteCharacter");
     const character = document.getElementById("character");
     // upKey = document.getElementById("upKey");
     // leftKey = document.getElementById("left");
@@ -158,10 +136,13 @@ export default {
       //divide by 6 to put in rem
       //6 bc width of sprite is 6
       screenWidth = window.innerWidth / 16 - 6;
-      document.getElementById("mapItems").style.width = screenWidth + "rem";
+      document.getElementById("canvas").style.width =
+        window.innerWidth / 16 + "rem";
       //8 bc height of sprite is 8
       //plus 8 for inventory
       screenHeight = window.innerHeight / 16 - 14;
+      document.getElementById("canvas").style.height =
+        window.innerHeight / 16 + "rem";
       document.getElementById("mapItems").style.height = screenHeight + "rem";
     };
 
@@ -240,6 +221,7 @@ export default {
       } else if (event.keyCode == "40" || event.keyCode == "83") {
         moveDown();
       }
+      coordinates();
     };
 
     document.addEventListener("keydown", function() {
@@ -256,15 +238,63 @@ export default {
       removeAnimation();
       clearInterval();
     });
+
+    const coordinates = function() {
+      const mapArray = Array.from(document.getElementsByClassName("map-item"));
+      // console.log(mapArray);
+      const modalArray = Array.from(
+        document.getElementsByClassName("modal-item")
+      );
+      // console.log(modalArray);
+      let playerCoords = document
+        .getElementById("character")
+        .getBoundingClientRect();
+      let playerLeft = Math.round(playerCoords.left / 16);
+      let playerRight = Math.round(playerCoords.right / 16);
+      let playerTop = Math.round(playerCoords.top / 16 + 2);
+      let playerBottom = Math.round(playerCoords.bottom / 16);
+      mapArray.forEach(function(item) {
+        let objectCoords = item.getBoundingClientRect();
+        let objectLeft = Math.round(objectCoords.left / 16);
+        let objectRight = Math.round(objectCoords.right / 16);
+        let objectTop = Math.round(objectCoords.top / 16);
+        let objectBottom = Math.round(objectCoords.bottom / 16);
+        // console.log(objectCoords);
+
+        if (
+          playerRight > objectLeft &&
+          playerLeft < objectRight &&
+          playerBottom > objectTop &&
+          playerTop < objectBottom
+        ) {
+          //item.children[0].style.transform = "scale(1.2)";
+          item.style.pointerEvents = "all";
+          document.addEventListener("keydown", function(event) {
+            if (event.keyCode == "13") {
+              modalArray.forEach(function(item) {
+                item.style.display = "none";
+              });
+              item.children[3].style.display = "block";
+            }
+          });
+        } else {
+          item.children[0].style.transform = "scale(1)";
+          item.style.pointerEvents = "none";
+        }
+      });
+    };
   },
   //props: {keyUpStart:Boolean},
   methods:{
-    closeModal: function(){
+    nextRoom: function() {
+      document.getElementById("final-ans-modal").style.display = "block";
+    },
+    closeModal: function() {
       const modalCloseArray = Array.from(
         document.getElementsByClassName("modal-item")
       );
-      modalCloseArray.forEach(function (item){
-        item.style.display = "none"; 
+      modalCloseArray.forEach(function(item) {
+        item.style.display = "none";
       });
     },
     verify: function (){
@@ -287,61 +317,11 @@ export default {
             .insertAdjacentHTML("beforeend", `${answer} is incorrect, try again :(`);
         }
     },
-    coordinates: function () {
-      console.log("coordinates function is connected");
-      document.addEventListener("keydown", function (event) {
-        if (
-          event.keyCode == "37" ||
-          event.keyCode == "38" ||
-          event.keyCode == "39" ||
-          event.keyCode == "40"
-        ) {
-          //making the position item arry
-          const posItemArray = Array.from(
-            document.getElementsByClassName("pos-item")
-          );
-          const modalArray = Array.from(
-            document.getElementsByClassName("modal-item")
-          );
-          //finding position for each pos-item 
-          posItemArray.forEach(function (item, index) {
-              //finding the coordinates of the player
-              let playerCoords = document
-                .querySelector(".player")
-                .getBoundingClientRect();
-              let playerLeft = Math.round(playerCoords.left / 100) * 100;
-              let playerTop = Math.round(playerCoords.top / 100) * 100;
-              console.log(
-                "player left: " + playerLeft + " player top: " + playerTop
-              );
-              //finding the coordinates of all objects
-              let objectCoords = item.getBoundingClientRect();
-              let objectLeft = Math.round(objectCoords.left / 100) * 100;
-              let objectTop = Math.round(objectCoords.top / 100) * 100;
-              console.log("left: " + objectLeft + " top: " + objectTop);
-              //if it is an inventory object - and enter is clicked = it gets added to inventory
-              //if it is a modal object - and enter is clicked = a popup opens 
-              if (objectLeft === playerLeft && objectTop === playerTop) {
-                document.addEventListener('keydown', function (event){
-                  const modalItem = modalArray[index];
-                  if (event.keyCode == "13"){
-                    modalItem.style.display = "block";
-                  }
-                })
-                console.log("Player and Object are touching!!!");
-                //item.style.transform = "scale(1.2)";
-              } else {
-                console.log("Still not touching");
-                //item.style.transform = "scale(1)";
-              }
-          });  
-        }
-      });
-    }, 
+    
     addToInventory: function () {
       //get array of items on map
       const mapItemArray = Array.from(
-        document.getElementsByClassName("map-item")
+        document.getElementsByClassName("forInventory")
       );
       console.log(mapItemArray);
       let inventoryArray = [];
@@ -361,10 +341,9 @@ export default {
             console.log(inventoryArray);
             inventory.innerHTML = "";
             display();
-
           item.style.display = "none";
           } else{
-            console.log("NO TORCH");
+            console.log("NOT TORCH");
           }
         });
       });
@@ -382,23 +361,6 @@ export default {
         });
       };
     },
-    // displayMapItems: function () {
-    //   this.$refs.mapItems.innerHTML = "";
-    //   this.mapItemsArr.forEach(this.printMapItems);
-    // },
-
-    // printMapItems: function (item) {
-    //   const mapItems = this.$refs.mapItems;
-    //   mapItems.insertAdjacentHTML(
-    //     "afterbegin",
-    //     `<div class="map-item" id="${item.name}">
-    //       <img class="item-img" src="${item.img}" >
-    //       <div class="hidden">${item.img}</div>
-    //       <div>${item.name}</div>
-    //     </div>`
-    //   );
-    //   // item.addEventListener("click", this.addToInventory());
-    // },
   },
 };
   
@@ -423,13 +385,13 @@ html {
 }
 
 body {
-  background-color: antiquewhite;
+  /* background-color: antiquewhite; */
   /* width: 100vw;
   height: 100vh; */
   overflow: hidden;
 }
 
-.roomOne {
+.roomThree {
   width: 100%;
   height: 100%;
 }
@@ -441,7 +403,7 @@ body {
   /* margin: 3rem; */
   position: absolute;
   background-color:black;
-  background-image: url("../../img/dungeonfloor.jpg");
+  background-image: url(https://media.giphy.com/media/nAEsYBNjINxaBMy6Wp/giphy.gif);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -511,9 +473,11 @@ body {
   margin: 3rem;
 }
 
-/* .map-item {
+.map-item {
   cursor: pointer;
-} */
+  position: absolute;
+  pointer-events: none;
+}
 
 .popUpModal {
   position: absolute;
@@ -522,6 +486,7 @@ body {
   width: 5rem;
   display: none;
   color: wheat;
+  z-index: 3;
 }
 
 .closeModal {
@@ -547,25 +512,24 @@ body {
   display: flex;
   bottom: 0rem;
   background-color: rgba(23, 65, 19, 0.8);
+  left: 25%;
 }
 
 .inventory-item {
-  border: solid;
-  /* padding: 1rem; */
+  padding: 1rem;
   border-color: gray;
-  border-width: 0.5rem;
   cursor: pointer;
 }
 
 .item-img {
-  width: 2rem !important;
-  height: 2rem !important;
+  width: 5rem !important;
+  height: 5rem !important;
 }
 
-/* .item-img:hover {
-  transform: scale(1.1);
-  transition: 0.2s;
-} */
+.item-img:hover {
+  transform: scale(1);
+} 
+
 .flex-row {
   display: flex;
   justify-content: space-around;
@@ -578,7 +542,9 @@ body {
 .modal-item {
   display: none;
   position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  top: 0;
+  left: 0;
+  z-index: 3; /* Sit on top */
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
@@ -628,9 +594,9 @@ a {
   left: 50%;
 }
 
-#Torch {
+#Skull-3 {
   position: absolute;
-  top: 10%;
+  bottom: 50%;
   left: 5%;
 }
 
@@ -639,12 +605,12 @@ a {
   top: 40%;
   left: 15%;
 }
-#Skull-2 {
+#Torch {
   position: absolute;
   bottom: 20%;
   left: 35%;
 }
-#Skull-3 {
+#Skull-2 {
   position: absolute;
   top: 30%;
   right: 25%;

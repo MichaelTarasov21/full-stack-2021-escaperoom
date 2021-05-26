@@ -51,6 +51,7 @@
           <div class="hidden">https://img.icons8.com/dusk/75/000000/audio-cable.png</div>
           <div>Wire</div>
         </div>
+        
         <div class="map-item forInventory" id="Key">
           <img class="item-img" src="https://img.icons8.com/emoji/100/000000/goggles-emoji.png"/>
           <div class="hidden">https://img.icons8.com/emoji/100/000000/goggles-emoji.png</div>
