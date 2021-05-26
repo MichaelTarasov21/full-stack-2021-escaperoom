@@ -18,7 +18,8 @@
       </div>
       <div class="mapItems" id="mapItems">
         <div class="map-item" id="FinalLock">
-          <img class="item-img" src="https://img.icons8.com/dusk/200/000000/door-closed.png"/>
+          <!-- <img  src="https://img.icons8.com/dusk/200/000000/door-closed.png"/> -->
+          <img class="item-img" src="https://img.icons8.com/dusk/200/000000/portal.png"/>
           <div class="hidden">
             https://i.ibb.co/qFBnL0y/compscipuzzle.jpg
           </div>
@@ -26,7 +27,7 @@
           <div class="modal-item" id="final-ans-modal">
             <div class="modal-content">
               <span class="modal_close" @click="closeModal()">&times;</span>
-              <p style="font-size:2rem;">Exit Door</p>
+              <p style="font-size:2rem;">Exit Portal</p>
               <br>
               <p>Is there something you're not <s>seeing?</s></p>
               <div class="flex-row">
@@ -79,8 +80,9 @@
         </div>
         
         <div class="map-item forInventory" id="Goggles">
-          <img class="item-img" src="https://img.icons8.com/emoji/100/000000/goggles-emoji.png"/>
-          <div class="hidden">https://img.icons8.com/emoji/100/000000/goggles-emoji.png</div>
+          <!-- <img src="https://img.icons8.com/emoji/100/000000/goggles-emoji.png"/> -->
+          <img class="item-img" src="https://img.icons8.com/dusk/64/000000/3d-glasses.png"/>
+          <div class="hidden">https://img.icons8.com/dusk/64/000000/3d-glasses.png</div>
           <div class="hidden">Goggles</div>
           <div class="message">Click to Collect</div>
         </div>
@@ -521,10 +523,9 @@ body {
   pointer-events: none;
 }
 
-#FinalLock {
-  /* top: 15rem; */
-  bottom: 0;
-  right: 0;
+#Goggles{
+  top: 15rem;
+  right: 5rem;
 }
 
 #Computer{
@@ -532,7 +533,7 @@ body {
   left: 30rem;
 }
 
-#Goggles{
+#FinalLock{
   top: 15rem;
   left: 10rem;
 }
