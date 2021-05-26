@@ -23,6 +23,7 @@
 	body {
 		text-align: left;
 		font-size: 150%;
+		background-color: white;
 	}
 	#container {
 		position: absolute;
