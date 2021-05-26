@@ -1,6 +1,5 @@
 <template>
   <div id="RoomFour">
-    <h1>Room Four Canvas Area</h1>
     <button class="ModalOpener" @click="openModal(0)" />
     <div class="modal-item" v-if="OpenPuzzles[0]">
       <div class="modal-content" id="ArcadeBackdrop">
