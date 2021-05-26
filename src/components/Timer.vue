@@ -53,6 +53,7 @@
 				if (this.remainingtime === 0) {
 					this.$timer.stop("tickdown"); //Prevents memory leak on game loss
 					this.$emit("Gameover");
+					this.storeroomtimes();
 				}
 			},
 			pad2: function(number) {
