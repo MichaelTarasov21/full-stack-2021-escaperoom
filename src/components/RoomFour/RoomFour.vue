@@ -34,12 +34,12 @@
     </div>
     <div id="canvas">
       <div class="player" id="Character">
-        <img class="Character_shadow pixelart" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/21542/DemoRpgCharacterShadow.png" alt="Shadow" />
-        <img class="Character_spritesheet pixelart face-down" id="spriteCharacter" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/21542/DemoRpgCharacter.png" alt="Character" />
+        <img class="Character_shadow pixelart" src="@/assets/Images/DemoRpgCharacterShadow.png" alt="Shadow" />
+        <img class="Character_spritesheet pixelart face-down" id="spriteCharacter" src="@/assets/Images/DemoRpgCharacter.png" alt="Character" />
       </div>
       <img class="pos-item" id="Arcade" width="75px" height="80px" src="@/assets/Images/Arcade_Machine.jpg" />
       <img class="pos-item" id="Briefcase" width="75px" height="80conspx" src="@/assets/Images/Briefcase.png" />
-      <img class="pos-item" id="FinalLock1" src="https://img.icons8.com/bubbles/75/000000/lock-2.png" />
+      <img class="pos-item" id="FinalLock1" src="@/assets/Images/lock-2.png" />
     </div>
     <div class="inventory" ref="inventory"></div>
   </div>
