@@ -359,6 +359,12 @@
 	.Door {
 		cursor: pointer;
 	}
+	.Correct {
+		color: lime;
+	}
+		.Incorrect {
+		color: red;
+	}
 	.Blank {
 		outline: none;
 		border: none;

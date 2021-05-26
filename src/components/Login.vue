@@ -1,7 +1,7 @@
 <template>
   <div class="login">
     <div class="login-content">
-      <header><h1>Crazy Escape Room</h1></header>
+      <header><h1>Random Escape Room!</h1></header>
       <button><div @click="signIn()">SIGN IN</div></button>
     </div>
   </div>
@@ -75,7 +75,7 @@ export default {
   width: 100%;
   height: 100%;
   background-color: black;
-  background-image: url(../assets/Images/Landing_Img.jpg);
+  background-image: url(../img/login.jpg);
   background-size: 100%;
   color: white;
   z-index: 2;
