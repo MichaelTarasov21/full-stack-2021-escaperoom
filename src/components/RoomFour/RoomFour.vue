@@ -32,16 +32,15 @@
         <Note id="NoteFinal" v-if="Notetaken" />
       </div>
     </div>
-    <div class="canvas" id="canvas">
+    <div id="canvas">
       <div class="player" id="Character">
         <img class="Character_shadow pixelart" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/21542/DemoRpgCharacterShadow.png" alt="Shadow" />
         <img class="Character_spritesheet pixelart face-down" id="spriteCharacter" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/21542/DemoRpgCharacter.png" alt="Character" />
       </div>
-        <img class="pos-item" id="Arcade" width="75px" height="80px" src="@/assets/Images/Arcade_Machine.jpg" />
-        <img class="pos-item" id="Briefcase" width="75px" height="80conspx" src="@/assets/Images/Briefcase.png" />
-        <img class="pos-item" id="FinalLock" src="https://img.icons8.com/bubbles/75/000000/lock-2.png" />
+      <img class="pos-item" id="Arcade" width="75px" height="80px" src="@/assets/Images/Arcade_Machine.jpg" />
+      <img class="pos-item" id="Briefcase" width="75px" height="80conspx" src="@/assets/Images/Briefcase.png" />
+      <img class="pos-item" id="FinalLock" src="https://img.icons8.com/bubbles/75/000000/lock-2.png" />
     </div>
-    <!-- <div ref="mapItems"></div> -->
     <div class="inventory" ref="inventory"></div>
   </div>
 </template>
@@ -78,10 +77,10 @@
 
       function findScreenSize() {
         screenWidth = window.innerWidth / 16 - 3;
-        screenHeight = (window.innerHeight * .9) / 16 - 14;
+        screenHeight = (window.innerHeight * 0.9) / 16 - 14;
       }
       window.onresize = findScreenSize;
-      findScreenSize()
+      findScreenSize();
       function addAnimation() {
         sprite.classList.add("Character_animation");
       }
@@ -120,7 +119,7 @@
           sprite.classList.remove("Character_animation");
           x = 0;
         } else if (x > screenWidth) {
-          console.log("Hitting wall")
+          console.log("Hitting wall");
           sprite.classList.remove("Character_animation");
           x = screenWidth;
         } else if (y < 0) {
@@ -235,13 +234,6 @@
     position: absolute;
     overflow: hidden;
   }
-  .map {
-    padding: 0;
-    position: absolute;
-    z-index: -1;
-    background-image: url("~@/assets/Images/Arcade_Backdrop.jpg");
-    z-index: -2;
-  }
   .Character_spritesheet {
     width: calc(4rem * var(--scale));
     position: absolute;
@@ -287,11 +279,6 @@
   }
   .ModalOpener {
     display: none;
-  }
-  .map-item {
-    cursor: pointer;
-    position: absolute;
-    pointer-events: none;
   }
   .modal_close {
     color: #aaaaaa;
