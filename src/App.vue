@@ -79,6 +79,7 @@ export default {
       console.log("Room Three is Finished");
       this.roomFourLoad = true;
       this.roomThreeLoad = false;
+            this.success = true;
     },
     roomFourFin: function() {
       console.log("Room Four is Finished");
