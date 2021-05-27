@@ -27,7 +27,7 @@
         <div class="map-item" id="FinalLock">
           <img
             class="item-img pos-item"
-            src="https://img.icons8.com/windows/32/000000/jail-cell-door.png"
+            src="@/assets/Images/RoomThree/jail-cell-door.png"
           />
           <div class="hidden">https://img.icons8.com/ios-filled/50/000000/jail-cell-door--v1.png</div>
           <div class="hidden">FinalLock</div>
@@ -45,7 +45,7 @@
         <div class="map-item" id="Maze">
           <img
             class="item-img pos-item"
-            src="https://img.icons8.com/ultraviolet/40/000000/open-window.png"
+            src="@/assets/Images/RoomThree/open-window.png"
           />
           <div class="hidden">https://media.giphy.com/media/ocD16iiLhlt0q8IQgR/giphy.gif</div>
           <div class="hidden">Hedge Maze</div>
@@ -53,7 +53,7 @@
             <div class="modal-content">
             <span class="modal_close" @click="closeModal()" >&times;</span>
             <p>Hedge Maze</p>
-            <img id="Hedge_Maze" src="https://media.giphy.com/media/ocD16iiLhlt0q8IQgR/giphy.gif" alt="Hedge Maze"/>
+            <img id="Hedge_Maze" src="@/assets/Images/RoomThree/Maze.gif" alt="Hedge Maze"/>
             </div>
           </div>
         </div>
@@ -61,7 +61,7 @@
         <div class="map-item forInventory" id="Torch">
           <img
             class="item-img pos-item"
-            src="https://img.icons8.com/cotton/64/000000/torch.png"
+            src="@/assets/Images/RoomThree/torch.png"
           />
           <div class="hidden">https://img.icons8.com/cotton/64/000000/torch.png</div>
           <div>&#8204;</div>
@@ -70,7 +70,7 @@
         <div class="map-item forInventory" id="Skull-1">
           <img
             class="item-img pos-item"
-            src="https://img.icons8.com/material-two-tone/24/000000/skull.png"
+            src="@/assets/Images/RoomThree/skull.png"
           />
           <div class="hidden">https://media.giphy.com/media/Kxm02CJJazqCFBqYWK/giphy.gif</div>
           <div>‌</div>
@@ -79,7 +79,7 @@
         <div class="map-item forInventory" id="Skull-2">
           <img
             class="item-img pos-item"
-            src="https://img.icons8.com/material-two-tone/24/000000/skull.png"
+            src="@/assets/Images/RoomThree/skull.png"
           />
           <div class="hidden">https://media.giphy.com/media/BWjvxs4uCsGvSY0ak1/giphy.gif</div>
           <div>‌</div>
@@ -88,7 +88,7 @@
         <div class="map-item forInventory" id="Skull-3">
           <img
             class="item-img pos-item"
-            src="https://img.icons8.com/material-two-tone/24/000000/skull.png"
+            src="@/assets/Images/RoomThree/skull.png"
           />
           <div class="hidden">https://media.giphy.com/media/J6eXrQczJ1EYSBEkVk/giphy.gif</div>
           <div>‌</div>
@@ -97,7 +97,7 @@
         <div class="map-item forInventory" id="Skull-4">
           <img
             class="item-img pos-item"
-            src="https://img.icons8.com/material-two-tone/24/000000/skull.png"
+            src="@/assets/Images/RoomThree/skull.png"
           />
           <div class="hidden">https://media.giphy.com/media/LEcRRnZuTOEhmlYgMQ/giphy.gif</div>
           <div>‌</div>
