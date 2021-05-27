@@ -18,10 +18,9 @@
       </div>
       <div class="mapItems" id="mapItems">
         <div class="map-item" id="FinalLock">
-          <!-- <img  src="https://img.icons8.com/dusk/200/000000/door-closed.png"/> -->
-          <img id="hideLock" class="item-img" src="https://img.icons8.com/dusk/200/000000/portal.png"/>
+          <img id="hideLock" class="item-img" src="@/assets/Images/RoomOne/portal.png"/>
           <div class="hidden">
-            https://i.ibb.co/qFBnL0y/compscipuzzle.jpg
+            @/assets/Images/RoomOne/compsci.jpg
           </div>
           <div class="hidden">Exit Door</div>
           <div class="modal-item" id="final-ans-modal">
@@ -50,10 +49,10 @@
         <div class="map-item hideComputer" id="Computer">
           <img id="hideComp"
             class="item-img"
-            src="https://img.icons8.com/officel/75/000000/computer.png"
+            src="@/assets/Images/RoomOne/computer.png"
           />
           <div class="hidden">
-            https://i.ibb.co/qFBnL0y/compscipuzzle.jpg
+            @/assets/Images/RoomOne/compsci.jpg
           </div>
           <div class="hidden">
             Computer 
@@ -80,8 +79,7 @@
         </div>
         
         <div class="map-item forInventory" id="Goggles">
-          <!-- <img src="https://img.icons8.com/emoji/100/000000/goggles-emoji.png"/> -->
-          <img class="item-img" src="https://img.icons8.com/dusk/64/000000/3d-glasses.png"/>
+          <img class="item-img" src="@/assets/Images/RoomOne/3d-glasses.png"/>
           <div class="hidden">https://img.icons8.com/dusk/64/000000/3d-glasses.png</div>
           <div class="hidden">Goggles</div>
           <div class="message">Click to Collect</div>

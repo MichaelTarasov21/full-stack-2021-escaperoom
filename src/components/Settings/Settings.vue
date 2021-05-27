@@ -136,4 +136,7 @@
 		align-items: center;
 		justify-content: center;
 	}
+	#myModal{
+		z-index: 200;
+	}
 </style>

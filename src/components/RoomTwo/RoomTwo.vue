@@ -27,10 +27,10 @@
         <div class="map-item" id="Ocean-Chest">
           <img
             class="item-img pos-item"
-            src="https://img.icons8.com/dusk/256/000000/treasure-chest.png"
+            src="@/assets/Images/RoomTwo/Ocean-Chest.png"
           />
           <div class="hidden">
-            https://img.icons8.com/dusk/256/000000/treasure-chest.png
+            @/assets/Images/RoomTwo/Ocean-Chest.png
           </div>
           <div class="hidden">Ocean-Chest</div>
           <div class="modal-item" id="final-ans-modal">
@@ -45,7 +45,7 @@
               <div id="Ocean-Chest-Riddle">
                 <p>Here's a long lost letter... Find the addressed...</p>
                 <img
-                  src="https://i1.wp.com/escaperoomtips.com/wp-content/uploads/2016/09/VirginiaValentine.jpg?w=917&ssl=1"
+                  src="@/assets/Images/RoomTwo/Poem_Puzzle.jpg"
                   alt=""
                 />
                 <div id="Ocean-Chest-answerCheck"></div>
@@ -67,7 +67,7 @@
         <div class="map-item forInventory" id="Ocean-Key">
           <img
             class="item-img pos-item"
-            src="https://img.icons8.com/dusk/256/000000/key.png"
+            src="@/assets/Images/RoomTwo/key.png"
           />
           <div class="hidden">
             https://img.icons8.com/dusk/256/000000/key.png
@@ -81,10 +81,10 @@
         <div class="map-item" id="Ocean-Lobster">
           <img
             class="item-img pos-item"
-            src="https://img.icons8.com/fluent/96/000000/shrimp-and-lobster.png"
+            src="@/assets/Images/RoomTwo/shrimp-and-lobster.png"
           />
           <div class="hidden">
-            https://img.icons8.com/fluent/96/000000/shrimp-and-lobster.png
+            @/assets/Images/RoomTwo/shrimp-and-lobster.png
           </div>
           <div class="hidden">Ocean-Lobster</div>
           <div class="modal-item" id="Ocean-Lobster-Modal">
@@ -98,7 +98,7 @@
               </p>
               <p>Red Orange Yellow Green</p>
               <img
-                src="https://i0.wp.com/escaperoomtips.com/wp-content/uploads/2016/09/gummy_bears.jpg?w=1200&ssl=1"
+                src="@/assets/Images/RoomTwo/gummy_bears.jpg"
                 alt=""
               />
               <div id="Ocean-Lobster-answerCheck"></div>
@@ -119,11 +119,11 @@
         <div class="map-item" id="Ocean-FinalLock">
           <img
             class="item-img pos-item"
-            src="https://img.icons8.com/dusk/256/000000/lock-2.png"
+            src="@/assets/Images/RoomTwo/final-lock.png"
             @click="nextRoom()"
           />
           <div class="hidden">
-            src="https://img.icons8.com/dusk/256/000000/lock-2.png"
+            src="@/assets/Images/RoomTwo/final-lock.png"
           </div>
           <div class="hidden">Ocean-FinalLock</div>
           <div class="modal-item" id="final-ans-modal">
