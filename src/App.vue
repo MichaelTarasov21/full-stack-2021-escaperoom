@@ -100,7 +100,6 @@
 </script>
 
 <style>
-  @import url("https://fonts.googleapis.com/css2?family=Mystery+Quest&display=swap");
   @font-face {
     font-family: "analog";
     src: url("~@/assets/Fonts/timer.woff2") format("woff2"), url("assets/Fonts/timer.woff") format("woff");
