@@ -40,7 +40,6 @@
 			Profile,
 			LogOut,
 		},
-		//  el: '#settings', Line causes errors in console
 		props: {
 			showMenu: Boolean,
 		},
@@ -56,7 +55,6 @@
 	};
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 	* {
 		margin: 0;
@@ -70,6 +68,7 @@
 		border: none;
 		margin: 1.3rem;
 		background: initial;
+		z-index: 1; /* Be on top of room background */
 	}
 
 	#open-menu:hover {

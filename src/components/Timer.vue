@@ -112,7 +112,7 @@
 								newleaderboard[1].time = yourtime;
 								this.writedata(newleaderboard, [1, 2, 3, 4, 5]);
 							}
-							console.log("You are on the leaderboard :)");
+							alert(`Congratulations ${username}! You are on the leaderboard!`);
 						}
 					})
 					.catch(function() {
@@ -134,7 +134,7 @@
 				});
 			},
 		},
-		timers: { tickdown: { time: 1000, autostart: true, repeat: true } }, //when using disable autostart and make a button with function this.$timer.start('tickdown')
+		timers: { tickdown: { time: 1000, autostart: true, repeat: true } },
 	};
 </script>
 <style scoped>

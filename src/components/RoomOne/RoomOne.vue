@@ -109,24 +109,14 @@
 </template>
 
 <script>
-// import func from "vue-editor-bridge";
 export default {
   name: "RoomOne",
   emits: ["roomOneFin"],
   mounted: function() {
-    // this.coordinates();
-    // this.changePuzzle();
     this.addToInventory();
-    
-
-    // // this.displayMapItems();
 
     const sprite = document.getElementById("spriteCharacter");
     const character = document.getElementById("character");
-    // upKey = document.getElementById("upKey");
-    // leftKey = document.getElementById("left");
-    // downKey = document.getElementById("down");
-    // rightKey = document.getElementById("right");
     let screenWidth;
     let screenHeight;
 
@@ -243,11 +233,9 @@ export default {
   
     const coordinates = function() {
       const mapArray = Array.from(document.getElementsByClassName("map-item"));
-      // console.log(mapArray);
       const modalArray = Array.from(
         document.getElementsByClassName("modal-item")
       );
-      // console.log(modalArray);
       let playerCoords = document
         .getElementById("character")
         .getBoundingClientRect();
@@ -261,7 +249,6 @@ export default {
         let objectRight = Math.round(objectCoords.right / 16);
         let objectTop = Math.round(objectCoords.top / 16);
         let objectBottom = Math.round(objectCoords.bottom / 16);
-        // console.log(objectCoords);
 
         if (
           playerRight > objectLeft &&
@@ -396,7 +383,6 @@ export default {
         const lock = document.querySelector("#FinalLock");
 
         wear.addEventListener("click", function(){
-          console.log("collectedgoggles are clicked");
           const bar = document.querySelector("#barModal");
           bar.style.display = "block";
           wear.style.display = "none";
@@ -406,7 +392,6 @@ export default {
 
         });
         takeoff.addEventListener("click", function(){
-          console.log("collectedgoggles are clicked");
           const bar = document.querySelector("#barModal");
           bar.style.display = "none";
           takeoff.style.display = "none";
@@ -429,7 +414,6 @@ export default {
 }
 
 html {
-  /* font-size: 62.5%; */
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -439,8 +423,6 @@ html {
 
 body {
   background-color: antiquewhite;
-  /* width: 100vw;
-  height: 100vh; */
   overflow: hidden;
 }
 
@@ -520,7 +502,6 @@ body {
 .mapItems {
   position: relative;
   margin: 3rem;
-  /* height: 45rem !important; */
 }
 
 .map-item {

@@ -114,16 +114,10 @@ export default {
   name: 'RoomThree',
   emits: ['roomThreeFin'],
     mounted: function(){ 
-    //this.coordinates();
-    //this.changePuzzle();
     this.addToInventory();
   
     const sprite = document.getElementById("spriteCharacter");
     const character = document.getElementById("character");
-    // upKey = document.getElementById("upKey");
-    // leftKey = document.getElementById("left");
-    // downKey = document.getElementById("down");
-    // rightKey = document.getElementById("right");
     let screenWidth;
     let screenHeight;
 
@@ -132,7 +126,6 @@ export default {
 
     //screen size
     const findScreenSize = function() {
-      console.log("resize");
       //divide by 6 to put in rem
       //6 bc width of sprite is 6
       screenWidth = window.innerWidth / 16 - 6;
@@ -160,29 +153,24 @@ export default {
 
     //movement
     const moveUp = function() {
-      console.log("Up key is connected");
       sprite.classList.add("face-up");
       sprite.classList.remove("face-down", "face-right", "face-left");
       y = y - 1;
     };
 
     const moveRight = function() {
-      console.log("Right key is connected");
       sprite.classList.add("face-right");
       sprite.classList.remove("face-down", "face-left", "face-up");
       x = x + 1;
-      console.log(x);
     };
 
     const moveLeft = function() {
-      console.log("Left key is connected");
       sprite.classList.add("face-left");
       sprite.classList.remove("face-down", "face-right", "face-up");
       x = x - 1;
     };
 
     const moveDown = function() {
-      console.log("Down key is connected");
       sprite.classList.add("face-down");
       sprite.classList.remove("face-right", "face-left", "face-up");
       y = y + 1;
@@ -241,11 +229,9 @@ export default {
 
     const coordinates = function() {
       const mapArray = Array.from(document.getElementsByClassName("map-item"));
-      // console.log(mapArray);
       const modalArray = Array.from(
         document.getElementsByClassName("modal-item")
       );
-      // console.log(modalArray);
       let playerCoords = document
         .getElementById("character")
         .getBoundingClientRect();
@@ -259,15 +245,12 @@ export default {
         let objectRight = Math.round(objectCoords.right / 16);
         let objectTop = Math.round(objectCoords.top / 16);
         let objectBottom = Math.round(objectCoords.bottom / 16);
-        // console.log(objectCoords);
-
         if (
           playerRight > objectLeft &&
           playerLeft < objectRight &&
           playerBottom > objectTop &&
           playerTop < objectBottom
         ) {
-          //item.children[0].style.transform = "scale(1.2)";
           item.style.pointerEvents = "all";
           document.addEventListener("keydown", function(event) {
             if (event.keyCode == "13") {
@@ -284,7 +267,6 @@ export default {
       });
     };
   },
-  //props: {keyUpStart:Boolean},
   methods:{
     nextRoom: function() {
       document.getElementById("final-ans-modal").style.display = "block";
@@ -298,9 +280,7 @@ export default {
       });
     },
     verify: function (){
-        console.log("connected");
         var answer = document.getElementById("roomThreeAns").value.toUpperCase();
-        console.log(answer);
         if (answer == `A.I.T.H.` || `A.I.T.M.` || `ROOMTHREE`) {
           document.getElementById("answerCheck").innerHTML = "";
           document.getElementById("answerCheck").style.color = 'green';
@@ -323,7 +303,6 @@ export default {
       const mapItemArray = Array.from(
         document.getElementsByClassName("forInventory")
       );
-      console.log(mapItemArray);
       let inventoryArray = [];
       const inventory = document.querySelector(".inventory");
 
@@ -335,15 +314,11 @@ export default {
             name: item.children[2].textContent,
             img: item.children[1].textContent,
           };
-          console.log(addedItem);
           if(addedItem.img === "https://img.icons8.com/cotton/64/000000/torch.png" || inventoryArray.length >= 1){
             inventoryArray.push(addedItem);
-            console.log(inventoryArray);
             inventory.innerHTML = "";
             display();
           item.style.display = "none";
-          } else{
-            console.log("NOT TORCH");
           }
         });
       });
@@ -376,7 +351,6 @@ export default {
 }
 
 html {
-  /* font-size: 62.5%; */
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -385,9 +359,6 @@ html {
 }
 
 body {
-  /* background-color: antiquewhite; */
-  /* width: 100vw;
-  height: 100vh; */
   overflow: hidden;
 }
 
@@ -397,10 +368,7 @@ body {
 }
 
 .canvas {
-  /* width: 100%;
-  height: 100%; */
   padding: 0;
-  /* margin: 3rem; */
   position: absolute;
   background-color:black;
   background-image: url(https://media.giphy.com/media/nAEsYBNjINxaBMy6Wp/giphy.gif);
