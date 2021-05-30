@@ -68,6 +68,7 @@
 		border: none;
 		margin: 1.3rem;
 		background: initial;
+		z-index: 1; /* Be on top of room background */
 	}
 
 	#open-menu:hover {

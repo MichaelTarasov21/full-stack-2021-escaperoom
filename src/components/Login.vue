@@ -58,7 +58,7 @@
     background-image: url(~@/assets/Images/login.jpg);
     background-size: 100%;
     color: white;
-    z-index: 2;
+    z-index: 201; /* Sit on top of everything */ 
     position: fixed;
     display: table;
     font-family: "Mystery Quest", cursive !important;
