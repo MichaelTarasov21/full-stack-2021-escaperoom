@@ -197,7 +197,7 @@
 					this.$timer.stop("AlienMove");
 					this.Won = true;
 					return;
-				} //move this to the bullet section
+				}
 				if (C1Active) {
 					leftrow = C1;
 				} else if (C2Active) {

@@ -14,12 +14,6 @@
       <br>
       <button id="begin" @click="hide()">Begin</button>
     </section>
-    <!-- <button id="start">Start</button> -->
-    <!-- <div class="btn-personals">
-      <button id="leaderboard">Leaderboard</button>
-      <button id="account">Account</button>
-      <button id="logout">Log Out</button>
-    </div> -->
   </div>
 </template>
 
@@ -36,7 +30,6 @@ export default {
       this.$emit("Gamestarted");
       },
       sendstart: function () {
-        console.log("I worked")
         firebase.database().ref().child("Users").child(firebase.auth().currentUser.uid).get().then(function(snapshot) {
         if (snapshot.exists()) {
           firebase.database().ref().child("Users").child(firebase.auth().currentUser.uid).update({
@@ -68,7 +61,6 @@ export default {
 
 };
 </script>
-
 
 <style scoped>
 #start {
@@ -111,11 +103,4 @@ button:hover {
 #begin {
   padding: 0.5rem;
 }
-
-/* 
-.btn-personals {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-} */
 </style>
