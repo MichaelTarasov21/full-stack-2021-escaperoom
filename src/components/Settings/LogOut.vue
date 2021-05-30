@@ -22,7 +22,6 @@ export default {
         .signOut()
         .then(() => {
           // Sign-out successful.
-          console.log("signed out")
           window.location.reload();
         })
         .catch((error) => {

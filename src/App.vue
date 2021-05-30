@@ -2,7 +2,7 @@
   <div id="app">
     <Fail v-if="lost" @Restart="Restart" @OpenSettings="Menuopened = true" />
     <Login />
-	<Timer v-if="start" @Gameover="Gameover" v-bind:RoomOneDone="roomTwoLoad" v-bind:RoomTwoDone="roomThreeLoad" v-bind:RoomThreeDone="roomFourLoad"  v-bind:RoomFourDone="success" />
+    <Timer v-if="start" @Gameover="Gameover" v-bind:RoomOneDone="roomTwoLoad" v-bind:RoomTwoDone="roomThreeLoad" v-bind:RoomThreeDone="roomFourLoad"  v-bind:RoomFourDone="success" />
     <Start v-else @Gamestarted="StartGame" />
     <Settings v-bind:showMenu="Menuopened" @closemenu="Menuopened = false" @openmenu="Menuopened = true"/>
     <RoomOne v-if="roomOneLoad" @roomOneFin="roomOneFin"/>
@@ -10,7 +10,6 @@
     <RoomThree v-if="roomThreeLoad" @roomThreeFin="roomThreeFin"/>
     <RoomFour v-if="roomFourLoad" @roomFourFin="roomFourFin"/>
     <Success v-if="success" @Restart="Restart" @OpenSettings="Menuopened = true"/>
-    <!-- <inventory/> -->
   </div>
 </template>
 
@@ -25,7 +24,6 @@
   import RoomThree from "./components/RoomThree/RoomThree";
   import RoomFour from "./components/RoomFour/RoomFour";
   import Settings from "./components/Settings/Settings.vue";
-  // import Inventory from "./components/Inventory";
 
   export default {
     head() {
@@ -45,7 +43,6 @@
       RoomThree,
       RoomFour,
       Settings,
-      // Inventory,
     },
     data() {
       return {
@@ -68,17 +65,14 @@
         this.roomOneLoad = true;
       },
       roomOneFin: function() {
-        console.log("Room One is Finished");
         this.roomTwoLoad = true;
         this.roomOneLoad = false;
       },
       roomTwoFin: function() {
-        console.log("Room Two is Finished");
         this.roomThreeLoad = true;
         this.roomTwoLoad = false;
       },
       roomThreeFin: function() {
-        console.log("Room Three is Finished");
         this.roomFourLoad = true;
         this.roomThreeLoad = false;
       },
@@ -138,13 +132,11 @@
   }
   .tab-bkg {
     width: 100%;
-    /* height: 20rem; */
     background-color: #f8f8f8;
   }
   body {
     margin: 0 !important;
     padding: 0 !important;
-    /* image-rendering: pixelated; */
   }
 
   #app {

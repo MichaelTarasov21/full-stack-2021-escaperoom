@@ -96,7 +96,6 @@
         sprite.classList.add("face-right");
         sprite.classList.remove("face-down", "face-left", "face-up");
         x = x + 1;
-        console.log(x);
       }
       function moveLeft() {
         sprite.classList.add("face-left");
@@ -118,7 +117,6 @@
           sprite.classList.remove("Character_animation");
           x = 0;
         } else if (x > screenWidth) {
-          console.log("Hitting wall");
           sprite.classList.remove("Character_animation");
           x = screenWidth;
         } else if (y < 0) {
@@ -133,8 +131,8 @@
       function coordinates() {
         document.addEventListener("keydown", function(event) {
           const posItemArray = document.getElementsByClassName("pos-item");
+          //making the position item arry
           if (event.keyCode == "37" || event.keyCode == "38" || event.keyCode == "39" || event.keyCode == "40") {
-            //making the position item arry
             //finding position for each pos-item
             posItemArray.forEach(function(item) {
               //finding the coordinates of the player

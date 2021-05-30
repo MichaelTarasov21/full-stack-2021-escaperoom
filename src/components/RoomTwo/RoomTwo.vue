@@ -1,6 +1,5 @@
 <template>
   <div class="roomTwo">
-    <!-- <h1>Room One</h1> -->
 
     <div class="popUpModal" id="popUpModal">
       <div class="closeModal" id="closeModal"></div>
@@ -152,8 +151,6 @@
 </template>
 
 <script>
-// import { use } from 'vue/types/umd';
-// import func from "vue-editor-bridge";
 let inventoryArray = [];
 
 export default {
@@ -161,17 +158,10 @@ export default {
   emits: ["roomTwoFin"],
 
   mounted: function() {
-    // this.movement();
-    // this.coordinates();
-    // // this.displayMapItems();
     this.addToInventory();
 
     const sprite = document.getElementById("spriteCharacter");
     const character = document.getElementById("character");
-    // upKey = document.getElementById("upKey");
-    // leftKey = document.getElementById("left");
-    // downKey = document.getElementById("down");
-    // rightKey = document.getElementById("right");
     let screenWidth;
     let screenHeight;
 
@@ -180,7 +170,6 @@ export default {
 
     //screen size
     const findScreenSize = function() {
-      console.log("resize");
       //divide by 6 to put in rem
       //6 bc width of sprite is 6
       screenWidth = window.innerWidth / 16 - 6;
@@ -208,29 +197,24 @@ export default {
 
     //movement
     const moveUp = function() {
-      // console.log("Up key is connected");
       sprite.classList.add("face-up");
       sprite.classList.remove("face-down", "face-right", "face-left");
       y = y - 1;
     };
 
     const moveRight = function() {
-      // console.log("Right key is connected");
       sprite.classList.add("face-right");
       sprite.classList.remove("face-down", "face-left", "face-up");
       x = x + 1;
-      console.log(x);
     };
 
     const moveLeft = function() {
-      // console.log("Left key is connected");
       sprite.classList.add("face-left");
       sprite.classList.remove("face-down", "face-right", "face-up");
       x = x - 1;
     };
 
     const moveDown = function() {
-      // console.log("Down key is connected");
       sprite.classList.add("face-down");
       sprite.classList.remove("face-right", "face-left", "face-up");
       y = y + 1;
@@ -290,11 +274,9 @@ export default {
 
     const coordinates = function() {
       const mapArray = Array.from(document.getElementsByClassName("map-item"));
-      // console.log(mapArray);
       const modalArray = Array.from(
         document.getElementsByClassName("modal-item")
       );
-      // console.log(modalArray);
       let playerCoords = document
         .getElementById("character")
         .getBoundingClientRect();
@@ -308,8 +290,6 @@ export default {
         let objectRight = Math.round(objectCoords.right / 16);
         let objectTop = Math.round(objectCoords.top / 16);
         let objectBottom = Math.round(objectCoords.bottom / 16);
-        // console.log(objectCoords);
-
         if (
           playerRight > objectLeft &&
           playerLeft < objectRight &&
@@ -332,122 +312,7 @@ export default {
         }
       });
     };
-
-    //keypad
-    // const keypadArray = [
-    //   {
-    //     key: "upKey",
-    //     keyfunction: function() {
-    //       console.log("Up key is connected");
-    //       sprite.classList.add("face-up");
-    //       sprite.classList.remove("face-down", "face-right", "face-left");
-    //       y = y - 1;
-    //     },
-    //     text: "up",
-    //   },
-    //   {
-    //     key: "leftKey",
-    //     keyfunction: function() {
-    //       console.log("Left key is connected");
-    //       sprite.classList.add("face-left");
-    //       sprite.classList.remove("face-down", "face-right", "face-up");
-    //       x = x - 1;
-    //     },
-    //     text: "left",
-    //   },
-    //   {
-    //     key: "downKey",
-    //     keyfunction: function() {
-    //       console.log("Down key is connected");
-    //       sprite.classList.add("face-down");
-    //       sprite.classList.remove("face-right", "face-left", "face-up");
-    //       y = y + 1;
-    //     },
-    //     text: "down",
-    //   },
-    //   {
-    //     key: "rightKey",
-    //     keyfunction: function() {
-    //       console.log("Right key is connected");
-    //       sprite.classList.add("face-right");
-    //       sprite.classList.remove("face-down", "face-left", "face-up");
-    //       x = x + 1;
-    //     },
-    //     text: "right",
-    //   },
-    // ];
-
-    // const modalContent = document.getElementById("modal-content");
-    // const closeModal = document.getElementById("closeModal");
-    // const popUpModal = document.getElementById("popUpModal");
-    // closeModal.addEventListener("click", function() {
-    //   popUpModal.style.display = "none";
-    // });
-
-    // const keypadBtns = document.getElementById("keypadBtns");
-    // console.log(keypadBtns);
-
-    // keypadArray.forEach((keypad) => {
-    //   document
-    //     .getElementById("keypadBtns")
-    //     .insertAdjacentHTML(
-    //       "beforeend",
-    //       `<div id="${keypad.text}" class="key"> ${keypad.text} </div>`
-    //     );
-    //   document
-    //     .getElementById(keypad.text)
-    //     .addEventListener("mousedown", function() {
-    //       popUpModal.style.display = "block";
-    //       modalContent.innerHTML = keypad.text;
-
-    //       addAnimation();
-    //       setInterval(function keypadIntervalFunc() {
-    //         keypad.keyfunction();
-    //         walls();
-    //         updateSpritePosition();
-    //       }, 50);
-    //     });
-    //   document
-    //     .getElementById(keypad.text)
-    //     .addEventListener("mouseup", function() {
-    //       removeAnimation();
-    //       // clearInterval(keypadIntervalFunc);
-    //     });
-    // });
-
-    // upKey.addEventListener('mousedown', function () {
-    //     addAnimation();
-    //     interval = setInterval(function () {
-    //         moveUp()
-    //         walls();
-    //         updateSpritePosition();
-    //     }, 100)
-    // })
-
-    // upKey.addEventListener('mouseup', function () {
-    //     removeAnimation();
-    //     clearInterval(interval);
-    // })
-
-    // leftKey.addEventListener('mousedown', function () {
-    //     moveLeft()
-    //     walls();
-    //     updateSpritePosition();
-    // });
-
-    // downKey.addEventListener('mousedown', function () {
-    //     moveDown()
-    //     walls();
-    //     updateSpritePosition();
-    // });
-
-    // rightKey.addEventListener('mousedown', function () {
-    //     moveRight()
-    //     walls();
-    //     updateSpritePosition();
-    // });
   },
-  // props: { keyUpStart: Boolean },
   methods: {
     nextRoom: function() {
       document.getElementById("final-ans-modal").style.display = "block";
@@ -462,9 +327,7 @@ export default {
       modalCloseArray.style.display = "none";
     },
     verify: function() {
-      console.log("connected");
       var answer = document.getElementById("roomTwoAns").value.toUpperCase();
-      console.log(answer);
       if (answer == `6POE`) {
         document.getElementById("answerCheck").innerHTML = "";
         document.getElementById("answerCheck").style.color = "green";
@@ -484,9 +347,7 @@ export default {
       }
     },
     OceanLobsterVerify: function() {
-      console.log("connected");
       var answer = document.getElementById("OceanLobsterAns").value;
-      console.log(answer);
       if (answer == `6245`) {
         document.getElementById("Ocean-Lobster-answerCheck").innerHTML = "";
         document.getElementById("Ocean-Lobster-answerCheck").style.color =
@@ -511,9 +372,7 @@ export default {
     },
 
     OceanChestVerify: function() {
-      console.log("connected");
       var answer = document.getElementById("OceanChestAns").value.toUpperCase();
-      console.log(answer);
       if (answer == `EDGAR ALLAN POE`) {
         document.getElementById("Ocean-Chest-answerCheck").innerHTML = "";
         document.getElementById("Ocean-Chest-answerCheck").style.color =
@@ -536,115 +395,11 @@ export default {
       }
     },
 
-    // movement: function () {
-    //   console.log("movement function is connected");
-    //   var x = 0;
-    //   var y = 0;
-    //   var leftLimit = 0;
-    //   var rightLimit = document.querySelector(".map").getBoundingClientRect()
-    //     .width;
-    //   console.log("width:" + rightLimit);
-    //   var topLimit = 0;
-    //   var bottomLimit = document.querySelector(".map").offsetHeight;
-    //   console.log("height:" + bottomLimit);
-    //   document.addEventListener("keydown", function (event) {
-    //     if (event.keyCode == "38") {
-    //       console.log("Up key is connected");
-    //       y -= 20;
-    //       if (y < topLimit) {
-    //         y = topLimit;
-    //       }
-    //       document.querySelector(
-    //         ".player"
-    //       ).style.transform = `translate(${x}px,${y}px)`;
-    //     } else if (event.keyCode == "39") {
-    //       console.log("Right key is connected");
-    //       x += 20;
-    //       if (x > rightLimit) {
-    //         x = rightLimit;
-    //       }
-    //       document.querySelector(
-    //         ".player"
-    //       ).style.transform = `translate(${x}px,${y}px)`;
-    //     } else if (event.keyCode == "37") {
-    //       console.log("Left key is connected");
-    //       x -= 20;
-    //       if (x < leftLimit) {
-    //         x = leftLimit;
-    //       }
-    //       document.querySelector(
-    //         ".player"
-    //       ).style.transform = `translate(${x}px,${y}px)`;
-    //     } else if (event.keyCode == "40") {
-    //       console.log("Down key is connected");
-    //       y += 20;
-    //       if (y > bottomLimit) {
-    //         y = bottomLimit;
-    //       }
-    //       document.querySelector(
-    //         ".player"
-    //       ).style.transform = `translate(${x}px,${y}px)`;
-    //     }
-    //     console.log(x, y);
-    //   });
-    // },
-    // coordinates: function () {
-    //   console.log("coordinates function is connected");
-    //   document.addEventListener("keydown", function (event) {
-    //     if (
-    //       event.keyCode == "37" ||
-    //       event.keyCode == "38" ||
-    //       event.keyCode == "39" ||
-    //       event.keyCode == "40"
-    //     ) {
-    //       //making the position item arry
-    //       const posItemArray = Array.from(
-    //         document.getElementsByClassName("pos-item")
-    //       );
-    //       const modalArray = Array.from(
-    //         document.getElementsByClassName("modal-item")
-    //       );
-    //       //finding position for each pos-item
-    //       posItemArray.forEach(function (item, index) {
-    //         //finding the coordinates of the player
-    //         let playerCoords = document
-    //           .querySelector(".player")
-    //           .getBoundingClientRect();
-    //         let playerLeft = Math.round(playerCoords.left / 100) * 100;
-    //         let playerTop = Math.round(playerCoords.top / 100) * 100;
-    //         console.log(
-    //           "player left: " + playerLeft + " player top: " + playerTop
-    //         );
-    //         //finding the coordinates of all objects
-    //         let objectCoords = item.getBoundingClientRect();
-    //         let objectLeft = Math.round(objectCoords.left / 100) * 100;
-    //         let objectTop = Math.round(objectCoords.top / 100) * 100;
-    //         console.log("left: " + objectLeft + " top: " + objectTop);
-    //         //if it is an inventory object - and enter is clicked = it gets added to inventory
-    //         //if it is a modal object - and enter is clicked = a popup opens
-    //         if (objectLeft === playerLeft && objectTop === playerTop) {
-    //           document.addEventListener("keydown", function (event) {
-    //             if (event.keyCode == "13") {
-    //               const modalItem = modalArray[index];
-    //               modalItem.style.display = "block";
-    //             }
-    //           });
-    //           console.log("Player and Object are touching!!!");
-    //           item.style.transform = "scale(1.2)";
-    //         } else {
-    //           console.log("Still not touching");
-    //           item.style.transform = "scale(1)";
-    //         }
-    //       });
-    //     }
-    //   });
-    // },
     addToInventory: function() {
       //get array of items on map
       const mapItemArray = Array.from(
         document.getElementsByClassName("forInventory")
       );
-      // console.log(mapItemArray);
 
       const inventory = document.querySelector(".inventory");
       //if item on map is selected, add to inventory
@@ -656,7 +411,6 @@ export default {
             img: item.children[1].textContent,
           };
           inventoryArray.push(addedItem);
-          // console.log(inventoryArray);
           inventory.innerHTML = "";
           display();
           item.style.display = "none";
@@ -675,7 +429,6 @@ export default {
       };
 
       const useKey = function() {
-        console.log(inventoryArray.length);
         if (inventoryArray.length === 1) {
           document.getElementById("Ocean-Chest-Riddle").style.display = "block";
           document.getElementById("Ocean-Chest-Button").style.display = "none";
@@ -691,24 +444,7 @@ export default {
       };
       document.getElementById("Ocean-Chest-Button").addEventListener('click', useKey)
 
-      console.log(useKey());
     },
-    // displayMapItems: function () {
-    //   this.$refs.mapItems.innerHTML = "";
-    //   this.mapItemsArr.forEach(this.printMapItems);
-    // },
-    // printMapItems: function (item) {
-    //   const mapItems = this.$refs.mapItems;
-    //   mapItems.insertAdjacentHTML(
-    //     "afterbegin",
-    //     `<div class="map-item" id="${item.name}">
-    //       <img class="item-img" src="${item.img}" >
-    //       <div class="hidden">${item.img}</div>
-    //       <div>${item.name}</div>
-    //     </div>`
-    //   );
-    //   // item.addEventListener("click", this.addToInventory());
-    // },
   },
 };
 </script>
@@ -724,7 +460,6 @@ export default {
 }
 
 html {
-  /* font-size: 62.5%; */
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -733,9 +468,6 @@ html {
 }
 
 body {
-  /* background-color: antiquewhite; */
-  /* width: 100vw;
-  height: 100vh; */
   overflow: hidden;
 }
 img {
@@ -748,10 +480,7 @@ img {
 }
 
 .canvas {
-  /* width: 100%;
-  height: 100%; */
   padding: 0;
-  /* margin: 3rem; */
   position: absolute;
   z-index: -1;
   background-image: url("../../assets/Images/RoomTwo/Ocean Background_New.jpg");
@@ -882,14 +611,9 @@ img {
 }
 
 .inventory-item {
-  /* border: solid; */
-  /* padding: 1rem; */
-  /* border-color: rgb(99, 88, 194); */
-  /* border-width: 0.2rem !important; */
   border: none;
   cursor: pointer;
   padding: 0.5rem;
-  /* padding: 1rem; */
 }
 
 .item-img {
@@ -909,7 +633,7 @@ img {
 .hidden {
   display: none;
 }
-/* start of old code */
+
 
 .modal {
   position: absolute;
