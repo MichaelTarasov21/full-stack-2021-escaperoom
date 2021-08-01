@@ -1,24 +1,2 @@
-# escape-room
-
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+This branch was created in order to isolate room 4 (the room I worked on) from the rest of the rooms created for the project so that I could add it to my portfolio.
+This is necessary due to the long length of the project making it difficult to get to the final room in a timely matter.
