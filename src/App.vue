@@ -2,12 +2,9 @@
   <div id="app">
     <Fail v-if="lost" @Restart="Restart" @OpenSettings="Menuopened = true" />
     <Login />
-    <Timer v-if="start" @Gameover="Gameover" v-bind:RoomOneDone="roomTwoLoad" v-bind:RoomTwoDone="roomThreeLoad" v-bind:RoomThreeDone="roomFourLoad"  v-bind:RoomFourDone="success" />
+    <Timer v-if="start" @Gameover="Gameover" v-bind:RoomFourDone="success" />
     <Start v-else @Gamestarted="StartGame" />
     <Settings v-bind:showMenu="Menuopened" @closemenu="Menuopened = false" @openmenu="Menuopened = true"/>
-    <RoomOne v-if="roomOneLoad" @roomOneFin="roomOneFin"/>
-    <RoomTwo v-if="roomTwoLoad" @roomTwoFin="roomTwoFin"/>
-    <RoomThree v-if="roomThreeLoad" @roomThreeFin="roomThreeFin"/>
     <RoomFour v-if="roomFourLoad" @roomFourFin="roomFourFin"/>
     <Success v-if="success" @Restart="Restart" @OpenSettings="Menuopened = true"/>
   </div>
@@ -19,9 +16,6 @@
   import Start from "./components/Start.vue";
   import Success from "./components/Success.vue";
   import Fail from "./components/Fail.vue";
-  import RoomOne from "./components/RoomOne/RoomOne";
-  import RoomTwo from "./components/RoomTwo/RoomTwo";
-  import RoomThree from "./components/RoomThree/RoomThree";
   import RoomFour from "./components/RoomFour/RoomFour";
   import Settings from "./components/Settings/Settings.vue";
 
@@ -38,9 +32,6 @@
       Start,
       Success,
       Fail,
-      RoomOne,
-      RoomTwo,
-      RoomThree,
       RoomFour,
       Settings,
     },
@@ -50,9 +41,6 @@
         lost: false,
         start: false,
         Menuopened: false,
-        roomOneLoad: false,
-        roomTwoLoad: false,
-        roomThreeLoad: false,
         roomFourLoad: false,
       };
     },
@@ -62,30 +50,15 @@
       },
       StartGame: function() {
         this.start = true;
-        this.roomOneLoad = true;
-      },
-      roomOneFin: function() {
-        this.roomTwoLoad = true;
-        this.roomOneLoad = false;
-      },
-      roomTwoFin: function() {
-        this.roomThreeLoad = true;
-        this.roomTwoLoad = false;
-      },
-      roomThreeFin: function() {
         this.roomFourLoad = true;
-        this.roomThreeLoad = false;
       },
-       roomFourFin: function() {
-         this.success = true;
-         this.roomFourLoad = false;
-       },
+      roomFourFin: function() {
+        this.success = true;
+        this.roomFourLoad = false;
+      },
       Restart: function() {
         this.lost = false;
         this.success = false;
-        this.roomOneLoad = false;
-        this.roomTwoLoad = false;
-        this.roomThreeLoad = false;
         this.roomFourLoad = false;
         this.start = false;
       },
