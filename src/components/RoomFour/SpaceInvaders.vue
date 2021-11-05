@@ -46,9 +46,6 @@
 		</div>
 		<img id="hero" v-bind:style="Playerstyle" width="71.6px" height="54px" src="@/assets/Images/RoomFour/Space_Ship.png" />
 		<div id="herolaser" class="laser" v-if="PlayerShot" v-bind:style="PlayerLaser" />
-		<img id="leftarrow" class="button" @click="HeroMove(-10)" />
-		<img id="rightarrow" class="button" @click="HeroMove(10)" />
-		<img id="fire" class="button" @click="HeroShoot" />
 	</div>
 </template>
 <script>
@@ -117,28 +114,32 @@
 		},
 		mounted() {
 			this.Playerstyle.left = ((screen.width - 128) * 0.7) / 2 - 35 + "px";
-			window.addEventListener("keydown", function(event) {
-				const buttons = document.getElementsByClassName("button");
+			const HeroMove = this.HeroMove;
+			const HeroShoot = this.HeroShoot;
+			function PlayerAction(event){
 				if (event.key === "ArrowLeft") {
-					buttons[0].click();
+					HeroMove(-10);
 				} else if (event.key === "ArrowRight") {
-					buttons[1].click();
+					HeroMove(10);
 				} else if (event.key === " ") {
-					buttons[2].click();
+					HeroShoot();
 				}
-			});
+			}
+			window.addEventListener("keydown", PlayerAction);
 		},
 		destroyed() {
-			window.removeEventListener("keydown", function(event) {
-				const buttons = document.getElementsByClassName("button");
+			const HeroMove = this.HeroMove;
+			const HeroShoot = this.HeroShoot;
+			function PlayerAction(event){
 				if (event.key === "ArrowLeft") {
-					buttons[0].click();
+					HeroMove(-10)
 				} else if (event.key === "ArrowRight") {
-					buttons[1].click();
+					HeroMove(10)
 				} else if (event.key === " ") {
-					buttons[2].click();
+					HeroShoot()
 				}
-			});
+			}
+			window.removeEventListener("keydown", PlayerAction);
 		},
 		methods: {
 			Reset: function() {

@@ -1,6 +1,5 @@
 <template>
   <div id="RoomFour">
-    <button class="ModalOpener" @click="openModal(0)" />
     <div class="modal-item" v-if="OpenPuzzles[0]">
       <div class="modal-content" id="ArcadeBackdrop">
         <span class="modal_close" @click="closeModal(0)">&times;</span>
@@ -11,7 +10,6 @@
         <SpaceInvaders v-else @Minigamewon="Minigamewon = true" />
       </div>
     </div>
-    <button class="ModalOpener" @click="openModal(1)" />
     <div class="modal-item" v-if="OpenPuzzles[1]">
       <div class="modal-content" id="BriefcaseBackdrop">
         <span class="modal_close" @click="closeModal(1)">&times;</span>
@@ -23,7 +21,6 @@
         <Briefcase v-else @BriefcaseOpened="BriefcaseOpened = true" />
       </div>
     </div>
-    <button class="ModalOpener" @click="openModal(2)" />
     <div class="modal-item" v-if="OpenPuzzles[2]">
       <div class="modal-content" id="final-ans-modal-content">
         <span class="modal_close" @click="closeModal(2)">&times;</span>
@@ -69,6 +66,7 @@
     mounted: function() {
       const sprite = document.getElementById("spriteCharacter");
       const character = document.getElementById("Character");
+      const openPuzzle = this.openModal
       let x = 0;
       let y = 0;
       let screenWidth;
@@ -160,8 +158,7 @@
               let objectLeft = Math.round(objectCoords.left / 100) * 100;
               let objectTop = Math.round(objectCoords.top / 100) * 100;
               if (objectLeft === playerLeft && objectTop === playerTop) {
-                const buttons = document.getElementsByClassName("ModalOpener");
-                buttons[index].click(); // Checks if the object and player are touching and presses the button to mount the component if they are
+                openPuzzle(index); // Checks if the object and player are touching and presses the button to mount the component if they are
               }
             });
           }
