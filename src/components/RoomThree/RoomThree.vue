@@ -165,7 +165,7 @@
       };
 
       //keyboard
-      const keyboardAnimate = function() {
+      const keyboardAnimate = function(event) {
         if (event.keyCode == "38" || event.keyCode == "87") {
           moveUp();
         } else if (event.keyCode == "39" || event.keyCode == "68") {
@@ -175,25 +175,27 @@
         } else if (event.keyCode == "40" || event.keyCode == "83") {
           moveDown();
         }
-        coordinates();
+        coordinates(event);
       };
 
-      document.addEventListener("keydown", function() {
+      function move(event) {
         addAnimation();
         //animate
-        keyboardAnimate();
+        keyboardAnimate(event);
         //check if overboard
         walls();
         updateSpritePosition();
-      });
+      }
+      document.addEventListener("keydown", move);
 
       //when arrow keys are released, stops animation
-      document.addEventListener("keyup", function() {
+      function stop() {
         removeAnimation();
         clearInterval();
-      });
+      }
+      document.addEventListener("keyup", stop);
 
-      const coordinates = function() {
+      const coordinates = function(event) {
         const mapArray = Array.from(document.getElementsByClassName("map-item"));
         const modalArray = Array.from(document.getElementsByClassName("modal-item"));
         let playerCoords = document.getElementById("character").getBoundingClientRect();
@@ -209,14 +211,12 @@
           let objectBottom = Math.round(objectCoords.bottom / 16);
           if (playerRight > objectLeft && playerLeft < objectRight && playerBottom > objectTop && playerTop < objectBottom) {
             item.style.pointerEvents = "all";
-            document.addEventListener("keydown", function(event) {
-              if (event.keyCode == "13") {
-                modalArray.forEach(function(item) {
-                  item.style.display = "none";
-                });
-                item.children[3].style.display = "block";
-              }
-            });
+            if (event.keyCode == "13") {
+              modalArray.forEach(function(item) {
+                item.style.display = "none";
+              });
+              item.children[3].style.display = "block";
+            }
           } else {
             item.children[0].style.transform = "scale(1)";
             item.style.pointerEvents = "none";
