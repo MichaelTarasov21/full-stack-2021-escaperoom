@@ -30,7 +30,7 @@
 
         <div class="map-item" id="Maze">
           <img class="item-img pos-item" src="@/assets/Images/RoomThree/open-window.png" />
-          <div class="hidden">https://raw.githubusercontent.com/staten-island-tech/full-stack-2021-escaperoom/Michael/src/assets/Images/RoomThree/Maze.jpg</div>
+          <div class="hidden">https://raw.githubusercontent.com/staten-island-tech/full-stack-2021-escaperoom/master/src/assets/Images/RoomThree/Maze.jpg</div>
           <div class="hidden">Hedge Maze</div>
           <div class="modal-item">
             <div class="modal-content">
@@ -49,25 +49,25 @@
 
         <div class="map-item forInventory" id="Skull-1">
           <img class="item-img pos-item" src="@/assets/Images/RoomThree/skull.png" />
-          <div class="hidden">https://raw.githubusercontent.com/staten-island-tech/full-stack-2021-escaperoom/Michael/src/assets/Images/RoomThree/T.jpg</div>
+          <div class="hidden">https://raw.githubusercontent.com/staten-island-tech/full-stack-2021-escaperoom/master/src/assets/Images/RoomThree/T.jpg</div>
           <div>‌</div>
         </div>
 
         <div class="map-item forInventory" id="Skull-2">
           <img class="item-img pos-item" src="@/assets/Images/RoomThree/skull.png" />
-          <div class="hidden">https://raw.githubusercontent.com/staten-island-tech/full-stack-2021-escaperoom/Michael/src/assets/Images/RoomThree/I.jpg</div>
+          <div class="hidden">https://raw.githubusercontent.com/staten-island-tech/full-stack-2021-escaperoom/master/src/assets/Images/RoomThree/I.jpg</div>
           <div>‌</div>
         </div>
 
         <div class="map-item forInventory" id="Skull-3">
           <img class="item-img pos-item" src="@/assets/Images/RoomThree/skull.png" />
-          <div class="hidden">https://raw.githubusercontent.com/staten-island-tech/full-stack-2021-escaperoom/Michael/src/assets/Images/RoomThree/A.jpg</div>
+          <div class="hidden">https://raw.githubusercontent.com/staten-island-tech/full-stack-2021-escaperoom/master/src/assets/Images/RoomThree/A.jpg</div>
           <div>‌</div>
         </div>
 
         <div class="map-item forInventory" id="Skull-4">
           <img class="item-img pos-item" src="@/assets/Images/RoomThree/skull.png" />
-          <div class="hidden">https://raw.githubusercontent.com/staten-island-tech/full-stack-2021-escaperoom/Michael/src/assets/Images/RoomThree/H.jpg</div>
+          <div class="hidden">https://raw.githubusercontent.com/staten-island-tech/full-stack-2021-escaperoom/master/src/assets/Images/RoomThree/H.jpg</div>
           <div>‌</div>
         </div>
       </div>
@@ -318,7 +318,7 @@
     padding: 0;
     position: absolute;
     background-color: black;
-    background-image: url(https://raw.githubusercontent.com/staten-island-tech/full-stack-2021-escaperoom/Michael/src/assets/Images/RoomThree/background.jpg);
+    background-image: url(https://raw.githubusercontent.com/staten-island-tech/full-stack-2021-escaperoom/master/src/assets/Images/RoomThree/background.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
