@@ -15,7 +15,7 @@
       <div class="mapItems" id="mapItems">
         <div class="map-item" id="FinalLock">
           <img class="item-img pos-item" src="@/assets/Images/RoomThree/jail-cell-door.png" />
-          <div class="hidden">https://img.icons8.com/ios-filled/50/000000/jail-cell-door--v1.png</div>
+          <div class="hidden">https://raw.githubusercontent.com/staten-island-tech/full-stack-2021-escaperoom/master/src/assets/Images/RoomThree/jail-cell-door.png</div>
           <div class="hidden">FinalLock</div>
           <div class="modal-item" id="final-ans-modal">
             <div class="modal-content">
@@ -30,44 +30,44 @@
 
         <div class="map-item" id="Maze">
           <img class="item-img pos-item" src="@/assets/Images/RoomThree/open-window.png" />
-          <div class="hidden">https://media.giphy.com/media/ocD16iiLhlt0q8IQgR/giphy.gif</div>
+          <div class="hidden">https://raw.githubusercontent.com/staten-island-tech/full-stack-2021-escaperoom/Michael/src/assets/Images/RoomThree/Maze.jpg</div>
           <div class="hidden">Hedge Maze</div>
           <div class="modal-item">
             <div class="modal-content">
               <span class="modal_close" @click="closeModal()">&times;</span>
               <p>Hedge Maze</p>
-              <img id="Hedge_Maze" src="@/assets/Images/RoomThree/Maze.gif" alt="Hedge Maze" />
+              <img id="Hedge_Maze" src="@/assets/Images/RoomThree/Maze.jpg" alt="Hedge Maze" />
             </div>
           </div>
         </div>
 
         <div class="map-item forInventory" id="Torch">
           <img class="item-img pos-item" src="@/assets/Images/RoomThree/torch.png" />
-          <div class="hidden">https://img.icons8.com/cotton/64/000000/torch.png</div>
+          <div class="hidden">https://raw.githubusercontent.com/staten-island-tech/full-stack-2021-escaperoom/master/src/assets/Images/RoomThree/torch.png</div>
           <div>&#8204;</div>
         </div>
 
         <div class="map-item forInventory" id="Skull-1">
           <img class="item-img pos-item" src="@/assets/Images/RoomThree/skull.png" />
-          <div class="hidden">https://media.giphy.com/media/Kxm02CJJazqCFBqYWK/giphy.gif</div>
+          <div class="hidden">https://raw.githubusercontent.com/staten-island-tech/full-stack-2021-escaperoom/Michael/src/assets/Images/RoomThree/T.jpg</div>
           <div>‌</div>
         </div>
 
         <div class="map-item forInventory" id="Skull-2">
           <img class="item-img pos-item" src="@/assets/Images/RoomThree/skull.png" />
-          <div class="hidden">https://media.giphy.com/media/BWjvxs4uCsGvSY0ak1/giphy.gif</div>
+          <div class="hidden">https://raw.githubusercontent.com/staten-island-tech/full-stack-2021-escaperoom/Michael/src/assets/Images/RoomThree/I.jpg</div>
           <div>‌</div>
         </div>
 
         <div class="map-item forInventory" id="Skull-3">
           <img class="item-img pos-item" src="@/assets/Images/RoomThree/skull.png" />
-          <div class="hidden">https://media.giphy.com/media/J6eXrQczJ1EYSBEkVk/giphy.gif</div>
+          <div class="hidden">https://raw.githubusercontent.com/staten-island-tech/full-stack-2021-escaperoom/Michael/src/assets/Images/RoomThree/A.jpg</div>
           <div>‌</div>
         </div>
 
         <div class="map-item forInventory" id="Skull-4">
           <img class="item-img pos-item" src="@/assets/Images/RoomThree/skull.png" />
-          <div class="hidden">https://media.giphy.com/media/LEcRRnZuTOEhmlYgMQ/giphy.gif</div>
+          <div class="hidden">https://raw.githubusercontent.com/staten-island-tech/full-stack-2021-escaperoom/Michael/src/assets/Images/RoomThree/H.jpg</div>
           <div>‌</div>
         </div>
       </div>
@@ -262,7 +262,7 @@
               name: item.children[2].textContent,
               img: item.children[1].textContent,
             };
-            if (addedItem.img === "https://img.icons8.com/cotton/64/000000/torch.png" || inventoryArray.length >= 1) {
+            if (addedItem.img === "https://raw.githubusercontent.com/staten-island-tech/full-stack-2021-escaperoom/master/src/assets/Images/RoomThree/torch.png" || inventoryArray.length >= 1) {
               inventoryArray.push(addedItem);
               inventory.innerHTML = "";
               display();
@@ -318,7 +318,7 @@
     padding: 0;
     position: absolute;
     background-color: black;
-    background-image: url(https://media.giphy.com/media/nAEsYBNjINxaBMy6Wp/giphy.gif);
+    background-image: url(https://raw.githubusercontent.com/staten-island-tech/full-stack-2021-escaperoom/Michael/src/assets/Images/RoomThree/background.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
