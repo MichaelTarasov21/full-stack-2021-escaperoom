@@ -42,7 +42,7 @@
         <div class="map-item forInventory" id="Ocean-Key">
           <img class="item-img pos-item" src="@/assets/Images/RoomTwo/key.png" />
           <div class="hidden">
-            https://img.icons8.com/dusk/256/000000/key.png
+            https://raw.githubusercontent.com/staten-island-tech/full-stack-2021-escaperoom/master/src/assets/Images/RoomTwo/key.png
           </div>
           <div class="hidden">Ocean-Key</div>
           <div class="message">
@@ -53,7 +53,7 @@
         <div class="map-item" id="Ocean-Lobster">
           <img class="item-img pos-item" src="@/assets/Images/RoomTwo/shrimp-and-lobster.png" />
           <div class="hidden">
-            @/assets/Images/RoomTwo/shrimp-and-lobster.png
+            https://raw.githubusercontent.com/staten-island-tech/full-stack-2021-escaperoom/master/src/assets/Images/RoomTwo/shrimp-and-lobster.png
           </div>
           <div class="hidden">Ocean-Lobster</div>
           <div class="modal-item" id="Ocean-Lobster-Modal">

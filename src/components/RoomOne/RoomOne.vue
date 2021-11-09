@@ -66,7 +66,7 @@
 
         <div class="map-item forInventory" id="Goggles">
           <img class="item-img" src="@/assets/Images/RoomOne/3d-glasses.png" />
-          <div class="hidden">https://img.icons8.com/dusk/64/000000/3d-glasses.png</div>
+          <div class="hidden">https://raw.githubusercontent.com/staten-island-tech/full-stack-2021-escaperoom/master/src/assets/Images/RoomOne/3d-glasses.png</div>
           <div class="hidden">Goggles</div>
           <div class="message">Click to Collect</div>
         </div>
