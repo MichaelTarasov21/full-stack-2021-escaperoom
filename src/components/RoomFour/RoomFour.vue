@@ -1,6 +1,5 @@
 <template>
   <div id="RoomFour">
-    <button class="ModalOpener" @click="openModal(0)" />
     <div class="modal-item" v-if="OpenPuzzles[0]">
       <div class="modal-content" id="ArcadeBackdrop">
         <span class="modal_close" @click="closeModal(0)">&times;</span>
@@ -11,7 +10,6 @@
         <SpaceInvaders v-else @Minigamewon="Minigamewon = true" />
       </div>
     </div>
-    <button class="ModalOpener" @click="openModal(1)" />
     <div class="modal-item" v-if="OpenPuzzles[1]">
       <div class="modal-content" id="BriefcaseBackdrop">
         <span class="modal_close" @click="closeModal(1)">&times;</span>
@@ -23,7 +21,6 @@
         <Briefcase v-else @BriefcaseOpened="BriefcaseOpened = true" />
       </div>
     </div>
-    <button class="ModalOpener" @click="openModal(2)" />
     <div class="modal-item" v-if="OpenPuzzles[2]">
       <div class="modal-content" id="final-ans-modal-content">
         <span class="modal_close" @click="closeModal(2)">&times;</span>
@@ -69,6 +66,7 @@
     mounted: function() {
       const sprite = document.getElementById("spriteCharacter");
       const character = document.getElementById("Character");
+      const openPuzzle = this.openModal;
       let x = 0;
       let y = 0;
       let screenWidth;
@@ -128,47 +126,44 @@
         }
       }
 
-      function coordinates() {
-        document.addEventListener("keydown", function(event) {
-          const posItemArray = document.getElementsByClassName("pos-item");
-          //making the position item arry
-          if (event.keyCode == "37" || event.keyCode == "38" || event.keyCode == "39" || event.keyCode == "40") {
-            //finding position for each pos-item
-            posItemArray.forEach(function(item) {
-              //finding the coordinates of the player
-              let playerCoords = document.querySelector(".player").getBoundingClientRect();
-              let playerLeft = Math.round(playerCoords.left / 100) * 100;
-              let playerTop = Math.round(playerCoords.top / 100) * 100;
-              //finding the coordinates of all objects
-              let objectCoords = item.getBoundingClientRect();
-              let objectLeft = Math.round(objectCoords.left / 100) * 100;
-              let objectTop = Math.round(objectCoords.top / 100) * 100;
-              if (objectLeft === playerLeft && objectTop === playerTop) {
-                item.style.transform = "scale(1.2)";
-              } else {
-                item.style.transform = "scale(1)";
-              }
-            });
-          } else if (event.code == "Enter") {
-            posItemArray.forEach(function(item, index) {
-              //finding the coordinates of the player
-              let playerCoords = document.querySelector(".player").getBoundingClientRect();
-              let playerLeft = Math.round(playerCoords.left / 100) * 100;
-              let playerTop = Math.round(playerCoords.top / 100) * 100;
-              //finding the coordinates of all objects
-              let objectCoords = item.getBoundingClientRect();
-              let objectLeft = Math.round(objectCoords.left / 100) * 100;
-              let objectTop = Math.round(objectCoords.top / 100) * 100;
-              if (objectLeft === playerLeft && objectTop === playerTop) {
-                const buttons = document.getElementsByClassName("ModalOpener");
-                buttons[index].click(); // Checks if the object and player are touching and presses the button to mount the component if they are
-              }
-            });
-          }
-        });
+      function interact(event) {
+        const posItemArray = document.getElementsByClassName("pos-item");
+        //making the position item arry
+        if (event.keyCode == "37" || event.keyCode == "38" || event.keyCode == "39" || event.keyCode == "40") {
+          //finding position for each pos-item
+          posItemArray.forEach(function(item) {
+            //finding the coordinates of the player
+            let playerCoords = document.querySelector(".player").getBoundingClientRect();
+            let playerLeft = Math.round(playerCoords.left / 100) * 100;
+            let playerTop = Math.round(playerCoords.top / 100) * 100;
+            //finding the coordinates of all objects
+            let objectCoords = item.getBoundingClientRect();
+            let objectLeft = Math.round(objectCoords.left / 100) * 100;
+            let objectTop = Math.round(objectCoords.top / 100) * 100;
+            if (objectLeft === playerLeft && objectTop === playerTop) {
+              item.style.transform = "scale(1.2)";
+            } else {
+              item.style.transform = "scale(1)";
+            }
+          });
+        } else if (event.code == "Enter") {
+          posItemArray.forEach(function(item, index) {
+            //finding the coordinates of the player
+            let playerCoords = document.querySelector(".player").getBoundingClientRect();
+            let playerLeft = Math.round(playerCoords.left / 100) * 100;
+            let playerTop = Math.round(playerCoords.top / 100) * 100;
+            //finding the coordinates of all objects
+            let objectCoords = item.getBoundingClientRect();
+            let objectLeft = Math.round(objectCoords.left / 100) * 100;
+            let objectTop = Math.round(objectCoords.top / 100) * 100;
+            if (objectLeft === playerLeft && objectTop === playerTop) {
+              openPuzzle(index); // Checks if the object and player are touching and presses the button to mount the component if they are
+            }
+          });
+        }
       }
 
-      function keyboardAnimate() {
+      function keyboardAnimate(event) {
         if (event.keyCode == "38" || event.keyCode == "87") {
           moveUp();
         } else if (event.keyCode == "39" || event.keyCode == "68") {
@@ -178,19 +173,21 @@
         } else if (event.keyCode == "40" || event.keyCode == "83") {
           moveDown();
         }
-        coordinates();
+        interact(event);
       }
-      document.addEventListener("keydown", function() {
+
+      function move(event) {
         addAnimation();
-        keyboardAnimate();
-        coordinates();
+        keyboardAnimate(event);
         walls();
         updateSpritePosition();
-      });
-      document.addEventListener("keyup", function() {
+      }
+      function stop() {
         removeAnimation();
         clearInterval();
-      });
+      }
+      document.addEventListener("keydown", move);
+      document.addEventListener("keyup", stop);
     },
     methods: {
       closeModal: function(index) {
@@ -270,7 +267,7 @@
     height: calc(1rem * var(--scale1));
     left: 0;
   }
-  .inventory{
+  .inventory {
     z-index: 3;
   }
   .modal-item {
